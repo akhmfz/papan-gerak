@@ -190,9 +190,15 @@ f_scoreRange(float val, float min, float max, float idealLow, float idealHigh) =
             100.0
         else
             if val < idealLow
-                math.max(0, val / idealLow * 100)
+                if val <= min
+                    0.0
+                else
+                    (val - min) / (idealLow - min) * 100
             else
-                math.max(0, (1 - (val - idealHigh) / (val)) * 100)
+                if val >= max
+                    0.0
+                else
+                    (max - val) / (max - idealHigh) * 100
 
 f_scoreBias(float val) =>
     na(val) ? na : (val + 1) / 2 * 100
@@ -299,7 +305,7 @@ f_choppiness(int length) =>
     if range_ == 0
         100.0
     else
-        math.log(atrSum / range_ * 100) / math.log(length) * 100
+        math.log(atrSum / range_) / math.log(length) * 100
 
 chopValue = f_choppiness(chopLength)
 chopTrending = chopValue <= 38

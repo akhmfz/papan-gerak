@@ -76,7 +76,7 @@ f_choppiness(int length) =>
     if range_ == 0
         100.0
     else
-        math.log(atrSum / range_ * 100) / math.log(length) * 100
+        math.log(atrSum / range_) / math.log(length) * 100
 
 chopValue = f_choppiness(chopLength)
 chopTrending = chopValue <= 38
