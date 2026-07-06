@@ -133,7 +133,8 @@ f_isBodyVolume() =>
 smDetected = f_smartMoneyDetect()
 smBodyVol = f_isBodyVolume()
 
-// Cumulative SM score
+// DEPRECATED — unused. Real logic ada di f_smartMoneyScore() di 03-scoring.pine
+// Dihitung tiap bar tanpa efek — dipertahankan untuk referensi, akan dihapus di rilis berikutnya.
 smScore = if enableSmartMoney
     score = 50.0
     if smDetected
@@ -151,9 +152,9 @@ else
 // ==========================================================
 mtfTrendScore = if enableMtfFilter
     request.security(syminfo.tickerid, mtfTimeframe,
-        (close > ta.ema(close, 200) ? 50 : 0) +
-        (close > ta.ema(close, 50) ? 30 : 0) +
-        (close > ta.ema(close, 20) ? 20 : 0),
+        (close > ta.ema(close, emaSlowPeriod) ? 50 : 0) +
+        (close > ta.ema(close, emaMidPeriod) ? 30 : 0) +
+        (close > ta.ema(close, emaFastPeriod) ? 20 : 0),
         barmerge.gaps_off, barmerge.lookahead_off)
 else
     na

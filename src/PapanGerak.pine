@@ -14,9 +14,7 @@ indicator(
     shorttitle = "P.Gerak",
     overlay = false,
     format = format.price,
-    precision = 0,
-    max_labels_count = 50,
-    max_lines_count = 50
+    precision = 0
 )
 
 // ==========================================================
@@ -94,6 +92,7 @@ smPeriod = input.int(20, "SM Lookback Period", group = "Smart Money", display = 
 // ==========================================================
 minSignalBars = input.int(5, "Min Bars Between Signals", minval = 1, maxval = 50, group = "Signal", display = display.data_window, tooltip = "Jarak minimal antar sinyal (dalam bar). Mencegah sinyal beruntun terlalu rapat.")
 signalFilterMode = input.string("Disabled", "Signal Filter", options = ["Disabled", "Only Trending (Chop<38)", "Only Ranging (Chop>62)"], group = "Signal", display = display.data_window, tooltip = "Hanya izinkan sinyal saat market trending (Chop<38) atau ranging (Chop>62). Nonaktifkan untuk semua kondisi.")
+confirmOnBarClose = input.bool(true, "Confirm on Bar Close", group = "Signal", display = display.data_window, tooltip = "Hanya kirim alert saat candle benar-benar tutup. Mencegah sinyal/alert palsu di tengah bar berjalan (repaint). Nonaktifkan untuk respons real-time lebih cepat.")
 
 // ==========================================================
 // 9. SETTINGS — Risk Management
@@ -407,7 +406,8 @@ f_isBodyVolume() =>
 smDetected = f_smartMoneyDetect()
 smBodyVol = f_isBodyVolume()
 
-// Cumulative SM score
+// DEPRECATED — unused. Real logic ada di f_smartMoneyScore() di 03-scoring.pine
+// Dihitung tiap bar tanpa efek — dipertahankan untuk referensi, akan dihapus di rilis berikutnya.
 smScore = if enableSmartMoney
     score = 50.0
     if smDetected
@@ -425,9 +425,9 @@ else
 // ==========================================================
 mtfTrendScore = if enableMtfFilter
     request.security(syminfo.tickerid, mtfTimeframe,
-        (close > ta.ema(close, 200) ? 50 : 0) +
-        (close > ta.ema(close, 50) ? 30 : 0) +
-        (close > ta.ema(close, 20) ? 20 : 0),
+        (close > ta.ema(close, emaSlowPeriod) ? 50 : 0) +
+        (close > ta.ema(close, emaMidPeriod) ? 30 : 0) +
+        (close > ta.ema(close, emaFastPeriod) ? 20 : 0),
         barmerge.gaps_off, barmerge.lookahead_off)
 else
     na
@@ -879,7 +879,7 @@ zoneChanged = prevZone >= 0 and currentZone >= 0 and currentZone != prevZone
 minBarsOk = lastSignalBar < 0 or bar_index - lastSignalBar >= minSignalBars
 chopFilterOk = signalFilterMode == "Disabled" or (not na(chopValue) and (
     signalFilterMode == "Only Trending (Chop<38)" ? chopValue < 38 :
-    signalFilterMode == "Only Ranging (Chop>62)" ? chopValue > 62 : true
+    signalFilterMode == "Only Ranging (Chop>62)" ? chopValue >= 62 : true
 ))
 
 // Mode A: Composite Score (zone-based)
@@ -1047,8 +1047,8 @@ riskRpK = not na(riskRp) and not na(suggestedLots) ? math.round(riskRp / 1000) :
 riskRpDisplay = not na(riskRpK) ? (riskRpK >= 1000 ? "Rp" + str.tostring(math.round(riskRpK / 1000)) + "jt" : "Rp" + str.tostring(riskRpK) + "rb") : ""
 lotLabel = bahasaInput == "Indonesia" ? "Lot" : "Lots"
 
-suggestedLotStr = if hasRisk and showPositionSizing and not na(suggestedLots) and suggestedLots > 0
-    "  |  " + lotLabel + ": " + str.tostring(math.max(1, suggestedLots)) + "  |  " + riskRpDisplay + " (" + str.tostring(riskPctInput) + "%)"
+suggestedLotStr = if hasRisk and showPositionSizing and not na(suggestedLots)
+    "  |  " + lotLabel + ": " + str.tostring(math.max(1, suggestedLots)) + (suggestedLots < 1 ? " (min. 1 lot)" : "") + "  |  " + riskRpDisplay + " (" + str.tostring(riskPctInput) + "%)"
 else
     ""
 
@@ -1118,7 +1118,7 @@ if barstate.islast
             rowCount := rowCount + 1
         if isDetailed
             rowCount := rowCount + 4  // +1 sub-row per dimensi
-        tblFull = table.new(tablePos, 3, rowCount, bgcolor = tableBgColor, border_width = 1, border_color = signalColor,
+        tblFull = table.new(tablePos, 2, rowCount, bgcolor = tableBgColor, border_width = 1, border_color = signalColor,
          frame_color = signalColor, frame_width = 1)
 
         // Narrative row (full width - column 0 only)
@@ -1226,8 +1226,8 @@ f_webhookMsg(eventType, params) =>
     else
         params
 
-// Alert: Entry trigger (mode-aware)
-if entryTriggered
+// Alert: Entry trigger (mode-aware) — guard: bar-close confirmation
+if entryTriggered and (not confirmOnBarClose or barstate.isconfirmed)
     msg = if webhookFormat == "JSON"
         f_webhookMsg("entry", str.format("mode={0}|action={1}|price={2}|score={3}|signal={4}",
             entryTriggerMode, signalDirection > 0 ? "buy" : "sell", str.tostring(close),
@@ -1237,7 +1237,7 @@ if entryTriggered
     alert(msg)
 
 // Alert: Trend Extreme
-if trendScore >= 80 or trendScore <= 20
+if (trendScore >= 80 or trendScore <= 20) and (not confirmOnBarClose or barstate.isconfirmed)
     msg = if webhookFormat == "JSON"
         f_webhookMsg("trend_extreme", "trendScore=" + str.tostring(math.round(trendScore)))
     else
@@ -1245,7 +1245,7 @@ if trendScore >= 80 or trendScore <= 20
     alert(msg)
 
 // Alert: Momentum Oversold
-if rsiOsHit
+if rsiOsHit and (not confirmOnBarClose or barstate.isconfirmed)
     msg = if webhookFormat == "JSON"
         f_webhookMsg("rsi_oversold", "rsi=" + str.tostring(math.round(rsiValue)))
     else
@@ -1253,7 +1253,7 @@ if rsiOsHit
     alert(msg)
 
 // Alert: Momentum Overbought
-if rsiObHit
+if rsiObHit and (not confirmOnBarClose or barstate.isconfirmed)
     msg = if webhookFormat == "JSON"
         f_webhookMsg("rsi_overbought", "rsi=" + str.tostring(math.round(rsiValue)))
     else
@@ -1261,7 +1261,7 @@ if rsiObHit
     alert(msg)
 
 // Alert: Volume Spike
-if volSpike
+if volSpike and (not confirmOnBarClose or barstate.isconfirmed)
     msg = if webhookFormat == "JSON"
         f_webhookMsg("volume_spike", "ratio=" + str.tostring(math.round(volRatio * 100)))
     else
@@ -1269,7 +1269,7 @@ if volSpike
     alert(msg)
 
 // Alert: Smart Money Detected
-if smDetected
+if smDetected and (not confirmOnBarClose or barstate.isconfirmed)
     msg = if webhookFormat == "JSON"
         f_webhookMsg("smart_money", "detected=true")
     else
@@ -1277,7 +1277,7 @@ if smDetected
     alert(msg)
 
 // Alert: Choppiness (ranging market)
-if chopRanging
+if chopRanging and (not confirmOnBarClose or barstate.isconfirmed)
     msg = if webhookFormat == "JSON"
         f_webhookMsg("choppiness", "chop=" + str.tostring(math.round(chopValue)))
     else

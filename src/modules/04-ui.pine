@@ -62,7 +62,7 @@ if barstate.islast
             rowCount := rowCount + 1
         if isDetailed
             rowCount := rowCount + 4  // +1 sub-row per dimensi
-        tblFull = table.new(tablePos, 3, rowCount, bgcolor = tableBgColor, border_width = 1, border_color = signalColor,
+        tblFull = table.new(tablePos, 2, rowCount, bgcolor = tableBgColor, border_width = 1, border_color = signalColor,
          frame_color = signalColor, frame_width = 1)
 
         // Narrative row (full width - column 0 only)
@@ -170,8 +170,8 @@ f_webhookMsg(eventType, params) =>
     else
         params
 
-// Alert: Entry trigger (mode-aware)
-if entryTriggered
+// Alert: Entry trigger (mode-aware) — guard: bar-close confirmation
+if entryTriggered and (not confirmOnBarClose or barstate.isconfirmed)
     msg = if webhookFormat == "JSON"
         f_webhookMsg("entry", str.format("mode={0}|action={1}|price={2}|score={3}|signal={4}",
             entryTriggerMode, signalDirection > 0 ? "buy" : "sell", str.tostring(close),
@@ -181,7 +181,7 @@ if entryTriggered
     alert(msg)
 
 // Alert: Trend Extreme
-if trendScore >= 80 or trendScore <= 20
+if (trendScore >= 80 or trendScore <= 20) and (not confirmOnBarClose or barstate.isconfirmed)
     msg = if webhookFormat == "JSON"
         f_webhookMsg("trend_extreme", "trendScore=" + str.tostring(math.round(trendScore)))
     else
@@ -189,7 +189,7 @@ if trendScore >= 80 or trendScore <= 20
     alert(msg)
 
 // Alert: Momentum Oversold
-if rsiOsHit
+if rsiOsHit and (not confirmOnBarClose or barstate.isconfirmed)
     msg = if webhookFormat == "JSON"
         f_webhookMsg("rsi_oversold", "rsi=" + str.tostring(math.round(rsiValue)))
     else
@@ -197,7 +197,7 @@ if rsiOsHit
     alert(msg)
 
 // Alert: Momentum Overbought
-if rsiObHit
+if rsiObHit and (not confirmOnBarClose or barstate.isconfirmed)
     msg = if webhookFormat == "JSON"
         f_webhookMsg("rsi_overbought", "rsi=" + str.tostring(math.round(rsiValue)))
     else
@@ -205,7 +205,7 @@ if rsiObHit
     alert(msg)
 
 // Alert: Volume Spike
-if volSpike
+if volSpike and (not confirmOnBarClose or barstate.isconfirmed)
     msg = if webhookFormat == "JSON"
         f_webhookMsg("volume_spike", "ratio=" + str.tostring(math.round(volRatio * 100)))
     else
@@ -213,7 +213,7 @@ if volSpike
     alert(msg)
 
 // Alert: Smart Money Detected
-if smDetected
+if smDetected and (not confirmOnBarClose or barstate.isconfirmed)
     msg = if webhookFormat == "JSON"
         f_webhookMsg("smart_money", "detected=true")
     else
@@ -221,7 +221,7 @@ if smDetected
     alert(msg)
 
 // Alert: Choppiness (ranging market)
-if chopRanging
+if chopRanging and (not confirmOnBarClose or barstate.isconfirmed)
     msg = if webhookFormat == "JSON"
         f_webhookMsg("choppiness", "chop=" + str.tostring(math.round(chopValue)))
     else

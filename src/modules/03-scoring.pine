@@ -445,7 +445,7 @@ zoneChanged = prevZone >= 0 and currentZone >= 0 and currentZone != prevZone
 minBarsOk = lastSignalBar < 0 or bar_index - lastSignalBar >= minSignalBars
 chopFilterOk = signalFilterMode == "Disabled" or (not na(chopValue) and (
     signalFilterMode == "Only Trending (Chop<38)" ? chopValue < 38 :
-    signalFilterMode == "Only Ranging (Chop>62)" ? chopValue > 62 : true
+    signalFilterMode == "Only Ranging (Chop>62)" ? chopValue >= 62 : true
 ))
 
 // Mode A: Composite Score (zone-based)
@@ -613,8 +613,8 @@ riskRpK = not na(riskRp) and not na(suggestedLots) ? math.round(riskRp / 1000) :
 riskRpDisplay = not na(riskRpK) ? (riskRpK >= 1000 ? "Rp" + str.tostring(math.round(riskRpK / 1000)) + "jt" : "Rp" + str.tostring(riskRpK) + "rb") : ""
 lotLabel = bahasaInput == "Indonesia" ? "Lot" : "Lots"
 
-suggestedLotStr = if hasRisk and showPositionSizing and not na(suggestedLots) and suggestedLots > 0
-    "  |  " + lotLabel + ": " + str.tostring(math.max(1, suggestedLots)) + "  |  " + riskRpDisplay + " (" + str.tostring(riskPctInput) + "%)"
+suggestedLotStr = if hasRisk and showPositionSizing and not na(suggestedLots)
+    "  |  " + lotLabel + ": " + str.tostring(math.max(1, suggestedLots)) + (suggestedLots < 1 ? " (min. 1 lot)" : "") + "  |  " + riskRpDisplay + " (" + str.tostring(riskPctInput) + "%)"
 else
     ""
 

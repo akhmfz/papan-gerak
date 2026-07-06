@@ -100,3 +100,4 @@ Jumlah lot yang ditampilkan adalah batas **maksimal**, bukan target. Kurangi lot
 - **Indikator ini bukan rekomendasi beli/jual.** Semua angka adalah alat bantu analisis — keputusan akhir tetap di tangan pengguna.
 - **Default settings sudah dioptimalkan** untuk saham IDX. Tidak perlu mengubah apa pun untuk mulai menggunakan.
 - **Kondisi pasar tipis IDX** (volume <Rp10 miliar/hari) bisa menghasilkan sinyal kurang akurat — verifikasi dengan price action.
+- **⚠️ Risiko Repaint:** Skor, sinyal, dan alert di tabel bisa berubah selama candle masih berjalan (belum close). Fitur "Confirm on Bar Close" (default ON) mencegah alert dikirim sebelum candle tutup — sangat disarankan untuk Daily timeframe. Nonaktifkan hanya jika Anda ingin respons real-time lebih cepat dan sadar akan risiko sinyal palsu di tengah bar.

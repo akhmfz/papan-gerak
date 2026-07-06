@@ -4,6 +4,23 @@ Copy-paste berikut saat publish indicator di TradingView:
 
 ---
 
+### v0.2.1-alpha Update (2026-07-06)
+
+**Critical Fixes:**
+- **Perbaikan sinyal Composite Score**: Bug deadlock `prevZone = -1` menyebabkan Entry Trigger, Level Referensi, Return Sejak Sinyal, dan Histori Sinyal tidak pernah muncul di mode default. Sekarang sudah berfungsi penuh.
+- **Risk Levels muncul di semua mode entry**: SL/TP sebelumnya hanya muncul di mode Composite Score — sekarang berfungsi di Pullback dan Breakout juga.
+- **Confluence scoring lebih akurat**: Trend tidak lagi menghitung ADX weak, Volatility menggunakan threshold chop 38 (bukan 50).
+- **Zero compiler warnings**: Semua multi-line operator dikonversi ke `if/else` untuk kepatuhan Pine Script v6.
+
+**UX Improvements:**
+- 16+ tooltip pada input settings Entry Trigger, Risk Mgmt, Position Size, MTF, Signal, Webhook
+- Panduan trading 10 langkah (`docs/PANDUAN-TRADING.md`) — dari membaca tabel hingga keputusan entry
+- "Return Sejak Sinyal" (Indonesia) menggantikan "Forward Return"
+
+---
+
+## Judul
+
 ## Judul
 
 **Saham: Papan Gerak By. Akhmfz**

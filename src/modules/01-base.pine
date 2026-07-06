@@ -14,9 +14,7 @@ indicator(
     shorttitle = "P.Gerak",
     overlay = false,
     format = format.price,
-    precision = 0,
-    max_labels_count = 50,
-    max_lines_count = 50
+    precision = 0
 )
 
 // ==========================================================
@@ -94,6 +92,7 @@ smPeriod = input.int(20, "SM Lookback Period", group = "Smart Money", display = 
 // ==========================================================
 minSignalBars = input.int(5, "Min Bars Between Signals", minval = 1, maxval = 50, group = "Signal", display = display.data_window, tooltip = "Jarak minimal antar sinyal (dalam bar). Mencegah sinyal beruntun terlalu rapat.")
 signalFilterMode = input.string("Disabled", "Signal Filter", options = ["Disabled", "Only Trending (Chop<38)", "Only Ranging (Chop>62)"], group = "Signal", display = display.data_window, tooltip = "Hanya izinkan sinyal saat market trending (Chop<38) atau ranging (Chop>62). Nonaktifkan untuk semua kondisi.")
+confirmOnBarClose = input.bool(true, "Confirm on Bar Close", group = "Signal", display = display.data_window, tooltip = "Hanya kirim alert saat candle benar-benar tutup. Mencegah sinyal/alert palsu di tengah bar berjalan (repaint). Nonaktifkan untuk respons real-time lebih cepat.")
 
 // ==========================================================
 // 9. SETTINGS — Risk Management

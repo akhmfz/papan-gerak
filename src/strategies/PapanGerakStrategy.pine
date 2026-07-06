@@ -5,6 +5,17 @@
 // ==========================================================
 // Script terpisah dari indicator() — menggunakan strategy()
 // untuk backtest di Strategy Tester bawaan TV.
+//
+// ⚠️  DISCLAIMER: Strategy ini adalah APPROKSIMASI dari scoring
+// engine indikator Papan Gerak sebenarnya (03-scoring.pine).
+// Perbedaan utama:
+//   - Strategy hanya pakai 3 dimensi (Tren/Momentum/Volume),
+//     sementara indikator asli pakai 4 (Tren/Momentum/Volatilitas/Volume)
+//   - Strategy TIDAK menerapkan minSignalBars / signalFilterMode
+//   - Bobot strategy terfiksasi (3:3:2); indikator asli bisa diatur user
+//   - Tidak ada MTF filter / Smart Money di strategy
+// Jangan jadikan win rate / return / profit factor di strategy tester
+// sebagai representasi presisi sinyal entry indikator Papan Gerak.
 // ==========================================================
 
 strategy(
@@ -53,6 +64,7 @@ emaMid = ta.ema(close, emaMidPeriod)
 emaSlow = ta.ema(close, emaSlowPeriod)
 [superTrend, superTrendDir] = ta.supertrend(superTrendFactor, superTrendPeriod)
 [adxUp, adxDn, adxValue] = ta.dmi(adxLength, adxLength)
+adxStrong = adxValue >= adxThreshold
 
 rsiValue = ta.rsi(close, rsiLength)
 [macdLine, macdSignalLine, macdHist] = ta.macd(close, macdFast, macdSlow, macdSignal)
@@ -141,7 +153,7 @@ if barstate.islast
     netPct = strategy.netprofit / strategy.initial_capital * 100
     netStr = str.tostring(math.round(netPct * 10) / 10) + "%"
     table.cell(tbl, 0, 4, "Return: " + netStr, text_size = size.small,
-     text_color = netPct >= 0 ? color.rgb(38, 166, 154) : color.rgb(83, 239, 80))
+     text_color = netPct >= 0 ? color.rgb(38, 166, 154) : color.rgb(239, 83, 80))
 
 plot(overallScore, "Score", color.rgb(38, 166, 154, 80), 2)
 hline(70, "OB", color.rgb(239, 83, 80, 50), hline.style_dashed)
