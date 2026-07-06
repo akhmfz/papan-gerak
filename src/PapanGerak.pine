@@ -879,19 +879,19 @@ chopFilterOk = signalFilterMode == "Disabled" or (not na(chopValue) and (
 signalTriggered = zoneChanged and minBarsOk and chopFilterOk
 
 // Mode B: Pullback (trend pullback ke EMA20 + RSI rebound)
-pullbackTrigger = entryTriggerMode == "Pullback"
-    and not na(trendScore) and trendScore >= 65
-    and not na(emaFast) and not na(atrValue) and math.abs(close - emaFast) <= atrValue * 1.5
-    and not na(rsiValue) and rsiValue <= 50 and rsiDirection == 1
-    and minBarsOk and chopFilterOk
+pullbackTrigger = entryTriggerMode == "Pullback" and
+    not na(trendScore) and trendScore >= 65 and
+    not na(emaFast) and not na(atrValue) and math.abs(close - emaFast) <= atrValue * 1.5 and
+    not na(rsiValue) and rsiValue <= 50 and rsiDirection == 1 and
+    minBarsOk and chopFilterOk
 
 // Mode C: Breakout (price break recent high/low + volume confirmation)
 recentHigh = ta.highest(high, 20)
 recentLow = ta.lowest(low, 20)
-breakoutTrigger = entryTriggerMode == "Breakout"
-    and not na(volumeScore) and volumeScore >= 60
-    and (close >= recentHigh or close <= recentLow)
-    and minBarsOk and chopFilterOk
+breakoutTrigger = entryTriggerMode == "Breakout" and
+    not na(volumeScore) and volumeScore >= 60 and
+    (close >= recentHigh or close <= recentLow) and
+    minBarsOk and chopFilterOk
 
 // Unified entry trigger
 entryTriggered = entryTriggerMode == "Composite Score"
