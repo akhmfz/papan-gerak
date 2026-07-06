@@ -254,7 +254,7 @@ if not na(superTrendDir)
     trendBull += superTrendDir == 1 ? 1 : 0
     trendTotal += 1
 if not na(adxValue)
-    trendBull += adxTrend == 1 ? 1 : 0
+    trendBull += (adxStrong and adxTrend == 1) ? 1 : 0
     trendTotal += 1
 if not na(adxValue)
     trendBull += trendAligned ? 1 : 0
@@ -286,7 +286,7 @@ if not na(bbWidth) and not na(bbWidthAvg)
     volBull += (bbWidth / bbWidthAvg >= 0.8 and bbWidth / bbWidthAvg <= 1.2) ? 1 : 0
     volTotal += 1
 if not na(chopValue)
-    volBull += chopValue < 50 ? 1 : 0
+    volBull += chopValue <= 38 ? 1 : 0
     volTotal += 1
 if not na(atrPercent)
     volBull += (atrPercent >= 1.0 and atrPercent <= 3.0) ? 1 : 0
@@ -347,7 +347,8 @@ if not na(volRatio) and not na(volumeScore)
     vrLbl = volRatio >= volSpikeMult ? "Vol " + str.tostring(math.round(volRatio * 10) / 10) + "x (spike!)" : volRatio >= 0.8 ? "Vol " + str.tostring(math.round(volRatio * 10) / 10) + "x (healthy) ✓" : "Vol " + str.tostring(math.round(volRatio * 10) / 10) + "x (low)"
     obvLbl = not na(obvValue) ? (obvAgree ? "OBV Agree ✓" : "OBV Diverge ✗") : ""
     netLbl = not na(netVolSmooth) ? (netVolSmooth > 0 ? "Net Vol + Bullish" : "Net Vol - Bearish") : ""
-    volmDetail := vrLbl + " | " + obvLbl + " | " + netLbl
+    spikeLbl = volSpike ? "Spike ✓" : "Spike ✗"
+    volmDetail := vrLbl + " | " + obvLbl + " | " + netLbl + " | " + spikeLbl
 
 // ==========================================================
 // 10. MULTI-TIMEFRAME CONFLICT DETECTION
