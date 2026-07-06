@@ -57,7 +57,7 @@ if barstate.islast
     else
         // --- Standard & Detailed Mode ---
         isDetailed = modeInput == "Detailed"
-        rowCount = 10
+        rowCount = 11
         if enableSmartMoney
             rowCount := rowCount + 1
         if isDetailed
@@ -78,17 +78,17 @@ if barstate.islast
         table.cell(tblFull, 0, 2, bahasaInput == "Indonesia" ? "Sinyal" : "Signal", text_color = labelColor, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
         table.cell(tblFull, 1, 2, signalText, text_color = signalColor, text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
 
-        // Signal Validation (forward return)
-        valLabel = bahasaInput == "Indonesia" ? "Sinyal" : "Signal"
+        // Forward Return (sejak sinyal terakhir)
+        valLabel = bahasaInput == "Indonesia" ? "Forward Return" : "Forward Return"
         valDisplay = not na(signalStatus) and signalStatus != "" ? signalStatus : "—"
-        valTooltip = not na(fwdBars) and not na(signalLabel) ? signalLabel + " | Bars: " + str.tostring(fwdBars) : ""
+        valTooltip = not na(fwdBars) and not na(signalLabel) ? signalLabel + " | Bars: " + str.tostring(fwdBars) + " | Trigger: " + entryTriggerMode + " | MinBars: " + str.tostring(minSignalBars) : ""
         table.cell(tblFull, 0, 3, "  📊 " + valLabel, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
         table.cell(tblFull, 1, 3, valDisplay, text_color = labelColor, text_size = size.small, text_halign = text.align_right, bgcolor = bgColor, tooltip = valTooltip)
 
-        // Backtest row
-        btLabel = bahasaInput == "Indonesia" ? "Backtest" : "Backtest"
+        // Histori Sinyal row
+        btLabel = bahasaInput == "Indonesia" ? "Histori Sinyal (kumulatif)" : "Signal History (cumulative)"
         btDisplay = not na(btWinRate) ? str.tostring(math.round(btWinRate)) + "% win (" + str.tostring(btWins) + "/" + str.tostring(btTotalEval) + ")" : "—"
-        btTooltip = not na(btTotalEval) and btTotalEval > 0 ? "Total return: " + str.tostring(math.round(btTotalReturn * 10) / 10) + "% | Lookback: 10 bar" : ""
+        btTooltip = not na(btTotalEval) and btTotalEval > 0 ? "Total return: " + str.tostring(math.round(btTotalReturn * 10) / 10) + "% | Lookback: 10 bar | Filter: " + signalFilterMode : ""
         table.cell(tblFull, 0, 4, "  📊 " + btLabel, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
         table.cell(tblFull, 1, 4, btDisplay, text_color = btWinRate >= 60 ? bullColor : btWinRate >= 40 ? neutralColor : bearColor, text_size = size.small, text_halign = text.align_right, bgcolor = bgColor, tooltip = btTooltip)
 
@@ -96,8 +96,9 @@ if barstate.islast
         trendDisplay = str.tostring(math.round(trendScore))
         trendArrow = not na(trendScore) ? (trendScore >= 70 ? "↑" : trendScore >= 40 ? "→" : "↓") : "—"
         trendConf = not na(trendBull) ? " (" + f_confStr(trendBull, trendTotal) + ")" : ""
+        trendMtf = enableMtfFilter and not na(mtfTrendScore) ? "  " + mtfWarning : ""
         table.cell(tblFull, 0, 5, "  " + trendArrow + " " + (bahasaInput == "Indonesia" ? "Tren" : "Trend"), text_color = dimTrend, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
-        table.cell(tblFull, 1, 5, trendDisplay + trendConf, text_color = f_colorScore(trendScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = trendDetail)
+        table.cell(tblFull, 1, 5, trendDisplay + trendConf + trendMtf, text_color = f_colorScore(trendScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = trendDetail)
         if isDetailed
             table.cell(tblFull, 0, 6, "", text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
             table.cell(tblFull, 1, 6, trendDetail, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
@@ -145,10 +146,19 @@ if barstate.islast
             table.cell(tblFull, 0, smBase, "  ◆ " + (bahasaInput == "Indonesia" ? "Smart Money" : "Smart Money"), text_color = color.rgb(255, 64, 129), text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
             table.cell(tblFull, 1, smBase, smDisplay, text_color = f_colorScore(smartMoneyScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = smTooltip)
 
-        // Legend (last row)
-        legendBase = volmBase + (isDetailed ? 2 : 1)
+        // Risk Levels (SL & Target)
+        riskBase = volmBase + (isDetailed ? 2 : 1)
         if enableSmartMoney
-            legendBase := legendBase + (isDetailed ? 1 : 1)
+            riskBase := riskBase + 1
+        if showRiskLevels
+            riskTooltip = bahasaInput == "Indonesia"
+             ? "Level referensi — bukan rekomendasi. Sesuaikan dgn toleransi risiko Anda."
+             : "Reference levels — not a recommendation. Adjust to your risk tolerance."
+            table.cell(tblFull, 0, riskBase, "  ⚠️ " + (bahasaInput == "Indonesia" ? "Level Referensi" : "Risk Levels"), text_color = color.rgb(255, 64, 129), text_size = size.small, text_halign = text.align_left, bgcolor = bgColor, tooltip = riskTooltip)
+            table.cell(tblFull, 1, riskBase, riskLevelLabel, text_color = labelColor, text_size = size.small, text_halign = text.align_right, bgcolor = bgColor, tooltip = riskTooltip)
+
+        // Legend (last row)
+        legendBase = riskBase + 1
         legendText = bahasaInput == "Indonesia"
          ? "🔴 <40 Bearish | 🟡 40-70 Netral | 🟢 >70 Bullish"
          : "🔴 <40 Bearish | 🟡 40-70 Neutral | 🟢 >70 Bullish"
@@ -157,30 +167,60 @@ if barstate.islast
 // ==========================================================
 // 3. ALERTS
 // ==========================================================
-// Alert: Signal Change
-if cross40 or cross70
-    alert("PAPAN GERAK: Sinyal berubah menjadi " + signalText)
+f_webhookMsg(eventType, params) =>
+    if webhookFormat == "JSON"
+        str.format("PG|event={0}|time={1}|ticker={2}|{3}",
+         eventType, str.tostring(time), syminfo.tickerid, params)
+    else
+        params
+
+// Alert: Entry trigger (mode-aware)
+if entryTriggered
+    msg = webhookFormat == "JSON"
+     ? f_webhookMsg("entry", str.format("mode={0}|action={1}|price={2}|score={3}|signal={4}",
+         entryTriggerMode, signalDirection > 0 ? "buy" : "sell", str.tostring(close),
+         str.tostring(math.round(overallScore)), signalLabel))
+     : str.format("PAPAN GERAK ({0}): {1} → {2}", entryTriggerMode, signalLabel, signalText)
+    alert(msg)
 
 // Alert: Trend Extreme
 if trendScore >= 80 or trendScore <= 20
-    alert("PAPAN GERAK: Trend ekstrem (" + str.tostring(math.round(trendScore)) + ")")
+    msg = webhookFormat == "JSON"
+     ? f_webhookMsg("trend_extreme", "trendScore=" + str.tostring(math.round(trendScore)))
+     : str.format("PAPAN GERAK: Trend ekstrem ({0})", str.tostring(math.round(trendScore)))
+    alert(msg)
 
 // Alert: Momentum Oversold
 if rsiOsHit
-    alert("PAPAN GERAK: RSI oversold (" + str.tostring(math.round(rsiValue)) + ")")
+    msg = webhookFormat == "JSON"
+     ? f_webhookMsg("rsi_oversold", "rsi=" + str.tostring(math.round(rsiValue)))
+     : str.format("PAPAN GERAK: RSI oversold ({0})", str.tostring(math.round(rsiValue)))
+    alert(msg)
 
 // Alert: Momentum Overbought
 if rsiObHit
-    alert("PAPAN GERAK: RSI overbought (" + str.tostring(math.round(rsiValue)) + ")")
+    msg = webhookFormat == "JSON"
+     ? f_webhookMsg("rsi_overbought", "rsi=" + str.tostring(math.round(rsiValue)))
+     : str.format("PAPAN GERAK: RSI overbought ({0})", str.tostring(math.round(rsiValue)))
+    alert(msg)
 
 // Alert: Volume Spike
 if volSpike
-    alert("PAPAN GERAK: Volume spike (" + str.tostring(math.round(volRatio * 100)) + "% of MA)")
+    msg = webhookFormat == "JSON"
+     ? f_webhookMsg("volume_spike", "ratio=" + str.tostring(math.round(volRatio * 100)))
+     : str.format("PAPAN GERAK: Volume spike ({0}% of MA)", str.tostring(math.round(volRatio * 100)))
+    alert(msg)
 
 // Alert: Smart Money Detected
 if smDetected
-    alert("PAPAN GERAK: Institutional flow terdeteksi")
+    msg = webhookFormat == "JSON"
+     ? f_webhookMsg("smart_money", "detected=true")
+     : "PAPAN GERAK: Institutional flow terdeteksi"
+    alert(msg)
 
 // Alert: Choppiness (ranging market)
 if chopRanging
-    alert("PAPAN GERAK: Pasar ranging (Choppiness: " + str.tostring(math.round(chopValue)) + ")")
+    msg = webhookFormat == "JSON"
+     ? f_webhookMsg("choppiness", "chop=" + str.tostring(math.round(chopValue)))
+     : str.format("PAPAN GERAK: Pasar ranging (Choppiness: {0})", str.tostring(math.round(chopValue)))
+    alert(msg)

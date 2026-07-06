@@ -384,7 +384,18 @@ f_narrative() =>
         else if not na(obvValue) and close > close[10] and not obvAgree
             lang == "Indonesia" ? "⚠️  Harga naik tapi OBV divergen — konfirmasi dulu" : "⚠️  Price up but OBV diverging — confirm first"
 
-        // 8. Ranging market
+        // 8. MTF conflict
+        else if enableMtfFilter and not na(mtfTrendScore) and mtfConflict and not na(overallScore)
+            isBullishDaily = overallScore >= 70
+            lang == "Indonesia"
+             ? (isBullishDaily
+                 ? "⚠️  Tren " + mtfTimeframe + " bearish — sinyal harian perlu konfirmasi"
+                 : "⚠️  Tren " + mtfTimeframe + " bullish — jangan short saat tren besar naik")
+             : (isBullishDaily
+                 ? "⚠️  " + mtfTimeframe + " trend bearish — confirm daily signal"
+                 : "⚠️  " + mtfTimeframe + " trend bullish — don't short against higher TF")
+
+        // 9. Ranging market
         else if not na(chopValue) and chopRanging
             lang == "Indonesia" ? "⏳ Pasar ranging — tunggu breakout" : "⏳ Ranging market — wait for breakout"
 
@@ -394,42 +405,107 @@ f_narrative() =>
     else
         lang == "Indonesia" ? "⏳ Menunggu data..." : "⏳ Waiting for data..."
 
+// ==========================================================
+// 11. MULTI-TIMEFRAME CONFLICT DETECTION
+// ==========================================================
+// Defined BEFORE f_narrative() so the narrative function can reference it.
+mtfConflict = enableMtfFilter and not na(mtfTrendScore) and not na(overallScore) and (
+    (mtfTrendScore >= 50 and overallScore < 40) or
+    (mtfTrendScore < 50 and overallScore >= 70)
+)
+
+mtfWarning = enableMtfFilter and not na(mtfTrendScore)
+ ? (mtfTrendScore >= 50
+     ? (bahasaInput == "Indonesia" ? "MTF ▲ " + str.tostring(math.round(mtfTrendScore)) : "MTF ▲ " + str.tostring(math.round(mtfTrendScore)))
+     : (bahasaInput == "Indonesia" ? "MTF ▼ " + str.tostring(math.round(mtfTrendScore)) : "MTF ▼ " + str.tostring(math.round(mtfTrendScore))))
+ : ""
+
 narrative = f_narrative()
 
 // ==========================================================
-// 11. INLINE VALIDATION (forward return sejak sinyal terakhir)
+// 12. ENTRY TRIGGER ENGINE (3 modes)
 // ==========================================================
-// Global cross detection (must be outside conditional blocks)
-cross40 = ta.cross(overallScore, 40)
-cross70 = ta.cross(overallScore, 70)
-
+// Zone tracking (untuk Composite Score mode)
+currentZone = na(overallScore) ? -1 : (overallScore >= 70 ? 2 : overallScore >= 40 ? 1 : 0)
+var int prevZone = -1
+var int lastSignalBar = -1
 var float signalEntryPrice = na
 var int signalEntryBar = na
-var int signalDirection = 0  // 1 = bullish (cross above 40/70), -1 = bearish (cross below)
+var int signalDirection = 0  // 1 = long, -1 = short
 var string signalLabel = ""
 
-// Track signal changes
-if cross40
-    signalEntryPrice := close
-    signalEntryBar := bar_index
-    signalDirection := overallScore > 40 ? 1 : -1
-    signalLabel := overallScore > 40 ? "Cross >40 (Bullish)" : "Cross <40 (Bearish)"
-if cross70
-    signalEntryPrice := close
-    signalEntryBar := bar_index
-    signalDirection := overallScore > 70 ? 1 : -1
-    signalLabel := overallScore > 70 ? "Cross >70 (Bullish)" : "Cross <70 (Bearish)"
+zoneChanged = prevZone >= 0 and currentZone >= 0 and currentZone != prevZone
+minBarsOk = lastSignalBar < 0 or bar_index - lastSignalBar >= minSignalBars
+chopFilterOk = signalFilterMode == "Disabled" or (not na(chopValue) and (
+    signalFilterMode == "Only Trending (Chop<38)" ? chopValue < 38 :
+    signalFilterMode == "Only Ranging (Chop>62)" ? chopValue > 62 : true
+))
 
-// Forward return sejak sinyal (searah: positif = prediksi benar)
+// Mode A: Composite Score (zone-based)
+signalTriggered = zoneChanged and minBarsOk and chopFilterOk
+
+// Mode B: Pullback (trend pullback ke EMA20 + RSI rebound)
+pullbackTrigger = entryTriggerMode == "Pullback"
+    and not na(trendScore) and trendScore >= 65
+    and not na(emaFast) and not na(atrValue) and math.abs(close - emaFast) <= atrValue * 1.5
+    and not na(rsiValue) and rsiValue <= 50 and rsiDirection == 1
+    and minBarsOk and chopFilterOk
+
+// Mode C: Breakout (price break recent high/low + volume confirmation)
+recentHigh = ta.highest(high, 20)
+recentLow = ta.lowest(low, 20)
+breakoutTrigger = entryTriggerMode == "Breakout"
+    and not na(volumeScore) and volumeScore >= 60
+    and (close >= recentHigh or close <= recentLow)
+    and minBarsOk and chopFilterOk
+
+// Unified entry trigger
+entryTriggered = entryTriggerMode == "Composite Score"
+    ? signalTriggered
+    : entryTriggerMode == "Pullback"
+        ? pullbackTrigger
+        : breakoutTrigger
+
+// Signal direction & label
+if entryTriggered
+    signalDir = entryTriggerMode == "Composite Score"
+        ? (currentZone > prevZone ? 1 : -1)
+        : entryTriggerMode == "Pullback"
+            ? 1
+            : (close >= recentHigh ? 1 : -1)
+
+    signalLbl = entryTriggerMode == "Composite Score"
+        ? (signalDir > 0
+            ? (prevZone == 0
+                ? (bahasaInput == "Indonesia" ? "Bearish→Netral (Bullish)" : "Bearish→Neutral (Bullish)")
+                : (bahasaInput == "Indonesia" ? "Netral→Bullish" : "Neutral→Bullish"))
+            : (prevZone == 2
+                ? (bahasaInput == "Indonesia" ? "Bullish→Netral (Bearish)" : "Bullish→Neutral (Bearish)")
+                : (bahasaInput == "Indonesia" ? "Netral→Bearish" : "Neutral→Bearish")))
+        : entryTriggerMode == "Pullback"
+            ? (bahasaInput == "Indonesia" ? "Pullback Entry" : "Pullback Entry")
+            : signalDir > 0
+                ? (bahasaInput == "Indonesia" ? "Breakout Long" : "Breakout Long")
+                : (bahasaInput == "Indonesia" ? "Breakout Short" : "Breakout Short")
+
+    signalEntryPrice := close
+    signalEntryBar := bar_index
+    signalDirection := signalDir
+    signalLabel := signalLbl
+    lastSignalBar := bar_index
+
+if zoneChanged
+    prevZone := currentZone
+
+// Forward return
 fwdReturn = na(signalEntryPrice) or signalEntryPrice == 0 ? na : (close / signalEntryPrice - 1) * signalDirection * 100
 
-// Status: apakah sinyal saat ini untung atau rugi
 signalStatus = na(fwdReturn) ? "" : fwdReturn >= 5 ? "✅ +" + str.tostring(math.round(fwdReturn)) + "%" : fwdReturn >= 0 ? "➖ +" + str.tostring(math.round(fwdReturn)) + "%" : fwdReturn >= -5 ? "➖ " + str.tostring(math.round(fwdReturn)) + "%" : "❌ " + str.tostring(math.round(fwdReturn)) + "%"
 
 fwdBars = na(signalEntryBar) ? na : bar_index - signalEntryBar
 
 // ==========================================================
-// 12. BACKTEST SIGNAL (circular buffer, evaluasi setiap 10 bar)
+// 13. HISTORI SINYAL (circular buffer, evaluasi setiap 10 bar)
 // ==========================================================
 LOOKBACK_BARS = 10
 BT_SIZE = 20
@@ -443,10 +519,10 @@ var int btWins = 0
 var float btTotalReturn = 0.0
 
 // Record new signal
-if cross40 or cross70
+if entryTriggered
     array.set(btEntryBars, btHead, bar_index)
     array.set(btEntryPrices, btHead, close)
-    array.set(btDirs, btHead, overallScore > 50 ? 1 : -1)
+    array.set(btDirs, btHead, signalDirection)
     btHead := (btHead + 1) % BT_SIZE
 
 // Evaluate resolved signals
@@ -467,6 +543,66 @@ for i = 0 to BT_SIZE - 1
 
 btTotalEval += btNewWins + btNewLosses
 btWins += btNewWins
-btLosses = btTotalEval - btWins
 
 btWinRate = btTotalEval > 0 ? btWins / btTotalEval * 100 : na
+
+// ==========================================================
+// 14. LEVEL REFERENSI RISIKO (SL & Target)
+// ==========================================================
+var float riskEntryPrice = na
+var float riskAtrCapture = na
+var float riskSwingLow = na
+var float riskSwingHigh = na
+var int riskDirection = 0
+
+if signalTriggered
+    riskEntryPrice := signalEntryPrice
+    riskAtrCapture := atrValue
+    riskSwingLow := ta.lowest(low, slSwingPeriod)
+    riskSwingHigh := ta.highest(high, slSwingPeriod)
+    riskDirection := signalDirection
+
+hasRisk = riskDirection != 0 and not na(riskEntryPrice)
+
+// ATR-based SL
+atrSl = hasRisk ? riskEntryPrice - riskAtrCapture * slAtrMult * riskDirection : na
+
+// Swing-based SL
+swingSl = hasRisk ? (riskDirection == 1 ? riskSwingLow : riskSwingHigh) : na
+
+// Final SL price
+slPrice = na
+if hasRisk
+    if slTypeInput == "ATR"
+        slPrice := atrSl
+    else if slTypeInput == "Swing Low/High"
+        slPrice := swingSl
+    else
+        slPrice := riskDirection == 1 ? math.min(atrSl, swingSl) : math.max(atrSl, swingSl)
+
+// Target (R-multiple: entry + Risk * targetR)
+riskAmount = hasRisk ? math.abs(riskEntryPrice - slPrice) : na
+targetPrice = hasRisk ? riskEntryPrice + riskAmount * targetR * riskDirection : na
+
+// Format for display
+slPct = hasRisk and riskEntryPrice != 0 ? riskAmount / riskEntryPrice * 100 : na
+targetPct = hasRisk and riskEntryPrice != 0 ? math.abs(targetPrice - riskEntryPrice) / riskEntryPrice * 100 : na
+
+riskBaseLabel = not hasRisk
+ ? "—"
+ : "SL: " + str.tostring(math.round(slPrice)) + " (" + (riskDirection == 1 ? "-" : "+") + str.tostring(math.round(slPct)) + "%)  |  Tgt: " + str.tostring(math.round(targetPrice)) + " (" + (riskDirection == 1 ? "+" : "-") + str.tostring(math.round(targetPct)) + "%)  [" + str.tostring(targetR) + "R]"
+
+// ==========================================================
+// 15. POSITION SIZING
+// ==========================================================
+riskRp = showPositionSizing ? accountBalanceInput * riskPctInput / 100 : na
+suggestedLots = showPositionSizing and not na(riskAmount) and riskAmount > 0 ? math.floor((riskRp / riskAmount) / 100) : na
+riskRpK = not na(riskRp) and not na(suggestedLots) ? math.round(riskRp / 1000) : na
+riskRpDisplay = not na(riskRpK) ? (riskRpK >= 1000 ? "Rp" + str.tostring(math.round(riskRpK / 1000)) + "jt" : "Rp" + str.tostring(riskRpK) + "rb") : ""
+lotLabel = bahasaInput == "Indonesia" ? "Lot" : "Lots"
+
+suggestedLotStr = hasRisk and showPositionSizing and not na(suggestedLots) and suggestedLots > 0
+ ? "  |  " + lotLabel + ": " + str.tostring(math.max(1, suggestedLots)) + "  |  " + riskRpDisplay + " (" + str.tostring(riskPctInput) + "%)"
+ : ""
+
+riskLevelLabel = riskBaseLabel + suggestedLotStr

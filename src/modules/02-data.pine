@@ -61,11 +61,11 @@ bbMiddle = ta.sma(close, bbLength)
 bbStdDev = ta.stdev(close, bbLength)
 bbUpper = bbMiddle + bbMult * bbStdDev
 bbLower = bbMiddle - bbMult * bbStdDev
-bbWidth = (bbUpper - bbLower) / bbMiddle * 100
+bbWidth = bbMiddle != 0 ? (bbUpper - bbLower) / bbMiddle * 100 : 0
 bbWidthAvg = ta.sma(bbWidth, bbLength)
 
 // Price position within bands (0-100)
-bbPosition = (close - bbLower) / (bbUpper - bbLower) * 100
+bbPosition = bbUpper != bbLower ? (close - bbLower) / (bbUpper - bbLower) * 100 : 50
 
 // --- Choppiness Index ---
 f_choppiness(int length) =>
@@ -87,14 +87,14 @@ chopRanging = chopValue >= 62
 // ==========================================================
 // --- Volume MA ---
 volMA = ta.sma(volume, volMaLength)
-volRatio = volume / volMA
+volRatio = volMA > 0 ? volume / volMA : na
 volSpike = volRatio >= volSpikeMult
 
 // --- OBV ---
 obvValue = ta.obv
 obvMA = ta.sma(obvValue, volMaLength)
 obvTrend = obvValue > obvMA ? 1 : -1
-obvAgree = (obvTrend == 1 and close > close[1]) or (obvTrend == -1 and close < close[1])
+obvAgree = not na(close[1]) and ((obvTrend == 1 and close > close[1]) or (obvTrend == -1 and close < close[1]))
 
 // --- Net Volume (proxy) ---
 f_netVolume() =>
@@ -145,3 +145,14 @@ smScore = if enableSmartMoney
     score
 else
     na
+
+// ==========================================================
+// 6. MULTI-TIMEFRAME TREND
+// ==========================================================
+mtfTrendScore = enableMtfFilter
+    ? request.security(syminfo.tickerid, mtfTimeframe,
+        (close > ta.ema(close, 200) ? 50 : 0) +
+        (close > ta.ema(close, 50) ? 30 : 0) +
+        (close > ta.ema(close, 20) ? 20 : 0),
+        barmerge.gaps_off, barmerge.lookahead_off)
+    : na

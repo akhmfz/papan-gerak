@@ -7,7 +7,7 @@
     "build": "bash build.sh",
     "lint": "bash scripts/lint.sh",
     "test": "node --test tests/pinets-verify.mjs",
-    "test:all": "node --test tests/pinets-verify.mjs tests/scoring/test-*.mjs",
+    "test:all": "node --test tests/pinets-verify.mjs tests/scoring/test-*.mjs tests/full-pinets.mjs",
     "transpile": "bash tests/transpile.sh",
     "ci": "npm run lint && npm run build && npm run test:all"
   },

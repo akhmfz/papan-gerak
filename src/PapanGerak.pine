@@ -90,7 +90,45 @@ smVolumeThreshold = input.float(2.5, "SM Volume Z-Threshold", step = 0.1, group 
 smPeriod = input.int(20, "SM Lookback Period", group = "Smart Money", display = display.data_window)
 
 // ==========================================================
-// 8. COLOR THEMES
+// 8. SETTINGS — Signal Parameters
+// ==========================================================
+minSignalBars = input.int(5, "Min Bars Between Signals", minval = 1, maxval = 50, group = "Signal", display = display.data_window)
+signalFilterMode = input.string("Disabled", "Signal Filter", options = ["Disabled", "Only Trending (Chop<38)", "Only Ranging (Chop>62)"], group = "Signal", display = display.data_window)
+
+// ==========================================================
+// 9. SETTINGS — Risk Management
+// ==========================================================
+showRiskLevels = input.bool(true, "Show Risk Levels", group = "Risk Mgmt", display = display.data_window)
+slTypeInput = input.string("ATR", "SL Type", options = ["ATR", "Swing Low/High", "Both (Wider)"], group = "Risk Mgmt", display = display.data_window)
+slAtrMult = input.float(1.5, "SL ATR Multiplier", minval = 0.5, maxval = 5.0, step = 0.1, group = "Risk Mgmt", display = display.data_window)
+slSwingPeriod = input.int(10, "SL Swing Lookback", minval = 5, maxval = 50, group = "Risk Mgmt", display = display.data_window)
+targetR = input.float(2.0, "Target R-Multiple", minval = 0.5, maxval = 10.0, step = 0.5, group = "Risk Mgmt", display = display.data_window)
+
+// ==========================================================
+// 10. SETTINGS — Position Sizing
+// ==========================================================
+showPositionSizing = input.bool(false, "Show Position Sizing", group = "Position Size", display = display.data_window)
+accountBalanceInput = input.int(50000000, "Account Balance (Rp)", minval = 1000000, step = 1000000, group = "Position Size", display = display.data_window)
+riskPctInput = input.float(1.0, "Risk Per Trade (%)", minval = 0.1, maxval = 5.0, step = 0.1, group = "Position Size", display = display.data_window)
+
+// ==========================================================
+// 11. SETTINGS — Multi-Timeframe Filter
+// ==========================================================
+enableMtfFilter = input.bool(false, "Enable MTF Trend Filter", group = "MTF", display = display.data_window)
+mtfTimeframe = input.string("W", "MTF Timeframe", options = ["W", "M"], group = "MTF", display = display.data_window)
+
+// ==========================================================
+// 12. SETTINGS — Entry Trigger
+// ==========================================================
+entryTriggerMode = input.string("Composite Score", "Entry Trigger", options = ["Composite Score", "Pullback", "Breakout"], group = "Entry Trigger", display = display.data_window)
+
+// ==========================================================
+// 13. SETTINGS — Webhook / Alert Format
+// ==========================================================
+webhookFormat = input.string("Simple", "Alert Format", options = ["Simple", "JSON"], group = "Webhook", display = display.data_window)
+
+// ==========================================================
+// 14. COLOR THEMES
 // ==========================================================
 var color bgColor = na
 var color headerColor = na
@@ -181,7 +219,7 @@ else
                 dimVolume := color.rgb(206, 147, 216)
 
 // ==========================================================
-// 9. UTILITY FUNCTIONS
+// 10. UTILITY FUNCTIONS
 // ==========================================================
 f_secure(input, def) => na(input) ? def : input
 
@@ -297,11 +335,11 @@ bbMiddle = ta.sma(close, bbLength)
 bbStdDev = ta.stdev(close, bbLength)
 bbUpper = bbMiddle + bbMult * bbStdDev
 bbLower = bbMiddle - bbMult * bbStdDev
-bbWidth = (bbUpper - bbLower) / bbMiddle * 100
+bbWidth = bbMiddle != 0 ? (bbUpper - bbLower) / bbMiddle * 100 : 0
 bbWidthAvg = ta.sma(bbWidth, bbLength)
 
 // Price position within bands (0-100)
-bbPosition = (close - bbLower) / (bbUpper - bbLower) * 100
+bbPosition = bbUpper != bbLower ? (close - bbLower) / (bbUpper - bbLower) * 100 : 50
 
 // --- Choppiness Index ---
 f_choppiness(int length) =>
@@ -323,14 +361,14 @@ chopRanging = chopValue >= 62
 // ==========================================================
 // --- Volume MA ---
 volMA = ta.sma(volume, volMaLength)
-volRatio = volume / volMA
+volRatio = volMA > 0 ? volume / volMA : na
 volSpike = volRatio >= volSpikeMult
 
 // --- OBV ---
 obvValue = ta.obv
 obvMA = ta.sma(obvValue, volMaLength)
 obvTrend = obvValue > obvMA ? 1 : -1
-obvAgree = (obvTrend == 1 and close > close[1]) or (obvTrend == -1 and close < close[1])
+obvAgree = not na(close[1]) and ((obvTrend == 1 and close > close[1]) or (obvTrend == -1 and close < close[1]))
 
 // --- Net Volume (proxy) ---
 f_netVolume() =>
@@ -381,6 +419,17 @@ smScore = if enableSmartMoney
     score
 else
     na
+
+// ==========================================================
+// 6. MULTI-TIMEFRAME TREND
+// ==========================================================
+mtfTrendScore = enableMtfFilter
+    ? request.security(syminfo.tickerid, mtfTimeframe,
+        (close > ta.ema(close, 200) ? 50 : 0) +
+        (close > ta.ema(close, 50) ? 30 : 0) +
+        (close > ta.ema(close, 20) ? 20 : 0),
+        barmerge.gaps_off, barmerge.lookahead_off)
+    : na
 
 // @version=6
 // 03-scoring.pine — Papan Gerak: Scoring Engine + Render
@@ -768,7 +817,18 @@ f_narrative() =>
         else if not na(obvValue) and close > close[10] and not obvAgree
             lang == "Indonesia" ? "⚠️  Harga naik tapi OBV divergen — konfirmasi dulu" : "⚠️  Price up but OBV diverging — confirm first"
 
-        // 8. Ranging market
+        // 8. MTF conflict
+        else if enableMtfFilter and not na(mtfTrendScore) and mtfConflict and not na(overallScore)
+            isBullishDaily = overallScore >= 70
+            lang == "Indonesia"
+             ? (isBullishDaily
+                 ? "⚠️  Tren " + mtfTimeframe + " bearish — sinyal harian perlu konfirmasi"
+                 : "⚠️  Tren " + mtfTimeframe + " bullish — jangan short saat tren besar naik")
+             : (isBullishDaily
+                 ? "⚠️  " + mtfTimeframe + " trend bearish — confirm daily signal"
+                 : "⚠️  " + mtfTimeframe + " trend bullish — don't short against higher TF")
+
+        // 9. Ranging market
         else if not na(chopValue) and chopRanging
             lang == "Indonesia" ? "⏳ Pasar ranging — tunggu breakout" : "⏳ Ranging market — wait for breakout"
 
@@ -778,42 +838,107 @@ f_narrative() =>
     else
         lang == "Indonesia" ? "⏳ Menunggu data..." : "⏳ Waiting for data..."
 
+// ==========================================================
+// 11. MULTI-TIMEFRAME CONFLICT DETECTION
+// ==========================================================
+// Defined BEFORE f_narrative() so the narrative function can reference it.
+mtfConflict = enableMtfFilter and not na(mtfTrendScore) and not na(overallScore) and (
+    (mtfTrendScore >= 50 and overallScore < 40) or
+    (mtfTrendScore < 50 and overallScore >= 70)
+)
+
+mtfWarning = enableMtfFilter and not na(mtfTrendScore)
+ ? (mtfTrendScore >= 50
+     ? (bahasaInput == "Indonesia" ? "MTF ▲ " + str.tostring(math.round(mtfTrendScore)) : "MTF ▲ " + str.tostring(math.round(mtfTrendScore)))
+     : (bahasaInput == "Indonesia" ? "MTF ▼ " + str.tostring(math.round(mtfTrendScore)) : "MTF ▼ " + str.tostring(math.round(mtfTrendScore))))
+ : ""
+
 narrative = f_narrative()
 
 // ==========================================================
-// 11. INLINE VALIDATION (forward return sejak sinyal terakhir)
+// 12. ENTRY TRIGGER ENGINE (3 modes)
 // ==========================================================
-// Global cross detection (must be outside conditional blocks)
-cross40 = ta.cross(overallScore, 40)
-cross70 = ta.cross(overallScore, 70)
-
+// Zone tracking (untuk Composite Score mode)
+currentZone = na(overallScore) ? -1 : (overallScore >= 70 ? 2 : overallScore >= 40 ? 1 : 0)
+var int prevZone = -1
+var int lastSignalBar = -1
 var float signalEntryPrice = na
 var int signalEntryBar = na
-var int signalDirection = 0  // 1 = bullish (cross above 40/70), -1 = bearish (cross below)
+var int signalDirection = 0  // 1 = long, -1 = short
 var string signalLabel = ""
 
-// Track signal changes
-if cross40
-    signalEntryPrice := close
-    signalEntryBar := bar_index
-    signalDirection := overallScore > 40 ? 1 : -1
-    signalLabel := overallScore > 40 ? "Cross >40 (Bullish)" : "Cross <40 (Bearish)"
-if cross70
-    signalEntryPrice := close
-    signalEntryBar := bar_index
-    signalDirection := overallScore > 70 ? 1 : -1
-    signalLabel := overallScore > 70 ? "Cross >70 (Bullish)" : "Cross <70 (Bearish)"
+zoneChanged = prevZone >= 0 and currentZone >= 0 and currentZone != prevZone
+minBarsOk = lastSignalBar < 0 or bar_index - lastSignalBar >= minSignalBars
+chopFilterOk = signalFilterMode == "Disabled" or (not na(chopValue) and (
+    signalFilterMode == "Only Trending (Chop<38)" ? chopValue < 38 :
+    signalFilterMode == "Only Ranging (Chop>62)" ? chopValue > 62 : true
+))
 
-// Forward return sejak sinyal (searah: positif = prediksi benar)
+// Mode A: Composite Score (zone-based)
+signalTriggered = zoneChanged and minBarsOk and chopFilterOk
+
+// Mode B: Pullback (trend pullback ke EMA20 + RSI rebound)
+pullbackTrigger = entryTriggerMode == "Pullback"
+    and not na(trendScore) and trendScore >= 65
+    and not na(emaFast) and not na(atrValue) and math.abs(close - emaFast) <= atrValue * 1.5
+    and not na(rsiValue) and rsiValue <= 50 and rsiDirection == 1
+    and minBarsOk and chopFilterOk
+
+// Mode C: Breakout (price break recent high/low + volume confirmation)
+recentHigh = ta.highest(high, 20)
+recentLow = ta.lowest(low, 20)
+breakoutTrigger = entryTriggerMode == "Breakout"
+    and not na(volumeScore) and volumeScore >= 60
+    and (close >= recentHigh or close <= recentLow)
+    and minBarsOk and chopFilterOk
+
+// Unified entry trigger
+entryTriggered = entryTriggerMode == "Composite Score"
+    ? signalTriggered
+    : entryTriggerMode == "Pullback"
+        ? pullbackTrigger
+        : breakoutTrigger
+
+// Signal direction & label
+if entryTriggered
+    signalDir = entryTriggerMode == "Composite Score"
+        ? (currentZone > prevZone ? 1 : -1)
+        : entryTriggerMode == "Pullback"
+            ? 1
+            : (close >= recentHigh ? 1 : -1)
+
+    signalLbl = entryTriggerMode == "Composite Score"
+        ? (signalDir > 0
+            ? (prevZone == 0
+                ? (bahasaInput == "Indonesia" ? "Bearish→Netral (Bullish)" : "Bearish→Neutral (Bullish)")
+                : (bahasaInput == "Indonesia" ? "Netral→Bullish" : "Neutral→Bullish"))
+            : (prevZone == 2
+                ? (bahasaInput == "Indonesia" ? "Bullish→Netral (Bearish)" : "Bullish→Neutral (Bearish)")
+                : (bahasaInput == "Indonesia" ? "Netral→Bearish" : "Neutral→Bearish")))
+        : entryTriggerMode == "Pullback"
+            ? (bahasaInput == "Indonesia" ? "Pullback Entry" : "Pullback Entry")
+            : signalDir > 0
+                ? (bahasaInput == "Indonesia" ? "Breakout Long" : "Breakout Long")
+                : (bahasaInput == "Indonesia" ? "Breakout Short" : "Breakout Short")
+
+    signalEntryPrice := close
+    signalEntryBar := bar_index
+    signalDirection := signalDir
+    signalLabel := signalLbl
+    lastSignalBar := bar_index
+
+if zoneChanged
+    prevZone := currentZone
+
+// Forward return
 fwdReturn = na(signalEntryPrice) or signalEntryPrice == 0 ? na : (close / signalEntryPrice - 1) * signalDirection * 100
 
-// Status: apakah sinyal saat ini untung atau rugi
 signalStatus = na(fwdReturn) ? "" : fwdReturn >= 5 ? "✅ +" + str.tostring(math.round(fwdReturn)) + "%" : fwdReturn >= 0 ? "➖ +" + str.tostring(math.round(fwdReturn)) + "%" : fwdReturn >= -5 ? "➖ " + str.tostring(math.round(fwdReturn)) + "%" : "❌ " + str.tostring(math.round(fwdReturn)) + "%"
 
 fwdBars = na(signalEntryBar) ? na : bar_index - signalEntryBar
 
 // ==========================================================
-// 12. BACKTEST SIGNAL (circular buffer, evaluasi setiap 10 bar)
+// 13. HISTORI SINYAL (circular buffer, evaluasi setiap 10 bar)
 // ==========================================================
 LOOKBACK_BARS = 10
 BT_SIZE = 20
@@ -827,10 +952,10 @@ var int btWins = 0
 var float btTotalReturn = 0.0
 
 // Record new signal
-if cross40 or cross70
+if entryTriggered
     array.set(btEntryBars, btHead, bar_index)
     array.set(btEntryPrices, btHead, close)
-    array.set(btDirs, btHead, overallScore > 50 ? 1 : -1)
+    array.set(btDirs, btHead, signalDirection)
     btHead := (btHead + 1) % BT_SIZE
 
 // Evaluate resolved signals
@@ -851,9 +976,69 @@ for i = 0 to BT_SIZE - 1
 
 btTotalEval += btNewWins + btNewLosses
 btWins += btNewWins
-btLosses = btTotalEval - btWins
 
 btWinRate = btTotalEval > 0 ? btWins / btTotalEval * 100 : na
+
+// ==========================================================
+// 14. LEVEL REFERENSI RISIKO (SL & Target)
+// ==========================================================
+var float riskEntryPrice = na
+var float riskAtrCapture = na
+var float riskSwingLow = na
+var float riskSwingHigh = na
+var int riskDirection = 0
+
+if signalTriggered
+    riskEntryPrice := signalEntryPrice
+    riskAtrCapture := atrValue
+    riskSwingLow := ta.lowest(low, slSwingPeriod)
+    riskSwingHigh := ta.highest(high, slSwingPeriod)
+    riskDirection := signalDirection
+
+hasRisk = riskDirection != 0 and not na(riskEntryPrice)
+
+// ATR-based SL
+atrSl = hasRisk ? riskEntryPrice - riskAtrCapture * slAtrMult * riskDirection : na
+
+// Swing-based SL
+swingSl = hasRisk ? (riskDirection == 1 ? riskSwingLow : riskSwingHigh) : na
+
+// Final SL price
+slPrice = na
+if hasRisk
+    if slTypeInput == "ATR"
+        slPrice := atrSl
+    else if slTypeInput == "Swing Low/High"
+        slPrice := swingSl
+    else
+        slPrice := riskDirection == 1 ? math.min(atrSl, swingSl) : math.max(atrSl, swingSl)
+
+// Target (R-multiple: entry + Risk * targetR)
+riskAmount = hasRisk ? math.abs(riskEntryPrice - slPrice) : na
+targetPrice = hasRisk ? riskEntryPrice + riskAmount * targetR * riskDirection : na
+
+// Format for display
+slPct = hasRisk and riskEntryPrice != 0 ? riskAmount / riskEntryPrice * 100 : na
+targetPct = hasRisk and riskEntryPrice != 0 ? math.abs(targetPrice - riskEntryPrice) / riskEntryPrice * 100 : na
+
+riskBaseLabel = not hasRisk
+ ? "—"
+ : "SL: " + str.tostring(math.round(slPrice)) + " (" + (riskDirection == 1 ? "-" : "+") + str.tostring(math.round(slPct)) + "%)  |  Tgt: " + str.tostring(math.round(targetPrice)) + " (" + (riskDirection == 1 ? "+" : "-") + str.tostring(math.round(targetPct)) + "%)  [" + str.tostring(targetR) + "R]"
+
+// ==========================================================
+// 15. POSITION SIZING
+// ==========================================================
+riskRp = showPositionSizing ? accountBalanceInput * riskPctInput / 100 : na
+suggestedLots = showPositionSizing and not na(riskAmount) and riskAmount > 0 ? math.floor((riskRp / riskAmount) / 100) : na
+riskRpK = not na(riskRp) and not na(suggestedLots) ? math.round(riskRp / 1000) : na
+riskRpDisplay = not na(riskRpK) ? (riskRpK >= 1000 ? "Rp" + str.tostring(math.round(riskRpK / 1000)) + "jt" : "Rp" + str.tostring(riskRpK) + "rb") : ""
+lotLabel = bahasaInput == "Indonesia" ? "Lot" : "Lots"
+
+suggestedLotStr = hasRisk and showPositionSizing and not na(suggestedLots) and suggestedLots > 0
+ ? "  |  " + lotLabel + ": " + str.tostring(math.max(1, suggestedLots)) + "  |  " + riskRpDisplay + " (" + str.tostring(riskPctInput) + "%)"
+ : ""
+
+riskLevelLabel = riskBaseLabel + suggestedLotStr
 
 // @version=6
 // 04-ui.pine — Papan Gerak: Table & Signal Rendering
@@ -914,7 +1099,7 @@ if barstate.islast
     else
         // --- Standard & Detailed Mode ---
         isDetailed = modeInput == "Detailed"
-        rowCount = 10
+        rowCount = 11
         if enableSmartMoney
             rowCount := rowCount + 1
         if isDetailed
@@ -935,17 +1120,17 @@ if barstate.islast
         table.cell(tblFull, 0, 2, bahasaInput == "Indonesia" ? "Sinyal" : "Signal", text_color = labelColor, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
         table.cell(tblFull, 1, 2, signalText, text_color = signalColor, text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
 
-        // Signal Validation (forward return)
-        valLabel = bahasaInput == "Indonesia" ? "Sinyal" : "Signal"
+        // Forward Return (sejak sinyal terakhir)
+        valLabel = bahasaInput == "Indonesia" ? "Forward Return" : "Forward Return"
         valDisplay = not na(signalStatus) and signalStatus != "" ? signalStatus : "—"
-        valTooltip = not na(fwdBars) and not na(signalLabel) ? signalLabel + " | Bars: " + str.tostring(fwdBars) : ""
+        valTooltip = not na(fwdBars) and not na(signalLabel) ? signalLabel + " | Bars: " + str.tostring(fwdBars) + " | Trigger: " + entryTriggerMode + " | MinBars: " + str.tostring(minSignalBars) : ""
         table.cell(tblFull, 0, 3, "  📊 " + valLabel, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
         table.cell(tblFull, 1, 3, valDisplay, text_color = labelColor, text_size = size.small, text_halign = text.align_right, bgcolor = bgColor, tooltip = valTooltip)
 
-        // Backtest row
-        btLabel = bahasaInput == "Indonesia" ? "Backtest" : "Backtest"
+        // Histori Sinyal row
+        btLabel = bahasaInput == "Indonesia" ? "Histori Sinyal (kumulatif)" : "Signal History (cumulative)"
         btDisplay = not na(btWinRate) ? str.tostring(math.round(btWinRate)) + "% win (" + str.tostring(btWins) + "/" + str.tostring(btTotalEval) + ")" : "—"
-        btTooltip = not na(btTotalEval) and btTotalEval > 0 ? "Total return: " + str.tostring(math.round(btTotalReturn * 10) / 10) + "% | Lookback: 10 bar" : ""
+        btTooltip = not na(btTotalEval) and btTotalEval > 0 ? "Total return: " + str.tostring(math.round(btTotalReturn * 10) / 10) + "% | Lookback: 10 bar | Filter: " + signalFilterMode : ""
         table.cell(tblFull, 0, 4, "  📊 " + btLabel, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
         table.cell(tblFull, 1, 4, btDisplay, text_color = btWinRate >= 60 ? bullColor : btWinRate >= 40 ? neutralColor : bearColor, text_size = size.small, text_halign = text.align_right, bgcolor = bgColor, tooltip = btTooltip)
 
@@ -953,8 +1138,9 @@ if barstate.islast
         trendDisplay = str.tostring(math.round(trendScore))
         trendArrow = not na(trendScore) ? (trendScore >= 70 ? "↑" : trendScore >= 40 ? "→" : "↓") : "—"
         trendConf = not na(trendBull) ? " (" + f_confStr(trendBull, trendTotal) + ")" : ""
+        trendMtf = enableMtfFilter and not na(mtfTrendScore) ? "  " + mtfWarning : ""
         table.cell(tblFull, 0, 5, "  " + trendArrow + " " + (bahasaInput == "Indonesia" ? "Tren" : "Trend"), text_color = dimTrend, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
-        table.cell(tblFull, 1, 5, trendDisplay + trendConf, text_color = f_colorScore(trendScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = trendDetail)
+        table.cell(tblFull, 1, 5, trendDisplay + trendConf + trendMtf, text_color = f_colorScore(trendScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = trendDetail)
         if isDetailed
             table.cell(tblFull, 0, 6, "", text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
             table.cell(tblFull, 1, 6, trendDetail, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
@@ -1002,10 +1188,19 @@ if barstate.islast
             table.cell(tblFull, 0, smBase, "  ◆ " + (bahasaInput == "Indonesia" ? "Smart Money" : "Smart Money"), text_color = color.rgb(255, 64, 129), text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
             table.cell(tblFull, 1, smBase, smDisplay, text_color = f_colorScore(smartMoneyScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = smTooltip)
 
-        // Legend (last row)
-        legendBase = volmBase + (isDetailed ? 2 : 1)
+        // Risk Levels (SL & Target)
+        riskBase = volmBase + (isDetailed ? 2 : 1)
         if enableSmartMoney
-            legendBase := legendBase + (isDetailed ? 1 : 1)
+            riskBase := riskBase + 1
+        if showRiskLevels
+            riskTooltip = bahasaInput == "Indonesia"
+             ? "Level referensi — bukan rekomendasi. Sesuaikan dgn toleransi risiko Anda."
+             : "Reference levels — not a recommendation. Adjust to your risk tolerance."
+            table.cell(tblFull, 0, riskBase, "  ⚠️ " + (bahasaInput == "Indonesia" ? "Level Referensi" : "Risk Levels"), text_color = color.rgb(255, 64, 129), text_size = size.small, text_halign = text.align_left, bgcolor = bgColor, tooltip = riskTooltip)
+            table.cell(tblFull, 1, riskBase, riskLevelLabel, text_color = labelColor, text_size = size.small, text_halign = text.align_right, bgcolor = bgColor, tooltip = riskTooltip)
+
+        // Legend (last row)
+        legendBase = riskBase + 1
         legendText = bahasaInput == "Indonesia"
          ? "🔴 <40 Bearish | 🟡 40-70 Netral | 🟢 >70 Bullish"
          : "🔴 <40 Bearish | 🟡 40-70 Neutral | 🟢 >70 Bullish"
@@ -1014,31 +1209,61 @@ if barstate.islast
 // ==========================================================
 // 3. ALERTS
 // ==========================================================
-// Alert: Signal Change
-if cross40 or cross70
-    alert("PAPAN GERAK: Sinyal berubah menjadi " + signalText)
+f_webhookMsg(eventType, params) =>
+    if webhookFormat == "JSON"
+        str.format("PG|event={0}|time={1}|ticker={2}|{3}",
+         eventType, str.tostring(time), syminfo.tickerid, params)
+    else
+        params
+
+// Alert: Entry trigger (mode-aware)
+if entryTriggered
+    msg = webhookFormat == "JSON"
+     ? f_webhookMsg("entry", str.format("mode={0}|action={1}|price={2}|score={3}|signal={4}",
+         entryTriggerMode, signalDirection > 0 ? "buy" : "sell", str.tostring(close),
+         str.tostring(math.round(overallScore)), signalLabel))
+     : str.format("PAPAN GERAK ({0}): {1} → {2}", entryTriggerMode, signalLabel, signalText)
+    alert(msg)
 
 // Alert: Trend Extreme
 if trendScore >= 80 or trendScore <= 20
-    alert("PAPAN GERAK: Trend ekstrem (" + str.tostring(math.round(trendScore)) + ")")
+    msg = webhookFormat == "JSON"
+     ? f_webhookMsg("trend_extreme", "trendScore=" + str.tostring(math.round(trendScore)))
+     : str.format("PAPAN GERAK: Trend ekstrem ({0})", str.tostring(math.round(trendScore)))
+    alert(msg)
 
 // Alert: Momentum Oversold
 if rsiOsHit
-    alert("PAPAN GERAK: RSI oversold (" + str.tostring(math.round(rsiValue)) + ")")
+    msg = webhookFormat == "JSON"
+     ? f_webhookMsg("rsi_oversold", "rsi=" + str.tostring(math.round(rsiValue)))
+     : str.format("PAPAN GERAK: RSI oversold ({0})", str.tostring(math.round(rsiValue)))
+    alert(msg)
 
 // Alert: Momentum Overbought
 if rsiObHit
-    alert("PAPAN GERAK: RSI overbought (" + str.tostring(math.round(rsiValue)) + ")")
+    msg = webhookFormat == "JSON"
+     ? f_webhookMsg("rsi_overbought", "rsi=" + str.tostring(math.round(rsiValue)))
+     : str.format("PAPAN GERAK: RSI overbought ({0})", str.tostring(math.round(rsiValue)))
+    alert(msg)
 
 // Alert: Volume Spike
 if volSpike
-    alert("PAPAN GERAK: Volume spike (" + str.tostring(math.round(volRatio * 100)) + "% of MA)")
+    msg = webhookFormat == "JSON"
+     ? f_webhookMsg("volume_spike", "ratio=" + str.tostring(math.round(volRatio * 100)))
+     : str.format("PAPAN GERAK: Volume spike ({0}% of MA)", str.tostring(math.round(volRatio * 100)))
+    alert(msg)
 
 // Alert: Smart Money Detected
 if smDetected
-    alert("PAPAN GERAK: Institutional flow terdeteksi")
+    msg = webhookFormat == "JSON"
+     ? f_webhookMsg("smart_money", "detected=true")
+     : "PAPAN GERAK: Institutional flow terdeteksi"
+    alert(msg)
 
 // Alert: Choppiness (ranging market)
 if chopRanging
-    alert("PAPAN GERAK: Pasar ranging (Choppiness: " + str.tostring(math.round(chopValue)) + ")")
+    msg = webhookFormat == "JSON"
+     ? f_webhookMsg("choppiness", "chop=" + str.tostring(math.round(chopValue)))
+     : str.format("PAPAN GERAK: Pasar ranging (Choppiness: {0})", str.tostring(math.round(chopValue)))
+    alert(msg)
 

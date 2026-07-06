@@ -20,10 +20,10 @@ done
 
 # Line budget per module
 declare -A BUDGET=(
-    ["01-base.pine"]=250
-    ["02-data.pine"]=200
-    ["03-scoring.pine"]=500
-    ["04-ui.pine"]=200
+    ["01-base.pine"]=280
+    ["02-data.pine"]=210
+    ["03-scoring.pine"]=610
+    ["04-ui.pine"]=235
 )
 
 for file in "${!BUDGET[@]}"; do

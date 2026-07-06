@@ -133,7 +133,11 @@ Setiap dimensi nunjukin **skor** + **confluence counter**:
 | Smart Money Flow | Flow institusional | Deteksi akumulasi distribusi |
 | Ranging Market | Choppiness ≥62 | Market sideways, tunggu |
 
-Alert menggunakan `alert()` dengan dynamic message — muncul di TradingView alert box.
+Semua alert mendukung 2 format (pilih via Settings → Webhook → **Alert Format**):
+- **Simple**: teks biasa (`PAPAN GERAK (Composite Score): Neutral→Bullish → BULLISH`)
+- **JSON**: pipeline terstruktur untuk webhook (`PG|event=entry|time=...|ticker=BBRI|...`)
+
+Lihat `docs/webhook-integration.md` untuk setup TradersPost / Pine Connector.
 
 ---
 
@@ -201,6 +205,44 @@ Alert menggunakan `alert()` dengan dynamic message — muncul di TradingView ale
 | SM Weight | 20% | Bobot SM di overall score |
 | SM Volume Z-Threshold | 2.5 | SD threshold untuk volume spike |
 | SM Lookback | 20 | Periode lookback Z-score |
+
+### Tab Signal
+| Parameter | Default | Range |
+|-----------|---------|-------|
+| Min Bars Between Signals | 5 | 1–50 |
+| Signal Filter | Disabled | Trending / Ranging / Off |
+
+### Tab Risk Mgmt
+| Parameter | Default | Deskripsi |
+|-----------|---------|-----------|
+| Show Risk Levels | ON | Tampilkan SL/Target di tabel |
+| SL Type | ATR | ATR / Swing Low-High / Both |
+| SL ATR Multiplier | 1.5 | 0.5–5.0 |
+| SL Swing Lookback | 10 | 5–50 |
+| Target R-Multiple | 2.0 | 0.5–10.0 |
+
+### Tab Position Size
+| Parameter | Default | Deskripsi |
+|-----------|---------|-----------|
+| Show Position Sizing | OFF | Aktifkan kalkulator lot |
+| Account Balance | Rp50jt | 1jt–1M |
+| Risk Per Trade | 1.0% | 0.1–5.0% |
+
+### Tab MTF
+| Parameter | Default | Deskripsi |
+|-----------|---------|-----------|
+| Enable MTF Trend Filter | OFF | Filter dengan tren timeframe lebih tinggi |
+| MTF Timeframe | W | Weekly / Monthly |
+
+### Tab Entry Trigger
+| Parameter | Default | Opsi |
+|-----------|---------|------|
+| Entry Trigger | Composite Score | Composite / Pullback / Breakout |
+
+### Tab Webhook
+| Parameter | Default | Opsi |
+|-----------|---------|------|
+| Alert Format | Simple | Simple / JSON |
 
 ---
 
@@ -273,10 +315,13 @@ cd papan-gerak
 npm install
 npm run build        # Generate built file
 npm run lint         # Cek reserved keywords + budget
-npm run test:all     # 51 tests (utility + scoring)
+npm run test:all     # 90 tests (unit + PineTS full integration)
+npm run ci           # Full pipeline: lint → build → test
 ```
 
-Edit `src/modules/*.pine` → `bash build.sh` → copy `src/PapanGerak.pine` → TradingView.
+Edit `src/modules/*.pine` → `bash build.sh` → lalu copy `src/PapanGerak.pine` ke TradingView Pine Editor.
+
+Untuk backtest strategi, gunakan `src/strategies/PapanGerakStrategy.pine` di Strategy Tester.
 
 ---
 
@@ -286,6 +331,7 @@ Edit `src/modules/*.pine` → `bash build.sh` → copy `src/PapanGerak.pine` →
 - Choppiness Index bisa false signal di saham volume tipis
 - Smart Money adalah proxy volume, bukan data institusional aktual
 - Threshold 40/70 fixed — mungkin perlu penyesuaian per saham
+- Format webhook JSON pipe-delimited key=value (Pine v6 tidak support escape chars)
 - **BUKAN rekomendasi beli/jual** — alat bantu analisis
 
 ---

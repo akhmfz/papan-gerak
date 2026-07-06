@@ -122,7 +122,11 @@ Hover for total accumulated return.
 | Smart Money Flow | Institutional flow detected | Accumulation/distribution |
 | Ranging Market | Choppiness ≥62 | Sideways market |
 
-Alerts use `alert()` with dynamic messages (real score values included).
+All alerts support two formats (selectable via Settings → Webhook → **Alert Format**):
+- **Simple**: human-readable text (`PAPAN GERAK (Composite Score): Neutral→Bullish → BULLISH`)
+- **JSON**: structured pipeline for webhook parsing (`PG|event=entry|time=...|ticker=BBRI|...`)
+
+See `docs/webhook-integration.md` for TradersPost / Pine Connector setup.
 
 ---
 
@@ -187,6 +191,44 @@ Alerts use `alert()` with dynamic messages (real score values included).
 | SM Weight | 20% | SM contribution to overall score |
 | SM Volume Z-Threshold | 2.5 | SD threshold for volume spike |
 | SM Lookback | 20 | Z-score lookback period |
+
+### Signal Tab
+| Parameter | Default | Range |
+|-----------|---------|-------|
+| Min Bars Between Signals | 5 | 1–50 |
+| Signal Filter | Disabled | Trending / Ranging / Off |
+
+### Risk Mgmt Tab
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| Show Risk Levels | ON | Display SL/Target in table |
+| SL Type | ATR | ATR / Swing Low-High / Both |
+| SL ATR Multiplier | 1.5 | 0.5–5.0 |
+| SL Swing Lookback | 10 | 5–50 |
+| Target R-Multiple | 2.0 | 0.5–10.0 |
+
+### Position Size Tab
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| Show Position Sizing | OFF | Enable lot calculator |
+| Account Balance | Rp50jt | 1jt–1M |
+| Risk Per Trade | 1.0% | 0.1–5.0% |
+
+### MTF Tab
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| Enable MTF Trend Filter | OFF | Filter with higher timeframe trend |
+| MTF Timeframe | W | Weekly / Monthly |
+
+### Entry Trigger Tab
+| Parameter | Default | Options |
+|-----------|---------|---------|
+| Entry Trigger | Composite Score | Composite / Pullback / Breakout |
+
+### Webhook Tab
+| Parameter | Default | Options |
+|-----------|---------|---------|
+| Alert Format | Simple | Simple / JSON |
 
 ---
 
@@ -259,10 +301,13 @@ cd papan-gerak
 npm install
 npm run build        # Generate built file
 npm run lint         # Reserved keywords + budget check
-npm run test:all     # 51 tests (utility + scoring)
+npm run test:all     # 90 tests (unit + full PineTS integration)
+npm run ci           # Full pipeline: lint → build → test
 ```
 
-Edit `src/modules/*.pine` → `bash build.sh` → copy `src/PapanGerak.pine` → TradingView.
+Edit `src/modules/*.pine` → `bash build.sh` → then copy `src/PapanGerak.pine` to TradingView Pine Editor.
+
+For strategy backtesting, use `src/strategies/PapanGerakStrategy.pine` on the Strategy Tester.
 
 ---
 
@@ -272,6 +317,7 @@ Edit `src/modules/*.pine` → `bash build.sh` → copy `src/PapanGerak.pine` →
 - Choppiness Index may false-signal on low-volume stocks
 - Smart Money is a volume proxy, not actual institutional data
 - 40/70 signal thresholds are fixed — may need per-stock tuning
+- Webhook JSON format uses pipe-delimited key=value (Pine v6 doesn't support escape chars)
 - **NOT** buy/sell recommendations — analysis tool only
 
 ---

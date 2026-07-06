@@ -1,0 +1,148 @@
+// @version=6
+// Papan Gerak Strategy — Companion backtest script
+// Author : Muhammad Akhmal (AKHMFZ)
+// License: MIT
+// ==========================================================
+// Script terpisah dari indicator() — menggunakan strategy()
+// untuk backtest di Strategy Tester bawaan TV.
+// ==========================================================
+
+strategy(
+    "Saham: Papan Gerak Strategy By. Akhmfz",
+    shorttitle = "PG Strategy",
+    overlay = true,
+    initial_capital = 100000000,
+    default_qty_type = strategy.percent_of_equity,
+    default_qty_value = 100,
+    commission_type = strategy.commission.percent,
+    commission_value = 0.15,
+    slippage = 5
+)
+
+// ==========================================================
+// 1. INPUTS (all with display.data_window)
+// ==========================================================
+emaFastPeriod = input.int(20, "EMA Fast", group = "Trend", display = display.data_window)
+emaMidPeriod = input.int(50, "EMA Mid", group = "Trend", display = display.data_window)
+emaSlowPeriod = input.int(200, "EMA Slow", group = "Trend", display = display.data_window)
+superTrendFactor = input.float(3.0, "SuperTrend Factor", step = 0.1, group = "Trend", display = display.data_window)
+superTrendPeriod = input.int(10, "SuperTrend ATR", group = "Trend", display = display.data_window)
+adxLength = input.int(14, "ADX Length", group = "Trend", display = display.data_window)
+adxThreshold = input.int(25, "ADX Threshold", group = "Trend", display = display.data_window)
+
+atrLength = input.int(14, "ATR Length", group = "Momentum", display = display.data_window)
+rsiLength = input.int(14, "RSI Length", group = "Momentum", display = display.data_window)
+macdFast = input.int(12, "MACD Fast", group = "Momentum", display = display.data_window)
+macdSlow = input.int(26, "MACD Slow", group = "Momentum", display = display.data_window)
+macdSignal = input.int(9, "MACD Signal", group = "Momentum", display = display.data_window)
+stochK = input.int(14, "Stochastic K", group = "Momentum", display = display.data_window)
+stochD = input.int(3, "Stochastic D", group = "Momentum", display = display.data_window)
+volMaLength = input.int(20, "Volume MA Length", group = "Volume", display = display.data_window)
+
+slAtrMult = input.float(1.5, "SL ATR Multiplier", step = 0.1, group = "Risk", display = display.data_window)
+targetRmult = input.float(2.0, "Target R-Multiple", step = 0.5, group = "Risk", display = display.data_window)
+
+entryTriggerMode = input.string("Composite Score", "Entry Trigger",
+ options = ["Composite Score", "Pullback", "Breakout"], group = "Entry", display = display.data_window)
+
+// ==========================================================
+// 2. TECHNICAL INDICATORS
+// ==========================================================
+emaFast = ta.ema(close, emaFastPeriod)
+emaMid = ta.ema(close, emaMidPeriod)
+emaSlow = ta.ema(close, emaSlowPeriod)
+[superTrend, superTrendDir] = ta.supertrend(superTrendFactor, superTrendPeriod)
+[adxUp, adxDn, adxValue] = ta.dmi(adxLength, adxLength)
+
+rsiValue = ta.rsi(close, rsiLength)
+[macdLine, macdSignalLine, macdHist] = ta.macd(close, macdFast, macdSlow, macdSignal)
+stochKVal = ta.stoch(close, high, low, stochK)
+stochDVal = ta.sma(stochKVal, stochD)
+
+atrValue = ta.atr(atrLength)
+
+// ==========================================================
+// 3. SIMPLIFIED SCORING
+// ==========================================================
+f_scoreHigher(val, min, max) =>
+    na(val) ? na : math.max(0, math.min(100, (val - min) / (max - min) * 100))
+
+emaPos = close > emaFast ? (close > emaMid ? (close > emaSlow ? 100 : 66) : 33) : 0
+stScore = superTrendDir == 1 ? 100 : 0
+adxScore = adxStrong ? (adxUp > adxDn ? 80 : 20) : 50
+trendScore = (emaPos * 3 + stScore * 2 + adxScore * 2) / 7
+
+rsiScore = f_scoreHigher(rsiValue, 30, 70)
+macdBull = macdLine > macdSignalLine
+macdScore = macdBull ? (macdHist > macdHist[1] ? 80 : 60) : (macdHist > macdHist[1] ? 40 : 20)
+stochScore = f_scoreHigher(stochKVal, 20, 80)
+momentumScore = (rsiScore * 3 + macdScore * 3 + stochScore * 2) / 8
+
+volMA = ta.sma(volume, volMaLength)
+volRatio = volMA > 0 ? volume / volMA : 0
+volScore = f_scoreHigher(volRatio, 0.2, 3.0)
+
+overallScore = (trendScore * 3 + momentumScore * 3 + volScore * 2) / 8
+
+// ==========================================================
+// 4. ENTRY TRIGGERS
+// ==========================================================
+currentZone = na(overallScore) ? -1 : (overallScore >= 70 ? 2 : overallScore >= 40 ? 1 : 0)
+var int prevZone = -1
+zoneChanged = prevZone >= 0 and currentZone >= 0 and currentZone != prevZone
+if zoneChanged
+    prevZone := currentZone
+
+nearEma = not na(emaFast) and not na(atrValue) and math.abs(close - emaFast) <= atrValue * 1.5
+rsiRecover = not na(rsiValue) and rsiValue <= 50 and ta.rising(rsiValue, 1)
+
+recentHigh = ta.highest(high, 20)
+recentLow = ta.lowest(low, 20)
+
+csTrigger = zoneChanged
+pbTrigger = not na(trendScore) and trendScore >= 65 and nearEma and rsiRecover
+boTrigger = not na(volScore) and volScore >= 60 and (close >= recentHigh or close <= recentLow)
+
+entryTriggered = entryTriggerMode == "Composite Score" ? csTrigger
+ : entryTriggerMode == "Pullback" ? pbTrigger : boTrigger
+
+signalDir = entryTriggerMode == "Composite Score"
+ ? (currentZone > prevZone ? 1 : -1)
+ : entryTriggerMode == "Pullback" ? 1
+ : (close >= recentHigh ? 1 : -1)
+
+// ==========================================================
+// 5. EXECUTION
+// ==========================================================
+if entryTriggered and strategy.position_size == 0
+    riskAmt = atrValue * slAtrMult
+    slPrice = close - riskAmt * signalDir
+    tgtPrice = close + riskAmt * targetRmult * signalDir
+    strategy.entry("PG", signalDir > 0 ? strategy.long : strategy.short)
+    strategy.exit("PG-X", "PG", stop = slPrice, limit = tgtPrice)
+
+// ==========================================================
+// 6. DISPLAY
+// ==========================================================
+if barstate.islast
+    tbl = table.new(position.top_right, 2, 5, border_width = 1,
+     bgcolor = color.rgb(13, 22, 30, 90))
+    table.cell(tbl, 0, 0, "PG STRATEGY", text_size = size.small,
+     text_color = color.rgb(38, 166, 154), bgcolor = color.rgb(0, 0, 0, 85))
+    info1 = "Mode: " + entryTriggerMode + " | Trades: " + str.tostring(strategy.closedtrades)
+    table.cell(tbl, 0, 1, info1, text_size = size.small, text_color = color.white)
+    winRate = strategy.closedtrades > 0
+     ? str.tostring(math.round(strategy.wintrades / strategy.closedtrades * 100)) + "%"
+     : "—"
+    table.cell(tbl, 0, 2, "Win Rate: " + winRate, text_size = size.small, text_color = color.white)
+    pf = strategy.closedtrades > 0
+     ? str.tostring(math.round(strategy.profitfactor * 10) / 10) : "—"
+    table.cell(tbl, 0, 3, "Profit Factor: " + pf, text_size = size.small, text_color = color.white)
+    netPct = strategy.netprofit / strategy.initial_capital * 100
+    netStr = str.tostring(math.round(netPct * 10) / 10) + "%"
+    table.cell(tbl, 0, 4, "Return: " + netStr, text_size = size.small,
+     text_color = netPct >= 0 ? color.rgb(38, 166, 154) : color.rgb(83, 239, 80))
+
+plot(overallScore, "Score", color.rgb(38, 166, 154, 80), 2)
+hline(70, "OB", color.rgb(239, 83, 80, 50), hline.style_dashed)
+hline(40, "OS", color.rgb(38, 166, 154, 50), hline.style_dashed)

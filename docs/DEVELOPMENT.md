@@ -24,9 +24,10 @@ docs/                — Documentation
 ```bash
 npm run build        # Concatenate modules
 npm run lint         # Check reserved keywords + line budget
-npm run test:all     # 51 tests
-npm run transpile    # Syntax validation via PineTS
-npm run ci           # Full pipeline
+npm run test:all     # 90 tests (unit + PineTS full integration)
+npm run test         # Quick: 16 utility tests
+npm run transpile    # Syntax validation via PineTS (deprecated — use full-pinets instead)
+npm run ci           # Full pipeline: lint → build → test
 ```
 
 Edit modules → `npm run build` → Copy `src/PapanGerak.pine` → Paste di TradingView Pine Editor.
@@ -35,10 +36,11 @@ Edit modules → `npm run build` → Copy `src/PapanGerak.pine` → Paste di Tra
 
 | Module | Max Lines | Current |
 |--------|-----------|---------|
-| 01-base.pine | 250 | 222 |
-| 02-data.pine | 200 | 146 |
-| 03-scoring.pine | 500 | 468 |
-| 04-ui.pine | 200 | 186 |
+| 01-base.pine | 280 | 273 |
+| 02-data.pine | 210 | 158 |
+| 03-scoring.pine | 610 | 608 |
+| 04-ui.pine | 235 | 226 |
+| Built (PapanGerak.pine) | — | 1269 |
 
 ## Commit Convention
 
@@ -57,26 +59,54 @@ Scope: base, data, scoring, ui, test, docs
 
 ## Changelog
 
-### v0.2.0-alpha (TBD)
+### v0.2.0-alpha (2026-07-06)
 
-- Fix: Choppiness Index formula (`*100` di dalam log)
-- Fix: `f_scoreRange()` linear interpolation pakai `min`/`max`
-- Fix: `ta.dmi()` gantikan `ta.di()` untuk +DI/-DI yang benar
-- Fix: `ta.adx()` diganti `ta.dmi()` (tidak ada di v6)
-- Fix: `na()` tidak bisa dipanggil dengan `bool` di v6
-- Fix: `var color x = na` untuk deklarasi warna
-- Fix: `bgcolor` (lowercase) di `table.new()`
-- Fix: `alert()` signature v6 = `alert(message, condition)`
-- Fix: CI `|| true` dihapus (test bisa gagalkan pipeline)
-- Fix: `display = display.data_window` di 35 input
-- Fix: `weightSmartMoney` input (tdk hardcoded)
-- Fix: `rowCount` tabel (sebelumnya 5, volume terpotong)
-- UX: `bgcolor()` oscillator berdasarkan zona skor
-- UX: Legend warna di baris terakhir tabel
-- UX: Simbol volatilitas `≈`/`⚡` (bukan arrow terbalik)
-- Test: 51 tests (utility + scoring + choppiness formula)
+**Features:**
+- F0: Signal foundation — `minSignalBars`, `signalFilterMode` (Trending/Ranging), unified zone-based signal
+- F1: Risk levels — ATR/Swing SL, R-multiple target, risk levels row with disclaimer
+- F2: Position sizing — account balance, risk % input, lot count calculator
+- F5: MTF filter — `request.security()` with `lookahead_off`, conflict flag, narrative #8
+- F3: Entry trigger precision — 3 modes (Composite/Pullback/Breakout), unified `entryTriggered`
+- F4: Strategy companion script — `PapanGerakStrategy.pine` with `strategy()`, SL/TP, win rate
+- F6: Webhook/execution — JSON format `PG|key=value`, `docs/webhook-integration.md`, IDX disclaimer
+- Webhook format: Simple (text) and JSON (pipeline) — selectable via input
 
-### v0.1.0-alpha (TBD)
+**Fixes:**
+- Choppiness Index formula (`*100` di dalam log)
+- `f_scoreRange()` linear interpolation pakai `min`/`max`
+- `ta.dmi()` gantikan `ta.di()` untuk +DI/-DI yang benar
+- `ta.adx()` diganti `ta.dmi()` (tidak ada di v6)
+- `na()` tidak bisa dipanggil dengan `bool` di v6
+- `var color x = na` untuk deklarasi warna
+- `alert()` signature v6 = `alert(message, condition)`
+- CI `|| true` dihapus (test bisa gagalkan pipeline)
+- `display = display.data_window` di 50 input
+- `weightSmartMoney` input (tdk hardcoded)
+- `rowCount` tabel (sebelumnya 5, volume terpotong)
+- CRITICAL: `mtfConflict` dipakai di `f_narrative()` sebelum didefinisikan — pindah ke baris sebelumnya
+- Strategy inputs tanpa `display.data_window` — ditambahkan
+- `bbPosition` potensi div-by-zero — guard dengan `bbUpper != bbLower`
+- `volRatio` potensi div-by-zero — guard dengan `volMA > 0`
+- `bbWidth` potensi div-by-zero — guard dengan `bbMiddle != 0`
+- `close[1]` tanpa na guard — ditambahkan `not na(close[1]) and`
+- `btLosses` variable mati — dihapus
+- Strategy ATR hardcoded 14 — jadi input `atrLength`
+
+**UX:**
+- `bgcolor()` oscillator berdasarkan zona skor
+- Legend warna di baris terakhir tabel
+- Simbol volatilitas `≈`/`⚡` (bukan arrow terbalik)
+- Risk levels + position sizing di baris tabel
+- MTF indicator di baris Trend
+- Narrative #8: MTF conflict warning
+
+**Testing:**
+- 90 tests total (+39 from v0.1.0)
+- 88 unit tests: utility (16), trend (6), momentum (6), volatility (11), volume (6), overall (6), signal (10), risk (7), sizing (5), MTF (6), zones (9)
+- 2 PineTS full-script integration tests (compilation + mock-data execution)
+- Scores verified: [0,100] range, vary across bars, all plots present
+
+### v0.1.0-alpha
 
 - Initial release
 - 4 dimensi scoring (Trend, Momentum, Volatility, Volume)

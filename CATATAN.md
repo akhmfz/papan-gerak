@@ -76,7 +76,21 @@ input.int(14, "Title", group = "Grup", display = display.data_window)
 - Volatility: 11 tests
 - Volume: 6 tests
 - Overall: 6 tests
-- **Total: 51 tests (all passing)**
+- Signal Engine (Entry Triggers): 10 tests
+- Risk Levels (SL/Target): 7 tests
+- Position Sizing: 5 tests
+- MTF Conflict: 6 tests
+- Signal Direction & Zone: 9 tests
+- **Total: 90 tests (all passing)**
+  - 88 unit tests (utility, trend, momentum, volatility, volume, overall, signal, risk, sizing, MTF, zones)
+  - 2 PineTS full-script integration tests (compilation + mock-data execution)
+  - Scores verified: [0, 100] range, vary across bars, all plots present
+
+### F6 — Webhook (2026-07-06)
+- New input `webhookFormat` (Simple / JSON) di grup Webhook
+- JSON mode output: `PG|event=...|time=...|ticker=...|key=val|...`
+- All 7 alert types support both formats
+- `docs/webhook-integration.md`: parser examples, TradersPost, Pine Connector, IDX disclaimer
 
 ---
 
@@ -89,6 +103,10 @@ input.int(14, "Title", group = "Grup", display = display.data_window)
 | P2-1 | Volume Profile integration | P3-medium |
 | P2-2 | Divergence detection (RSI/MACD) | P3-medium |
 | P3-1 | Backtest framework | P4-low |
+| F6-1 | Webhook format: "JSON" → structured `PG|key=value` pipeline | Done |
+| F6-2 | Integrasi TradersPost: parser example | Done |
+| F6-3 | Integrasi Pine Connector: field mapping | Done |
+| F6-4 | Disclaimer IDX thin market di docs | Done |
 
 ---
 
