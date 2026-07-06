@@ -1,0 +1,148 @@
+// @version=6
+// 02-data.pine — Papan Gerak: Market Engine & TA Calculations
+// ==========================================================
+
+// ==========================================================
+// 1. TREND INDICATORS
+// ==========================================================
+// --- EMA ---
+emaFast = ta.ema(close, emaFastPeriod)
+emaMid = ta.ema(close, emaMidPeriod)
+emaSlow = ta.ema(close, emaSlowPeriod)
+
+// EMA Position Score component
+emaPosition = close > emaFast ? (close > emaMid ? (close > emaSlow ? 2 : 1) : 0) : -1
+emaTrend = close > emaSlow ? 1 : -1
+
+// --- SuperTrend ---
+[superTrend, superTrendDir] = ta.supertrend(superTrendFactor, superTrendPeriod)
+stBullish = superTrendDir == 1
+
+// --- ADX ---
+adxValue = ta.adx(high, low, close, adxLength)
+adxUp = ta.di(high, low, close, adxLength)
+adxDn = ta.di(high, low, close, adxLength)
+
+// ADX strength
+adxStrong = adxValue >= adxThreshold
+adxTrend = adxUp > adxDn ? 1 : -1
+// Trend alignment
+trendAligned = (adxTrend == 1 and stBullish and emaTrend == 1) or (adxTrend == -1 and not stBullish and emaTrend == -1)
+
+// ==========================================================
+// 2. MOMENTUM INDICATORS
+// ==========================================================
+// --- RSI ---
+rsiValue = ta.rsi(close, rsiLength)
+rsiObHit = rsiValue >= rsiOb
+rsiOsHit = rsiValue <= rsiOs
+rsiDirection = ta.rising(rsiValue, 1) ? 1 : -1
+
+// --- MACD ---
+[macdLine, macdSignalLine, macdHist] = ta.macd(close, macdFast, macdSlow, macdSignal)
+macdBullish = macdLine > macdSignalLine
+macdHistRising = macdHist > macdHist[1]
+macdZero = macdLine > 0
+
+// --- Stochastic ---
+stochKVal = ta.stoch(close, high, low, stochK)
+stochDVal = ta.sma(stochKVal, stochD)
+stochBullish = stochKVal > stochDVal
+stochObHit = stochKVal >= stochOb
+stochOsHit = stochKVal <= stochOs
+
+// ==========================================================
+// 3. VOLATILITY INDICATORS
+// ==========================================================
+// --- ATR% (normalized) ---
+atrValue = ta.atr(atrLength)
+atrPercent = atrValue / close * 100
+
+// --- Bollinger Bands Width ---
+bbMiddle = ta.sma(close, bbLength)
+bbStdDev = ta.stdev(close, bbLength)
+bbUpper = bbMiddle + bbMult * bbStdDev
+bbLower = bbMiddle - bbMult * bbStdDev
+bbWidth = (bbUpper - bbLower) / bbMiddle * 100
+bbWidthAvg = ta.sma(bbWidth, bbLength)
+
+// Price position within bands (0-100)
+bbPosition = (close - bbLower) / (bbUpper - bbLower) * 100
+
+// --- Choppiness Index ---
+f_choppiness(int length) =>
+    highestHigh = ta.highest(high, length)
+    lowestLow = ta.lowest(low, length)
+    atrSum = math.sum(ta.atr(1), length)
+    range_ = highestHigh - lowestLow
+    if range_ == 0
+        100.0
+    else
+        math.log(atrSum / range_ * 100) / math.log(length) * 100
+
+chopValue = f_choppiness(chopLength)
+chopTrending = chopValue <= 38
+chopRanging = chopValue >= 62
+
+// ==========================================================
+// 4. VOLUME INDICATORS
+// ==========================================================
+// --- Volume MA ---
+volMA = ta.sma(volume, volMaLength)
+volRatio = volume / volMA
+volSpike = volRatio >= volSpikeMult
+
+// --- OBV ---
+obvValue = ta.obv
+obvMA = ta.sma(obvValue, volMaLength)
+obvTrend = obvValue > obvMA ? 1 : -1
+obvAgree = (obvTrend == 1 and close > close[1]) or (obvTrend == -1 and close < close[1])
+
+// --- Net Volume (proxy) ---
+f_netVolume() =>
+    upVol = volume * (close - open) / (high - low + 1e-10)
+    na(upVol) ? 0 : upVol
+
+netVol = f_netVolume()
+netVolSmooth = ta.sma(netVol, 5)
+
+// ==========================================================
+// 5. SMART MONEY FLOW (Optional)
+// ==========================================================
+// Institutional flow detection via volume Z-score
+f_smartMoneyDetect() =>
+    if not enableSmartMoney
+        false
+    else
+        volSMA = ta.sma(volume, smPeriod)
+        volStd = ta.stdev(volume, smPeriod)
+        if volStd == 0
+            false
+        else
+            zScore = (volume - volSMA) / volStd
+            zScore >= smVolumeThreshold and close > open
+
+// Volume inside body (institutional) vs at wick (retail)
+f_isBodyVolume() =>
+    bodyRange = math.abs(close - open)
+    totalRange = high - low
+    if totalRange == 0
+        false
+    else
+        bodyRange / totalRange >= 0.6 and volSpike
+
+smDetected = f_smartMoneyDetect()
+smBodyVol = f_isBodyVolume()
+
+// Cumulative SM score
+smScore = if enableSmartMoney
+    score = 50.0
+    if smDetected
+        score += 25
+    if smBodyVol
+        score += 15
+    if obvAgree
+        score += 10
+    score
+else
+    na

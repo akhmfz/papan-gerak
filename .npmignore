@@ -1,0 +1,8 @@
+src/modules/
+tests/
+scripts/
+docs/
+.github/
+build.sh
+CATATAN.md
+CONTRIBUTING.md

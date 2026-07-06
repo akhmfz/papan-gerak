@@ -1,0 +1,730 @@
+// @version=6
+// 01-base.pine — Papan Gerak: Header, Inputs, Tema, Utilities
+// ==========================================================
+
+// --- Indicator Definition ---
+indicator(
+    "Saham: Papan Gerak By. Akhmfz",
+    overlay = false,
+    format = format.price,
+    precision = 0,
+    max_labels_count = 50,
+    max_lines_count = 50
+)
+
+// ==========================================================
+// 1. SETTINGS — General
+// ==========================================================
+// --- Display ---
+tablePositionInput = input.string(
+    "Top Right",
+    "Table Position",
+    options = ["Top Left", "Top Right", "Bottom Left", "Bottom Right"]
+)
+fontSizeInput = input.int(1, "Font Size", minval = 1, maxval = 3)
+compactModeInput = input.bool(true, "Compact Mode")
+bahasaInput = input.string("Indonesia", "Bahasa", options = ["Indonesia", "English"])
+colorThemeInput = input.string("Gelap", "Color Theme", options = ["Gelap", "Terang", "Bursa Hijau", "Biru Nusantara", "Emas Premium"])
+
+// ==========================================================
+// 2. SETTINGS — Trend Parameters
+// ==========================================================
+emaFastPeriod = input.int(20, "EMA Fast Period", group = "Trend")
+emaMidPeriod = input.int(50, "EMA Mid Period", group = "Trend")
+emaSlowPeriod = input.int(200, "EMA Slow Period", group = "Trend")
+superTrendFactor = input.float(3.0, "SuperTrend Factor", step = 0.1, group = "Trend")
+superTrendPeriod = input.int(10, "SuperTrend ATR Period", group = "Trend")
+adxLength = input.int(14, "ADX Length", group = "Trend")
+adxThreshold = input.int(25, "ADX Threshold", group = "Trend")
+
+// ==========================================================
+// 3. SETTINGS — Momentum Parameters
+// ==========================================================
+rsiLength = input.int(14, "RSI Length", group = "Momentum")
+rsiOb = input.int(70, "RSI Overbought", group = "Momentum")
+rsiOs = input.int(30, "RSI Oversold", group = "Momentum")
+macdFast = input.int(12, "MACD Fast", group = "Momentum")
+macdSlow = input.int(26, "MACD Slow", group = "Momentum")
+macdSignal = input.int(9, "MACD Signal", group = "Momentum")
+stochK = input.int(14, "Stochastic K", group = "Momentum")
+stochD = input.int(3, "Stochastic D", group = "Momentum")
+stochOb = input.int(80, "Stoch Overbought", group = "Momentum")
+stochOs = input.int(20, "Stoch Oversold", group = "Momentum")
+
+// ==========================================================
+// 4. SETTINGS — Volatility Parameters
+// ==========================================================
+atrLength = input.int(14, "ATR Length", group = "Volatility")
+bbLength = input.int(20, "Bollinger Length", group = "Volatility")
+bbMult = input.float(2.0, "Bollinger Multiplier", step = 0.1, group = "Volatility")
+chopLength = input.int(14, "Choppiness Length", group = "Volatility")
+
+// ==========================================================
+// 5. SETTINGS — Volume Parameters
+// ==========================================================
+volMaLength = input.int(20, "Volume MA Length", group = "Volume")
+volSpikeMult = input.float(2.0, "Volume Spike Multiplier", step = 0.1, group = "Volume")
+
+// ==========================================================
+// 6. SETTINGS — Scoring Weights
+// ==========================================================
+weightTrend = input.int(30, "Trend Weight (%)", minval = 0, maxval = 100, step = 5, group = "Weights")
+weightMomentum = input.int(30, "Momentum Weight (%)", minval = 0, maxval = 100, step = 5, group = "Weights")
+weightVolatility = input.int(20, "Volatility Weight (%)", minval = 0, maxval = 100, step = 5, group = "Weights")
+weightVolume = input.int(20, "Volume Weight (%)", minval = 0, maxval = 100, step = 5, group = "Weights")
+
+// ==========================================================
+// 7. SETTINGS — Smart Money (Optional)
+// ==========================================================
+enableSmartMoney = input.bool(false, "Enable Smart Money Flow", group = "Smart Money")
+smVolumeThreshold = input.float(2.5, "SM Volume Z-Threshold", step = 0.1, group = "Smart Money")
+smPeriod = input.int(20, "SM Lookback Period", group = "Smart Money")
+
+// ==========================================================
+// 8. COLOR THEMES
+// ==========================================================
+color bgColor, headerColor, labelColor, scoreColor, tableBgColor
+color bullColor, bearColor, neutralColor, signalLineColor
+color dimTrend, dimMomentum, dimVolatility, dimVolume
+
+if colorThemeInput == "Gelap"
+    bgColor := color.rgb(0, 0, 0, 85)
+    headerColor := color.rgb(38, 166, 154)
+    labelColor := color.white
+    scoreColor := color.rgb(38, 166, 154)
+    tableBgColor := color.rgb(13, 22, 30, 90)
+    bullColor := color.rgb(38, 166, 154)
+    bearColor := color.rgb(239, 83, 80)
+    neutralColor := color.rgb(255, 202, 40)
+    signalLineColor := color.rgb(100, 100, 100)
+    dimTrend := color.rgb(66, 165, 245)
+    dimMomentum := color.rgb(255, 202, 40)
+    dimVolatility := color.rgb(239, 83, 80)
+    dimVolume := color.rgb(126, 87, 194)
+else
+    if colorThemeInput == "Terang"
+        bgColor := color.rgb(255, 255, 255, 85)
+        headerColor := color.rgb(0, 150, 136)
+        labelColor := color.rgb(33, 33, 33)
+        scoreColor := color.rgb(0, 150, 136)
+        tableBgColor := color.rgb(245, 245, 245, 90)
+        bullColor := color.rgb(0, 150, 136)
+        bearColor := color.rgb(211, 47, 47)
+        neutralColor := color.rgb(255, 160, 0)
+        signalLineColor := color.rgb(158, 158, 158)
+        dimTrend := color.rgb(33, 150, 243)
+        dimMomentum := color.rgb(255, 193, 7)
+        dimVolatility := color.rgb(244, 67, 54)
+        dimVolume := color.rgb(156, 39, 176)
+    else
+        if colorThemeInput == "Bursa Hijau"
+            bgColor := color.rgb(0, 30, 0, 85)
+            headerColor := color.rgb(76, 175, 80)
+            labelColor := color.white
+            scoreColor := color.rgb(76, 175, 80)
+            tableBgColor := color.rgb(0, 20, 0, 90)
+            bullColor := color.rgb(76, 175, 80)
+            bearColor := color.rgb(244, 67, 54)
+            neutralColor := color.rgb(255, 235, 59)
+            signalLineColor := color.rgb(100, 100, 100)
+            dimTrend := color.rgb(129, 199, 132)
+            dimMomentum := color.rgb(255, 235, 59)
+            dimVolatility := color.rgb(239, 83, 80)
+            dimVolume := color.rgb(186, 104, 200)
+        else
+            if colorThemeInput == "Biru Nusantara"
+                bgColor := color.rgb(0, 20, 50, 85)
+                headerColor := color.rgb(41, 98, 255)
+                labelColor := color.white
+                scoreColor := color.rgb(41, 98, 255)
+                tableBgColor := color.rgb(0, 10, 30, 90)
+                bullColor := color.rgb(41, 98, 255)
+                bearColor := color.rgb(255, 82, 82)
+                neutralColor := color.rgb(255, 202, 40)
+                signalLineColor := color.rgb(100, 100, 100)
+                dimTrend := color.rgb(100, 181, 246)
+                dimMomentum := color.rgb(255, 202, 40)
+                dimVolatility := color.rgb(239, 83, 80)
+                dimVolume := color.rgb(179, 136, 255)
+            else
+                bgColor := color.rgb(30, 20, 0, 85)
+                headerColor := color.rgb(255, 193, 7)
+                labelColor := color.rgb(33, 33, 33)
+                scoreColor := color.rgb(255, 193, 7)
+                tableBgColor := color.rgb(20, 15, 0, 90)
+                bullColor := color.rgb(76, 175, 80)
+                bearColor := color.rgb(244, 67, 54)
+                neutralColor := color.rgb(255, 193, 7)
+                signalLineColor := color.rgb(158, 158, 158)
+                dimTrend := color.rgb(255, 183, 77)
+                dimMomentum := color.rgb(255, 213, 79)
+                dimVolatility := color.rgb(239, 83, 80)
+                dimVolume := color.rgb(206, 147, 216)
+
+// ==========================================================
+// 9. UTILITY FUNCTIONS
+// ==========================================================
+f_secure(input, def) => na(input) ? def : input
+
+f_scoreHigher(float val, float min, float max) =>
+    na(val) ? na : math.max(0, math.min(100, (val - min) / (max - min) * 100))
+
+f_scoreLower(float val, float min, float max) =>
+    na(val) ? na : math.max(0, math.min(100, (max - val) / (max - min) * 100))
+
+f_scoreRange(float val, float min, float max, float idealLow, float idealHigh) =>
+    if na(val)
+        na
+    else
+        if val >= idealLow and val <= idealHigh
+            100.0
+        else
+            if val < idealLow
+                math.max(0, val / idealLow * 100)
+            else
+                math.max(0, (1 - (val - idealHigh) / (val)) * 100)
+
+f_scoreBias(float val) =>
+    na(val) ? na : (val + 1) / 2 * 100
+
+f_colorScore(float score) =>
+    if na(score)
+        color.gray
+    else
+        if score >= 70
+            bullColor
+        else
+            if score >= 40
+                neutralColor
+            else
+                bearColor
+
+f_signalText(float score, string lang) =>
+    if na(score)
+        lang == "Indonesia" ? "N/A" : "N/A"
+    else
+        if score >= 70
+            lang == "Indonesia" ? "BULLISH" : "BULLISH"
+        else
+            if score >= 40
+                lang == "Indonesia" ? "NETRAL" : "NEUTRAL"
+            else
+                lang == "Indonesia" ? "BEARISH" : "BEARISH"
+
+// @version=6
+// 02-data.pine — Papan Gerak: Market Engine & TA Calculations
+// ==========================================================
+
+// ==========================================================
+// 1. TREND INDICATORS
+// ==========================================================
+// --- EMA ---
+emaFast = ta.ema(close, emaFastPeriod)
+emaMid = ta.ema(close, emaMidPeriod)
+emaSlow = ta.ema(close, emaSlowPeriod)
+
+// EMA Position Score component
+emaPosition = close > emaFast ? (close > emaMid ? (close > emaSlow ? 2 : 1) : 0) : -1
+emaTrend = close > emaSlow ? 1 : -1
+
+// --- SuperTrend ---
+[superTrend, superTrendDir] = ta.supertrend(superTrendFactor, superTrendPeriod)
+stBullish = superTrendDir == 1
+
+// --- ADX ---
+adxValue = ta.adx(high, low, close, adxLength)
+adxUp = ta.di(high, low, close, adxLength)
+adxDn = ta.di(high, low, close, adxLength)
+
+// ADX strength
+adxStrong = adxValue >= adxThreshold
+adxTrend = adxUp > adxDn ? 1 : -1
+// Trend alignment
+trendAligned = (adxTrend == 1 and stBullish and emaTrend == 1) or (adxTrend == -1 and not stBullish and emaTrend == -1)
+
+// ==========================================================
+// 2. MOMENTUM INDICATORS
+// ==========================================================
+// --- RSI ---
+rsiValue = ta.rsi(close, rsiLength)
+rsiObHit = rsiValue >= rsiOb
+rsiOsHit = rsiValue <= rsiOs
+rsiDirection = ta.rising(rsiValue, 1) ? 1 : -1
+
+// --- MACD ---
+[macdLine, macdSignalLine, macdHist] = ta.macd(close, macdFast, macdSlow, macdSignal)
+macdBullish = macdLine > macdSignalLine
+macdHistRising = macdHist > macdHist[1]
+macdZero = macdLine > 0
+
+// --- Stochastic ---
+stochKVal = ta.stoch(close, high, low, stochK)
+stochDVal = ta.sma(stochKVal, stochD)
+stochBullish = stochKVal > stochDVal
+stochObHit = stochKVal >= stochOb
+stochOsHit = stochKVal <= stochOs
+
+// ==========================================================
+// 3. VOLATILITY INDICATORS
+// ==========================================================
+// --- ATR% (normalized) ---
+atrValue = ta.atr(atrLength)
+atrPercent = atrValue / close * 100
+
+// --- Bollinger Bands Width ---
+bbMiddle = ta.sma(close, bbLength)
+bbStdDev = ta.stdev(close, bbLength)
+bbUpper = bbMiddle + bbMult * bbStdDev
+bbLower = bbMiddle - bbMult * bbStdDev
+bbWidth = (bbUpper - bbLower) / bbMiddle * 100
+bbWidthAvg = ta.sma(bbWidth, bbLength)
+
+// Price position within bands (0-100)
+bbPosition = (close - bbLower) / (bbUpper - bbLower) * 100
+
+// --- Choppiness Index ---
+f_choppiness(int length) =>
+    highestHigh = ta.highest(high, length)
+    lowestLow = ta.lowest(low, length)
+    atrSum = math.sum(ta.atr(1), length)
+    range_ = highestHigh - lowestLow
+    if range_ == 0
+        100.0
+    else
+        math.log(atrSum / range_ * 100) / math.log(length) * 100
+
+chopValue = f_choppiness(chopLength)
+chopTrending = chopValue <= 38
+chopRanging = chopValue >= 62
+
+// ==========================================================
+// 4. VOLUME INDICATORS
+// ==========================================================
+// --- Volume MA ---
+volMA = ta.sma(volume, volMaLength)
+volRatio = volume / volMA
+volSpike = volRatio >= volSpikeMult
+
+// --- OBV ---
+obvValue = ta.obv
+obvMA = ta.sma(obvValue, volMaLength)
+obvTrend = obvValue > obvMA ? 1 : -1
+obvAgree = (obvTrend == 1 and close > close[1]) or (obvTrend == -1 and close < close[1])
+
+// --- Net Volume (proxy) ---
+f_netVolume() =>
+    upVol = volume * (close - open) / (high - low + 1e-10)
+    na(upVol) ? 0 : upVol
+
+netVol = f_netVolume()
+netVolSmooth = ta.sma(netVol, 5)
+
+// ==========================================================
+// 5. SMART MONEY FLOW (Optional)
+// ==========================================================
+// Institutional flow detection via volume Z-score
+f_smartMoneyDetect() =>
+    if not enableSmartMoney
+        false
+    else
+        volSMA = ta.sma(volume, smPeriod)
+        volStd = ta.stdev(volume, smPeriod)
+        if volStd == 0
+            false
+        else
+            zScore = (volume - volSMA) / volStd
+            zScore >= smVolumeThreshold and close > open
+
+// Volume inside body (institutional) vs at wick (retail)
+f_isBodyVolume() =>
+    bodyRange = math.abs(close - open)
+    totalRange = high - low
+    if totalRange == 0
+        false
+    else
+        bodyRange / totalRange >= 0.6 and volSpike
+
+smDetected = f_smartMoneyDetect()
+smBodyVol = f_isBodyVolume()
+
+// Cumulative SM score
+smScore = if enableSmartMoney
+    score = 50.0
+    if smDetected
+        score += 25
+    if smBodyVol
+        score += 15
+    if obvAgree
+        score += 10
+    score
+else
+    na
+
+// @version=6
+// 03-scoring.pine — Papan Gerak: Scoring Engine + Render
+// ==========================================================
+
+// ==========================================================
+// 1. TREND SCORE (0-100)
+// ==========================================================
+f_trendScore() =>
+    scoreSum = 0.0
+    count = 0.0
+
+    // EMA Position (weight: 3)
+    pos = emaPosition
+    if not na(pos)
+        scoreSum += (pos + 1) / 3 * 100 * 3
+        count += 3
+
+    // SuperTrend Direction (weight: 2)
+    if not na(superTrendDir)
+        scoreSum += (superTrendDir == 1 ? 100 : 0) * 2
+        count += 2
+
+    // ADX Strength (weight: 2)
+    if not na(adxValue)
+        adxScore = adxStrong ? (adxTrend == 1 ? 80 : 20) : 50
+        scoreSum += adxScore * 2
+        count += 2
+
+    // Trend Alignment (weight: 2)
+    if not na(trendAligned)
+        alignScore = trendAligned ? (adxTrend == 1 ? 100 : 0) : 50
+        scoreSum += alignScore * 2
+        count += 2
+
+    // EMA Slope (weight: 1)
+    slopeFast = emaFast - emaFast[5]
+    if not na(slopeFast)
+        slopeScore = f_scoreHigher(slopeFast, -close * 0.02, close * 0.02)
+        scoreSum += slopeScore * 1
+        count += 1
+
+    count > 0 ? scoreSum / count : na
+
+// ==========================================================
+// 2. MOMENTUM SCORE (0-100)
+// ==========================================================
+f_momentumScore() =>
+    scoreSum = 0.0
+    count = 0.0
+
+    // RSI (weight: 3)
+    if not na(rsiValue)
+        rsiScore = f_scoreHigher(rsiValue, 30, 70)
+        scoreSum += rsiScore * 3
+        count += 3
+
+    // MACD (weight: 3)
+    if not na(macdHist)
+        macdScore = 50.0
+        if macdBullish and macdHistRising
+            macdScore := macdZero ? 90 : 70
+        else
+            if macdBullish
+                macdScore := macdZero ? 70 : 55
+            else
+                if macdHistRising
+                    macdScore := 45
+                else
+                    macdScore := macdZero ? 35 : 10
+        scoreSum += macdScore * 3
+        count += 3
+
+    // Stochastic (weight: 2)
+    if not na(stochKVal)
+        stochScore = f_scoreHigher(stochKVal, 20, 80)
+        scoreSum += stochScore * 2
+        count += 2
+
+    // RSI Direction (weight: 1)
+    if not na(rsiDirection)
+        dirScore = rsiDirection == 1 ? 70 : 30
+        scoreSum += dirScore * 1
+        count += 1
+
+    // MACD Histogram Slope (weight: 1)
+    if not na(macdHist) and not na(macdHist[2])
+        slopeScore = macdHist > macdHist[2] ? 70 : 30
+        scoreSum += slopeScore * 1
+        count += 1
+
+    count > 0 ? scoreSum / count : na
+
+// ==========================================================
+// 3. VOLATILITY SCORE (0-100)
+// ==========================================================
+f_volatilityScore() =>
+    scoreSum = 0.0
+    count = 0.0
+
+    // Bollinger Width vs Average (weight: 3)
+    if not na(bbWidth) and not na(bbWidthAvg)
+        // Squeeze = low volatility, Expansion = high volatility
+        widthRatio = bbWidth / bbWidthAvg
+        // Ideal: moderate volatility (0.8-1.2x average)
+        volScore = f_scoreRange(widthRatio, 0.3, 3.0, 0.8, 1.2)
+        scoreSum += volScore * 3
+        count += 3
+
+    // Choppiness Index (weight: 3)
+    if not na(chopValue)
+        // Low chop = trending (good), High chop = ranging (bad)
+        chopScore = 100 - math.min(100, chopValue)
+        scoreSum += chopScore * 3
+        count += 3
+
+    // ATR% (weight: 2)
+    if not na(atrPercent)
+        // Moderate ATR is ideal
+        atrScore = f_scoreRange(atrPercent, 0.5, 10.0, 1.0, 3.0)
+        scoreSum += atrScore * 2
+        count += 2
+
+    // Bollinger Position (weight: 1)
+    if not na(bbPosition)
+        // Price near middle = moderate, near bands = extreme
+        posScore = 100 - math.abs(bbPosition - 50) * 2
+        scoreSum += posScore * 1
+        count += 1
+
+    count > 0 ? scoreSum / count : na
+
+// ==========================================================
+// 4. VOLUME SCORE (0-100)
+// ==========================================================
+f_volumeScore() =>
+    scoreSum = 0.0
+    count = 0.0
+
+    // Volume vs MA (weight: 3)
+    if not na(volRatio)
+        volScore = f_scoreRange(volRatio, 0.2, 5.0, 0.8, 2.0)
+        scoreSum += volScore * 3
+        count += 3
+
+    // OBV Agreement (weight: 3)
+    if not na(obvAgree)
+        obvScore = obvAgree ? 80 : 30
+        scoreSum += obvScore * 3
+        count += 3
+
+    // Net Volume Direction (weight: 2)
+    if not na(netVolSmooth)
+        netScore = netVolSmooth > 0 ? 70 : 30
+        scoreSum += netScore * 2
+        count += 2
+
+    // Volume Spike Quality (weight: 1)
+    if not na(volSpike)
+        spikeScore = volSpike ? 80 : 50
+        scoreSum += spikeScore * 1
+        count += 1
+
+    count > 0 ? scoreSum / count : na
+
+// ==========================================================
+// 5. SMART MONEY SCORE (Optional, 0-100)
+// ==========================================================
+f_smartMoneyScore() =>
+    if not enableSmartMoney
+        na
+    else
+        scoreSum = 0.0
+        count = 0.0
+
+        // SM Detection (weight: 3)
+        if not na(smDetected)
+            scoreSum += (smDetected ? 90 : 50) * 3
+            count += 3
+
+        // Body Volume (weight: 2)
+        if not na(smBodyVol)
+            scoreSum += (smBodyVol ? 80 : 50) * 2
+            count += 2
+
+        // OBV Alignment (weight: 2)
+        if not na(obvAgree)
+            scoreSum += (obvAgree ? 75 : 40) * 2
+            count += 2
+
+        // Net Volume (weight: 1)
+        if not na(netVolSmooth)
+            scoreSum += (netVolSmooth > 0 ? 70 : 40) * 1
+            count += 1
+
+        count > 0 ? scoreSum / count : na
+
+// ==========================================================
+// 6. CALCULATE ALL SCORES
+// ==========================================================
+trendScore = f_trendScore()
+momentumScore = f_momentumScore()
+volatilityScore = f_volatilityScore()
+volumeScore = f_volumeScore()
+smartMoneyScore = f_smartMoneyScore()
+
+// Normalize weights
+totalWeight = weightTrend + weightMomentum + weightVolatility + weightVolume
+normTrend = totalWeight > 0 ? weightTrend / totalWeight * 100 : 25
+normMomentum = totalWeight > 0 ? weightMomentum / totalWeight * 100 : 25
+normVolatility = totalWeight > 0 ? weightVolatility / totalWeight * 100 : 25
+normVolume = totalWeight > 0 ? weightVolume / totalWeight * 100 : 25
+
+overallScore = na
+if not na(trendScore) or not na(momentumScore) or not na(volatilityScore) or not na(volumeScore)
+    sum = 0.0
+    wSum = 0.0
+    if not na(trendScore)
+        sum += trendScore * normTrend
+        wSum += normTrend
+    if not na(momentumScore)
+        sum += momentumScore * normMomentum
+        wSum += normMomentum
+    if not na(volatilityScore)
+        sum += volatilityScore * normVolatility
+        wSum += normVolatility
+    if not na(volumeScore)
+        sum += volumeScore * normVolume
+        wSum += normVolume
+    if not na(smartMoneyScore) and enableSmartMoney
+        sum += smartMoneyScore * 20
+        wSum += 20
+    overallScore := wSum > 0 ? sum / wSum : na
+
+// ==========================================================
+// 7. SIGNAL GENERATION
+// ==========================================================
+signalText = f_signalText(overallScore, bahasaInput)
+signalColor = f_colorScore(overallScore)
+
+// @version=6
+// 04-ui.pine — Papan Gerak: Table & Signal Rendering
+// ==========================================================
+
+// ==========================================================
+// 1. SIGNAL LINE (Overall Score as Oscillator)
+// ==========================================================
+hline(70, "OB Line", color = color.rgb(239, 83, 80, 60), linestyle = hline.style_dashed)
+hline(40, "OS Line", color = color.rgb(38, 166, 154, 60), linestyle = hline.style_dashed)
+hline(50, "Midline", color = color.rgb(100, 100, 100, 40), linestyle = hline.style_dotted)
+
+plot(overallScore, "Overall Score", signalColor, 2, plot.style_line)
+fill(plot(70), plot(40), color = color.rgb(100, 100, 100, 10))
+
+// ==========================================================
+// 2. BUILD TABLE
+// ==========================================================
+f_getPosition() =>
+    if tablePositionInput == "Top Left"
+        position.top_left
+    else
+        if tablePositionInput == "Bottom Left"
+            position.bottom_left
+        else
+            if tablePositionInput == "Bottom Right"
+                position.bottom_right
+            else
+                position.top_right
+
+f_getFontSize() =>
+    if fontSizeInput == 1
+        size.small
+    else
+        if fontSizeInput == 2
+            size.normal
+        else
+        size.large
+
+tablePos = f_getPosition()
+fontSz = f_getFontSize()
+
+// Render on last bar only
+if barstate.islast
+    // --- Compact Mode ---
+    if compactModeInput
+        tblCompact = table.new(tablePos, 2, 1, bgColor = tableBgColor, border_width = 1, border_color = signalColor)
+        overallDisplay = str.tostring(math.round(overallScore))
+        table.cell(tblCompact, 0, 0, "PAPAN GERAK  " + signalText + "  " + overallDisplay,
+         text_color = signalColor, text_size = fontSz, text_halign = text.align_center, text_valign = text.valign_middle, width = 10)
+
+    else
+        // --- Full Mode ---
+        offset_ = 0
+        rowCount = 5
+        if enableSmartMoney
+            rowCount := 7
+        tblFull = table.new(tablePos, 3, rowCount, bgColor = tableBgColor, border_width = 1, border_color = signalColor,
+         frame_color = signalColor, frame_width = 1)
+
+        // Header
+        table.cell(tblFull, 0, 0, "PAPAN GERAK", text_color = headerColor, text_size = fontSz, text_halign = text.align_left, text_valign = text.valign_middle, bgcolor = bgColor)
+        overallDisplay = str.tostring(math.round(overallScore))
+        table.cell(tblFull, 1, 0, overallDisplay, text_color = signalColor, text_size = fontSz, text_halign = text.align_right, text_valign = text.valign_middle, bgcolor = bgColor)
+
+        // Signal
+        table.cell(tblFull, 0, 1, bahasaInput == "Indonesia" ? "Sinyal" : "Signal", text_color = labelColor, text_size = fontSz, text_halign = text.align_left, text_valign = text.valign_middle, bgcolor = bgColor)
+        table.cell(tblFull, 1, 1, signalText, text_color = signalColor, text_size = fontSz, text_halign = text.align_right, text_valign = text.valign_middle, bgcolor = bgColor)
+
+        // Trend
+        trendDisplay = str.tostring(math.round(trendScore))
+        trendArrow = not na(trendScore) ? (trendScore >= 70 ? "↑" : trendScore >= 40 ? "→" : "↓") : "—"
+        table.cell(tblFull, 0, 2, "  " + trendArrow + " " + (bahasaInput == "Indonesia" ? "Tren" : "Trend"), text_color = dimTrend, text_size = fontSz, text_halign = text.align_left, text_valign = text.valign_middle, bgcolor = bgColor)
+        table.cell(tblFull, 1, 2, trendDisplay, text_color = f_colorScore(trendScore), text_size = fontSz, text_halign = text.align_right, text_valign = text.valign_middle, bgcolor = bgColor)
+
+        // Momentum
+        momDisplay = str.tostring(math.round(momentumScore))
+        momArrow = not na(momentumScore) ? (momentumScore >= 70 ? "↑" : momentumScore >= 40 ? "→" : "↓") : "—"
+        table.cell(tblFull, 0, 3, "  " + momArrow + " " + (bahasaInput == "Indonesia" ? "Momentum" : "Momentum"), text_color = dimMomentum, text_size = fontSz, text_halign = text.align_left, text_valign = text.valign_middle, bgcolor = bgColor)
+        table.cell(tblFull, 1, 3, momDisplay, text_color = f_colorScore(momentumScore), text_size = fontSz, text_halign = text.align_right, text_valign = text.valign_middle, bgcolor = bgColor)
+
+        // Volatility
+        volDisplay = str.tostring(math.round(volatilityScore))
+        volArrow = not na(volatilityScore) ? (volatilityScore >= 70 ? "↓" : volatilityScore >= 40 ? "→" : "↑") : "—"
+        table.cell(tblFull, 0, 4, "  " + volArrow + " " + (bahasaInput == "Indonesia" ? "Volatilitas" : "Volatility"), text_color = dimVolatility, text_size = fontSz, text_halign = text.align_left, text_valign = text.valign_middle, bgcolor = bgColor)
+        table.cell(tblFull, 1, 4, volDisplay, text_color = f_colorScore(volatilityScore), text_size = fontSz, text_halign = text.align_right, text_valign = text.valign_middle, bgcolor = bgColor)
+
+        // Volume
+        volmDisplay = str.tostring(math.round(volumeScore))
+        volmArrow = not na(volumeScore) ? (volumeScore >= 70 ? "↑" : volumeScore >= 40 ? "→" : "↓") : "—"
+        table.cell(tblFull, 0, 5, "  " + volmArrow + " " + (bahasaInput == "Indonesia" ? "Volume" : "Volume"), text_color = dimVolume, text_size = fontSz, text_halign = text.align_left, text_valign = text.valign_middle, bgcolor = bgColor)
+        table.cell(tblFull, 1, 5, volmDisplay, text_color = f_colorScore(volumeScore), text_size = fontSz, text_halign = text.align_right, text_valign = text.valign_middle, bgcolor = bgColor)
+
+        // Smart Money (if enabled)
+        if enableSmartMoney
+            smDisplay = str.tostring(math.round(smartMoneyScore))
+            table.cell(tblFull, 0, 6, "  ◆ " + (bahasaInput == "Indonesia" ? "Smart Money" : "Smart Money"), text_color = color.rgb(255, 64, 129), text_size = fontSz, text_halign = text.align_left, text_valign = text.valign_middle, bgcolor = bgColor)
+            table.cell(tblFull, 1, 6, smDisplay, text_color = f_colorScore(smartMoneyScore), text_size = fontSz, text_halign = text.align_right, text_valign = text.valign_middle, bgcolor = bgColor)
+
+// ==========================================================
+// 3. ALERTS
+// ==========================================================
+// Alert: Signal Change
+alertcondition(ta.cross(overallScore, 70) or ta.cross(overallScore, 40), "Signal Change",
+ "PAPAN GERAK: Sinyal berubah menjadi " + signalText)
+
+// Alert: Trend Extreme
+alertcondition(trendScore >= 80 or trendScore <= 20, "Trend Extreme",
+ "PAPAN GERAK: Trend ekstrem (" + str.tostring(math.round(trendScore)) + ")")
+
+// Alert: Momentum Oversold
+alertcondition(rsiOsHit, "RSI Oversold",
+ "PAPAN GERAK: RSI oversold (" + str.tostring(math.round(rsiValue)) + ")")
+
+// Alert: Momentum Overbought
+alertcondition(rsiObHit, "RSI Overbought",
+ "PAPAN GERAK: RSI overbought (" + str.tostring(math.round(rsiValue)) + ")")
+
+// Alert: Volume Spike
+alertcondition(volSpike, "Volume Spike",
+ "PAPAN GERAK: Volume spike (" + str.tostring(math.round(volRatio * 100)) + "% of MA)")
+
+// Alert: Smart Money Detected
+alertcondition(smDetected, "Smart Money Flow",
+ "PAPAN GERAK: Institutional flow terdeteksi")
+
+// Alert: Choppiness (ranging market)
+alertcondition(chopRanging, "Ranging Market",
+ "PAPAN GERAK: Pasar ranging (Choppiness: " + str.tostring(math.round(chopValue)) + ")")
+
