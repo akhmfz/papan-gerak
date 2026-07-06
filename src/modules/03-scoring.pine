@@ -27,7 +27,7 @@ f_trendScore() =>
         count += 2
 
     // Trend Alignment (weight: 2)
-    if not na(trendAligned)
+    if not na(adxValue)
         alignScore = trendAligned ? (adxTrend == 1 ? 100 : 0) : 50
         scoreSum += alignScore * 2
         count += 2
@@ -143,7 +143,7 @@ f_volumeScore() =>
         count += 3
 
     // OBV Agreement (weight: 3)
-    if not na(obvAgree)
+    if not na(obvValue)
         obvScore = obvAgree ? 80 : 30
         scoreSum += obvScore * 3
         count += 3
@@ -155,7 +155,7 @@ f_volumeScore() =>
         count += 2
 
     // Volume Spike Quality (weight: 1)
-    if not na(volSpike)
+    if not na(volRatio)
         spikeScore = volSpike ? 80 : 50
         scoreSum += spikeScore * 1
         count += 1
@@ -173,17 +173,17 @@ f_smartMoneyScore() =>
         count = 0.0
 
         // SM Detection (weight: 3)
-        if not na(smDetected)
+        if not na(volume)
             scoreSum += (smDetected ? 90 : 50) * 3
             count += 3
 
         // Body Volume (weight: 2)
-        if not na(smBodyVol)
+        if not na(volume)
             scoreSum += (smBodyVol ? 80 : 50) * 2
             count += 2
 
         // OBV Alignment (weight: 2)
-        if not na(obvAgree)
+        if not na(obvValue)
             scoreSum += (obvAgree ? 75 : 40) * 2
             count += 2
 
@@ -210,7 +210,7 @@ normMomentum = totalWeight > 0 ? weightMomentum / totalWeight * 100 : 25
 normVolatility = totalWeight > 0 ? weightVolatility / totalWeight * 100 : 25
 normVolume = totalWeight > 0 ? weightVolume / totalWeight * 100 : 25
 
-overallScore = na
+float overallScore = na
 if not na(trendScore) or not na(momentumScore) or not na(volatilityScore) or not na(volumeScore)
     sum = 0.0
     wSum = 0.0
