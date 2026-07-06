@@ -45,66 +45,102 @@ fontSz = f_getFontSize()
 // Render on last bar only
 if barstate.islast
     // --- Compact Mode ---
-    if compactModeInput
+    if modeInput == "Compact"
         tblCompact = table.new(tablePos, 2, 1, bgcolor = tableBgColor, border_width = 1, border_color = signalColor)
         overallDisplay = str.tostring(math.round(overallScore))
         table.cell(tblCompact, 0, 0, "PAPAN GERAK  " + signalText + "  " + overallDisplay,
          text_color = signalColor, text_size = fontSz, text_halign = text.align_center, width = 10)
 
     else
-        // --- Full Mode ---
-        offset_ = 0
-        rowCount = 7
+        // --- Standard & Detailed Mode ---
+        isDetailed = modeInput == "Detailed"
+        rowCount = 8
         if enableSmartMoney
-            rowCount := 8
+            rowCount := 9
+        if isDetailed
+            rowCount := rowCount + 4  // +1 sub-row per dimensi
         tblFull = table.new(tablePos, 3, rowCount, bgcolor = tableBgColor, border_width = 1, border_color = signalColor,
          frame_color = signalColor, frame_width = 1)
 
+        // Narrative row (full width)
+        table.merge_cells(tblFull, 0, 0, 3, 1)
+        table.cell(tblFull, 0, 0, narrative, text_color = headerColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
+
         // Header
-        table.cell(tblFull, 0, 0, "PAPAN GERAK", text_color = headerColor, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
+        table.cell(tblFull, 0, 1, "PAPAN GERAK", text_color = headerColor, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
         overallDisplay = str.tostring(math.round(overallScore))
-        table.cell(tblFull, 1, 0, overallDisplay, text_color = signalColor, text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
+        overallTip = not na(overallScore) ? (overallScore >= 70 ? "Bullish: overall >70" : overallScore >= 40 ? "Neutral: 40-70" : "Bearish: <40") : ""
+        table.cell(tblFull, 1, 1, overallDisplay, text_color = signalColor, text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = overallTip)
 
         // Signal
-        table.cell(tblFull, 0, 1, bahasaInput == "Indonesia" ? "Sinyal" : "Signal", text_color = labelColor, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
-        table.cell(tblFull, 1, 1, signalText, text_color = signalColor, text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
+        table.cell(tblFull, 0, 2, bahasaInput == "Indonesia" ? "Sinyal" : "Signal", text_color = labelColor, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
+        table.cell(tblFull, 1, 2, signalText, text_color = signalColor, text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
+
+        // Confluence display helper
+        f_confStr(n, total) =>
+            str.tostring(n) + "/" + str.tostring(total)
 
         // Trend
         trendDisplay = str.tostring(math.round(trendScore))
         trendArrow = not na(trendScore) ? (trendScore >= 70 ? "↑" : trendScore >= 40 ? "→" : "↓") : "—"
-        table.cell(tblFull, 0, 2, "  " + trendArrow + " " + (bahasaInput == "Indonesia" ? "Tren" : "Trend"), text_color = dimTrend, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
-        table.cell(tblFull, 1, 2, trendDisplay, text_color = f_colorScore(trendScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
+        trendConf = not na(trendBull) ? " (" + f_confStr(trendBull, trendTotal) + ")" : ""
+        table.cell(tblFull, 0, 3, "  " + trendArrow + " " + (bahasaInput == "Indonesia" ? "Tren" : "Trend"), text_color = dimTrend, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
+        table.cell(tblFull, 1, 3, trendDisplay + trendConf, text_color = f_colorScore(trendScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = trendDetail)
+        if isDetailed
+            table.cell(tblFull, 0, 4, "", text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
+            table.cell(tblFull, 1, 4, trendDetail, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
 
         // Momentum
         momDisplay = str.tostring(math.round(momentumScore))
         momArrow = not na(momentumScore) ? (momentumScore >= 70 ? "↑" : momentumScore >= 40 ? "→" : "↓") : "—"
-        table.cell(tblFull, 0, 3, "  " + momArrow + " " + (bahasaInput == "Indonesia" ? "Momentum" : "Momentum"), text_color = dimMomentum, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
-        table.cell(tblFull, 1, 3, momDisplay, text_color = f_colorScore(momentumScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
+        momConf = not na(momBull) ? " (" + f_confStr(momBull, momTotal) + ")" : ""
+        momBase = 5
+        if isDetailed
+            momBase := 6
+        table.cell(tblFull, 0, momBase, "  " + momArrow + " " + (bahasaInput == "Indonesia" ? "Momentum" : "Momentum"), text_color = dimMomentum, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
+        table.cell(tblFull, 1, momBase, momDisplay + momConf, text_color = f_colorScore(momentumScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = momDetail)
+        if isDetailed
+            table.cell(tblFull, 0, momBase + 1, "", text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
+            table.cell(tblFull, 1, momBase + 1, momDetail, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
 
         // Volatility
         volDisplay = str.tostring(math.round(volatilityScore))
         volArrow = not na(volatilityScore) ? (volatilityScore >= 70 ? "≈" : volatilityScore >= 40 ? "→" : "⚡") : "—"
-        table.cell(tblFull, 0, 4, "  " + volArrow + " " + (bahasaInput == "Indonesia" ? "Volatilitas" : "Volatility"), text_color = dimVolatility, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
-        table.cell(tblFull, 1, 4, volDisplay, text_color = f_colorScore(volatilityScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
+        volConf = not na(volBull) ? " (" + f_confStr(volBull, volTotal) + ")" : ""
+        volBase = momBase + (isDetailed ? 2 : 1)
+        table.cell(tblFull, 0, volBase, "  " + volArrow + " " + (bahasaInput == "Indonesia" ? "Volatilitas" : "Volatility"), text_color = dimVolatility, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
+        table.cell(tblFull, 1, volBase, volDisplay + volConf, text_color = f_colorScore(volatilityScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = volDetail)
+        if isDetailed
+            table.cell(tblFull, 0, volBase + 1, "", text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
+            table.cell(tblFull, 1, volBase + 1, volDetail, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
 
         // Volume
         volmDisplay = str.tostring(math.round(volumeScore))
         volmArrow = not na(volumeScore) ? (volumeScore >= 70 ? "↑" : volumeScore >= 40 ? "→" : "↓") : "—"
-        table.cell(tblFull, 0, 5, "  " + volmArrow + " " + (bahasaInput == "Indonesia" ? "Volume" : "Volume"), text_color = dimVolume, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
-        table.cell(tblFull, 1, 5, volmDisplay, text_color = f_colorScore(volumeScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
+        volmConf = not na(volmBull) ? " (" + f_confStr(volmBull, volmTotal) + ")" : ""
+        volmBase = volBase + (isDetailed ? 2 : 1)
+        table.cell(tblFull, 0, volmBase, "  " + volmArrow + " " + (bahasaInput == "Indonesia" ? "Volume" : "Volume"), text_color = dimVolume, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
+        table.cell(tblFull, 1, volmBase, volmDisplay + volmConf, text_color = f_colorScore(volumeScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = volmDetail)
+        if isDetailed
+            table.cell(tblFull, 0, volmBase + 1, "", text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
+            table.cell(tblFull, 1, volmBase + 1, volmDetail, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
 
         // Smart Money (if enabled)
         if enableSmartMoney
+            smBase = volmBase + (isDetailed ? 2 : 1)
             smDisplay = str.tostring(math.round(smartMoneyScore))
-            table.cell(tblFull, 0, 6, "  ◆ " + (bahasaInput == "Indonesia" ? "Smart Money" : "Smart Money"), text_color = color.rgb(255, 64, 129), text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
-            table.cell(tblFull, 1, 6, smDisplay, text_color = f_colorScore(smartMoneyScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
+            smTooltip = not na(smartMoneyScore) ? (smDetected ? "SM flow: detected" : "SM flow: none") : ""
+            table.cell(tblFull, 0, smBase, "  ◆ " + (bahasaInput == "Indonesia" ? "Smart Money" : "Smart Money"), text_color = color.rgb(255, 64, 129), text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
+            table.cell(tblFull, 1, smBase, smDisplay, text_color = f_colorScore(smartMoneyScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = smTooltip)
 
         // Legend (last row)
-        legendRow = enableSmartMoney ? 7 : 6
+        legendBase = volmBase + (isDetailed ? 2 : 1)
+        if enableSmartMoney
+            legendBase := legendBase + (isDetailed ? 1 : 1)
         legendText = bahasaInput == "Indonesia"
          ? "🔴 <40 Bearish | 🟡 40-70 Netral | 🟢 >70 Bullish"
          : "🔴 <40 Bearish | 🟡 40-70 Neutral | 🟢 >70 Bullish"
-        table.cell(tblFull, 0, legendRow, legendText, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
+        table.cell(tblFull, 0, legendBase, legendText, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
 
 // ==========================================================
 // 3. ALERTS

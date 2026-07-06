@@ -37,7 +37,7 @@ Edit modules → `npm run build` → Copy `src/PapanGerak.pine` → Paste di Tra
 |--------|-----------|---------|
 | 01-base.pine | 250 | 222 |
 | 02-data.pine | 200 | 146 |
-| 03-scoring.pine | 250 | 238 |
+| 03-scoring.pine | 400 | 393 |
 | 04-ui.pine | 200 | 135 |
 
 ## Commit Convention

@@ -236,3 +236,158 @@ if not na(trendScore) or not na(momentumScore) or not na(volatilityScore) or not
 // ==========================================================
 signalText = f_signalText(overallScore, bahasaInput)
 signalColor = f_colorScore(overallScore)
+
+// ==========================================================
+// 8. CONFLUENCE COUNTERS (berapa sub-indikator setuju per dimensi)
+// ==========================================================
+// Trend
+trendBull = 0
+trendTotal = 0
+if not na(emaPosition)
+    trendBull += emaPosition >= 1 ? 1 : 0
+    trendTotal += 1
+if not na(superTrendDir)
+    trendBull += superTrendDir == 1 ? 1 : 0
+    trendTotal += 1
+if not na(adxValue)
+    trendBull += adxTrend == 1 ? 1 : 0
+    trendTotal += 1
+if not na(adxValue)
+    trendBull += trendAligned ? 1 : 0
+    trendTotal += 1
+
+// Momentum
+momBull = 0
+momTotal = 0
+if not na(rsiValue)
+    momBull += rsiValue > 50 ? 1 : 0
+    momTotal += 1
+if not na(macdBullish)
+    momBull += macdBullish ? 1 : 0
+    momTotal += 1
+if not na(stochBullish)
+    momBull += stochBullish ? 1 : 0
+    momTotal += 1
+if not na(rsiDirection)
+    momBull += rsiDirection == 1 ? 1 : 0
+    momTotal += 1
+if not na(macdHistRising)
+    momBull += macdHistRising ? 1 : 0
+    momTotal += 1
+
+// Volatility ("ideal" = trending/tenang, bukan ranging/liar)
+volBull = 0
+volTotal = 0
+if not na(bbWidth) and not na(bbWidthAvg)
+    volBull += (bbWidth / bbWidthAvg >= 0.8 and bbWidth / bbWidthAvg <= 1.2) ? 1 : 0
+    volTotal += 1
+if not na(chopValue)
+    volBull += chopValue < 50 ? 1 : 0
+    volTotal += 1
+if not na(atrPercent)
+    volBull += (atrPercent >= 1.0 and atrPercent <= 3.0) ? 1 : 0
+    volTotal += 1
+if not na(bbPosition)
+    volBull += (bbPosition >= 30 and bbPosition <= 70) ? 1 : 0
+    volTotal += 1
+
+// Volume
+volmBull = 0
+volmTotal = 0
+if not na(volRatio)
+    volmBull += volRatio >= 0.8 ? 1 : 0
+    volmTotal += 1
+if not na(obvAgree)
+    volmBull += obvAgree ? 1 : 0
+    volmTotal += 1
+if not na(netVolSmooth)
+    volmBull += netVolSmooth > 0 ? 1 : 0
+    volmTotal += 1
+if not na(volSpike)
+    volmBull += volSpike ? 1 : 0
+    volmTotal += 1
+
+// ==========================================================
+// 9. TOOLTIP STRINGS (detail per dimensi untuk hover)
+// ==========================================================
+// Trend tooltip
+trendDetail = "—"
+if not na(emaPosition) and not na(trendScore)
+    emaLabel = emaPosition >= 1 ? "Price > EMA50 ✓" : emaPosition >= 0 ? "Price > EMA20" : "Price < EMAs ✗"
+    stLabel = not na(superTrendDir) ? (superTrendDir == 1 ? "SuperTrend Up ✓" : "SuperTrend Down ✗") : ""
+    adxLabel = not na(adxValue) ? (adxStrong ? (adxTrend == 1 ? "ADX " + str.tostring(math.round(adxValue)) + " (strong) ✓" : "ADX " + str.tostring(math.round(adxValue)) + " (strong, down)") : "ADX " + str.tostring(math.round(adxValue)) + " (weak)") : ""
+    alignLabel = not na(adxValue) ? (trendAligned ? "Aligned ✓" : "Mixed") : ""
+    trendDetail = emaLabel + " | " + stLabel + " | " + adxLabel + " | " + alignLabel
+
+// Momentum tooltip
+momDetail = "—"
+if not na(rsiValue) and not na(momentumScore)
+    rsiLbl = rsiValue >= rsiOb ? "RSI " + str.tostring(math.round(rsiValue)) + " Overbought" : rsiValue <= rsiOs ? "RSI " + str.tostring(math.round(rsiValue)) + " Oversold" : "RSI " + str.tostring(math.round(rsiValue)) + " Netral"
+    macdLbl = macdBullish ? (macdHistRising ? "MACD Bullish + hist ↑" : "MACD Bullish + hist ↓") : (macdHistRising ? "MACD Bearish + hist ↑" : "MACD Bearish + hist ↓")
+    stochLbl = not na(stochKVal) ? (stochKVal >= stochOb ? "Stoch Overbought" : stochKVal <= stochOs ? "Stoch Oversold" : "Stoch " + str.tostring(math.round(stochKVal)) + " Netral") : ""
+    momDetail = rsiLbl + " | " + macdLbl + " | " + stochLbl
+
+// Volatility tooltip
+volDetail = "—"
+if not na(bbWidth) and not na(atrPercent) and not na(volatilityScore)
+    bbRatio = bbWidth / bbWidthAvg
+    bbLbl = bbRatio >= 0.8 and bbRatio <= 1.2 ? "BB Moderate ✓" : bbRatio < 0.8 ? "BB Squeeze" : "BB Expand"
+    chopLbl = not na(chopValue) ? (chopValue <= 38 ? "Chop " + str.tostring(math.round(chopValue)) + " Trending ✓" : chopValue >= 62 ? "Chop " + str.tostring(math.round(chopValue)) + " Ranging" : "Chop " + str.tostring(math.round(chopValue)) + " Netral") : ""
+    atrLbl = "ATR " + str.tostring(math.round(atrPercent * 10) / 10) + "%"
+    bbPosLbl = not na(bbPosition) ? (bbPosition >= 30 and bbPosition <= 70 ? "BB Pos " + str.tostring(math.round(bbPosition)) + " Mid ✓" : "BB Pos " + str.tostring(math.round(bbPosition)) + " Edge") : ""
+    volDetail = bbLbl + " | " + chopLbl + " | " + atrLbl + " | " + bbPosLbl
+
+// Volume tooltip
+volmDetail = "—"
+if not na(volRatio) and not na(volumeScore)
+    vrLbl = volRatio >= volSpikeMult ? "Vol " + str.tostring(math.round(volRatio * 10) / 10) + "x (spike!)" : volRatio >= 0.8 ? "Vol " + str.tostring(math.round(volRatio * 10) / 10) + "x (healthy) ✓" : "Vol " + str.tostring(math.round(volRatio * 10) / 10) + "x (low)"
+    obvLbl = not na(obvAgree) ? (obvAgree ? "OBV Agree ✓" : "OBV Diverge ✗") : ""
+    netLbl = not na(netVolSmooth) ? (netVolSmooth > 0 ? "Net Vol + Bullish" : "Net Vol - Bearish") : ""
+    volmDetail = vrLbl + " | " + obvLbl + " | " + netLbl
+
+// ==========================================================
+// 10. NARRATIVE (1 baris insight untuk trader)
+// ==========================================================
+f_narrative() =>
+    lang = bahasaInput
+
+    // Konflik: Momentum kuat tapi RSI overbought
+    if not na(momentumScore) and not na(rsiValue) and not na(overallScore)
+        if momentumScore >= 65 and rsiValue >= rsiOb
+            lang == "Indonesia" ? "⚠️  Momentum kuat tapi RSI overbought — waspada koreksi" : "⚠️  Strong momentum but RSI overbought — watch for pullback"
+
+        // RSI oversold + volume spike = potensi bounce
+        else if rsiValue <= rsiOs and not na(volSpike) and volSpike
+            lang == "Indonesia" ? "📈 RSI oversold + volume spike — potensi bounce" : "📈 RSI oversold + volume spike — potential bounce"
+
+        // Tren lemah & volatil
+        else if not na(trendScore) and not na(volatilityScore)
+            if trendScore < 40 and volatilityScore < 40
+                lang == "Indonesia" ? "⚠️  Tren lemah & volatil — hindari entry baru" : "⚠️  Weak trend & volatile — avoid new entries"
+
+        // OBV divergen
+        else if not na(close) and not na(obvAgree)
+            if close > close[10] and not obvAgree
+                lang == "Indonesia" ? "⚠️  Harga naik tapi OBV divergen — konfirmasi dulu" : "⚠️  Price up but OBV diverging — confirm first"
+
+        // Volume spike + trend align = konfirmasi
+        else if not na(trendScore) and not na(volmBull) and not na(volmTotal)
+            if trendScore >= 65 and volmBull >= 3 and volmTotal >= 3
+                lang == "Indonesia" ? "✅ Volume konfirmasi tren — bias searah" : "✅ Volume confirms trend — trade with trend"
+
+        // Ranging market
+        else if not na(chopRanging) and chopRanging
+            lang == "Indonesia" ? "⏳ Pasar ranging — tunggu breakout" : "⏳ Ranging market — wait for breakout"
+
+        // Semua align
+        else if not na(overallScore)
+            if overallScore >= 70 and volmBull >= 3 and trendScore >= 65
+                lang == "Indonesia" ? "✅ Semua dimensi align — bias bullish" : "✅ All dimensions aligned — bullish bias"
+            else if overallScore <= 30 and volmBull <= 1 and trendScore <= 35
+                lang == "Indonesia" ? "✅ Semua dimensi align — bias bearish" : "✅ All dimensions aligned — bearish bias"
+            else
+                lang == "Indonesia" ? "💡 Kondisi campuran — cek detail per dimensi" : "💡 Mixed conditions — check per-dimension details"
+    else
+        lang == "Indonesia" ? "⏳ Menunggu data..." : "⏳ Waiting for data..."
+
+narrative = f_narrative()

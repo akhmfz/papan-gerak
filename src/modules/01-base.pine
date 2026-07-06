@@ -23,7 +23,7 @@ tablePositionInput = input.string(
     display = display.data_window
 )
 fontSizeInput = input.int(1, "Font Size", minval = 1, maxval = 3, display = display.data_window)
-compactModeInput = input.bool(true, "Compact Mode", display = display.data_window)
+modeInput = input.string("Standard", "Mode", options = ["Compact", "Standard", "Detailed"], display = display.data_window)
 bahasaInput = input.string("Indonesia", "Bahasa", options = ["Indonesia", "English"], display = display.data_window)
 colorThemeInput = input.string("Gelap", "Color Theme", options = ["Gelap", "Terang", "Bursa Hijau", "Biru Nusantara", "Emas Premium"], display = display.data_window)
 
