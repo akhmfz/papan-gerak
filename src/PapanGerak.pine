@@ -867,6 +867,8 @@ narrative = f_narrative()
 // Zone tracking (untuk Composite Score mode)
 currentZone = na(overallScore) ? -1 : (overallScore >= 70 ? 2 : overallScore >= 40 ? 1 : 0)
 var int prevZone = -1
+if prevZone < 0 and currentZone >= 0
+    prevZone := currentZone
 var int lastSignalBar = -1
 var float signalEntryPrice = na
 var int signalEntryBar = na

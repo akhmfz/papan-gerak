@@ -22,7 +22,7 @@ done
 declare -A BUDGET=(
     ["01-base.pine"]=280
     ["02-data.pine"]=210
-    ["03-scoring.pine"]=620
+    ["03-scoring.pine"]=630
     ["04-ui.pine"]=240
 )
 
