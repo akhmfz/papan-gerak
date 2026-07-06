@@ -784,7 +784,21 @@ if not na(volRatio) and not na(volumeScore)
     volmDetail := vrLbl + " | " + obvLbl + " | " + netLbl
 
 // ==========================================================
-// 10. NARRATIVE (1 baris insight untuk trader)
+// 10. MULTI-TIMEFRAME CONFLICT DETECTION
+// ==========================================================
+mtfConflict = enableMtfFilter and not na(mtfTrendScore) and not na(overallScore) and (
+    (mtfTrendScore >= 50 and overallScore < 40) or
+    (mtfTrendScore < 50 and overallScore >= 70)
+)
+
+mtfWarning = enableMtfFilter and not na(mtfTrendScore)
+ ? (mtfTrendScore >= 50
+     ? (bahasaInput == "Indonesia" ? "MTF ▲ " + str.tostring(math.round(mtfTrendScore)) : "MTF ▲ " + str.tostring(math.round(mtfTrendScore)))
+     : (bahasaInput == "Indonesia" ? "MTF ▼ " + str.tostring(math.round(mtfTrendScore)) : "MTF ▼ " + str.tostring(math.round(mtfTrendScore))))
+ : ""
+
+// ==========================================================
+// 11. NARRATIVE (1 baris insight untuk trader)
 // ==========================================================
 f_narrative() =>
     lang = bahasaInput
@@ -839,21 +853,6 @@ f_narrative() =>
     else
         lang == "Indonesia" ? "⏳ Menunggu data..." : "⏳ Waiting for data..."
 
-// ==========================================================
-// 11. MULTI-TIMEFRAME CONFLICT DETECTION
-// ==========================================================
-// Defined BEFORE f_narrative() so the narrative function can reference it.
-mtfConflict = enableMtfFilter and not na(mtfTrendScore) and not na(overallScore) and (
-    (mtfTrendScore >= 50 and overallScore < 40) or
-    (mtfTrendScore < 50 and overallScore >= 70)
-)
-
-mtfWarning = enableMtfFilter and not na(mtfTrendScore)
- ? (mtfTrendScore >= 50
-     ? (bahasaInput == "Indonesia" ? "MTF ▲ " + str.tostring(math.round(mtfTrendScore)) : "MTF ▲ " + str.tostring(math.round(mtfTrendScore)))
-     : (bahasaInput == "Indonesia" ? "MTF ▼ " + str.tostring(math.round(mtfTrendScore)) : "MTF ▼ " + str.tostring(math.round(mtfTrendScore))))
- : ""
-
 narrative = f_narrative()
 
 // ==========================================================
@@ -879,19 +878,12 @@ chopFilterOk = signalFilterMode == "Disabled" or (not na(chopValue) and (
 signalTriggered = zoneChanged and minBarsOk and chopFilterOk
 
 // Mode B: Pullback (trend pullback ke EMA20 + RSI rebound)
-pullbackTrigger = entryTriggerMode == "Pullback" and
-    not na(trendScore) and trendScore >= 65 and
-    not na(emaFast) and not na(atrValue) and math.abs(close - emaFast) <= atrValue * 1.5 and
-    not na(rsiValue) and rsiValue <= 50 and rsiDirection == 1 and
-    minBarsOk and chopFilterOk
+pullbackTrigger = entryTriggerMode == "Pullback" and not na(trendScore) and trendScore >= 65 and not na(emaFast) and not na(atrValue) and math.abs(close - emaFast) <= atrValue * 1.5 and not na(rsiValue) and rsiValue <= 50 and rsiDirection == 1 and minBarsOk and chopFilterOk
 
 // Mode C: Breakout (price break recent high/low + volume confirmation)
 recentHigh = ta.highest(high, 20)
 recentLow = ta.lowest(low, 20)
-breakoutTrigger = entryTriggerMode == "Breakout" and
-    not na(volumeScore) and volumeScore >= 60 and
-    (close >= recentHigh or close <= recentLow) and
-    minBarsOk and chopFilterOk
+breakoutTrigger = entryTriggerMode == "Breakout" and not na(volumeScore) and volumeScore >= 60 and (close >= recentHigh or close <= recentLow) and minBarsOk and chopFilterOk
 
 // Unified entry trigger
 entryTriggered = entryTriggerMode == "Composite Score"
