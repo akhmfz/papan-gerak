@@ -152,7 +152,7 @@ if barstate.islast
 // 3. ALERTS
 // ==========================================================
 // Alert: Signal Change
-if ta.cross(overallScore, 70) or ta.cross(overallScore, 40)
+if cross40 or cross70
     alert("PAPAN GERAK: Sinyal berubah menjadi " + signalText)
 
 // Alert: Trend Extreme

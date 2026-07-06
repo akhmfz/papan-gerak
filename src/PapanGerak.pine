@@ -754,7 +754,7 @@ f_narrative() =>
                 lang == "Indonesia" ? "✅ Volume konfirmasi tren — bias searah" : "✅ Volume confirms trend — trade with trend"
 
         // Ranging market
-        else if not na(chopRanging) and chopRanging
+        else if not na(chopValue) and chopRanging
             lang == "Indonesia" ? "⏳ Pasar ranging — tunggu breakout" : "⏳ Ranging market — wait for breakout"
 
         // Semua align
@@ -773,18 +773,22 @@ narrative = f_narrative()
 // ==========================================================
 // 11. INLINE VALIDATION (forward return sejak sinyal terakhir)
 // ==========================================================
+// Global cross detection (must be outside conditional blocks)
+cross40 = ta.cross(overallScore, 40)
+cross70 = ta.cross(overallScore, 70)
+
 var float signalEntryPrice = na
 var int signalEntryBar = na
 var int signalDirection = 0  // 1 = bullish (cross above 40/70), -1 = bearish (cross below)
 var string signalLabel = ""
 
 // Track signal changes
-if ta.cross(overallScore, 40)
+if cross40
     signalEntryPrice := close
     signalEntryBar := bar_index
     signalDirection := overallScore > 40 ? 1 : -1
     signalLabel := overallScore > 40 ? "Cross >40 (Bullish)" : "Cross <40 (Bearish)"
-else if ta.cross(overallScore, 70)
+if cross70
     signalEntryPrice := close
     signalEntryBar := bar_index
     signalDirection := overallScore > 70 ? 1 : -1
@@ -952,7 +956,7 @@ if barstate.islast
 // 3. ALERTS
 // ==========================================================
 // Alert: Signal Change
-if ta.cross(overallScore, 70) or ta.cross(overallScore, 40)
+if cross40 or cross70
     alert("PAPAN GERAK: Sinyal berubah menjadi " + signalText)
 
 // Alert: Trend Extreme
