@@ -262,16 +262,16 @@ momTotal = 0
 if not na(rsiValue)
     momBull += rsiValue > 50 ? 1 : 0
     momTotal += 1
-if not na(macdBullish)
+if not na(macdLine)
     momBull += macdBullish ? 1 : 0
     momTotal += 1
-if not na(stochBullish)
+if not na(stochKVal)
     momBull += stochBullish ? 1 : 0
     momTotal += 1
 if not na(rsiDirection)
     momBull += rsiDirection == 1 ? 1 : 0
     momTotal += 1
-if not na(macdHistRising)
+if not na(macdHist)
     momBull += macdHistRising ? 1 : 0
     momTotal += 1
 
@@ -297,13 +297,13 @@ volmTotal = 0
 if not na(volRatio)
     volmBull += volRatio >= 0.8 ? 1 : 0
     volmTotal += 1
-if not na(obvAgree)
+if not na(obvValue)
     volmBull += obvAgree ? 1 : 0
     volmTotal += 1
 if not na(netVolSmooth)
     volmBull += netVolSmooth > 0 ? 1 : 0
     volmTotal += 1
-if not na(volSpike)
+if not na(volRatio)
     volmBull += volSpike ? 1 : 0
     volmTotal += 1
 
@@ -317,7 +317,7 @@ if not na(emaPosition) and not na(trendScore)
     stLabel = not na(superTrendDir) ? (superTrendDir == 1 ? "SuperTrend Up ✓" : "SuperTrend Down ✗") : ""
     adxLabel = not na(adxValue) ? (adxStrong ? (adxTrend == 1 ? "ADX " + str.tostring(math.round(adxValue)) + " (strong) ✓" : "ADX " + str.tostring(math.round(adxValue)) + " (strong, down)") : "ADX " + str.tostring(math.round(adxValue)) + " (weak)") : ""
     alignLabel = not na(adxValue) ? (trendAligned ? "Aligned ✓" : "Mixed") : ""
-    trendDetail = emaLabel + " | " + stLabel + " | " + adxLabel + " | " + alignLabel
+    trendDetail := emaLabel + " | " + stLabel + " | " + adxLabel + " | " + alignLabel
 
 // Momentum tooltip
 momDetail = "—"
@@ -325,7 +325,7 @@ if not na(rsiValue) and not na(momentumScore)
     rsiLbl = rsiValue >= rsiOb ? "RSI " + str.tostring(math.round(rsiValue)) + " Overbought" : rsiValue <= rsiOs ? "RSI " + str.tostring(math.round(rsiValue)) + " Oversold" : "RSI " + str.tostring(math.round(rsiValue)) + " Netral"
     macdLbl = macdBullish ? (macdHistRising ? "MACD Bullish + hist ↑" : "MACD Bullish + hist ↓") : (macdHistRising ? "MACD Bearish + hist ↑" : "MACD Bearish + hist ↓")
     stochLbl = not na(stochKVal) ? (stochKVal >= stochOb ? "Stoch Overbought" : stochKVal <= stochOs ? "Stoch Oversold" : "Stoch " + str.tostring(math.round(stochKVal)) + " Netral") : ""
-    momDetail = rsiLbl + " | " + macdLbl + " | " + stochLbl
+    momDetail := rsiLbl + " | " + macdLbl + " | " + stochLbl
 
 // Volatility tooltip
 volDetail = "—"
@@ -335,15 +335,15 @@ if not na(bbWidth) and not na(atrPercent) and not na(volatilityScore)
     chopLbl = not na(chopValue) ? (chopValue <= 38 ? "Chop " + str.tostring(math.round(chopValue)) + " Trending ✓" : chopValue >= 62 ? "Chop " + str.tostring(math.round(chopValue)) + " Ranging" : "Chop " + str.tostring(math.round(chopValue)) + " Netral") : ""
     atrLbl = "ATR " + str.tostring(math.round(atrPercent * 10) / 10) + "%"
     bbPosLbl = not na(bbPosition) ? (bbPosition >= 30 and bbPosition <= 70 ? "BB Pos " + str.tostring(math.round(bbPosition)) + " Mid ✓" : "BB Pos " + str.tostring(math.round(bbPosition)) + " Edge") : ""
-    volDetail = bbLbl + " | " + chopLbl + " | " + atrLbl + " | " + bbPosLbl
+    volDetail := bbLbl + " | " + chopLbl + " | " + atrLbl + " | " + bbPosLbl
 
 // Volume tooltip
 volmDetail = "—"
 if not na(volRatio) and not na(volumeScore)
     vrLbl = volRatio >= volSpikeMult ? "Vol " + str.tostring(math.round(volRatio * 10) / 10) + "x (spike!)" : volRatio >= 0.8 ? "Vol " + str.tostring(math.round(volRatio * 10) / 10) + "x (healthy) ✓" : "Vol " + str.tostring(math.round(volRatio * 10) / 10) + "x (low)"
-    obvLbl = not na(obvAgree) ? (obvAgree ? "OBV Agree ✓" : "OBV Diverge ✗") : ""
+    obvLbl = not na(obvValue) ? (obvAgree ? "OBV Agree ✓" : "OBV Diverge ✗") : ""
     netLbl = not na(netVolSmooth) ? (netVolSmooth > 0 ? "Net Vol + Bullish" : "Net Vol - Bearish") : ""
-    volmDetail = vrLbl + " | " + obvLbl + " | " + netLbl
+    volmDetail := vrLbl + " | " + obvLbl + " | " + netLbl
 
 // ==========================================================
 // 10. NARRATIVE (1 baris insight untuk trader)
@@ -357,7 +357,7 @@ f_narrative() =>
             lang == "Indonesia" ? "⚠️  Momentum kuat tapi RSI overbought — waspada koreksi" : "⚠️  Strong momentum but RSI overbought — watch for pullback"
 
         // RSI oversold + volume spike = potensi bounce
-        else if rsiValue <= rsiOs and not na(volSpike) and volSpike
+        else if rsiValue <= rsiOs and not na(volRatio) and volSpike
             lang == "Indonesia" ? "📈 RSI oversold + volume spike — potensi bounce" : "📈 RSI oversold + volume spike — potential bounce"
 
         // Tren lemah & volatil
@@ -366,7 +366,7 @@ f_narrative() =>
                 lang == "Indonesia" ? "⚠️  Tren lemah & volatil — hindari entry baru" : "⚠️  Weak trend & volatile — avoid new entries"
 
         // OBV divergen
-        else if not na(close) and not na(obvAgree)
+        else if not na(close) and not na(obvValue)
             if close > close[10] and not obvAgree
                 lang == "Indonesia" ? "⚠️  Harga naik tapi OBV divergen — konfirmasi dulu" : "⚠️  Price up but OBV diverging — confirm first"
 
