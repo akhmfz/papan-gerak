@@ -52,6 +52,8 @@ Signal                              BULLISH
 
 ## Reading the Table
 
+> 📖 **Full guide from table to entry decision:** [`PANDUAN-TRADING.md`](PANDUAN-TRADING.md) — the complete 10-step reading flow, confluence interpretation, and entry mode examples.
+
 ### 1. 📊 Narrative Row (top)
 1-line insight. Highest priority conflicts first:
 

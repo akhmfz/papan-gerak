@@ -49,6 +49,8 @@ Sama seperti Standard, tapi setiap dimensi punya baris tambahan yang nunjukin st
 
 ## Cara Membaca Tabel (Standard Mode)
 
+> 📖 **Panduan lengkap dari tabel ke keputusan entry:** [`PANDUAN-TRADING.md`](PANDUAN-TRADING.md) — alur baca 10 langkah, interpretasi confluence, contoh tiap mode entry.
+
 ### 1. 📊 Baris Narasi (paling atas)
 Insight 1 baris dari kondisi pasar. Prioritas dari konflik tertinggi:
 
