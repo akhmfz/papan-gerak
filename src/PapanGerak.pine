@@ -1,10 +1,17 @@
 // @version=6
 // 01-base.pine — Papan Gerak: Header, Inputs, Tema, Utilities
 // ==========================================================
+// Papan Gerak — Technical Analysis Dashboard
+// Author : Muhammad Akhmal (AKHMFZ)
+// Contact: akhmfz.analytics@gmail.com
+// License: MIT
+// Built   : Pine Script v6 for TradingView
+// ==========================================================
 
 // --- Indicator Definition ---
 indicator(
     "Saham: Papan Gerak By. Akhmfz",
+    shorttitle = "Papan Gerak",
     overlay = false,
     format = format.price,
     precision = 0,
