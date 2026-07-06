@@ -791,11 +791,13 @@ mtfConflict = enableMtfFilter and not na(mtfTrendScore) and not na(overallScore)
     (mtfTrendScore < 50 and overallScore >= 70)
 )
 
-mtfWarning = enableMtfFilter and not na(mtfTrendScore)
- ? (mtfTrendScore >= 50
-     ? (bahasaInput == "Indonesia" ? "MTF ▲ " + str.tostring(math.round(mtfTrendScore)) : "MTF ▲ " + str.tostring(math.round(mtfTrendScore)))
-     : (bahasaInput == "Indonesia" ? "MTF ▼ " + str.tostring(math.round(mtfTrendScore)) : "MTF ▼ " + str.tostring(math.round(mtfTrendScore))))
- : ""
+mtfWarning = if enableMtfFilter and not na(mtfTrendScore)
+    if mtfTrendScore >= 50
+        (bahasaInput == "Indonesia" ? "MTF ▲ " + str.tostring(math.round(mtfTrendScore)) : "MTF ▲ " + str.tostring(math.round(mtfTrendScore)))
+    else
+        (bahasaInput == "Indonesia" ? "MTF ▼ " + str.tostring(math.round(mtfTrendScore)) : "MTF ▼ " + str.tostring(math.round(mtfTrendScore)))
+else
+    ""
 
 // ==========================================================
 // 11. NARRATIVE (1 baris insight untuk trader)
@@ -835,13 +837,16 @@ f_narrative() =>
         // 8. MTF conflict
         else if enableMtfFilter and not na(mtfTrendScore) and mtfConflict and not na(overallScore)
             isBullishDaily = overallScore >= 70
-            lang == "Indonesia"
-             ? (isBullishDaily
-                 ? "⚠️  Tren " + mtfTimeframe + " bearish — sinyal harian perlu konfirmasi"
-                 : "⚠️  Tren " + mtfTimeframe + " bullish — jangan short saat tren besar naik")
-             : (isBullishDaily
-                 ? "⚠️  " + mtfTimeframe + " trend bearish — confirm daily signal"
-                 : "⚠️  " + mtfTimeframe + " trend bullish — don't short against higher TF")
+            if lang == "Indonesia"
+                if isBullishDaily
+                    "⚠️  Tren " + mtfTimeframe + " bearish — sinyal harian perlu konfirmasi"
+                else
+                    "⚠️  Tren " + mtfTimeframe + " bullish — jangan short saat tren besar naik"
+            else
+                if isBullishDaily
+                    "⚠️  " + mtfTimeframe + " trend bearish — confirm daily signal"
+                else
+                    "⚠️  " + mtfTimeframe + " trend bullish — don't short against higher TF"
 
         // 9. Ranging market
         else if not na(chopValue) and chopRanging
@@ -886,33 +891,40 @@ recentLow = ta.lowest(low, 20)
 breakoutTrigger = entryTriggerMode == "Breakout" and not na(volumeScore) and volumeScore >= 60 and (close >= recentHigh or close <= recentLow) and minBarsOk and chopFilterOk
 
 // Unified entry trigger
-entryTriggered = entryTriggerMode == "Composite Score"
-    ? signalTriggered
-    : entryTriggerMode == "Pullback"
-        ? pullbackTrigger
-        : breakoutTrigger
+entryTriggered = if entryTriggerMode == "Composite Score"
+    signalTriggered
+else if entryTriggerMode == "Pullback"
+    pullbackTrigger
+else
+    breakoutTrigger
 
 // Signal direction & label
 if entryTriggered
-    signalDir = entryTriggerMode == "Composite Score"
-        ? (currentZone > prevZone ? 1 : -1)
-        : entryTriggerMode == "Pullback"
-            ? 1
-            : (close >= recentHigh ? 1 : -1)
+    signalDir = if entryTriggerMode == "Composite Score"
+        (currentZone > prevZone ? 1 : -1)
+    else if entryTriggerMode == "Pullback"
+        1
+    else
+        (close >= recentHigh ? 1 : -1)
 
-    signalLbl = entryTriggerMode == "Composite Score"
-        ? (signalDir > 0
-            ? (prevZone == 0
-                ? (bahasaInput == "Indonesia" ? "Bearish→Netral (Bullish)" : "Bearish→Neutral (Bullish)")
-                : (bahasaInput == "Indonesia" ? "Netral→Bullish" : "Neutral→Bullish"))
-            : (prevZone == 2
-                ? (bahasaInput == "Indonesia" ? "Bullish→Netral (Bearish)" : "Bullish→Neutral (Bearish)")
-                : (bahasaInput == "Indonesia" ? "Netral→Bearish" : "Neutral→Bearish")))
-        : entryTriggerMode == "Pullback"
-            ? (bahasaInput == "Indonesia" ? "Pullback Entry" : "Pullback Entry")
-            : signalDir > 0
-                ? (bahasaInput == "Indonesia" ? "Breakout Long" : "Breakout Long")
-                : (bahasaInput == "Indonesia" ? "Breakout Short" : "Breakout Short")
+    signalLbl = if entryTriggerMode == "Composite Score"
+        if signalDir > 0
+            if prevZone == 0
+                (bahasaInput == "Indonesia" ? "Bearish→Netral (Bullish)" : "Bearish→Neutral (Bullish)")
+            else
+                (bahasaInput == "Indonesia" ? "Netral→Bullish" : "Neutral→Bullish")
+        else
+            if prevZone == 2
+                (bahasaInput == "Indonesia" ? "Bullish→Netral (Bearish)" : "Bullish→Neutral (Bearish)")
+            else
+                (bahasaInput == "Indonesia" ? "Netral→Bearish" : "Neutral→Bearish")
+    else if entryTriggerMode == "Pullback"
+        (bahasaInput == "Indonesia" ? "Pullback Entry" : "Pullback Entry")
+    else
+        if signalDir > 0
+            (bahasaInput == "Indonesia" ? "Breakout Long" : "Breakout Long")
+        else
+            (bahasaInput == "Indonesia" ? "Breakout Short" : "Breakout Short")
 
     signalEntryPrice := close
     signalEntryBar := bar_index
@@ -1014,9 +1026,10 @@ targetPrice = hasRisk ? riskEntryPrice + riskAmount * targetR * riskDirection : 
 slPct = hasRisk and riskEntryPrice != 0 ? riskAmount / riskEntryPrice * 100 : na
 targetPct = hasRisk and riskEntryPrice != 0 ? math.abs(targetPrice - riskEntryPrice) / riskEntryPrice * 100 : na
 
-riskBaseLabel = not hasRisk
- ? "—"
- : "SL: " + str.tostring(math.round(slPrice)) + " (" + (riskDirection == 1 ? "-" : "+") + str.tostring(math.round(slPct)) + "%)  |  Tgt: " + str.tostring(math.round(targetPrice)) + " (" + (riskDirection == 1 ? "+" : "-") + str.tostring(math.round(targetPct)) + "%)  [" + str.tostring(targetR) + "R]"
+riskBaseLabel = if hasRisk
+    "SL: " + str.tostring(math.round(slPrice)) + " (" + (riskDirection == 1 ? "-" : "+") + str.tostring(math.round(slPct)) + "%)  |  Tgt: " + str.tostring(math.round(targetPrice)) + " (" + (riskDirection == 1 ? "+" : "-") + str.tostring(math.round(targetPct)) + "%)  [" + str.tostring(targetR) + "R]"
+else
+    "—"
 
 // ==========================================================
 // 15. POSITION SIZING
@@ -1027,9 +1040,10 @@ riskRpK = not na(riskRp) and not na(suggestedLots) ? math.round(riskRp / 1000) :
 riskRpDisplay = not na(riskRpK) ? (riskRpK >= 1000 ? "Rp" + str.tostring(math.round(riskRpK / 1000)) + "jt" : "Rp" + str.tostring(riskRpK) + "rb") : ""
 lotLabel = bahasaInput == "Indonesia" ? "Lot" : "Lots"
 
-suggestedLotStr = hasRisk and showPositionSizing and not na(suggestedLots) and suggestedLots > 0
- ? "  |  " + lotLabel + ": " + str.tostring(math.max(1, suggestedLots)) + "  |  " + riskRpDisplay + " (" + str.tostring(riskPctInput) + "%)"
- : ""
+suggestedLotStr = if hasRisk and showPositionSizing and not na(suggestedLots) and suggestedLots > 0
+    "  |  " + lotLabel + ": " + str.tostring(math.max(1, suggestedLots)) + "  |  " + riskRpDisplay + " (" + str.tostring(riskPctInput) + "%)"
+else
+    ""
 
 riskLevelLabel = riskBaseLabel + suggestedLotStr
 
@@ -1186,17 +1200,13 @@ if barstate.islast
         if enableSmartMoney
             riskBase := riskBase + 1
         if showRiskLevels
-            riskTooltip = bahasaInput == "Indonesia"
-             ? "Level referensi — bukan rekomendasi. Sesuaikan dgn toleransi risiko Anda."
-             : "Reference levels — not a recommendation. Adjust to your risk tolerance."
+            riskTooltip = bahasaInput == "Indonesia" ? "Level referensi — bukan rekomendasi. Sesuaikan dgn toleransi risiko Anda." : "Reference levels — not a recommendation. Adjust to your risk tolerance."
             table.cell(tblFull, 0, riskBase, "  ⚠️ " + (bahasaInput == "Indonesia" ? "Level Referensi" : "Risk Levels"), text_color = color.rgb(255, 64, 129), text_size = size.small, text_halign = text.align_left, bgcolor = bgColor, tooltip = riskTooltip)
             table.cell(tblFull, 1, riskBase, riskLevelLabel, text_color = labelColor, text_size = size.small, text_halign = text.align_right, bgcolor = bgColor, tooltip = riskTooltip)
 
         // Legend (last row)
         legendBase = riskBase + 1
-        legendText = bahasaInput == "Indonesia"
-         ? "🔴 <40 Bearish | 🟡 40-70 Netral | 🟢 >70 Bullish"
-         : "🔴 <40 Bearish | 🟡 40-70 Neutral | 🟢 >70 Bullish"
+        legendText = bahasaInput == "Indonesia" ? "🔴 <40 Bearish | 🟡 40-70 Netral | 🟢 >70 Bullish" : "🔴 <40 Bearish | 🟡 40-70 Neutral | 🟢 >70 Bullish"
         table.cell(tblFull, 0, legendBase, legendText, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
 
 // ==========================================================
@@ -1211,52 +1221,59 @@ f_webhookMsg(eventType, params) =>
 
 // Alert: Entry trigger (mode-aware)
 if entryTriggered
-    msg = webhookFormat == "JSON"
-     ? f_webhookMsg("entry", str.format("mode={0}|action={1}|price={2}|score={3}|signal={4}",
-         entryTriggerMode, signalDirection > 0 ? "buy" : "sell", str.tostring(close),
-         str.tostring(math.round(overallScore)), signalLabel))
-     : str.format("PAPAN GERAK ({0}): {1} → {2}", entryTriggerMode, signalLabel, signalText)
+    msg = if webhookFormat == "JSON"
+        f_webhookMsg("entry", str.format("mode={0}|action={1}|price={2}|score={3}|signal={4}",
+            entryTriggerMode, signalDirection > 0 ? "buy" : "sell", str.tostring(close),
+            str.tostring(math.round(overallScore)), signalLabel))
+    else
+        str.format("PAPAN GERAK ({0}): {1} → {2}", entryTriggerMode, signalLabel, signalText)
     alert(msg)
 
 // Alert: Trend Extreme
 if trendScore >= 80 or trendScore <= 20
-    msg = webhookFormat == "JSON"
-     ? f_webhookMsg("trend_extreme", "trendScore=" + str.tostring(math.round(trendScore)))
-     : str.format("PAPAN GERAK: Trend ekstrem ({0})", str.tostring(math.round(trendScore)))
+    msg = if webhookFormat == "JSON"
+        f_webhookMsg("trend_extreme", "trendScore=" + str.tostring(math.round(trendScore)))
+    else
+        str.format("PAPAN GERAK: Trend ekstrem ({0})", str.tostring(math.round(trendScore)))
     alert(msg)
 
 // Alert: Momentum Oversold
 if rsiOsHit
-    msg = webhookFormat == "JSON"
-     ? f_webhookMsg("rsi_oversold", "rsi=" + str.tostring(math.round(rsiValue)))
-     : str.format("PAPAN GERAK: RSI oversold ({0})", str.tostring(math.round(rsiValue)))
+    msg = if webhookFormat == "JSON"
+        f_webhookMsg("rsi_oversold", "rsi=" + str.tostring(math.round(rsiValue)))
+    else
+        str.format("PAPAN GERAK: RSI oversold ({0})", str.tostring(math.round(rsiValue)))
     alert(msg)
 
 // Alert: Momentum Overbought
 if rsiObHit
-    msg = webhookFormat == "JSON"
-     ? f_webhookMsg("rsi_overbought", "rsi=" + str.tostring(math.round(rsiValue)))
-     : str.format("PAPAN GERAK: RSI overbought ({0})", str.tostring(math.round(rsiValue)))
+    msg = if webhookFormat == "JSON"
+        f_webhookMsg("rsi_overbought", "rsi=" + str.tostring(math.round(rsiValue)))
+    else
+        str.format("PAPAN GERAK: RSI overbought ({0})", str.tostring(math.round(rsiValue)))
     alert(msg)
 
 // Alert: Volume Spike
 if volSpike
-    msg = webhookFormat == "JSON"
-     ? f_webhookMsg("volume_spike", "ratio=" + str.tostring(math.round(volRatio * 100)))
-     : str.format("PAPAN GERAK: Volume spike ({0}% of MA)", str.tostring(math.round(volRatio * 100)))
+    msg = if webhookFormat == "JSON"
+        f_webhookMsg("volume_spike", "ratio=" + str.tostring(math.round(volRatio * 100)))
+    else
+        str.format("PAPAN GERAK: Volume spike ({0}% of MA)", str.tostring(math.round(volRatio * 100)))
     alert(msg)
 
 // Alert: Smart Money Detected
 if smDetected
-    msg = webhookFormat == "JSON"
-     ? f_webhookMsg("smart_money", "detected=true")
-     : "PAPAN GERAK: Institutional flow terdeteksi"
+    msg = if webhookFormat == "JSON"
+        f_webhookMsg("smart_money", "detected=true")
+    else
+        "PAPAN GERAK: Institutional flow terdeteksi"
     alert(msg)
 
 // Alert: Choppiness (ranging market)
 if chopRanging
-    msg = webhookFormat == "JSON"
-     ? f_webhookMsg("choppiness", "chop=" + str.tostring(math.round(chopValue)))
-     : str.format("PAPAN GERAK: Pasar ranging (Choppiness: {0})", str.tostring(math.round(chopValue)))
+    msg = if webhookFormat == "JSON"
+        f_webhookMsg("choppiness", "chop=" + str.tostring(math.round(chopValue)))
+    else
+        str.format("PAPAN GERAK: Pasar ranging (Choppiness: {0})", str.tostring(math.round(chopValue)))
     alert(msg)
 

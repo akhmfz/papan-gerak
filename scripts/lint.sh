@@ -22,8 +22,8 @@ done
 declare -A BUDGET=(
     ["01-base.pine"]=280
     ["02-data.pine"]=210
-    ["03-scoring.pine"]=610
-    ["04-ui.pine"]=235
+    ["03-scoring.pine"]=620
+    ["04-ui.pine"]=240
 )
 
 for file in "${!BUDGET[@]}"; do

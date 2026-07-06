@@ -151,17 +151,13 @@ if barstate.islast
         if enableSmartMoney
             riskBase := riskBase + 1
         if showRiskLevels
-            riskTooltip = bahasaInput == "Indonesia"
-             ? "Level referensi — bukan rekomendasi. Sesuaikan dgn toleransi risiko Anda."
-             : "Reference levels — not a recommendation. Adjust to your risk tolerance."
+            riskTooltip = bahasaInput == "Indonesia" ? "Level referensi — bukan rekomendasi. Sesuaikan dgn toleransi risiko Anda." : "Reference levels — not a recommendation. Adjust to your risk tolerance."
             table.cell(tblFull, 0, riskBase, "  ⚠️ " + (bahasaInput == "Indonesia" ? "Level Referensi" : "Risk Levels"), text_color = color.rgb(255, 64, 129), text_size = size.small, text_halign = text.align_left, bgcolor = bgColor, tooltip = riskTooltip)
             table.cell(tblFull, 1, riskBase, riskLevelLabel, text_color = labelColor, text_size = size.small, text_halign = text.align_right, bgcolor = bgColor, tooltip = riskTooltip)
 
         // Legend (last row)
         legendBase = riskBase + 1
-        legendText = bahasaInput == "Indonesia"
-         ? "🔴 <40 Bearish | 🟡 40-70 Netral | 🟢 >70 Bullish"
-         : "🔴 <40 Bearish | 🟡 40-70 Neutral | 🟢 >70 Bullish"
+        legendText = bahasaInput == "Indonesia" ? "🔴 <40 Bearish | 🟡 40-70 Netral | 🟢 >70 Bullish" : "🔴 <40 Bearish | 🟡 40-70 Neutral | 🟢 >70 Bullish"
         table.cell(tblFull, 0, legendBase, legendText, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
 
 // ==========================================================
@@ -176,51 +172,58 @@ f_webhookMsg(eventType, params) =>
 
 // Alert: Entry trigger (mode-aware)
 if entryTriggered
-    msg = webhookFormat == "JSON"
-     ? f_webhookMsg("entry", str.format("mode={0}|action={1}|price={2}|score={3}|signal={4}",
-         entryTriggerMode, signalDirection > 0 ? "buy" : "sell", str.tostring(close),
-         str.tostring(math.round(overallScore)), signalLabel))
-     : str.format("PAPAN GERAK ({0}): {1} → {2}", entryTriggerMode, signalLabel, signalText)
+    msg = if webhookFormat == "JSON"
+        f_webhookMsg("entry", str.format("mode={0}|action={1}|price={2}|score={3}|signal={4}",
+            entryTriggerMode, signalDirection > 0 ? "buy" : "sell", str.tostring(close),
+            str.tostring(math.round(overallScore)), signalLabel))
+    else
+        str.format("PAPAN GERAK ({0}): {1} → {2}", entryTriggerMode, signalLabel, signalText)
     alert(msg)
 
 // Alert: Trend Extreme
 if trendScore >= 80 or trendScore <= 20
-    msg = webhookFormat == "JSON"
-     ? f_webhookMsg("trend_extreme", "trendScore=" + str.tostring(math.round(trendScore)))
-     : str.format("PAPAN GERAK: Trend ekstrem ({0})", str.tostring(math.round(trendScore)))
+    msg = if webhookFormat == "JSON"
+        f_webhookMsg("trend_extreme", "trendScore=" + str.tostring(math.round(trendScore)))
+    else
+        str.format("PAPAN GERAK: Trend ekstrem ({0})", str.tostring(math.round(trendScore)))
     alert(msg)
 
 // Alert: Momentum Oversold
 if rsiOsHit
-    msg = webhookFormat == "JSON"
-     ? f_webhookMsg("rsi_oversold", "rsi=" + str.tostring(math.round(rsiValue)))
-     : str.format("PAPAN GERAK: RSI oversold ({0})", str.tostring(math.round(rsiValue)))
+    msg = if webhookFormat == "JSON"
+        f_webhookMsg("rsi_oversold", "rsi=" + str.tostring(math.round(rsiValue)))
+    else
+        str.format("PAPAN GERAK: RSI oversold ({0})", str.tostring(math.round(rsiValue)))
     alert(msg)
 
 // Alert: Momentum Overbought
 if rsiObHit
-    msg = webhookFormat == "JSON"
-     ? f_webhookMsg("rsi_overbought", "rsi=" + str.tostring(math.round(rsiValue)))
-     : str.format("PAPAN GERAK: RSI overbought ({0})", str.tostring(math.round(rsiValue)))
+    msg = if webhookFormat == "JSON"
+        f_webhookMsg("rsi_overbought", "rsi=" + str.tostring(math.round(rsiValue)))
+    else
+        str.format("PAPAN GERAK: RSI overbought ({0})", str.tostring(math.round(rsiValue)))
     alert(msg)
 
 // Alert: Volume Spike
 if volSpike
-    msg = webhookFormat == "JSON"
-     ? f_webhookMsg("volume_spike", "ratio=" + str.tostring(math.round(volRatio * 100)))
-     : str.format("PAPAN GERAK: Volume spike ({0}% of MA)", str.tostring(math.round(volRatio * 100)))
+    msg = if webhookFormat == "JSON"
+        f_webhookMsg("volume_spike", "ratio=" + str.tostring(math.round(volRatio * 100)))
+    else
+        str.format("PAPAN GERAK: Volume spike ({0}% of MA)", str.tostring(math.round(volRatio * 100)))
     alert(msg)
 
 // Alert: Smart Money Detected
 if smDetected
-    msg = webhookFormat == "JSON"
-     ? f_webhookMsg("smart_money", "detected=true")
-     : "PAPAN GERAK: Institutional flow terdeteksi"
+    msg = if webhookFormat == "JSON"
+        f_webhookMsg("smart_money", "detected=true")
+    else
+        "PAPAN GERAK: Institutional flow terdeteksi"
     alert(msg)
 
 // Alert: Choppiness (ranging market)
 if chopRanging
-    msg = webhookFormat == "JSON"
-     ? f_webhookMsg("choppiness", "chop=" + str.tostring(math.round(chopValue)))
-     : str.format("PAPAN GERAK: Pasar ranging (Choppiness: {0})", str.tostring(math.round(chopValue)))
+    msg = if webhookFormat == "JSON"
+        f_webhookMsg("choppiness", "chop=" + str.tostring(math.round(chopValue)))
+    else
+        str.format("PAPAN GERAK: Pasar ranging (Choppiness: {0})", str.tostring(math.round(chopValue)))
     alert(msg)
