@@ -34,7 +34,7 @@ f_getFontSize() =>
         if fontSizeInput == 2
             size.normal
         else
-        size.large
+            size.large
 
 tablePos = f_getPosition()
 fontSz = f_getFontSize()

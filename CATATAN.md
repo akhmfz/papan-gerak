@@ -33,7 +33,10 @@ Fix error PERTAMA dulu sebelum lihat error lain. Satu error bisa cascade ke bari
 
 | ID | Bug | Lokasi | Dampak | Fix |
 |----|-----|--------|--------|-----|
-| — | — | — | — | — |
+| BG-1 | Multi-var `color a, b, c` dlm 1 baris | `01-base.pine:86` | CE10156 (koma) | Split per baris |
+| BG-2 | `color bgColor` tanpa init | `01-base.pine:86` | CE10156 (end of line) | `var color bgColor = na` |
+| BG-3 | Indentasi `size.large` 8 spasi (bukan 12) | `04-ui.pine:37` | CE10156 (line continuation) | 12 spasi |
+| BG-4 | `ta.di` dipanggil 2x dgn params sama (salah) | `02-data.pine:23-24` | `adxDn` dpt +DI bukan -DI | `ta.dmi(adxLength, adxLength)` |
 
 ---
 

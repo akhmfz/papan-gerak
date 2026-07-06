@@ -18,10 +18,9 @@ emaTrend = close > emaSlow ? 1 : -1
 [superTrend, superTrendDir] = ta.supertrend(superTrendFactor, superTrendPeriod)
 stBullish = superTrendDir == 1
 
-// --- ADX ---
+// --- ADX / DMI ---
 adxValue = ta.adx(high, low, close, adxLength)
-adxUp = ta.di(high, low, close, adxLength)
-adxDn = ta.di(high, low, close, adxLength)
+[adxUp, adxDn, _] = ta.dmi(adxLength, adxLength)
 
 // ADX strength
 adxStrong = adxValue >= adxThreshold

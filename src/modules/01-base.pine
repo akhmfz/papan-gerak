@@ -83,19 +83,19 @@ smPeriod = input.int(20, "SM Lookback Period", group = "Smart Money")
 // ==========================================================
 // 8. COLOR THEMES
 // ==========================================================
-color bgColor
-color headerColor
-color labelColor
-color scoreColor
-color tableBgColor
-color bullColor
-color bearColor
-color neutralColor
-color signalLineColor
-color dimTrend
-color dimMomentum
-color dimVolatility
-color dimVolume
+var color bgColor = na
+var color headerColor = na
+var color labelColor = na
+var color scoreColor = na
+var color tableBgColor = na
+var color bullColor = na
+var color bearColor = na
+var color neutralColor = na
+var color signalLineColor = na
+var color dimTrend = na
+var color dimMomentum = na
+var color dimVolatility = na
+var color dimVolume = na
 
 if colorThemeInput == "Gelap"
     bgColor := color.rgb(0, 0, 0, 85)
