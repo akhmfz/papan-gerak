@@ -38,9 +38,9 @@ Edit modules → `npm run build` → Copy `src/PapanGerak.pine` → Paste di Tra
 |--------|-----------|---------|
 | 01-base.pine | 280 | 273 |
 | 02-data.pine | 210 | 158 |
-| 03-scoring.pine | 610 | 608 |
-| 04-ui.pine | 235 | 226 |
-| Built (PapanGerak.pine) | — | 1269 |
+| 03-scoring.pine | 630 | 621 |
+| 04-ui.pine | 240 | 228 |
+| Built (PapanGerak.pine) | — | 1286 |
 
 ## Commit Convention
 
@@ -58,6 +58,30 @@ release: deskripsi         — rilis/tag
 Scope: base, data, scoring, ui, test, docs
 
 ## Changelog
+
+### v0.2.1-alpha (2026-07-06)
+
+**Critical Fixes:**
+- `prevZone = -1` deadlock — Composite Score mode never fires `entryTriggered`. One-time init `if prevZone < 0 and currentZone >= 0` seeds prevZone so zone tracking can begin. Affects: Level Referensi, Return Sejak Sinyal, Histori Sinyal.
+- `slPrice = na` → `float slPrice = na` (CE10097)
+- `ta.lowest`/`ta.highest` inside `if` → unconditional vars (CW10003)
+- Risk levels use `entryTriggered` not `signalTriggered` — SL/TP now appear for Pullback/Breakout
+- Confluence: `trendBull` excludes ADX weak entries; `volBull` uses chop ≤ 38 (not 50); volume tooltip 4 items
+
+**Other Fixes:**
+- `shorttitle` → `"P.Gerak"` (SHORT_TITLE_TOO_LONG)
+- All multi-line operators → `if/else` (Pine v6 compliance, 26 occurrences)
+- 16+ input tooltips added
+- "Forward Return" → "Return Sejak Sinyal"
+- Blank row when `showRiskLevels=false` fixed
+- Duplicate `// 9.` → `// 10.`
+
+**Docs:**
+- `docs/PANDUAN-TRADING.md` — 10-step trading guide
+
+**Testing:**
+- 90 tests passing, no regression
+- Multi-ticker integration test (7 IDX symbols)
 
 ### v0.2.0-alpha (2026-07-06)
 

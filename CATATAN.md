@@ -60,8 +60,58 @@ input.int(14, "Title", group = "Grup", display = display.data_window)
 | BG-11 | `alert()` v6 swap `message`/`condition` | `04-ui.pine:103-128` | Argumen terbalik | `alert(message, condition)` |
 | BG-12 | Bobot SM hardcoded 20 | `03-scoring.pine:230` | Tdk bisa diatur user | `weightSmartMoney` input |
 | BG-13 | `rowCount=5` (kurang) | `04-ui.pine:57` | Row Volume mungkin terpotong | `rowCount=7`/`8` |
+| BG-14 | `shorttitle="Papan Gerak"` (11 chars) | build | `SHORT_TITLE_TOO_LONG` | `"P.Gerak"` (8 chars) |
+| BG-15 | `slPrice = na` tanpa tipe | `03-scoring.pine` | CE10097 (`=` vs `:=`) | `float slPrice = na` |
+| BG-16 | `ta.lowest`/`ta.highest` di dlm `if` block | `03-scoring.pine` | CW10003 (unused calc) | Pindah ke unconditional `riskSwingLowUncond`/`riskSwingHighUncond` |
+| BG-17 | Risk level pakai `signalTriggered` alih-alih `entryTriggered` | `03-scoring.pine` | SL/TP tdk muncul utk Pullback/Breakout | `entryTriggered` |
+| BG-18 (BUG-5) | Confluence thresholds mismatch: `trendBull` include ADX weak, `volBull` pakai 50 (bukan 38) | `03-scoring.pine` | Trend/Volume score overestimated | `adxStrong and adxTrend == 1`; `chopValue <= 38`; volume tooltip 4 items |
+| BG-19 | `prevZone = -1` deadlock | `03-scoring.pine` | `zoneChanged` never fires; Composite Score mode tdk pernah entry | Init block `if prevZone < 0 and currentZone >= 0` |
 
 ---
+
+## 🧪 Testing Catatan
+
+### PineTS Limitations
+✅ Utility functions, scoring formulas
+❌ syminfo.tickerid, request.financial(), table.* (sama seperti Papan Instrumen)
+
+### Test Coverage
+- Utility: 16 tests
+- Trend: 6 tests
+- Momentum: 6 tests
+- Volatility: 11 tests
+- Volume: 6 tests
+- Overall: 6 tests
+- Signal Engine (Entry Triggers): 10 tests
+- Risk Levels (SL/Target): 7 tests
+- Position Sizing: 5 tests
+- MTF Conflict: 6 tests
+- Signal Direction & Zone: 9 tests
+- PineTS full-script integration: 2 tests (multi-ticker, 7 IDX symbols)
+- **Total: 90 tests (all passing)**
+
+### F6 — Webhook (2026-07-06)
+- New input `webhookFormat` (Simple / JSON) di grup Webhook
+- JSON mode output: `PG|event=...|time=...|ticker=...|key=val|...`
+- All 7 alert types support both formats
+- `docs/webhook-integration.md`: parser examples, TradersPost, Pine Connector, IDX disclaimer
+
+---
+
+## ⏳ Backlog
+
+| ID | Item | Prioritas |
+|----|------|-----------|
+| P1-1 | Sektor-aware volatility calibration | P2-high |
+| P1-2 | Multi-timeframe alignment score | P2-high |
+| P2-1 | Volume Profile integration | P3-medium |
+| P2-2 | Divergence detection (RSI/MACD) | P3-medium |
+| P3-1 | Backtest framework | P4-low |
+
+---
+
+> **Golden Rule:** Jangan tambah fitur baru di atas fondasi yang belum diverifikasi.
+> No Silent Changes — setiap commit tercatat di changelog.
 
 ## 🧪 Testing Catatan
 

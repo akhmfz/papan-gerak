@@ -3,7 +3,7 @@
 > Multi-Dimension Technical Analysis Dashboard for Indonesian Stock Market — built with Pine Script v6.
 > **Natural companion to [Papan Instrumen](https://github.com/akhmfz/papan-instrumen)** (fundamental + technical = full analysis).
 
-[![Version](https://img.shields.io/badge/version-v0.2.0--alpha-blue)](https://github.com/akhmfz/papan-gerak/releases)
+[![Version](https://img.shields.io/badge/version-v0.2.1--alpha-blue)](https://github.com/akhmfz/papan-gerak/releases)
 [![Pine Script](https://img.shields.io/badge/Pine%20Script-v6-green)](https://www.tradingview.com/pine-script-docs/en/v6/)
 [![Market](https://img.shields.io/badge/Market-IDX-red)]()
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)

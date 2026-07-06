@@ -1,5 +1,37 @@
 # Changelog — Papan Gerak
 
+## v0.2.1-alpha (2026-07-06)
+
+### Fixes (Critical)
+- **prevZone = -1 deadlock**: `zoneChanged` never fires because `prevZone` starts at -1 but the only code updating it is inside `if zoneChanged` — chicken-and-egg loop. Composite Score mode (default) permanently stuck at no entry. Added one-time init `if prevZone < 0 and currentZone >= 0`. (03-scoring.pine)
+- **BG-1 (CE10097)**: `slPrice = na` → `float slPrice = na`
+- **BG-2 (CW10003 × 2)**: `ta.lowest`/`ta.highest` inside `if` block → unconditional `riskSwingLowUncond`/`riskSwingHighUncond`
+- **BG-3**: Risk levels used `signalTriggered` instead of `entryTriggered` → SL/TP never appeared for Pullback/Breakout modes
+- **BG-5**: Confluence mismatches: `trendBull += adxTrend == 1` → `(adxStrong and adxTrend == 1)`; `volBull += chopValue < 50` → `chopValue <= 38`; volume tooltip missing 4th item
+
+### Fixes (Minor)
+- `shorttitle` 11 chars → `"P.Gerak"` (8 chars) to fix `SHORT_TITLE_TOO_LONG`
+- Duplicate `// 9.` → `// 10.` in narrative
+- "Forward Return" → "Return Sejak Sinyal" (ID translation)
+- Blank row when `showRiskLevels=false` fixed (legend text collapsed)
+- All multi-line `?`/`:` / `and`/`or` at start of line → `if/else` expressions (Pine v6 compliance)
+- 16+ input tooltips added across Entry Trigger, Risk Mgmt, Position Size, MTF, Signal, Webhook groups
+
+### Docs
+- `docs/PANDUAN-TRADING.md` — 10-step trading guide from table to entry decision
+- `docs/README.md` / `docs/README.id.md` — linked PANDUAN-TRADING.md
+
+### Testing
+- **90 tests passing** (no regression)
+- Added multi-ticker integration test (`tests/full-pinets.mjs`) covering 7 IDX symbols (bullish, bearish, sideways, high vol)
+
+### Maintenance
+- Line budgets bumped: 03-scoring 620→630, 04-ui 235→240
+- Total built file: 1286 lines (src/PapanGerak.pine)
+- Zero compiler warnings on v6
+
+---
+
 ## v0.2.0-alpha (2026-07-06)
 
 ### Features
