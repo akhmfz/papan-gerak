@@ -156,12 +156,11 @@ f_volumeScore() =>
 
     // Volume Spike Quality (weight: 1)
     if not na(volRatio)
+        spikeScore = 50.0
         if volSpike
             closeInUpperHalf = close >= (high + low) / 2
             netPositive = not na(netVolSmooth) and netVolSmooth > 0
-            spikeScore = closeInUpperHalf and netPositive ? 90 : closeInUpperHalf or netPositive ? 70 : 30
-        else
-            spikeScore = 50
+            spikeScore := closeInUpperHalf and netPositive ? 90 : closeInUpperHalf or netPositive ? 70 : 30
         scoreSum += spikeScore * 1
         count += 1
 
