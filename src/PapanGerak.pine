@@ -903,9 +903,9 @@ if barstate.islast
         momDisplay = str.tostring(math.round(momentumScore))
         momArrow = not na(momentumScore) ? (momentumScore >= 70 ? "↑" : momentumScore >= 40 ? "→" : "↓") : "—"
         momConf = not na(momBull) ? " (" + f_confStr(momBull, momTotal) + ")" : ""
-        momBase = 6
+        momBase = 5
         if isDetailed
-            momBase := 7
+            momBase := 6
         table.cell(tblFull, 0, momBase, "  " + momArrow + " " + (bahasaInput == "Indonesia" ? "Momentum" : "Momentum"), text_color = dimMomentum, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
         table.cell(tblFull, 1, momBase, momDisplay + momConf, text_color = f_colorScore(momentumScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = momDetail)
         if isDetailed
