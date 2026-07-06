@@ -202,8 +202,6 @@ f_scoreRange(float val, float min, float max, float idealLow, float idealHigh) =
                 else
                     (max - val) / (max - idealHigh) * 100
 
-f_scoreBias(float val) =>
-    na(val) ? na : (val + 1) / 2 * 100
 
 f_colorScore(float score) =>
     if na(score)

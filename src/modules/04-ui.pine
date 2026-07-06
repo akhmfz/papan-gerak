@@ -59,7 +59,7 @@ if barstate.islast
         isDetailed = modeInput == "Detailed"
         rowCount = 10
         if enableSmartMoney
-            rowCount := 9
+            rowCount := rowCount + 1
         if isDetailed
             rowCount := rowCount + 4  // +1 sub-row per dimensi
         tblFull = table.new(tablePos, 3, rowCount, bgcolor = tableBgColor, border_width = 1, border_color = signalColor,
@@ -69,7 +69,7 @@ if barstate.islast
         table.cell(tblFull, 0, 0, narrative, text_color = headerColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
 
         // Header
-        table.cell(tblFull, 0, 1, "PAPAN GERAK", text_color = headerColor, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
+        table.cell(tblFull, 0, 1, "PAPAN GERAK (last bar)", text_color = headerColor, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
         overallDisplay = str.tostring(math.round(overallScore))
         overallTip = not na(overallScore) ? (overallScore >= 70 ? "Bullish: overall >70" : overallScore >= 40 ? "Neutral: 40-70" : "Bearish: <40") : ""
         table.cell(tblFull, 1, 1, overallDisplay, text_color = signalColor, text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = overallTip)

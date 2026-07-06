@@ -26,11 +26,11 @@ f_trendScore() =>
         scoreSum += adxScore * 2
         count += 2
 
-    // Trend Alignment (weight: 2)
+    // Trend Alignment (weight: 1 — sinyal echo, bukan indepen)
     if not na(adxValue)
         alignScore = trendAligned ? (adxTrend == 1 ? 100 : 0) : 50
-        scoreSum += alignScore * 2
-        count += 2
+        scoreSum += alignScore * 1
+        count += 1
 
     // EMA Slope (weight: 1)
     slopeFast = emaFast - emaFast[5]
@@ -156,7 +156,12 @@ f_volumeScore() =>
 
     // Volume Spike Quality (weight: 1)
     if not na(volRatio)
-        spikeScore = volSpike ? 80 : 50
+        if volSpike
+            closeInUpperHalf = close >= (high + low) / 2
+            netPositive = not na(netVolSmooth) and netVolSmooth > 0
+            spikeScore = closeInUpperHalf and netPositive ? 90 : closeInUpperHalf or netPositive ? 70 : 30
+        else
+            spikeScore = 50
         scoreSum += spikeScore * 1
         count += 1
 
@@ -351,42 +356,42 @@ if not na(volRatio) and not na(volumeScore)
 f_narrative() =>
     lang = bahasaInput
 
-    // Konflik: Momentum kuat tapi RSI overbought
-    if not na(momentumScore) and not na(rsiValue) and not na(overallScore)
+    if not na(momentumScore) and not na(rsiValue) and not na(trendScore) and not na(overallScore)
+        // 1. Momentum kuat tapi RSI overbought — prioritas tertinggi (konflik)
         if momentumScore >= 65 and rsiValue >= rsiOb
             lang == "Indonesia" ? "⚠️  Momentum kuat tapi RSI overbought — waspada koreksi" : "⚠️  Strong momentum but RSI overbought — watch for pullback"
 
-        // RSI oversold + volume spike = potensi bounce
+        // 2. RSI oversold + volume spike = potensi bounce
         else if rsiValue <= rsiOs and not na(volRatio) and volSpike
             lang == "Indonesia" ? "📈 RSI oversold + volume spike — potensi bounce" : "📈 RSI oversold + volume spike — potential bounce"
 
-        // Tren lemah & volatil
-        else if not na(trendScore) and not na(volatilityScore)
-            if trendScore < 40 and volatilityScore < 40
-                lang == "Indonesia" ? "⚠️  Tren lemah & volatil — hindari entry baru" : "⚠️  Weak trend & volatile — avoid new entries"
+        // 3. Tren lemah & volatil
+        else if not na(volatilityScore) and trendScore < 40 and volatilityScore < 40
+            lang == "Indonesia" ? "⚠️  Tren lemah & volatil — hindari entry baru" : "⚠️  Weak trend & volatile — avoid new entries"
 
-        // OBV divergen
-        else if not na(close) and not na(obvValue)
-            if close > close[10] and not obvAgree
-                lang == "Indonesia" ? "⚠️  Harga naik tapi OBV divergen — konfirmasi dulu" : "⚠️  Price up but OBV diverging — confirm first"
+        // 4. Volume konfirmasi tren
+        else if trendScore >= 65 and not na(volmBull) and not na(volmTotal) and volmBull >= 3 and volmTotal >= 3
+            lang == "Indonesia" ? "✅ Volume konfirmasi tren — bias searah" : "✅ Volume confirms trend — trade with trend"
 
-        // Volume spike + trend align = konfirmasi
-        else if not na(trendScore) and not na(volmBull) and not na(volmTotal)
-            if trendScore >= 65 and volmBull >= 3 and volmTotal >= 3
-                lang == "Indonesia" ? "✅ Volume konfirmasi tren — bias searah" : "✅ Volume confirms trend — trade with trend"
+        // 5. Semua align bullish
+        else if overallScore >= 70 and trendScore >= 65 and not na(volmBull) and volmBull >= 3
+            lang == "Indonesia" ? "✅ Semua dimensi align — bias bullish" : "✅ All dimensions aligned — bullish bias"
 
-        // Ranging market
+        // 6. Semua align bearish
+        else if overallScore <= 30 and not na(trendScore) and trendScore <= 35 and not na(volmBull) and volmBull <= 1
+            lang == "Indonesia" ? "✅ Semua dimensi align — bias bearish" : "✅ All dimensions aligned — bearish bias"
+
+        // 7. OBV divergen
+        else if not na(obvValue) and close > close[10] and not obvAgree
+            lang == "Indonesia" ? "⚠️  Harga naik tapi OBV divergen — konfirmasi dulu" : "⚠️  Price up but OBV diverging — confirm first"
+
+        // 8. Ranging market
         else if not na(chopValue) and chopRanging
             lang == "Indonesia" ? "⏳ Pasar ranging — tunggu breakout" : "⏳ Ranging market — wait for breakout"
 
-        // Semua align
-        else if not na(overallScore)
-            if overallScore >= 70 and volmBull >= 3 and trendScore >= 65
-                lang == "Indonesia" ? "✅ Semua dimensi align — bias bullish" : "✅ All dimensions aligned — bullish bias"
-            else if overallScore <= 30 and volmBull <= 1 and trendScore <= 35
-                lang == "Indonesia" ? "✅ Semua dimensi align — bias bearish" : "✅ All dimensions aligned — bearish bias"
-            else
-                lang == "Indonesia" ? "💡 Kondisi campuran — cek detail per dimensi" : "💡 Mixed conditions — check per-dimension details"
+        // 9. Fallback: mixed
+        else
+            lang == "Indonesia" ? "💡 Kondisi campuran — cek detail per dimensi" : "💡 Mixed conditions — check per-dimension details"
     else
         lang == "Indonesia" ? "⏳ Menunggu data..." : "⏳ Waiting for data..."
 

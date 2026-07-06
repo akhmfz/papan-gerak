@@ -98,7 +98,8 @@ obvAgree = (obvTrend == 1 and close > close[1]) or (obvTrend == -1 and close < c
 
 // --- Net Volume (proxy) ---
 f_netVolume() =>
-    upVol = volume * (close - open) / (high - low + 1e-10)
+    mfMultiplier = (close - low) - (high - close)
+    upVol = volume * mfMultiplier / (high - low + 1e-10)
     na(upVol) ? 0 : upVol
 
 netVol = f_netVolume()
