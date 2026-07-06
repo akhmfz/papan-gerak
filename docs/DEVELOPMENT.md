@@ -24,7 +24,7 @@ docs/                — Documentation
 ```bash
 npm run build        # Concatenate modules
 npm run lint         # Check reserved keywords + line budget
-npm run test:all     # 96 tests
+npm run test:all     # 47 tests
 npm run transpile    # Syntax validation via PineTS
 npm run ci           # Full pipeline
 ```
@@ -35,10 +35,10 @@ Edit modules → `npm run build` → Copy `src/PapanGerak.pine` → Paste di Tra
 
 | Module | Max Lines | Current |
 |--------|-----------|---------|
-| 01-base.pine | 200 | ~190 |
-| 02-data.pine | 200 | ~160 |
-| 03-scoring.pine | 250 | ~210 |
-| 04-ui.pine | 200 | ~170 |
+| 01-base.pine | 250 | 222 |
+| 02-data.pine | 200 | 146 |
+| 03-scoring.pine | 250 | 238 |
+| 04-ui.pine | 200 | 135 |
 
 ## Commit Convention
 
@@ -67,7 +67,7 @@ Scope: base, data, scoring, ui, test, docs
 - 7 alert conditions
 - ID/EN bilingual
 - Custom weights
-- Full test suite
+- 47 tests (utility functions + scoring engine)
 
 ## Backlog
 

@@ -37,6 +37,9 @@ Fix error PERTAMA dulu sebelum lihat error lain. Satu error bisa cascade ke bari
 | BG-2 | `color bgColor` tanpa init | `01-base.pine:86` | CE10156 (end of line) | `var color bgColor = na` |
 | BG-3 | Indentasi `size.large` 8 spasi (bukan 12) | `04-ui.pine:37` | CE10156 (line continuation) | 12 spasi |
 | BG-4 | `ta.di` dipanggil 2x dgn params sama (salah) | `02-data.pine:23-24` | `adxDn` dpt +DI bukan -DI | `ta.dmi(adxLength, adxLength)` |
+| BG-5 | Choppiness Index: `*100` di dlm `math.log(...)` | `02-data.pine:79` | Nilai 174-275 (hrs 0-100) | Pindah ke luar log |
+| BG-6 | `f_scoreRange` abaikan param `min`/`max` | `01-base.pine:185` | Asimtotik tdk pernah 0 | Linear 3 segmen |
+| BG-7 | `lint.sh` regex false positive masif | `scripts/lint.sh:13` | Flag semua `close` dll | Filter baris `=>` saja |
 
 ---
 
@@ -46,14 +49,14 @@ Fix error PERTAMA dulu sebelum lihat error lain. Satu error bisa cascade ke bari
 ✅ Utility functions, scoring formulas
 ❌ syminfo.tickerid, request.financial(), table.* (sama seperti Papan Instrumen)
 
-### Test Coverage Target
-- Utility: 12 tests
+### Test Coverage
+- Utility: 16 tests
 - Trend: 6 tests
 - Momentum: 6 tests
-- Volatility: 6 tests
+- Volatility: 7 tests
 - Volume: 6 tests
-- Overall: 4 tests
-- **Total target: 40 tests**
+- Overall: 6 tests
+- **Total: 47 tests (all passing)**
 
 ---
 

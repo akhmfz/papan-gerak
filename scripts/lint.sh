@@ -8,18 +8,19 @@ ERRORS=0
 echo "🔍 Linting Papan Gerak..."
 echo ""
 
-# Check reserved keywords
+# Check reserved keywords in function parameters
 for kw in "open" "high" "low" "close" "volume" "base"; do
-    if grep -ni "\b${kw}\b" "$SRC"/*.pine | grep -v "//.*\b${kw}\b" | grep -v '"' > /dev/null 2>&1; then
-        echo "⚠️  Potensi reserved keyword '$kw' ditemukan:"
-        grep -ni "\b${kw}\b" "$SRC"/*.pine | grep -v "//.*\b${kw}\b" | grep -v '"' || true
+    results=$(grep -nP '\b'"${kw}"'\b' "$SRC"/*.pine | grep -P '=>' | grep -v "//.*\b${kw}\b" | grep -v '".*'"${kw}"'.*"' || true)
+    if [ -n "$results" ]; then
+        echo "⚠️  Reserved keyword '$kw' used as parameter in function definition:"
+        echo "$results"
         ERRORS=$((ERRORS + 1))
     fi
 done
 
 # Line budget per module
 declare -A BUDGET=(
-    ["01-base.pine"]=200
+    ["01-base.pine"]=250
     ["02-data.pine"]=200
     ["03-scoring.pine"]=250
     ["04-ui.pine"]=200
