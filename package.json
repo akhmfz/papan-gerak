@@ -6,8 +6,8 @@
   "scripts": {
     "build": "bash build.sh",
     "lint": "bash scripts/lint.sh",
-    "test": "node tests/pinets-verify.mjs",
-    "test:all": "node tests/pinets-verify.mjs && for f in tests/scoring/test-*.mjs; do node $f || exit 1; done && echo '✅ ALL TESTS PASSED'",
+    "test": "node --test tests/pinets-verify.mjs",
+    "test:all": "node --test tests/pinets-verify.mjs tests/scoring/test-*.mjs",
     "transpile": "bash tests/transpile.sh",
     "ci": "npm run lint && npm run build && npm run transpile"
   },
