@@ -716,36 +716,29 @@ if barstate.islast
 // ==========================================================
 // Alert: Signal Change
 alert(ta.cross(overallScore, 70) or ta.cross(overallScore, 40),
- "PAPAN GERAK: Sinyal berubah menjadi " + signalText,
- alert.freq_once_per_bar)
+ "PAPAN GERAK: Sinyal berubah menjadi " + signalText)
 
 // Alert: Trend Extreme
 alert(trendScore >= 80 or trendScore <= 20,
- "PAPAN GERAK: Trend ekstrem (" + str.tostring(math.round(trendScore)) + ")",
- alert.freq_once_per_bar)
+ "PAPAN GERAK: Trend ekstrem (" + str.tostring(math.round(trendScore)) + ")")
 
 // Alert: Momentum Oversold
 alert(rsiOsHit,
- "PAPAN GERAK: RSI oversold (" + str.tostring(math.round(rsiValue)) + ")",
- alert.freq_once_per_bar)
+ "PAPAN GERAK: RSI oversold (" + str.tostring(math.round(rsiValue)) + ")")
 
 // Alert: Momentum Overbought
 alert(rsiObHit,
- "PAPAN GERAK: RSI overbought (" + str.tostring(math.round(rsiValue)) + ")",
- alert.freq_once_per_bar)
+ "PAPAN GERAK: RSI overbought (" + str.tostring(math.round(rsiValue)) + ")")
 
 // Alert: Volume Spike
 alert(volSpike,
- "PAPAN GERAK: Volume spike (" + str.tostring(math.round(volRatio * 100)) + "% of MA)",
- alert.freq_once_per_bar)
+ "PAPAN GERAK: Volume spike (" + str.tostring(math.round(volRatio * 100)) + "% of MA)")
 
 // Alert: Smart Money Detected
 alert(smDetected,
- "PAPAN GERAK: Institutional flow terdeteksi",
- alert.freq_once_per_bar)
+ "PAPAN GERAK: Institutional flow terdeteksi")
 
 // Alert: Choppiness (ranging market)
 alert(chopRanging,
- "PAPAN GERAK: Pasar ranging (Choppiness: " + str.tostring(math.round(chopValue)) + ")",
- alert.freq_once_per_bar)
+ "PAPAN GERAK: Pasar ranging (Choppiness: " + str.tostring(math.round(chopValue)) + ")")
 
