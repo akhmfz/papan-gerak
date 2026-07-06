@@ -391,3 +391,31 @@ f_narrative() =>
         lang == "Indonesia" ? "⏳ Menunggu data..." : "⏳ Waiting for data..."
 
 narrative = f_narrative()
+
+// ==========================================================
+// 11. INLINE VALIDATION (forward return sejak sinyal terakhir)
+// ==========================================================
+var float signalEntryPrice = na
+var int signalEntryBar = na
+var int signalDirection = 0  // 1 = bullish (cross above 40/70), -1 = bearish (cross below)
+var string signalLabel = ""
+
+// Track signal changes
+if ta.cross(overallScore, 40)
+    signalEntryPrice := close
+    signalEntryBar := bar_index
+    signalDirection := overallScore > 40 ? 1 : -1
+    signalLabel := overallScore > 40 ? "Cross >40 (Bullish)" : "Cross <40 (Bearish)"
+else if ta.cross(overallScore, 70)
+    signalEntryPrice := close
+    signalEntryBar := bar_index
+    signalDirection := overallScore > 70 ? 1 : -1
+    signalLabel := overallScore > 70 ? "Cross >70 (Bullish)" : "Cross <70 (Bearish)"
+
+// Forward return sejak sinyal (searah: positif = prediksi benar)
+fwdReturn = na(signalEntryPrice) or signalEntryPrice == 0 ? na : (close / signalEntryPrice - 1) * signalDirection * 100
+
+// Status: apakah sinyal saat ini untung atau rugi
+signalStatus = na(fwdReturn) ? "" : fwdReturn >= 5 ? "✅ +" + str.tostring(math.round(fwdReturn)) + "%" : fwdReturn >= 0 ? "➖ +" + str.tostring(math.round(fwdReturn)) + "%" : fwdReturn >= -5 ? "➖ " + str.tostring(math.round(fwdReturn)) + "%" : "❌ " + str.tostring(math.round(fwdReturn)) + "%"
+
+fwdBars = na(signalEntryBar) ? na : bar_index - signalEntryBar

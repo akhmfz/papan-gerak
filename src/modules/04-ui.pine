@@ -39,6 +39,9 @@ f_getFontSize() =>
         else
             size.large
 
+f_confStr(n, total) =>
+    str.tostring(n) + "/" + str.tostring(total)
+
 tablePos = f_getPosition()
 fontSz = f_getFontSize()
 
@@ -54,7 +57,7 @@ if barstate.islast
     else
         // --- Standard & Detailed Mode ---
         isDetailed = modeInput == "Detailed"
-        rowCount = 8
+        rowCount = 9
         if enableSmartMoney
             rowCount := 9
         if isDetailed
@@ -76,27 +79,30 @@ if barstate.islast
         table.cell(tblFull, 0, 2, bahasaInput == "Indonesia" ? "Sinyal" : "Signal", text_color = labelColor, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
         table.cell(tblFull, 1, 2, signalText, text_color = signalColor, text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
 
-        // Confluence display helper
-        f_confStr(n, total) =>
-            str.tostring(n) + "/" + str.tostring(total)
+        // Signal Validation (forward return)
+        valLabel = bahasaInput == "Indonesia" ? "Sinyal" : "Signal"
+        valDisplay = not na(signalStatus) and signalStatus != "" ? signalStatus : "—"
+        valTooltip = not na(fwdBars) and not na(signalLabel) ? signalLabel + " | Bars: " + str.tostring(fwdBars) : ""
+        table.cell(tblFull, 0, 3, "  📊 " + valLabel, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
+        table.cell(tblFull, 1, 3, valDisplay, text_color = labelColor, text_size = size.small, text_halign = text.align_right, bgcolor = bgColor, tooltip = valTooltip)
 
         // Trend
         trendDisplay = str.tostring(math.round(trendScore))
         trendArrow = not na(trendScore) ? (trendScore >= 70 ? "↑" : trendScore >= 40 ? "→" : "↓") : "—"
         trendConf = not na(trendBull) ? " (" + f_confStr(trendBull, trendTotal) + ")" : ""
-        table.cell(tblFull, 0, 3, "  " + trendArrow + " " + (bahasaInput == "Indonesia" ? "Tren" : "Trend"), text_color = dimTrend, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
-        table.cell(tblFull, 1, 3, trendDisplay + trendConf, text_color = f_colorScore(trendScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = trendDetail)
+        table.cell(tblFull, 0, 4, "  " + trendArrow + " " + (bahasaInput == "Indonesia" ? "Tren" : "Trend"), text_color = dimTrend, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
+        table.cell(tblFull, 1, 4, trendDisplay + trendConf, text_color = f_colorScore(trendScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = trendDetail)
         if isDetailed
-            table.cell(tblFull, 0, 4, "", text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
-            table.cell(tblFull, 1, 4, trendDetail, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
+            table.cell(tblFull, 0, 5, "", text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
+            table.cell(tblFull, 1, 5, trendDetail, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
 
         // Momentum
         momDisplay = str.tostring(math.round(momentumScore))
         momArrow = not na(momentumScore) ? (momentumScore >= 70 ? "↑" : momentumScore >= 40 ? "→" : "↓") : "—"
         momConf = not na(momBull) ? " (" + f_confStr(momBull, momTotal) + ")" : ""
-        momBase = 5
+        momBase = 6
         if isDetailed
-            momBase := 6
+            momBase := 7
         table.cell(tblFull, 0, momBase, "  " + momArrow + " " + (bahasaInput == "Indonesia" ? "Momentum" : "Momentum"), text_color = dimMomentum, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
         table.cell(tblFull, 1, momBase, momDisplay + momConf, text_color = f_colorScore(momentumScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = momDetail)
         if isDetailed
