@@ -227,8 +227,8 @@ if not na(trendScore) or not na(momentumScore) or not na(volatilityScore) or not
         sum += volumeScore * normVolume
         wSum += normVolume
     if not na(smartMoneyScore) and enableSmartMoney
-        sum += smartMoneyScore * 20
-        wSum += 20
+        sum += smartMoneyScore * weightSmartMoney
+        wSum += weightSmartMoney
     overallScore := wSum > 0 ? sum / wSum : na
 
 // ==========================================================

@@ -27,6 +27,20 @@ Pine Script v6 hanya support fungsi di TOP LEVEL.
 ### 4. Error Cascade
 Fix error PERTAMA dulu sebelum lihat error lain. Satu error bisa cascade ke baris berikutnya.
 
+### 5. `alert()` v6 vs v5
+| Version | Signature | Notes |
+|---------|-----------|-------|
+| v5 | `alert(condition, message, freq)` | `freq` opsional |
+| v6 | `alert(message, condition)` | **message di posisi pertama!**, tdk ada `freq` param. Gunakan `if condition` di luar jika perlu filter |
+| v5 | `alertcondition(condition, title, message)` | `message` hrs `const string` |
+| v6 | `alertcondition()` → masih ada | Tapi lebih baik pake `alert()` + `if` untuk dynamic message |
+
+### 6. `input.*` → selalu tambah `display=`
+Default Pine Script v6 menampilkan semua input di legend chart. Untuk parameter teknikal, selalu:
+```pine
+input.int(14, "Title", group = "Grup", display = display.data_window)
+```
+
 ---
 
 ## 🐛 Bug Tracker
@@ -40,6 +54,12 @@ Fix error PERTAMA dulu sebelum lihat error lain. Satu error bisa cascade ke bari
 | BG-5 | Choppiness Index: `*100` di dlm `math.log(...)` | `02-data.pine:79` | Nilai 174-275 (hrs 0-100) | Pindah ke luar log |
 | BG-6 | `f_scoreRange` abaikan param `min`/`max` | `01-base.pine:185` | Asimtotik tdk pernah 0 | Linear 3 segmen |
 | BG-7 | `lint.sh` regex false positive masif | `scripts/lint.sh:13` | Flag semua `close` dll | Filter baris `=>` saja |
+| BG-8 | CI pipeline `\|\| true` 2 lapis | `transpile.sh:6`, `build.yml:30,33` | Test & transpile tdk bisa gagalkan CI | Hapus `\|\| true` |
+| BG-9 | 35 input tanpa `display=` | `01-base.pine:19-81` | Legend chart penuh parameter | Tambah `display.data_window` |
+| BG-10 | `alert()` argumen ke-3 (`freq`) | `04-ui.pine:103-128` | CE10115 (too many args) | Hapus, pake `if` block |
+| BG-11 | `alert()` v6 swap `message`/`condition` | `04-ui.pine:103-128` | Argumen terbalik | `alert(message, condition)` |
+| BG-12 | Bobot SM hardcoded 20 | `03-scoring.pine:230` | Tdk bisa diatur user | `weightSmartMoney` input |
+| BG-13 | `rowCount=5` (kurang) | `04-ui.pine:57` | Row Volume mungkin terpotong | `rowCount=7`/`8` |
 
 ---
 
@@ -53,10 +73,10 @@ Fix error PERTAMA dulu sebelum lihat error lain. Satu error bisa cascade ke bari
 - Utility: 16 tests
 - Trend: 6 tests
 - Momentum: 6 tests
-- Volatility: 7 tests
+- Volatility: 11 tests
 - Volume: 6 tests
 - Overall: 6 tests
-- **Total: 47 tests (all passing)**
+- **Total: 51 tests (all passing)**
 
 ---
 

@@ -11,6 +11,11 @@ function chopScore(chopVal) {
     return 100 - Math.min(100, chopVal);
 }
 
+function f_choppiness(atrSum, range_, length) {
+    if (range_ === 0) return 100.0;
+    return Math.log(atrSum / range_) / Math.log(length) * 100;
+}
+
 function atrScore(v) {
     if (v >= 1.0 && v <= 3.0) return 100;
     if (v < 1.0) return v <= 0.5 ? 0 : (v - 0.5) / (1.0 - 0.5) * 100;
@@ -38,6 +43,30 @@ describe('Volatility Score', () => {
         assert.ok(Math.abs(r1 - 50) < 0.001, `got ${r1}`);
         const r2 = bbWidthScore(2.1);
         assert.ok(Math.abs(r2 - 50) < 0.001, `got ${r2}`);
+    });
+
+    it('f_choppiness: trending market (low atrSum/range) = low value', () => {
+        const val = f_choppiness(2, 10, 14);
+        assert.ok(val < 40, `trending chop=${val}, expected <40`);
+        const downstream = chopScore(val);
+        assert.ok(downstream > 60, `trending score=${downstream}, expected >60`);
+    });
+
+    it('f_choppiness: ranging market (high atrSum/range) = high value', () => {
+        const val = f_choppiness(12, 2, 14);
+        assert.ok(val > 60, `ranging chop=${val}, expected >60`);
+        const downstream = chopScore(val);
+        assert.ok(downstream < 40, `ranging score=${downstream}, expected <40`);
+    });
+
+    it('f_choppiness: extreme trending (atrSum=range) = 0', () => {
+        const val = f_choppiness(1, 1, 14);
+        assert.equal(val, 0);
+        assert.equal(chopScore(val), 100);
+    });
+
+    it('f_choppiness: handles zero range', () => {
+        assert.equal(f_choppiness(5, 0, 14), 100);
     });
 
     it('low choppiness (trending) = high score', () => {

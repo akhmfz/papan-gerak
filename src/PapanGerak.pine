@@ -19,66 +19,68 @@ indicator(
 tablePositionInput = input.string(
     "Top Right",
     "Table Position",
-    options = ["Top Left", "Top Right", "Bottom Left", "Bottom Right"]
+    options = ["Top Left", "Top Right", "Bottom Left", "Bottom Right"],
+    display = display.data_window
 )
-fontSizeInput = input.int(1, "Font Size", minval = 1, maxval = 3)
-compactModeInput = input.bool(true, "Compact Mode")
-bahasaInput = input.string("Indonesia", "Bahasa", options = ["Indonesia", "English"])
-colorThemeInput = input.string("Gelap", "Color Theme", options = ["Gelap", "Terang", "Bursa Hijau", "Biru Nusantara", "Emas Premium"])
+fontSizeInput = input.int(1, "Font Size", minval = 1, maxval = 3, display = display.data_window)
+compactModeInput = input.bool(true, "Compact Mode", display = display.data_window)
+bahasaInput = input.string("Indonesia", "Bahasa", options = ["Indonesia", "English"], display = display.data_window)
+colorThemeInput = input.string("Gelap", "Color Theme", options = ["Gelap", "Terang", "Bursa Hijau", "Biru Nusantara", "Emas Premium"], display = display.data_window)
 
 // ==========================================================
 // 2. SETTINGS — Trend Parameters
 // ==========================================================
-emaFastPeriod = input.int(20, "EMA Fast Period", group = "Trend")
-emaMidPeriod = input.int(50, "EMA Mid Period", group = "Trend")
-emaSlowPeriod = input.int(200, "EMA Slow Period", group = "Trend")
-superTrendFactor = input.float(3.0, "SuperTrend Factor", step = 0.1, group = "Trend")
-superTrendPeriod = input.int(10, "SuperTrend ATR Period", group = "Trend")
-adxLength = input.int(14, "ADX Length", group = "Trend")
-adxThreshold = input.int(25, "ADX Threshold", group = "Trend")
+emaFastPeriod = input.int(20, "EMA Fast Period", group = "Trend", display = display.data_window)
+emaMidPeriod = input.int(50, "EMA Mid Period", group = "Trend", display = display.data_window)
+emaSlowPeriod = input.int(200, "EMA Slow Period", group = "Trend", display = display.data_window)
+superTrendFactor = input.float(3.0, "SuperTrend Factor", step = 0.1, group = "Trend", display = display.data_window)
+superTrendPeriod = input.int(10, "SuperTrend ATR Period", group = "Trend", display = display.data_window)
+adxLength = input.int(14, "ADX Length", group = "Trend", display = display.data_window)
+adxThreshold = input.int(25, "ADX Threshold", group = "Trend", display = display.data_window)
 
 // ==========================================================
 // 3. SETTINGS — Momentum Parameters
 // ==========================================================
-rsiLength = input.int(14, "RSI Length", group = "Momentum")
-rsiOb = input.int(70, "RSI Overbought", group = "Momentum")
-rsiOs = input.int(30, "RSI Oversold", group = "Momentum")
-macdFast = input.int(12, "MACD Fast", group = "Momentum")
-macdSlow = input.int(26, "MACD Slow", group = "Momentum")
-macdSignal = input.int(9, "MACD Signal", group = "Momentum")
-stochK = input.int(14, "Stochastic K", group = "Momentum")
-stochD = input.int(3, "Stochastic D", group = "Momentum")
-stochOb = input.int(80, "Stoch Overbought", group = "Momentum")
-stochOs = input.int(20, "Stoch Oversold", group = "Momentum")
+rsiLength = input.int(14, "RSI Length", group = "Momentum", display = display.data_window)
+rsiOb = input.int(70, "RSI Overbought", group = "Momentum", display = display.data_window)
+rsiOs = input.int(30, "RSI Oversold", group = "Momentum", display = display.data_window)
+macdFast = input.int(12, "MACD Fast", group = "Momentum", display = display.data_window)
+macdSlow = input.int(26, "MACD Slow", group = "Momentum", display = display.data_window)
+macdSignal = input.int(9, "MACD Signal", group = "Momentum", display = display.data_window)
+stochK = input.int(14, "Stochastic K", group = "Momentum", display = display.data_window)
+stochD = input.int(3, "Stochastic D", group = "Momentum", display = display.data_window)
+stochOb = input.int(80, "Stoch Overbought", group = "Momentum", display = display.data_window)
+stochOs = input.int(20, "Stoch Oversold", group = "Momentum", display = display.data_window)
 
 // ==========================================================
 // 4. SETTINGS — Volatility Parameters
 // ==========================================================
-atrLength = input.int(14, "ATR Length", group = "Volatility")
-bbLength = input.int(20, "Bollinger Length", group = "Volatility")
-bbMult = input.float(2.0, "Bollinger Multiplier", step = 0.1, group = "Volatility")
-chopLength = input.int(14, "Choppiness Length", group = "Volatility")
+atrLength = input.int(14, "ATR Length", group = "Volatility", display = display.data_window)
+bbLength = input.int(20, "Bollinger Length", group = "Volatility", display = display.data_window)
+bbMult = input.float(2.0, "Bollinger Multiplier", step = 0.1, group = "Volatility", display = display.data_window)
+chopLength = input.int(14, "Choppiness Length", group = "Volatility", display = display.data_window)
 
 // ==========================================================
 // 5. SETTINGS — Volume Parameters
 // ==========================================================
-volMaLength = input.int(20, "Volume MA Length", group = "Volume")
-volSpikeMult = input.float(2.0, "Volume Spike Multiplier", step = 0.1, group = "Volume")
+volMaLength = input.int(20, "Volume MA Length", group = "Volume", display = display.data_window)
+volSpikeMult = input.float(2.0, "Volume Spike Multiplier", step = 0.1, group = "Volume", display = display.data_window)
 
 // ==========================================================
 // 6. SETTINGS — Scoring Weights
 // ==========================================================
-weightTrend = input.int(30, "Trend Weight (%)", minval = 0, maxval = 100, step = 5, group = "Weights")
-weightMomentum = input.int(30, "Momentum Weight (%)", minval = 0, maxval = 100, step = 5, group = "Weights")
-weightVolatility = input.int(20, "Volatility Weight (%)", minval = 0, maxval = 100, step = 5, group = "Weights")
-weightVolume = input.int(20, "Volume Weight (%)", minval = 0, maxval = 100, step = 5, group = "Weights")
+weightTrend = input.int(30, "Trend Weight (%)", minval = 0, maxval = 100, step = 5, group = "Weights", display = display.data_window)
+weightMomentum = input.int(30, "Momentum Weight (%)", minval = 0, maxval = 100, step = 5, group = "Weights", display = display.data_window)
+weightVolatility = input.int(20, "Volatility Weight (%)", minval = 0, maxval = 100, step = 5, group = "Weights", display = display.data_window)
+weightVolume = input.int(20, "Volume Weight (%)", minval = 0, maxval = 100, step = 5, group = "Weights", display = display.data_window)
 
 // ==========================================================
 // 7. SETTINGS — Smart Money (Optional)
 // ==========================================================
-enableSmartMoney = input.bool(false, "Enable Smart Money Flow", group = "Smart Money")
-smVolumeThreshold = input.float(2.5, "SM Volume Z-Threshold", step = 0.1, group = "Smart Money")
-smPeriod = input.int(20, "SM Lookback Period", group = "Smart Money")
+enableSmartMoney = input.bool(false, "Enable Smart Money Flow", group = "Smart Money", display = display.data_window)
+weightSmartMoney = input.int(20, "SM Weight (%)", minval = 0, maxval = 100, step = 5, group = "Smart Money", display = display.data_window)
+smVolumeThreshold = input.float(2.5, "SM Volume Z-Threshold", step = 0.1, group = "Smart Money", display = display.data_window)
+smPeriod = input.int(20, "SM Lookback Period", group = "Smart Money", display = display.data_window)
 
 // ==========================================================
 // 8. COLOR THEMES
@@ -603,8 +605,8 @@ if not na(trendScore) or not na(momentumScore) or not na(volatilityScore) or not
         sum += volumeScore * normVolume
         wSum += normVolume
     if not na(smartMoneyScore) and enableSmartMoney
-        sum += smartMoneyScore * 20
-        wSum += 20
+        sum += smartMoneyScore * weightSmartMoney
+        wSum += weightSmartMoney
     overallScore := wSum > 0 ? sum / wSum : na
 
 // ==========================================================
@@ -626,6 +628,9 @@ hline(50, "Midline", color = color.rgb(100, 100, 100, 40), linestyle = hline.sty
 
 plot(overallScore, "Overall Score", signalColor, 2, plot.style_line)
 fill(plot(70), plot(40), color = color.rgb(100, 100, 100, 10))
+
+oscBg = na(overallScore) ? color.new(color.gray, 95) : overallScore >= 70 ? color.new(bullColor, 88) : overallScore >= 40 ? color.new(neutralColor, 88) : color.new(bearColor, 88)
+bgcolor(oscBg, title = "Score Zone")
 
 // ==========================================================
 // 2. BUILD TABLE
@@ -666,9 +671,9 @@ if barstate.islast
     else
         // --- Full Mode ---
         offset_ = 0
-        rowCount = 5
+        rowCount = 7
         if enableSmartMoney
-            rowCount := 7
+            rowCount := 8
         tblFull = table.new(tablePos, 3, rowCount, bgcolor = tableBgColor, border_width = 1, border_color = signalColor,
          frame_color = signalColor, frame_width = 1)
 
@@ -695,7 +700,7 @@ if barstate.islast
 
         // Volatility
         volDisplay = str.tostring(math.round(volatilityScore))
-        volArrow = not na(volatilityScore) ? (volatilityScore >= 70 ? "↓" : volatilityScore >= 40 ? "→" : "↑") : "—"
+        volArrow = not na(volatilityScore) ? (volatilityScore >= 70 ? "≈" : volatilityScore >= 40 ? "→" : "⚡") : "—"
         table.cell(tblFull, 0, 4, "  " + volArrow + " " + (bahasaInput == "Indonesia" ? "Volatilitas" : "Volatility"), text_color = dimVolatility, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
         table.cell(tblFull, 1, 4, volDisplay, text_color = f_colorScore(volatilityScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
 
@@ -710,6 +715,13 @@ if barstate.islast
             smDisplay = str.tostring(math.round(smartMoneyScore))
             table.cell(tblFull, 0, 6, "  ◆ " + (bahasaInput == "Indonesia" ? "Smart Money" : "Smart Money"), text_color = color.rgb(255, 64, 129), text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
             table.cell(tblFull, 1, 6, smDisplay, text_color = f_colorScore(smartMoneyScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
+
+        // Legend (last row)
+        legendRow = enableSmartMoney ? 7 : 6
+        legendText = bahasaInput == "Indonesia"
+         ? "🔴 <40 Bearish | 🟡 40-70 Netral | 🟢 >70 Bullish"
+         : "🔴 <40 Bearish | 🟡 40-70 Neutral | 🟢 >70 Bullish"
+        table.cell(tblFull, 0, legendRow, legendText, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
 
 // ==========================================================
 // 3. ALERTS

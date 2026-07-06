@@ -24,7 +24,7 @@ docs/                — Documentation
 ```bash
 npm run build        # Concatenate modules
 npm run lint         # Check reserved keywords + line budget
-npm run test:all     # 47 tests
+npm run test:all     # 51 tests
 npm run transpile    # Syntax validation via PineTS
 npm run ci           # Full pipeline
 ```
@@ -56,6 +56,25 @@ release: deskripsi         — rilis/tag
 Scope: base, data, scoring, ui, test, docs
 
 ## Changelog
+
+### v0.2.0-alpha (TBD)
+
+- Fix: Choppiness Index formula (`*100` di dalam log)
+- Fix: `f_scoreRange()` linear interpolation pakai `min`/`max`
+- Fix: `ta.dmi()` gantikan `ta.di()` untuk +DI/-DI yang benar
+- Fix: `ta.adx()` diganti `ta.dmi()` (tidak ada di v6)
+- Fix: `na()` tidak bisa dipanggil dengan `bool` di v6
+- Fix: `var color x = na` untuk deklarasi warna
+- Fix: `bgcolor` (lowercase) di `table.new()`
+- Fix: `alert()` signature v6 = `alert(message, condition)`
+- Fix: CI `|| true` dihapus (test bisa gagalkan pipeline)
+- Fix: `display = display.data_window` di 35 input
+- Fix: `weightSmartMoney` input (tdk hardcoded)
+- Fix: `rowCount` tabel (sebelumnya 5, volume terpotong)
+- UX: `bgcolor()` oscillator berdasarkan zona skor
+- UX: Legend warna di baris terakhir tabel
+- UX: Simbol volatilitas `≈`/`⚡` (bukan arrow terbalik)
+- Test: 51 tests (utility + scoring + choppiness formula)
 
 ### v0.1.0-alpha (TBD)
 

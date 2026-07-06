@@ -12,6 +12,9 @@ hline(50, "Midline", color = color.rgb(100, 100, 100, 40), linestyle = hline.sty
 plot(overallScore, "Overall Score", signalColor, 2, plot.style_line)
 fill(plot(70), plot(40), color = color.rgb(100, 100, 100, 10))
 
+oscBg = na(overallScore) ? color.new(color.gray, 95) : overallScore >= 70 ? color.new(bullColor, 88) : overallScore >= 40 ? color.new(neutralColor, 88) : color.new(bearColor, 88)
+bgcolor(oscBg, title = "Score Zone")
+
 // ==========================================================
 // 2. BUILD TABLE
 // ==========================================================
@@ -51,9 +54,9 @@ if barstate.islast
     else
         // --- Full Mode ---
         offset_ = 0
-        rowCount = 5
+        rowCount = 7
         if enableSmartMoney
-            rowCount := 7
+            rowCount := 8
         tblFull = table.new(tablePos, 3, rowCount, bgcolor = tableBgColor, border_width = 1, border_color = signalColor,
          frame_color = signalColor, frame_width = 1)
 
@@ -80,7 +83,7 @@ if barstate.islast
 
         // Volatility
         volDisplay = str.tostring(math.round(volatilityScore))
-        volArrow = not na(volatilityScore) ? (volatilityScore >= 70 ? "↓" : volatilityScore >= 40 ? "→" : "↑") : "—"
+        volArrow = not na(volatilityScore) ? (volatilityScore >= 70 ? "≈" : volatilityScore >= 40 ? "→" : "⚡") : "—"
         table.cell(tblFull, 0, 4, "  " + volArrow + " " + (bahasaInput == "Indonesia" ? "Volatilitas" : "Volatility"), text_color = dimVolatility, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
         table.cell(tblFull, 1, 4, volDisplay, text_color = f_colorScore(volatilityScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
 
@@ -95,6 +98,13 @@ if barstate.islast
             smDisplay = str.tostring(math.round(smartMoneyScore))
             table.cell(tblFull, 0, 6, "  ◆ " + (bahasaInput == "Indonesia" ? "Smart Money" : "Smart Money"), text_color = color.rgb(255, 64, 129), text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
             table.cell(tblFull, 1, 6, smDisplay, text_color = f_colorScore(smartMoneyScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
+
+        // Legend (last row)
+        legendRow = enableSmartMoney ? 7 : 6
+        legendText = bahasaInput == "Indonesia"
+         ? "🔴 <40 Bearish | 🟡 40-70 Netral | 🟢 >70 Bullish"
+         : "🔴 <40 Bearish | 🟡 40-70 Neutral | 🟢 >70 Bullish"
+        table.cell(tblFull, 0, legendRow, legendText, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
 
 // ==========================================================
 // 3. ALERTS
