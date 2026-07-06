@@ -43,10 +43,10 @@ fontSz = f_getFontSize()
 if barstate.islast
     // --- Compact Mode ---
     if compactModeInput
-        tblCompact = table.new(tablePos, 2, 1, bgColor = tableBgColor, border_width = 1, border_color = signalColor)
+        tblCompact = table.new(tablePos, 2, 1, bgcolor = tableBgColor, border_width = 1, border_color = signalColor)
         overallDisplay = str.tostring(math.round(overallScore))
         table.cell(tblCompact, 0, 0, "PAPAN GERAK  " + signalText + "  " + overallDisplay,
-         text_color = signalColor, text_size = fontSz, text_halign = text.align_center, text_valign = text.valign_middle, width = 10)
+         text_color = signalColor, text_size = fontSz, text_halign = text.align_center, width = 10)
 
     else
         // --- Full Mode ---
@@ -54,75 +54,82 @@ if barstate.islast
         rowCount = 5
         if enableSmartMoney
             rowCount := 7
-        tblFull = table.new(tablePos, 3, rowCount, bgColor = tableBgColor, border_width = 1, border_color = signalColor,
+        tblFull = table.new(tablePos, 3, rowCount, bgcolor = tableBgColor, border_width = 1, border_color = signalColor,
          frame_color = signalColor, frame_width = 1)
 
         // Header
-        table.cell(tblFull, 0, 0, "PAPAN GERAK", text_color = headerColor, text_size = fontSz, text_halign = text.align_left, text_valign = text.valign_middle, bgcolor = bgColor)
+        table.cell(tblFull, 0, 0, "PAPAN GERAK", text_color = headerColor, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
         overallDisplay = str.tostring(math.round(overallScore))
-        table.cell(tblFull, 1, 0, overallDisplay, text_color = signalColor, text_size = fontSz, text_halign = text.align_right, text_valign = text.valign_middle, bgcolor = bgColor)
+        table.cell(tblFull, 1, 0, overallDisplay, text_color = signalColor, text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
 
         // Signal
-        table.cell(tblFull, 0, 1, bahasaInput == "Indonesia" ? "Sinyal" : "Signal", text_color = labelColor, text_size = fontSz, text_halign = text.align_left, text_valign = text.valign_middle, bgcolor = bgColor)
-        table.cell(tblFull, 1, 1, signalText, text_color = signalColor, text_size = fontSz, text_halign = text.align_right, text_valign = text.valign_middle, bgcolor = bgColor)
+        table.cell(tblFull, 0, 1, bahasaInput == "Indonesia" ? "Sinyal" : "Signal", text_color = labelColor, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
+        table.cell(tblFull, 1, 1, signalText, text_color = signalColor, text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
 
         // Trend
         trendDisplay = str.tostring(math.round(trendScore))
         trendArrow = not na(trendScore) ? (trendScore >= 70 ? "↑" : trendScore >= 40 ? "→" : "↓") : "—"
-        table.cell(tblFull, 0, 2, "  " + trendArrow + " " + (bahasaInput == "Indonesia" ? "Tren" : "Trend"), text_color = dimTrend, text_size = fontSz, text_halign = text.align_left, text_valign = text.valign_middle, bgcolor = bgColor)
-        table.cell(tblFull, 1, 2, trendDisplay, text_color = f_colorScore(trendScore), text_size = fontSz, text_halign = text.align_right, text_valign = text.valign_middle, bgcolor = bgColor)
+        table.cell(tblFull, 0, 2, "  " + trendArrow + " " + (bahasaInput == "Indonesia" ? "Tren" : "Trend"), text_color = dimTrend, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
+        table.cell(tblFull, 1, 2, trendDisplay, text_color = f_colorScore(trendScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
 
         // Momentum
         momDisplay = str.tostring(math.round(momentumScore))
         momArrow = not na(momentumScore) ? (momentumScore >= 70 ? "↑" : momentumScore >= 40 ? "→" : "↓") : "—"
-        table.cell(tblFull, 0, 3, "  " + momArrow + " " + (bahasaInput == "Indonesia" ? "Momentum" : "Momentum"), text_color = dimMomentum, text_size = fontSz, text_halign = text.align_left, text_valign = text.valign_middle, bgcolor = bgColor)
-        table.cell(tblFull, 1, 3, momDisplay, text_color = f_colorScore(momentumScore), text_size = fontSz, text_halign = text.align_right, text_valign = text.valign_middle, bgcolor = bgColor)
+        table.cell(tblFull, 0, 3, "  " + momArrow + " " + (bahasaInput == "Indonesia" ? "Momentum" : "Momentum"), text_color = dimMomentum, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
+        table.cell(tblFull, 1, 3, momDisplay, text_color = f_colorScore(momentumScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
 
         // Volatility
         volDisplay = str.tostring(math.round(volatilityScore))
         volArrow = not na(volatilityScore) ? (volatilityScore >= 70 ? "↓" : volatilityScore >= 40 ? "→" : "↑") : "—"
-        table.cell(tblFull, 0, 4, "  " + volArrow + " " + (bahasaInput == "Indonesia" ? "Volatilitas" : "Volatility"), text_color = dimVolatility, text_size = fontSz, text_halign = text.align_left, text_valign = text.valign_middle, bgcolor = bgColor)
-        table.cell(tblFull, 1, 4, volDisplay, text_color = f_colorScore(volatilityScore), text_size = fontSz, text_halign = text.align_right, text_valign = text.valign_middle, bgcolor = bgColor)
+        table.cell(tblFull, 0, 4, "  " + volArrow + " " + (bahasaInput == "Indonesia" ? "Volatilitas" : "Volatility"), text_color = dimVolatility, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
+        table.cell(tblFull, 1, 4, volDisplay, text_color = f_colorScore(volatilityScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
 
         // Volume
         volmDisplay = str.tostring(math.round(volumeScore))
         volmArrow = not na(volumeScore) ? (volumeScore >= 70 ? "↑" : volumeScore >= 40 ? "→" : "↓") : "—"
-        table.cell(tblFull, 0, 5, "  " + volmArrow + " " + (bahasaInput == "Indonesia" ? "Volume" : "Volume"), text_color = dimVolume, text_size = fontSz, text_halign = text.align_left, text_valign = text.valign_middle, bgcolor = bgColor)
-        table.cell(tblFull, 1, 5, volmDisplay, text_color = f_colorScore(volumeScore), text_size = fontSz, text_halign = text.align_right, text_valign = text.valign_middle, bgcolor = bgColor)
+        table.cell(tblFull, 0, 5, "  " + volmArrow + " " + (bahasaInput == "Indonesia" ? "Volume" : "Volume"), text_color = dimVolume, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
+        table.cell(tblFull, 1, 5, volmDisplay, text_color = f_colorScore(volumeScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
 
         // Smart Money (if enabled)
         if enableSmartMoney
             smDisplay = str.tostring(math.round(smartMoneyScore))
-            table.cell(tblFull, 0, 6, "  ◆ " + (bahasaInput == "Indonesia" ? "Smart Money" : "Smart Money"), text_color = color.rgb(255, 64, 129), text_size = fontSz, text_halign = text.align_left, text_valign = text.valign_middle, bgcolor = bgColor)
-            table.cell(tblFull, 1, 6, smDisplay, text_color = f_colorScore(smartMoneyScore), text_size = fontSz, text_halign = text.align_right, text_valign = text.valign_middle, bgcolor = bgColor)
+            table.cell(tblFull, 0, 6, "  ◆ " + (bahasaInput == "Indonesia" ? "Smart Money" : "Smart Money"), text_color = color.rgb(255, 64, 129), text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
+            table.cell(tblFull, 1, 6, smDisplay, text_color = f_colorScore(smartMoneyScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
 
 // ==========================================================
 // 3. ALERTS
 // ==========================================================
 // Alert: Signal Change
-alertcondition(ta.cross(overallScore, 70) or ta.cross(overallScore, 40), "Signal Change",
- "PAPAN GERAK: Sinyal berubah menjadi " + signalText)
+alert(ta.cross(overallScore, 70) or ta.cross(overallScore, 40),
+ "PAPAN GERAK: Sinyal berubah menjadi " + signalText,
+ alert.freq_once_per_bar)
 
 // Alert: Trend Extreme
-alertcondition(trendScore >= 80 or trendScore <= 20, "Trend Extreme",
- "PAPAN GERAK: Trend ekstrem (" + str.tostring(math.round(trendScore)) + ")")
+alert(trendScore >= 80 or trendScore <= 20,
+ "PAPAN GERAK: Trend ekstrem (" + str.tostring(math.round(trendScore)) + ")",
+ alert.freq_once_per_bar)
 
 // Alert: Momentum Oversold
-alertcondition(rsiOsHit, "RSI Oversold",
- "PAPAN GERAK: RSI oversold (" + str.tostring(math.round(rsiValue)) + ")")
+alert(rsiOsHit,
+ "PAPAN GERAK: RSI oversold (" + str.tostring(math.round(rsiValue)) + ")",
+ alert.freq_once_per_bar)
 
 // Alert: Momentum Overbought
-alertcondition(rsiObHit, "RSI Overbought",
- "PAPAN GERAK: RSI overbought (" + str.tostring(math.round(rsiValue)) + ")")
+alert(rsiObHit,
+ "PAPAN GERAK: RSI overbought (" + str.tostring(math.round(rsiValue)) + ")",
+ alert.freq_once_per_bar)
 
 // Alert: Volume Spike
-alertcondition(volSpike, "Volume Spike",
- "PAPAN GERAK: Volume spike (" + str.tostring(math.round(volRatio * 100)) + "% of MA)")
+alert(volSpike,
+ "PAPAN GERAK: Volume spike (" + str.tostring(math.round(volRatio * 100)) + "% of MA)",
+ alert.freq_once_per_bar)
 
 // Alert: Smart Money Detected
-alertcondition(smDetected, "Smart Money Flow",
- "PAPAN GERAK: Institutional flow terdeteksi")
+alert(smDetected,
+ "PAPAN GERAK: Institutional flow terdeteksi",
+ alert.freq_once_per_bar)
 
 // Alert: Choppiness (ranging market)
-alertcondition(chopRanging, "Ranging Market",
- "PAPAN GERAK: Pasar ranging (Choppiness: " + str.tostring(math.round(chopValue)) + ")")
+alert(chopRanging,
+ "PAPAN GERAK: Pasar ranging (Choppiness: " + str.tostring(math.round(chopValue)) + ")",
+ alert.freq_once_per_bar)
