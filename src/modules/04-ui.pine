@@ -65,8 +65,7 @@ if barstate.islast
         tblFull = table.new(tablePos, 3, rowCount, bgcolor = tableBgColor, border_width = 1, border_color = signalColor,
          frame_color = signalColor, frame_width = 1)
 
-        // Narrative row (full width)
-        table.merge_cells(tblFull, 0, 0, 3, 1)
+        // Narrative row (full width - column 0 only)
         table.cell(tblFull, 0, 0, narrative, text_color = headerColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
 
         // Header
