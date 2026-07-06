@@ -92,40 +92,40 @@ smPeriod = input.int(20, "SM Lookback Period", group = "Smart Money", display = 
 // ==========================================================
 // 8. SETTINGS — Signal Parameters
 // ==========================================================
-minSignalBars = input.int(5, "Min Bars Between Signals", minval = 1, maxval = 50, group = "Signal", display = display.data_window)
-signalFilterMode = input.string("Disabled", "Signal Filter", options = ["Disabled", "Only Trending (Chop<38)", "Only Ranging (Chop>62)"], group = "Signal", display = display.data_window)
+minSignalBars = input.int(5, "Min Bars Between Signals", minval = 1, maxval = 50, group = "Signal", display = display.data_window, tooltip = "Jarak minimal antar sinyal (dalam bar). Mencegah sinyal beruntun terlalu rapat.")
+signalFilterMode = input.string("Disabled", "Signal Filter", options = ["Disabled", "Only Trending (Chop<38)", "Only Ranging (Chop>62)"], group = "Signal", display = display.data_window, tooltip = "Hanya izinkan sinyal saat market trending (Chop<38) atau ranging (Chop>62). Nonaktifkan untuk semua kondisi.")
 
 // ==========================================================
 // 9. SETTINGS — Risk Management
 // ==========================================================
-showRiskLevels = input.bool(true, "Show Risk Levels", group = "Risk Mgmt", display = display.data_window)
-slTypeInput = input.string("ATR", "SL Type", options = ["ATR", "Swing Low/High", "Both (Wider)"], group = "Risk Mgmt", display = display.data_window)
-slAtrMult = input.float(1.5, "SL ATR Multiplier", minval = 0.5, maxval = 5.0, step = 0.1, group = "Risk Mgmt", display = display.data_window)
-slSwingPeriod = input.int(10, "SL Swing Lookback", minval = 5, maxval = 50, group = "Risk Mgmt", display = display.data_window)
-targetR = input.float(2.0, "Target R-Multiple", minval = 0.5, maxval = 10.0, step = 0.5, group = "Risk Mgmt", display = display.data_window)
+showRiskLevels = input.bool(true, "Show Risk Levels", group = "Risk Mgmt", display = display.data_window, tooltip = "Tampilkan baris Level Referensi (SL/Target) di tabel. Nonaktifkan untuk mode scan cepat.")
+slTypeInput = input.string("ATR", "SL Type", options = ["ATR", "Swing Low/High", "Both (Wider)"], group = "Risk Mgmt", display = display.data_window, tooltip = "Metode Stop Loss: ATR-based, Swing Low/High, atau kombinasi (ambil yang lebih jauh).")
+slAtrMult = input.float(1.5, "SL ATR Multiplier", minval = 0.5, maxval = 5.0, step = 0.1, group = "Risk Mgmt", display = display.data_window, tooltip = "Pengali ATR untuk SL. Semakin besar semakin longgar. Contoh: 1.5 × ATR(14).")
+slSwingPeriod = input.int(10, "SL Swing Lookback", minval = 5, maxval = 50, group = "Risk Mgmt", display = display.data_window, tooltip = "Jumlah bar untuk mencari swing low/high sebagai referensi SL. Makin panjang makin jauh dari entry.")
+targetR = input.float(2.0, "Target R-Multiple", minval = 0.5, maxval = 10.0, step = 0.5, group = "Risk Mgmt", display = display.data_window, tooltip = "Target take-profit sebagai kelipatan risiko. 2R = profit 2× dari jarak SL.")
 
 // ==========================================================
 // 10. SETTINGS — Position Sizing
 // ==========================================================
-showPositionSizing = input.bool(false, "Show Position Sizing", group = "Position Size", display = display.data_window)
-accountBalanceInput = input.int(50000000, "Account Balance (Rp)", minval = 1000000, step = 1000000, group = "Position Size", display = display.data_window)
-riskPctInput = input.float(1.0, "Risk Per Trade (%)", minval = 0.1, maxval = 5.0, step = 0.1, group = "Position Size", display = display.data_window)
+showPositionSizing = input.bool(false, "Show Position Sizing", group = "Position Size", display = display.data_window, tooltip = "Tampilkan kalkulator ukuran posisi (dalam lot) berdasarkan balance dan risk %.")
+accountBalanceInput = input.int(50000000, "Account Balance (Rp)", minval = 1000000, step = 1000000, group = "Position Size", display = display.data_window, tooltip = "Total modal trading dalam Rupiah. Digunakan untuk menghitung jumlah lot per sinyal.")
+riskPctInput = input.float(1.0, "Risk Per Trade (%)", minval = 0.1, maxval = 5.0, step = 0.1, group = "Position Size", display = display.data_window, tooltip = "Persentase modal yang siap dirisikokan per trade. Contoh: 1% dari Rp50jt = Rp500rb.")
 
 // ==========================================================
 // 11. SETTINGS — Multi-Timeframe Filter
 // ==========================================================
-enableMtfFilter = input.bool(false, "Enable MTF Trend Filter", group = "MTF", display = display.data_window)
-mtfTimeframe = input.string("W", "MTF Timeframe", options = ["W", "M"], group = "MTF", display = display.data_window)
+enableMtfFilter = input.bool(false, "Enable MTF Trend Filter", group = "MTF", display = display.data_window, tooltip = "Aktifkan filter tren Multi-Timeframe. Sinyal harian akan dibandingkan dengan tren weekly/monthly.")
+mtfTimeframe = input.string("W", "MTF Timeframe", options = ["W", "M"], group = "MTF", display = display.data_window, tooltip = "Timeframe yang digunakan untuk MTF filter. W = Weekly, M = Monthly.")
 
 // ==========================================================
 // 12. SETTINGS — Entry Trigger
 // ==========================================================
-entryTriggerMode = input.string("Composite Score", "Entry Trigger", options = ["Composite Score", "Pullback", "Breakout"], group = "Entry Trigger", display = display.data_window)
+entryTriggerMode = input.string("Composite Score", "Entry Trigger", options = ["Composite Score", "Pullback", "Breakout"], group = "Entry Trigger", display = display.data_window, tooltip = "Mode sinyal: Composite Score (zona 40/70), Pullback (entry saat retrace), atau Breakout (saat harga tembus level support/resistance).")
 
 // ==========================================================
 // 13. SETTINGS — Webhook / Alert Format
 // ==========================================================
-webhookFormat = input.string("Simple", "Alert Format", options = ["Simple", "JSON"], group = "Webhook", display = display.data_window)
+webhookFormat = input.string("Simple", "Alert Format", options = ["Simple", "JSON"], group = "Webhook", display = display.data_window, tooltip = "Format alert: Simple (teks biasa) atau JSON (PG|key=value untuk integrasi TradersPost/Pine Connector).")
 
 // ==========================================================
 // 14. COLOR THEMES

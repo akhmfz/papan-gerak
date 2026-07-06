@@ -79,7 +79,7 @@ if barstate.islast
         table.cell(tblFull, 1, 2, signalText, text_color = signalColor, text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
 
         // Forward Return (sejak sinyal terakhir)
-        valLabel = bahasaInput == "Indonesia" ? "Forward Return" : "Forward Return"
+        valLabel = bahasaInput == "Indonesia" ? "Return Sejak Sinyal" : "Forward Return"
         valDisplay = not na(signalStatus) and signalStatus != "" ? signalStatus : "—"
         valTooltip = not na(fwdBars) and not na(signalLabel) ? signalLabel + " | Bars: " + str.tostring(fwdBars) + " | Trigger: " + entryTriggerMode + " | MinBars: " + str.tostring(minSignalBars) : ""
         table.cell(tblFull, 0, 3, "  📊 " + valLabel, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
@@ -156,7 +156,7 @@ if barstate.islast
             table.cell(tblFull, 1, riskBase, riskLevelLabel, text_color = labelColor, text_size = size.small, text_halign = text.align_right, bgcolor = bgColor, tooltip = riskTooltip)
 
         // Legend (last row)
-        legendBase = riskBase + 1
+        legendBase = showRiskLevels ? riskBase + 1 : riskBase
         legendText = bahasaInput == "Indonesia" ? "🔴 <40 Bearish | 🟡 40-70 Netral | 🟢 >70 Bullish" : "🔴 <40 Bearish | 🟡 40-70 Neutral | 🟢 >70 Bullish"
         table.cell(tblFull, 0, legendBase, legendText, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
 

@@ -418,7 +418,7 @@ f_narrative() =>
         else if not na(chopValue) and chopRanging
             lang == "Indonesia" ? "⏳ Pasar ranging — tunggu breakout" : "⏳ Ranging market — wait for breakout"
 
-        // 9. Fallback: mixed
+        // 10. Fallback: mixed
         else
             lang == "Indonesia" ? "💡 Kondisi campuran — cek detail per dimensi" : "💡 Mixed conditions — check per-dimension details"
     else
@@ -559,11 +559,15 @@ var float riskSwingLow = na
 var float riskSwingHigh = na
 var int riskDirection = 0
 
-if signalTriggered
+// ta.lowest/ta.highest must be called unconditionally on every bar (Pine v6 requirement)
+riskSwingLowUncond = ta.lowest(low, slSwingPeriod)
+riskSwingHighUncond = ta.highest(high, slSwingPeriod)
+
+if entryTriggered
     riskEntryPrice := signalEntryPrice
     riskAtrCapture := atrValue
-    riskSwingLow := ta.lowest(low, slSwingPeriod)
-    riskSwingHigh := ta.highest(high, slSwingPeriod)
+    riskSwingLow := riskSwingLowUncond
+    riskSwingHigh := riskSwingHighUncond
     riskDirection := signalDirection
 
 hasRisk = riskDirection != 0 and not na(riskEntryPrice)
@@ -575,7 +579,7 @@ atrSl = hasRisk ? riskEntryPrice - riskAtrCapture * slAtrMult * riskDirection : 
 swingSl = hasRisk ? (riskDirection == 1 ? riskSwingLow : riskSwingHigh) : na
 
 // Final SL price
-slPrice = na
+float slPrice = na
 if hasRisk
     if slTypeInput == "ATR"
         slPrice := atrSl

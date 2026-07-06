@@ -92,40 +92,40 @@ smPeriod = input.int(20, "SM Lookback Period", group = "Smart Money", display = 
 // ==========================================================
 // 8. SETTINGS — Signal Parameters
 // ==========================================================
-minSignalBars = input.int(5, "Min Bars Between Signals", minval = 1, maxval = 50, group = "Signal", display = display.data_window)
-signalFilterMode = input.string("Disabled", "Signal Filter", options = ["Disabled", "Only Trending (Chop<38)", "Only Ranging (Chop>62)"], group = "Signal", display = display.data_window)
+minSignalBars = input.int(5, "Min Bars Between Signals", minval = 1, maxval = 50, group = "Signal", display = display.data_window, tooltip = "Jarak minimal antar sinyal (dalam bar). Mencegah sinyal beruntun terlalu rapat.")
+signalFilterMode = input.string("Disabled", "Signal Filter", options = ["Disabled", "Only Trending (Chop<38)", "Only Ranging (Chop>62)"], group = "Signal", display = display.data_window, tooltip = "Hanya izinkan sinyal saat market trending (Chop<38) atau ranging (Chop>62). Nonaktifkan untuk semua kondisi.")
 
 // ==========================================================
 // 9. SETTINGS — Risk Management
 // ==========================================================
-showRiskLevels = input.bool(true, "Show Risk Levels", group = "Risk Mgmt", display = display.data_window)
-slTypeInput = input.string("ATR", "SL Type", options = ["ATR", "Swing Low/High", "Both (Wider)"], group = "Risk Mgmt", display = display.data_window)
-slAtrMult = input.float(1.5, "SL ATR Multiplier", minval = 0.5, maxval = 5.0, step = 0.1, group = "Risk Mgmt", display = display.data_window)
-slSwingPeriod = input.int(10, "SL Swing Lookback", minval = 5, maxval = 50, group = "Risk Mgmt", display = display.data_window)
-targetR = input.float(2.0, "Target R-Multiple", minval = 0.5, maxval = 10.0, step = 0.5, group = "Risk Mgmt", display = display.data_window)
+showRiskLevels = input.bool(true, "Show Risk Levels", group = "Risk Mgmt", display = display.data_window, tooltip = "Tampilkan baris Level Referensi (SL/Target) di tabel. Nonaktifkan untuk mode scan cepat.")
+slTypeInput = input.string("ATR", "SL Type", options = ["ATR", "Swing Low/High", "Both (Wider)"], group = "Risk Mgmt", display = display.data_window, tooltip = "Metode Stop Loss: ATR-based, Swing Low/High, atau kombinasi (ambil yang lebih jauh).")
+slAtrMult = input.float(1.5, "SL ATR Multiplier", minval = 0.5, maxval = 5.0, step = 0.1, group = "Risk Mgmt", display = display.data_window, tooltip = "Pengali ATR untuk SL. Semakin besar semakin longgar. Contoh: 1.5 × ATR(14).")
+slSwingPeriod = input.int(10, "SL Swing Lookback", minval = 5, maxval = 50, group = "Risk Mgmt", display = display.data_window, tooltip = "Jumlah bar untuk mencari swing low/high sebagai referensi SL. Makin panjang makin jauh dari entry.")
+targetR = input.float(2.0, "Target R-Multiple", minval = 0.5, maxval = 10.0, step = 0.5, group = "Risk Mgmt", display = display.data_window, tooltip = "Target take-profit sebagai kelipatan risiko. 2R = profit 2× dari jarak SL.")
 
 // ==========================================================
 // 10. SETTINGS — Position Sizing
 // ==========================================================
-showPositionSizing = input.bool(false, "Show Position Sizing", group = "Position Size", display = display.data_window)
-accountBalanceInput = input.int(50000000, "Account Balance (Rp)", minval = 1000000, step = 1000000, group = "Position Size", display = display.data_window)
-riskPctInput = input.float(1.0, "Risk Per Trade (%)", minval = 0.1, maxval = 5.0, step = 0.1, group = "Position Size", display = display.data_window)
+showPositionSizing = input.bool(false, "Show Position Sizing", group = "Position Size", display = display.data_window, tooltip = "Tampilkan kalkulator ukuran posisi (dalam lot) berdasarkan balance dan risk %.")
+accountBalanceInput = input.int(50000000, "Account Balance (Rp)", minval = 1000000, step = 1000000, group = "Position Size", display = display.data_window, tooltip = "Total modal trading dalam Rupiah. Digunakan untuk menghitung jumlah lot per sinyal.")
+riskPctInput = input.float(1.0, "Risk Per Trade (%)", minval = 0.1, maxval = 5.0, step = 0.1, group = "Position Size", display = display.data_window, tooltip = "Persentase modal yang siap dirisikokan per trade. Contoh: 1% dari Rp50jt = Rp500rb.")
 
 // ==========================================================
 // 11. SETTINGS — Multi-Timeframe Filter
 // ==========================================================
-enableMtfFilter = input.bool(false, "Enable MTF Trend Filter", group = "MTF", display = display.data_window)
-mtfTimeframe = input.string("W", "MTF Timeframe", options = ["W", "M"], group = "MTF", display = display.data_window)
+enableMtfFilter = input.bool(false, "Enable MTF Trend Filter", group = "MTF", display = display.data_window, tooltip = "Aktifkan filter tren Multi-Timeframe. Sinyal harian akan dibandingkan dengan tren weekly/monthly.")
+mtfTimeframe = input.string("W", "MTF Timeframe", options = ["W", "M"], group = "MTF", display = display.data_window, tooltip = "Timeframe yang digunakan untuk MTF filter. W = Weekly, M = Monthly.")
 
 // ==========================================================
 // 12. SETTINGS — Entry Trigger
 // ==========================================================
-entryTriggerMode = input.string("Composite Score", "Entry Trigger", options = ["Composite Score", "Pullback", "Breakout"], group = "Entry Trigger", display = display.data_window)
+entryTriggerMode = input.string("Composite Score", "Entry Trigger", options = ["Composite Score", "Pullback", "Breakout"], group = "Entry Trigger", display = display.data_window, tooltip = "Mode sinyal: Composite Score (zona 40/70), Pullback (entry saat retrace), atau Breakout (saat harga tembus level support/resistance).")
 
 // ==========================================================
 // 13. SETTINGS — Webhook / Alert Format
 // ==========================================================
-webhookFormat = input.string("Simple", "Alert Format", options = ["Simple", "JSON"], group = "Webhook", display = display.data_window)
+webhookFormat = input.string("Simple", "Alert Format", options = ["Simple", "JSON"], group = "Webhook", display = display.data_window, tooltip = "Format alert: Simple (teks biasa) atau JSON (PG|key=value untuk integrasi TradersPost/Pine Connector).")
 
 // ==========================================================
 // 14. COLOR THEMES
@@ -852,7 +852,7 @@ f_narrative() =>
         else if not na(chopValue) and chopRanging
             lang == "Indonesia" ? "⏳ Pasar ranging — tunggu breakout" : "⏳ Ranging market — wait for breakout"
 
-        // 9. Fallback: mixed
+        // 10. Fallback: mixed
         else
             lang == "Indonesia" ? "💡 Kondisi campuran — cek detail per dimensi" : "💡 Mixed conditions — check per-dimension details"
     else
@@ -993,11 +993,15 @@ var float riskSwingLow = na
 var float riskSwingHigh = na
 var int riskDirection = 0
 
-if signalTriggered
+// ta.lowest/ta.highest must be called unconditionally on every bar (Pine v6 requirement)
+riskSwingLowUncond = ta.lowest(low, slSwingPeriod)
+riskSwingHighUncond = ta.highest(high, slSwingPeriod)
+
+if entryTriggered
     riskEntryPrice := signalEntryPrice
     riskAtrCapture := atrValue
-    riskSwingLow := ta.lowest(low, slSwingPeriod)
-    riskSwingHigh := ta.highest(high, slSwingPeriod)
+    riskSwingLow := riskSwingLowUncond
+    riskSwingHigh := riskSwingHighUncond
     riskDirection := signalDirection
 
 hasRisk = riskDirection != 0 and not na(riskEntryPrice)
@@ -1009,7 +1013,7 @@ atrSl = hasRisk ? riskEntryPrice - riskAtrCapture * slAtrMult * riskDirection : 
 swingSl = hasRisk ? (riskDirection == 1 ? riskSwingLow : riskSwingHigh) : na
 
 // Final SL price
-slPrice = na
+float slPrice = na
 if hasRisk
     if slTypeInput == "ATR"
         slPrice := atrSl
@@ -1128,7 +1132,7 @@ if barstate.islast
         table.cell(tblFull, 1, 2, signalText, text_color = signalColor, text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor)
 
         // Forward Return (sejak sinyal terakhir)
-        valLabel = bahasaInput == "Indonesia" ? "Forward Return" : "Forward Return"
+        valLabel = bahasaInput == "Indonesia" ? "Return Sejak Sinyal" : "Forward Return"
         valDisplay = not na(signalStatus) and signalStatus != "" ? signalStatus : "—"
         valTooltip = not na(fwdBars) and not na(signalLabel) ? signalLabel + " | Bars: " + str.tostring(fwdBars) + " | Trigger: " + entryTriggerMode + " | MinBars: " + str.tostring(minSignalBars) : ""
         table.cell(tblFull, 0, 3, "  📊 " + valLabel, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
@@ -1205,7 +1209,7 @@ if barstate.islast
             table.cell(tblFull, 1, riskBase, riskLevelLabel, text_color = labelColor, text_size = size.small, text_halign = text.align_right, bgcolor = bgColor, tooltip = riskTooltip)
 
         // Legend (last row)
-        legendBase = riskBase + 1
+        legendBase = showRiskLevels ? riskBase + 1 : riskBase
         legendText = bahasaInput == "Indonesia" ? "🔴 <40 Bearish | 🟡 40-70 Netral | 🟢 >70 Bullish" : "🔴 <40 Bearish | 🟡 40-70 Neutral | 🟢 >70 Bullish"
         table.cell(tblFull, 0, legendBase, legendText, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
 
