@@ -11,7 +11,7 @@
 // --- Indicator Definition ---
 indicator(
     "Saham: Papan Gerak By. Akhmfz",
-    shorttitle = "Papan Gerak",
+    shorttitle = "P.Gerak",
     overlay = false,
     format = format.price,
     precision = 0,

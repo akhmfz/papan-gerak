@@ -149,10 +149,11 @@ else
 // ==========================================================
 // 6. MULTI-TIMEFRAME TREND
 // ==========================================================
-mtfTrendScore = enableMtfFilter
-    ? request.security(syminfo.tickerid, mtfTimeframe,
+mtfTrendScore = if enableMtfFilter
+    request.security(syminfo.tickerid, mtfTimeframe,
         (close > ta.ema(close, 200) ? 50 : 0) +
         (close > ta.ema(close, 50) ? 30 : 0) +
         (close > ta.ema(close, 20) ? 20 : 0),
         barmerge.gaps_off, barmerge.lookahead_off)
-    : na
+else
+    na
