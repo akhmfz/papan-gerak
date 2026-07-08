@@ -62,17 +62,18 @@ if barstate.islast
     if modeInput == "Compact"
         tblCompact = table.new(tablePos, 2, 1, bgcolor = tableBgColor, border_width = 1, border_color = signalColor)
         overallDisplay = str.tostring(math.round(overallScore))
-        table.cell(tblCompact, 0, 0, "PAPAN GERAK  " + signalText + "  " + overallDisplay,
+        mtfCompact = not na(mtfScore) ? " | MTF: " + str.tostring(math.round(mtfScore)) + (mtfDirection == 1 ? "▲" : mtfDirection == -1 ? "▼" : "—") : ""
+        table.cell(tblCompact, 0, 0, "PAPAN GERAK  " + signalText + "  " + overallDisplay + mtfCompact,
          text_color = signalColor, text_size = fontSz, text_halign = text.align_center, width = 10)
 
     else
         // --- Standard & Detailed Mode ---
         isDetailed = modeInput == "Detailed"
-        rowCount = 11
+        rowCount = 12  // +1 untuk MTF Alignment row
         if enableSmartMoney
             rowCount := rowCount + 1
         if isDetailed
-            rowCount := rowCount + 4  // +1 sub-row per dimensi
+            rowCount := rowCount + 5  // +1 sub-row per dimensi (+1 untuk MTF detail)
         tblFull = table.new(tablePos, 2, rowCount, bgcolor = tableBgColor, border_width = 1, border_color = signalColor,
          frame_color = signalColor, frame_width = 1)
 
@@ -103,24 +104,36 @@ if barstate.islast
         table.cell(tblFull, 0, 4, "  📊 " + btLabel, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
         table.cell(tblFull, 1, 4, btDisplay, text_color = btWinRate >= 60 ? bullColor : btWinRate >= 40 ? neutralColor : bearColor, text_size = size.small, text_halign = text.align_right, bgcolor = bgColor, tooltip = btTooltip)
 
-        // Trend
+        // MTF Alignment
+        mtfArrow = not na(mtfScore) ? (mtfScore >= 70 ? "↑" : mtfScore >= 40 ? "→" : "↓") : "—"
+        mtfDirLabel = not na(mtfDirection) ? (mtfDirection == 1 ? " (Bullish)" : mtfDirection == -1 ? " (Bearish)" : " (Mixed)") : ""
+        mtfDisplay = not na(mtfScore) ? str.tostring(math.round(mtfScore)) + mtfDirLabel : "—"
+        mtfDetailTF = not na(mtfScore) ? str.format("{0}:{1}/{2}/{3}",
+         mtfPrimaryTF, str.tostring(math.round(mtfTf1Dir)), str.tostring(math.round(mtfTf2Dir)), str.tostring(math.round(mtfTf3Dir))) : ""
+        table.cell(tblFull, 0, 5, "  " + mtfArrow + " " + (bahasaInput == "Indonesia" ? "MTF Alignment" : "MTF Alignment"), text_color = color.new(color.blue, 70), text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
+        table.cell(tblFull, 1, 5, mtfDisplay, text_color = f_colorScore(mtfScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = mtfDebug ? mtfDebugStr : mtfDetailTF)
+        if isDetailed
+            table.cell(tblFull, 0, 6, "", text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
+            table.cell(tblFull, 1, 6, mtfDebugStr, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
+
+        // Trend (geser 1 row karena MTF row)
         trendDisplay = str.tostring(math.round(trendScore))
         trendArrow = not na(trendScore) ? (trendScore >= 70 ? "↑" : trendScore >= 40 ? "→" : "↓") : "—"
         trendConf = not na(trendBull) ? " (" + f_confStr(trendBull, trendTotal) + ")" : ""
         trendMtf = enableMtfFilter and not na(mtfTrendScore) ? "  " + mtfWarning : ""
-        table.cell(tblFull, 0, 5, "  " + trendArrow + " " + (bahasaInput == "Indonesia" ? "Tren" : "Trend"), text_color = dimTrend, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
-        table.cell(tblFull, 1, 5, trendDisplay + trendConf + trendMtf, text_color = f_colorScore(trendScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = trendDetail)
+        table.cell(tblFull, 0, 7, "  " + trendArrow + " " + (bahasaInput == "Indonesia" ? "Tren" : "Trend"), text_color = dimTrend, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
+        table.cell(tblFull, 1, 7, trendDisplay + trendConf + trendMtf, text_color = f_colorScore(trendScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = trendDetail)
         if isDetailed
-            table.cell(tblFull, 0, 6, "", text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
-            table.cell(tblFull, 1, 6, trendDetail, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
+            table.cell(tblFull, 0, 8, "", text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
+            table.cell(tblFull, 1, 8, trendDetail, text_color = labelColor, text_size = size.small, text_halign = text.align_left, bgcolor = bgColor)
 
-        // Momentum
+        // Momentum (geser 1 row)
         momDisplay = str.tostring(math.round(momentumScore))
         momArrow = not na(momentumScore) ? (momentumScore >= 70 ? "↑" : momentumScore >= 40 ? "→" : "↓") : "—"
         momConf = not na(momBull) ? " (" + f_confStr(momBull, momTotal) + ")" : ""
-        momBase = 6
+        momBase = 8
         if isDetailed
-            momBase := 7
+            momBase := 9
         table.cell(tblFull, 0, momBase, "  " + momArrow + " " + (bahasaInput == "Indonesia" ? "Momentum" : "Momentum"), text_color = dimMomentum, text_size = fontSz, text_halign = text.align_left, bgcolor = bgColor)
         table.cell(tblFull, 1, momBase, momDisplay + momConf, text_color = f_colorScore(momentumScore), text_size = fontSz, text_halign = text.align_right, bgcolor = bgColor, tooltip = momDetail)
         if isDetailed
