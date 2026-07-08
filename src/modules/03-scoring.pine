@@ -205,7 +205,7 @@ f_smartMoneyScore() =>
 // ==========================================================
 f_mtfAlignmentScore() =>
     if not enableMTF
-        [na, 0, ""]
+        [na, 0, "", na, na, na, na]
 
     tf1Dir = mtfTf1Trend * 0.55 + mtfTf1Mom * 0.45
     tf2Dir = mtfTf2Trend * 0.55 + mtfTf2Mom * 0.45
@@ -216,7 +216,7 @@ f_mtfAlignmentScore() =>
     tf3Ctx = mtfTf3Vol * 0.55 + mtfTf3Volm * 0.45
 
     if na(tf1Dir) or na(tf2Dir)
-        [na, 0, ""]
+        [na, 0, "", na, na, na, na]
 
     totalW = mtfPrimaryWeight + mtfSecondaryWeight + mtfTertiaryWeight
     normW1 = totalW > 0 ? mtfPrimaryWeight / totalW : 0.50
@@ -248,21 +248,30 @@ f_mtfAlignmentScore() =>
     finalScore = conflictScore * mtfAlpha + mtfCtxRaw * (1 - mtfAlpha)
 
     debugStr = if mtfDebug
-        str.format("D:({0}/{1}/{2}/{3}) W:({4}/{5}/{6}/{7}) M:({8}/{9}/{10}/{11}) dirRaw={12} ctxRaw={13} pen={14}% final={15}",
-         str.tostring(math.round(mtfTf1Trend)), str.tostring(math.round(mtfTf1Mom)),
-         str.tostring(math.round(mtfTf1Vol)), str.tostring(math.round(mtfTf1Volm)),
-         str.tostring(math.round(mtfTf2Trend)), str.tostring(math.round(mtfTf2Mom)),
-         str.tostring(math.round(mtfTf2Vol)), str.tostring(math.round(mtfTf2Volm)),
-         str.tostring(math.round(mtfTf3Trend)), str.tostring(math.round(mtfTf3Mom)),
-         str.tostring(math.round(mtfTf3Vol)), str.tostring(math.round(mtfTf3Volm)),
-         str.tostring(math.round(mtfDirRaw)), str.tostring(math.round(mtfCtxRaw)),
-         str.tostring(math.round(penalty * 100)), str.tostring(math.round(finalScore)))
+        "MTF DEBUG\n" +
+        "  Primary (" + mtfPrimaryTF + "): T" + str.tostring(math.round(mtfTf1Trend)) +
+        " M" + str.tostring(math.round(mtfTf1Mom)) +
+        " V" + str.tostring(math.round(mtfTf1Vol)) +
+        " Vo" + str.tostring(math.round(mtfTf1Volm)) + "\n" +
+        "  Secondary (" + mtfSecondaryTF + "): T" + str.tostring(math.round(mtfTf2Trend)) +
+        " M" + str.tostring(math.round(mtfTf2Mom)) +
+        " V" + str.tostring(math.round(mtfTf2Vol)) +
+        " Vo" + str.tostring(math.round(mtfTf2Volm)) + "\n" +
+        "  Tertiary (" + mtfTertiaryTF + "): T" + str.tostring(math.round(mtfTf3Trend)) +
+        " M" + str.tostring(math.round(mtfTf3Mom)) +
+        " V" + str.tostring(math.round(mtfTf3Vol)) +
+        " Vo" + str.tostring(math.round(mtfTf3Volm)) + "\n" +
+        "  Dir: " + (direction == 1 ? "Bullish" : direction == -1 ? "Bearish" : "Mixed") +
+        " | Pen: " + str.tostring(math.round(penalty * 100)) + "%" +
+        " | DirRaw: " + str.tostring(math.round(mtfDirRaw)) +
+        " | CtxRaw: " + str.tostring(math.round(mtfCtxRaw)) +
+        " | Final: " + str.tostring(math.round(finalScore))
     else
         ""
 
-    [finalScore, direction, debugStr]
+    [finalScore, direction, debugStr, tf1Dir, tf2Dir, tf3Dir, penalty]
 
-[mtfScore, mtfDirection, mtfDebugStr] = f_mtfAlignmentScore()
+[mtfScore, mtfDirection, mtfDebugStr, mtfTf1Dir, mtfTf2Dir, mtfTf3Dir, mtfPenalty] = f_mtfAlignmentScore()
 
 // ==========================================================
 // 7. CALCULATE ALL SCORES

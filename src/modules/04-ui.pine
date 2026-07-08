@@ -16,6 +16,17 @@ oscBg = na(overallScore) ? color.new(color.gray, 95) : overallScore >= 70 ? colo
 bgcolor(oscBg, title = "Score Zone")
 
 // ==========================================================
+// 1b. MTF PLOTS & DEBUG
+// ==========================================================
+plot(mtfScore, "MTF Score", color.new(color.blue, 60), 1, plot.style_line, display = display.data_window)
+plot(mtfDirection * 50 + 50, "MTF Direction", color.new(color.gray, 70), 1, plot.style_cross, display = display.data_window)
+
+if mtfDebug and barstate.islast and not na(mtfScore)
+    label.new(bar_index, 3, mtfDebugStr, style = label.style_label_center,
+     size = size.small, text_size = size.small, text_color = color.white,
+     color = color.new(color.blue, 60))
+
+// ==========================================================
 // 2. BUILD TABLE
 // ==========================================================
 f_getPosition() =>
