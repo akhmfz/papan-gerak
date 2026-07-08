@@ -1,6 +1,6 @@
 # RFC: P1-2 — Multi-Timeframe Alignment Score
 
-**Status:** Draft  
+**Status:** Approved — Implementation Spec  
 **Author:** OpenCode  
 **Date:** 2026-07-08  
 **Tags:** [rfc, papan-gerak, scoring, mtf]
@@ -15,9 +15,9 @@ chart belum tentu valid jika Weekly chart menunjukkan bearish.
 
 Trader IDX sering menggunakan multiple timeframe untuk entry:
 
-- **Daily** untuk entry timing
-- **Weekly** untuk trend utama
-- **Monthly** untuk konteks makro
+- **Primary TF** — entry timing
+- **Secondary TF** — trend konfirmasi
+- **Tertiary TF** — konteks makro
 
 Tanpa MTF Alignment, sinyal di timeframe kecil bisa menyesatkan saat timeframe
 besar bertentangan.
@@ -30,11 +30,12 @@ Tambahkan dimensi scoring baru: **MTF Alignment Score** (0–100).
 
 Cara kerja:
 
-1. Request data dari timeframe yang lebih tinggi (higher timeframe / HTF)
-   via `request.security()` atau pendekatan multi-timeframe lain
-2. Hitung score untuk setiap timeframe secara independen
-3. Gabungkan dengan sistem bobot: timeframe besar punya influence lebih besar
-4. Hasil akhir: MTF score + alignment direction flag
+1. Request data dari higher timeframe via `request.security()`
+2. Hitung 4 sub-score untuk setiap timeframe secara independen
+3. **Pisahkan directional (Trend+Momentum) dari non-directional (Volatility+Volume)**
+   — conflict detection hanya dari directional components
+4. Gabungkan dengan sistem bobot
+5. Hasil akhir: MTF score + alignment direction flag
 
 ---
 
@@ -42,11 +43,13 @@ Cara kerja:
 
 ### 3a. Timeframes
 
-| Timeframe | Label | Weight | Fungsi |
-|-----------|-------|--------|--------|
-| Daily | D | 50% | Entry timing, sinyal utama |
-| Weekly | W | 35% | Trend konfirmasi |
-| Monthly | M | 15% | Konteks makro |
+| Role | Label | Weight | Fungsi |
+|------|-------|--------|--------|
+| Primary | TF1 | 50% | Entry timing, sinyal utama |
+| Secondary | TF2 | 35% | Trend konfirmasi |
+| Tertiary | TF3 | 15% | Konteks makro |
+
+Default mapping: TF1 = Daily, TF2 = Weekly, TF3 = Monthly.
 
 Alasan:
 
@@ -54,71 +57,138 @@ Alasan:
 - Weekly menangkap trend 1-6 bulan → bobot sedang
 - Monthly sebagai konteks (support/resistance jangka panjang) → bobot rendah
 
-### 3b. Kenapa bukan 4H?
+### 3b. Parameterisasi label
+
+Nama `Primary`/`Secondary`/`Tertiary` dipilih alih-alih `Daily`/`Weekly`/`Monthly`
+karena `request.security()` bekerja dari timeframe manapun. Jika user membuka
+Weekly chart, `PrimaryTF=Weekly` tetap masuk akal secara semantik —
+`Daily=50%` di Weekly chart tidak.
+
+### 3c. Kenapa bukan 4H?
 
 4H termasuk timeframe intraday. Papan Gerak dirancang untuk **swing trading**
-(biasanya Daily+), bukan scalping. Jika nanti diperlukan, 4H bisa ditambahkan
-sebagai opsi lanjutan.
+(typically Daily+), bukan scalping. Jika nanti diperlukan, 4H bisa ditambahkan
+sebagai parameter opsional.
 
 ---
 
 ## 4. Scoring Model
 
-### 4a. Komponen per timeframe
+### 4a. Dua komponen terpisah
 
-Setiap timeframe menghasilkan 4 sub-score (menggunakan engine yang sudah ada):
+Setiap timeframe menghasilkan 2 metrik terpisah:
 
-| Sub-score | Sumber | Bobot dalam timeframe |
-|-----------|--------|-----------------------|
-| Trend | `f_trendScore()` via `request.security()` | 35% |
-| Momentum | `f_momentumScore()` via `request.security()` | 30% |
-| Volatility | `f_volatilityScore()` via `request.security()` | 20% |
-| Volume | `f_volumeScore()` via `request.security()` | 15% |
+#### Directional Components (untuk alignment & conflict detection)
+
+| Sub-score | Sumber | Bobot dalam TF |
+|-----------|--------|----------------|
+| Trend | `f_trendScore()` via `request.security()` | 55% |
+| Momentum | `f_momentumScore()` via `request.security()` | 45% |
+
+#### Context Components (untuk konfirmasi, non-directional)
+
+| Sub-score | Sumber | Bobot dalam TF |
+|-----------|--------|----------------|
+| Volatility | `f_volatilityScore()` via `request.security()` | 55% |
+| Volume | `f_volumeScore()` via `request.security()` | 45% |
 
 ### 4b. Weighted combination
 
 ```
-mtfRaw = trendScore(D) × 0.35 + momentumScore(D) × 0.30 +
-         volatilityScore(D) × 0.20 + volumeScore(D) × 0.15
-         ──────────────────── × 0.50  (Daily weight)
+tfDirectionalScore = trendScore × 0.55 + momentumScore × 0.45
+tfContextScore     = volatilityScore × 0.55 + volumeScore × 0.45
 
-         trendScore(W) × 0.35 + momentumScore(W) × 0.30 +
-         volatilityScore(W) × 0.20 + volumeScore(W) × 0.15
-         ──────────────────── × 0.35  (Weekly weight)
+mtfDirectionalRaw = tf1Directional × 0.50 +
+                    tf2Directional × 0.35 +
+                    tf3Directional × 0.15
 
-         trendScore(M) × 0.35 + momentumScore(M) × 0.30 +
-         volatilityScore(M) × 0.20 + volumeScore(M) × 0.15
-         ──────────────────── × 0.15  (Monthly weight)
+mtfContextRaw     = tf1Context × 0.50 +
+                    tf2Context × 0.35 +
+                    tf3Context × 0.15
+
+mtfRaw = mtfDirectionalRaw × 0.70 + mtfContextRaw × 0.30
 ```
 
-### 4c. Conflict penalty
+`α = 0.70` (default, user-configurable) — bobot directional vs context.
 
-Ketika Daily dan Weekly bertentangan, beri **penalti**:
+### 4c. Conflict detection (hanya dari directional)
 
-| Daily | Weekly | Monthly | Penalty | Contoh |
-|-------|--------|---------|---------|--------|
-| Bullish | Bullish | Bullish | 0% | Strong buy |
-| Bullish | Bullish | Bearish | -5% | Buy with caution |
-| Bullish | Bearish | Bullish | -15% | Potential reversal |
-| Bullish | Bearish | Bearish | -25% | Avoid — trend conflict |
-| Bearish | Bullish | Bullish | -15% | Potential bounce |
-| Bearish | Bullish | Bearish | -25% | Avoid — trend conflict |
-| Bearish | Bearish | Bullish | -5% | Sell with caution |
-| Bearish | Bearish | Bearish | 0% | Strong sell |
-
-Threshold untuk "bullish" per timeframe: `mtfSubScore >= 60`
+Threshold untuk "bullish" per timeframe menggunakan **fuzzy threshold**:
 
 ```
-conflictScore = mtfRaw × (1 - penalty)
+bullishConfidence = math.max(math.min((tfDirectionalScore - 50) / 20, 1), 0)
+// 0.0 di 50, 1.0 di 70
+```
 
-finalScore = conflictScore
+### 4d. Continuous penalty
+
+Penalti proporsional terhadap divergence, bukan diskrit:
+
+```
+divergence = math.abs(tf1Directional - tf2Directional)
+penalty    = (divergence / 100) × maxPenalty
+
+maxPenalty = 0.25 (user-configurable, default 25%)
+```
+
+Rationale:
+
+- Continuous lebih halus — tidak ada lonjakan mendadak di threshold
+- Divergence 0 → penalty 0%; divergence 100 → penalty 25%
+- Bertentangan dengan RFC sebelumnya yang menggunakan tabel diskrit 8 kondisi.
+  Continuous dipilih karena menghindari edge case di batas threshold 60.
+
+**Opsi eksplisit:** Jika user ingin tabel diskrit (lebih intuitif untuk debugging),
+tersedia sebagai mode alternatif via `mtfPenaltyMode`:
+- `'continuous'` — default
+- `'discrete'` — mode eksplisit 8 kondisi dari RFC awal
+
+### 4e. Final score
+
+```
+conflictScore   = mtfDirectionalRaw × (1 - penalty)
+finalScore      = conflictScore × 0.70 + mtfContextRaw × 0.30
 ```
 
 ---
 
-## 5. Output
+## 5. Historical Offset Behavior
 
-### 5a. Score (0–100)
+`f_trendScore()` menggunakan historical offset `[5]` untuk perhitungan slope:
+
+```
+slopeFast = emaFast - emaFast[5]
+```
+
+Pada HTF, offset `[5]` mereferensi bar yang secara temporal berbeda:
+
+| Timeframe | 5 bar = | Implikasi |
+|-----------|---------|-----------|
+| Daily | 5 hari | Valid untuk slope jangka pendek |
+| Weekly | 5 minggu (~35 hari) | Slope terlalu lambat bereaksi |
+| Monthly | 5 bulan (~150 hari) | Praktis tidak berguna |
+
+**Fix:** Parameterisasi historical offset berdasarkan timeframe, atau gunakan
+pendekatan berbasis rasio (`emaFast / emaFast[5] - 1`) yang tidak bergantung
+pada jumlah bar absolut. RAFD memilih rasio `[1]` karena slope `[5]` pada Monthly
+setara 150 hari — tidak relevan untuk konteks MTF.
+
+### Implemetasi fix
+
+```
+// Di 01-base.pine — ganti slope linear dengan rate of change
+slopeFast = emaFast / emaFast[1] - 1
+slopeSlow = emaSlow / emaSlow[1] - 1
+```
+
+Perubahan ini berlaku global (tidak hanya di MTF) karena slope rate-based lebih
+konsisten di semua timeframe.
+
+---
+
+## 6. Output
+
+### 6a. Score (0–100)
 
 Nilai final setelah penalty. Interpretasi:
 
@@ -130,133 +200,185 @@ Nilai final setelah penalty. Interpretasi:
 | 20–39 | Weak Alignment | Sebagian bertentangan |
 | 0–19 | Conflict | Timeframe saling bertentangan |
 
-### 5b. Direction Flag
+### 6b. Direction Flag
 
 `mtfDirection`: `1` (bullish) / `-1` (bearish) / `0` (mixed)
 
-Ditentukan dari weighted majority:
+Ditentukan dari weighted majority directional components:
 
 ```
-if weightedBullishScore > weightedBearishScore + 10 → 1
-if weightedBearishScore > weightedBullishScore + 10 → -1
+bullishScore = sum(tfWeight × bullishConfidence for each TF)
+bearishScore = sum(tfWeight × (1 - bullishConfidence) for each TF)
+
+if bullishScore > bearishScore + 10 → 1
+if bearishScore > bullishScore + 10 → -1
 else → 0
 ```
 
-### 5c. Display
+Sideways market (Trend ~50, Momentum ~50) → direction flag = `0` (mixed).
+Ini bukan error — ini berarti "no clear signal."
+
+### 6c. Display
 
 Di dashboard Papan Gerak, tambahkan 1 baris di tabel:
 
 ```
-MTF Alignment  | 72 (Bullish) | D:75 W:68 M:55
+MTF Alignment  | 72 (Bullish)  | D:75/65  W:68/55  M:55/50
 ```
+
+Format detail baris: `TF1:dirScore/ctxScore  TF2:...  TF3:...`
 
 ---
 
-## 6. Implementation
+## 7. Implementation
 
-### 6a. Input parameters
+### 7a. Input parameters
 
 | Parameter | Type | Default | Group |
 |-----------|------|---------|-------|
 | `useMTF` | bool | true | Multi-Timeframe |
-| `mtfWeeklyWeight` | float | 0.35 | Multi-Timeframe |
-| `mtfMonthlyWeight` | float | 0.15 | Multi-Timeframe |
-| `mtfConflictPenalty` | float | 1.0 (1x = full penalty) | Multi-Timeframe |
-| `mtfBullThreshold` | float | 60 | Multi-Timeframe |
+| `mtfPrimaryWeight` | float | 0.50 | Multi-Timeframe |
+| `mtfSecondaryWeight` | float | 0.35 | Multi-Timeframe |
+| `mtfTertiaryWeight` | float | 0.15 | Multi-Timeframe |
+| `mtfAlpha` | float | 0.70 | Multi-Timeframe |
+| `mtfMaxPenalty` | float | 0.25 | Multi-Timeframe |
+| `mtfPenaltyMode` | enum | continuous | Multi-Timeframe |
+| `mtfDirectionHysteresis` | float | 10.0 | Multi-Timeframe |
 
-### 6b. File changes
+Semua weight adalah parameter input — user bisa override. Dokumentasi menyebut
+nilai default adalah heuristic, belum divalidasi secara statistik.
+
+### 7b. File changes
 
 | File | Change |
 |------|--------|
-| `01-base.pine` | +5 input parameters (MTF group) |
-| `02-data.pine` | +`request.security()` calls for Weekly & Monthly data (existing indicator values on HTF) |
+| `01-base.pine` | +8 input parameters (MTF group); slope fix `[5]` → ratio `[1]` |
+| `02-data.pine` | +`request.security()` calls for Secondary & Tertiary timeframe |
 | `03-scoring.pine` | +`f_mtfAlignmentScore()` function |
 | `04-ui.pine` | +1 row in table for MTF score |
 
-### 6c. request.security approach
+### 7c. request.security approach
 
 ```
 f_mtfScore(string tf) =>
     request.security(syminfo.tickerid, tf,
         trendScore = f_trendScore(),
         momentumScore = f_momentumScore(),
-        ...
+        volatilityScore = f_volatilityScore(),
+        volumeScore = f_volumeScore()
     )
 ```
 
-**Catatan:** Pendekatan `request.security()` dengan multi-return memerlukan
-Pine Script v6 tuple syntax. Repainting harus dicek: gunakan
-`barmerge.lookahead_off` dan `repaint=false`.
+**Catatan Pine Script v6:** `request.security()` dengan multi-return memerlukan
+sintaks tuple. Pastikan:
 
-### 6d. Performance impact
+- `barmerge.lookahead_off` — cegah repainting
+- Fungsi yang dipanggil (`f_trendScore()` dll) tidak memiliki side effect pada
+  mutable state global — aman karena Pine Script v6 mengevaluasi ulang setiap bar
+- **Verifikasi eksperimental:** Sebelum implementasi penuh, buat test script kecil
+  yang memverifikasi `request.security()` dengan multi-mutasi variabel lokal di
+  dalam fungsi yang dipanggil
 
-- +2 `request.security()` calls per bar (Weekly + Monthly)
+### 7d. Performance impact
+
+- +2 `request.security()` calls per bar (Secondary + Tertiary)
 - Total API budget: current ~X → X+2
-- Kedua calls menggunakan `close` yang sudah ada — tidak ada data eksternal baru
+- Kedua calls menggunakan data yang sudah ada — tidak ada sumber data eksternal baru
 
 ---
 
-## 7. Open Questions
+## 8. Open Questions (terselesaikan)
 
-### Q1: Conflict penalty formula
+### Q1: Conflict penalty — continuous vs discrete
 
-Proposal di atas menggunakan tabel diskrit 8 kondisi. Alternatif:
+**Keputusan:** Continuous sebagai default. Discrete sebagai mode alternatif.
 
-**Continuous penalty:** `penalty = abs(scoreD - scoreW) / 100 × maxPenalty`
-
-Continuous lebih halus tapi kurang intuitif. Diskrit lebih mudah dipahami.
-**Rekomendasi:** mulai dengan diskrit, evaluasi setelah 1 sprint.
+Alasan: Continuous menghindari sharp discontinuity di threshold. Divergence kecil
+→ penalty kecil, bukan lompatan tiba-tiba.
 
 ### Q2: Sektor-aware?
 
-Saat ini belum. Hook untuk integrasi P1-1 (Sector-aware Volatility) bisa
-ditambahkan nanti sebagai weight modifier:
-
-```
-mtfMonthlyWeight = isSiklikalLike ? 0.25 : 0.15
-```
+Belum. Hook untuk integrasi P1-1 (Sector-aware Volatility) dapat ditambahkan
+nanti sebagai weight modifier.
 
 ### Q3: Pengaruh ke entry trigger
 
-Apakah MTF score digunakan sebagai:
-
-1. **Filter** — hanya entry jika `mtfScore >= 40` (minimal neutral)
-2. **Modifier** — entry quality dikalikan dengan `mtfScore / 100`
-3. **Keduanya** — filter dulu, lalu modifier
-
-**Rekomendasi:** Mulai sebagai display-only (opsi 0). Beri toggle untuk
-aktifkan sebagai filter di Sprint berikutnya.
+**Keputusan:** Display-only dulu (opsi 0). Toggle untuk filter di Sprint
+berikutnya. Dokumentasi menyebut mode filter sebagai future extension.
 
 ### Q4: Timeframe aliasing
 
-Bagaimana jika chart sedang di Weekly? Maka Daily adalah lower timeframe.
-Apakah system tetap jalan? Ya — `request.security()` bekerja dari timeframe
-manapun ke timeframe lain. Tapi pastikan dokumentasi menyebutkan bahwa MTF
-dirancang untuk Daily chart.
+Diselesaikan dengan parameterisasi label Primary/Secondary/Tertiary — bukan
+Daily/Weekly/Monthly. Dokumentasi menyebut optimal saat `PrimaryTF = chart
+timeframe`.
+
+### Q5: Volatility & Volume non-directional
+
+Diselesaikan dengan pemisahan scoring model (section 4a). Directional components
+hanya Trend + Momentum.
 
 ---
 
-## 8. Acceptance Criteria
+## 9. Acceptance Criteria
 
 1. [ ] MTF score 0–100 dihasilkan dari kombinasi 3 timeframe
-2. [ ] Conflict penalty bekerja: Daily bullish + Weekly bearish → score turun
-3. [ ] Direction flag benar: 1 / -1 / 0
-4. [ ] Performance: +2 `request.security()` — budget terpenuhi
-5. [ ] Dokumentasi: cara membaca MTF score
-6. [ ] Regression test: pipeline existing tidak berubah
-7. [ ] Tooltip menjelaskan tiap komponen (D/W/M breakdown)
+2. [ ] Conflict penalty bekerja: TF1 bullish + TF2 bearish → score turun proporsional
+3. [ ] Direction flag benar: 1 / -1 / 0 (bukan False Positive dari Volatility/Volume)
+4. [ ] Slope direfactor: tidak lagi bergantung pada offset `[5]` — menggunakan ratio
+5. [ ] Fuzzy threshold: transisi mulus, tanpa lonjakan di threshold 60
+6. [ ] Performance: +2 `request.security()` — budget terpenuhi
+7. [ ] Regression test: pipeline existing tidak berubah
+8. [ ] Tooltip menjelaskan tiap komponen (breakdown D/W/M)
 
 ---
 
-## 9. Timeline Estimate
+## 10. Future Extension
+
+RFC ini membahas implementasi baseline MTF Alignment Score. Berikut area yang
+secara sengaja **tidak** dicakup sekarang tetapi sudah diantisipasi:
+
+### 10a. Adaptive weights
+
+Bobot default (50/35/15, α=0.70) dipilih secara heuristik. Versi mendatang
+dapat mengadopsi:
+
+- **Sektor-specific weights:** sektor defensif vs siklikal punya karakteristik
+  timeframe berbeda
+- **Regime-aware weighting:** bobot bergeser berdasarkan market regime (trending
+  vs ranging) — diukur dari ADX atau metrik serupa
+- **Volatility-aware weighting:** saat volatilitas tinggi, bobot tertiary TF
+  (Monthly) dinaikkan untuk stabilitas
+- **AI-assisted calibration:** optimasi bobot berbasis historical backtest
+
+### 10b. Intraday timeframe
+
+4H dan 1H tidak termasuk di baseline. Untuk trader yang ingin konvergensi
+intraday, parameter tambahan `mtfInclude4H` dan `mtfInclude1H` bisa ditambahkan
+dengan bobot yang mengurangi Primary Weight.
+
+### 10c. Entry filter mode
+
+Saat ini MTF bersifat display-only. Mode filter (`hanya entry jika
+mtfScore >= 40`) dan mode modifier (`entry quality × mtfScore / 100`) adalah
+kandidat Sprint berikutnya.
+
+### 10d. Multi-pair alignment
+
+Untuk portfolio trading, MTF bisa diperluas ke multi-pair: alignment score
+antara saham dan sektor/index-nya (misal: BBCA vs IDXFIN).
+
+---
+
+## 11. Timeline Estimate
 
 | Phase | Duration | Output |
 |-------|----------|--------|
-| RFC review | 1 session | Approval / revision |
+| RFC review | 1 session | Approval / revision ✓ |
 | Implementation | 2 sessions | Code + unit test |
 | Integration test | 1 session | PineTS + manual check |
 | **Total** | **4 sessions** | |
 
 ---
 
-*RFC ini akan diperbarui setelah diskusi dan persetujuan.*
+*RFC ini telah melalui technical review dan difreeze sebagai implementation spec.*
+*Perubahan setelah freeze hanya melalui amendemen yang disetujui.*
