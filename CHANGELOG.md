@@ -1,5 +1,13 @@
 # Changelog — Papan Gerak
 
+## v1.1.0 — Semantic Platform: Inject2 Pipeline (2026-07-08)
+- **Semantic Platform**: extract_ast.py, inject_graph.py, pine_query.py,
+  pine_context.py, pine_validate.py (toolchain via papan-instrumen/scripts/)
+- **graph.json enriched**: 192→543 edges, 0→27 calls edges, isolated ~70%→4.6%
+- **New docs**: RELEASE-v1.1.md, docs/architecture-overview.md
+- **Verification**: 4/4 validation PASS
+- **Tag**: `v1.1.0`
+
 ## v0.2.1-alpha (2026-07-06)
 
 ### Fixes (Critical)

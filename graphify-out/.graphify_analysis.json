@@ -1,0 +1,763 @@
+{
+  "communities": {
+    "0": [
+      "src_modules_02data",
+      "src_modules_02data_adxDn",
+      "src_modules_02data_adxStrong",
+      "src_modules_02data_adxTrend",
+      "src_modules_02data_adxUp",
+      "src_modules_02data_adxValue",
+      "src_modules_02data_atrPercent",
+      "src_modules_02data_atrValue",
+      "src_modules_02data_bbLower",
+      "src_modules_02data_bbMiddle",
+      "src_modules_02data_bbPosition",
+      "src_modules_02data_bbStdDev",
+      "src_modules_02data_bbUpper",
+      "src_modules_02data_bbWidth",
+      "src_modules_02data_bbWidthAvg",
+      "src_modules_02data_chopRanging",
+      "src_modules_02data_chopTrending",
+      "src_modules_02data_chopValue",
+      "src_modules_02data_emaFast",
+      "src_modules_02data_emaMid",
+      "src_modules_02data_emaPosition",
+      "src_modules_02data_emaSlow",
+      "src_modules_02data_emaTrend",
+      "src_modules_02data_macdBullish",
+      "src_modules_02data_macdHist",
+      "src_modules_02data_macdHistRising",
+      "src_modules_02data_macdLine",
+      "src_modules_02data_macdSignalLine",
+      "src_modules_02data_macdZero",
+      "src_modules_02data_mtfTrendScore",
+      "src_modules_02data_netVol",
+      "src_modules_02data_netVolSmooth",
+      "src_modules_02data_obvAgree",
+      "src_modules_02data_obvMA",
+      "src_modules_02data_obvTrend",
+      "src_modules_02data_obvValue",
+      "src_modules_02data_rsiDirection",
+      "src_modules_02data_rsiObHit",
+      "src_modules_02data_rsiOsHit",
+      "src_modules_02data_rsiValue",
+      "src_modules_02data_smBodyVol",
+      "src_modules_02data_smDetected",
+      "src_modules_02data_stBullish",
+      "src_modules_02data_stochBullish",
+      "src_modules_02data_stochDVal",
+      "src_modules_02data_stochKVal",
+      "src_modules_02data_stochObHit",
+      "src_modules_02data_stochOsHit",
+      "src_modules_02data_superTrend",
+      "src_modules_02data_superTrendDir",
+      "src_modules_02data_trendAligned",
+      "src_modules_02data_volMA",
+      "src_modules_02data_volRatio",
+      "src_modules_02data_volSpike"
+    ],
+    "1": [
+      "src_modules_01base",
+      "src_modules_01base_accountBalanceInput",
+      "src_modules_01base_adxLength",
+      "src_modules_01base_adxThreshold",
+      "src_modules_01base_atrLength",
+      "src_modules_01base_bahasaInput",
+      "src_modules_01base_bbLength",
+      "src_modules_01base_bbMult",
+      "src_modules_01base_chopLength",
+      "src_modules_01base_colorThemeInput",
+      "src_modules_01base_confirmOnBarClose",
+      "src_modules_01base_emaFastPeriod",
+      "src_modules_01base_emaMidPeriod",
+      "src_modules_01base_emaSlowPeriod",
+      "src_modules_01base_enableMtfFilter",
+      "src_modules_01base_enableSmartMoney",
+      "src_modules_01base_entryTriggerMode",
+      "src_modules_01base_fontSizeInput",
+      "src_modules_01base_macdFast",
+      "src_modules_01base_macdSignal",
+      "src_modules_01base_macdSlow",
+      "src_modules_01base_minSignalBars",
+      "src_modules_01base_modeInput",
+      "src_modules_01base_mtfTimeframe",
+      "src_modules_01base_riskPctInput",
+      "src_modules_01base_rsiLength",
+      "src_modules_01base_rsiOb",
+      "src_modules_01base_rsiOs",
+      "src_modules_01base_showPositionSizing",
+      "src_modules_01base_showRiskLevels",
+      "src_modules_01base_signalFilterMode",
+      "src_modules_01base_slAtrMult",
+      "src_modules_01base_slSwingPeriod",
+      "src_modules_01base_slTypeInput",
+      "src_modules_01base_smPeriod",
+      "src_modules_01base_smVolumeThreshold",
+      "src_modules_01base_stochD",
+      "src_modules_01base_stochK",
+      "src_modules_01base_stochOb",
+      "src_modules_01base_stochOs",
+      "src_modules_01base_superTrendFactor",
+      "src_modules_01base_superTrendPeriod",
+      "src_modules_01base_tablePositionInput",
+      "src_modules_01base_targetR",
+      "src_modules_01base_volMaLength",
+      "src_modules_01base_volSpikeMult",
+      "src_modules_01base_webhookFormat",
+      "src_modules_01base_weightMomentum",
+      "src_modules_01base_weightSmartMoney",
+      "src_modules_01base_weightTrend",
+      "src_modules_01base_weightVolatility",
+      "src_modules_01base_weightVolume"
+    ],
+    "2": [
+      "changelog_buildhistory",
+      "docs_ai_rolespg",
+      "docs_architecture_momentumscore",
+      "docs_architecture_smartmoneyflow",
+      "docs_architecture_trendscore",
+      "docs_architecture_volatilityscore",
+      "docs_architecture_volumescore",
+      "docs_panduantrading_10langkah",
+      "docs_readme_id_compactmode",
+      "docs_readme_id_detailedmode",
+      "docs_readme_id_forwardreturn",
+      "docs_readme_id_narrativeengine",
+      "docs_readme_id_signalsystem",
+      "docs_readme_id_standardmode",
+      "docs_webhook_pineconnector",
+      "docs_webhook_traderspost",
+      "github_workflows_buildpg",
+      "readme_3entrytriggermodes",
+      "readme_4dimensiscoring",
+      "readme_90tests",
+      "readme_idxsaham",
+      "readme_mtffilter",
+      "readme_papangerak",
+      "readme_papaninstrumencompanion",
+      "readme_positionsizing",
+      "readme_riskmanagement",
+      "readme_webhooksupport"
+    ],
+    "3": [
+      "package",
+      "package_description",
+      "package_devdependencies",
+      "package_devdependencies_pinets",
+      "package_license",
+      "package_name",
+      "package_private",
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_ci",
+      "package_scripts_lint",
+      "package_scripts_test",
+      "package_scripts_test_all",
+      "package_scripts_transpile",
+      "package_version"
+    ],
+    "4": [
+      "tests_scoring_test_signal",
+      "tests_scoring_test_signal_breakouttrigger",
+      "tests_scoring_test_signal_calcatraposalsl",
+      "tests_scoring_test_signal_calcriskpct",
+      "tests_scoring_test_signal_calcriskrpdisplay",
+      "tests_scoring_test_signal_calcsuggestedlots",
+      "tests_scoring_test_signal_calctargetprice",
+      "tests_scoring_test_signal_currentzonelabel",
+      "tests_scoring_test_signal_mtfconflict",
+      "tests_scoring_test_signal_pullbacktrigger",
+      "tests_scoring_test_signal_signaldirection",
+      "tests_scoring_test_signal_zonefromscore"
+    ],
+    "5": [
+      "tests_pinets_verify",
+      "tests_pinets_verify_f_colorscore",
+      "tests_pinets_verify_f_scorehigher",
+      "tests_pinets_verify_f_scorelower",
+      "tests_pinets_verify_f_scorerange",
+      "tests_pinets_verify_f_signaltext"
+    ],
+    "6": [
+      "tests_scoring_test_volatility",
+      "tests_scoring_test_volatility_atrscore",
+      "tests_scoring_test_volatility_bbposscore",
+      "tests_scoring_test_volatility_bbwidthscore",
+      "tests_scoring_test_volatility_chopscore",
+      "tests_scoring_test_volatility_f_choppiness"
+    ],
+    "7": [
+      "tests_full_pinets",
+      "tests_full_pinets_dirname",
+      "tests_full_pinets_generatecandles",
+      "tests_full_pinets_root",
+      "tests_full_pinets_setup"
+    ],
+    "8": [
+      "scripts_lint",
+      "scripts_lint_budget",
+      "scripts_lint_sh__entry"
+    ],
+    "9": [
+      "tests_scoring_runner",
+      "tests_scoring_runner_report",
+      "tests_scoring_runner_setuptest"
+    ],
+    "10": [
+      "build",
+      "build_sh__entry"
+    ],
+    "11": [
+      "docs_architecture_confluencecounter",
+      "docs_panduantrading_confluence"
+    ],
+    "12": [
+      "docs_architecture_entrytrigger",
+      "docs_panduantrading_entrydecision"
+    ],
+    "13": [
+      "docs_webhook_jsonformat",
+      "readme_7alertconditions"
+    ],
+    "14": [
+      "scripts_gh_sync",
+      "scripts_gh_sync_sh__entry"
+    ],
+    "15": [
+      "src_modules_03scoring",
+      "src_modules_04ui"
+    ],
+    "16": [
+      "src_modules_03scoring_f_momentumScore",
+      "src_modules_03scoring_momentumScore"
+    ],
+    "17": [
+      "src_modules_03scoring_f_smartMoneyScore",
+      "src_modules_03scoring_smartMoneyScore"
+    ],
+    "18": [
+      "src_modules_03scoring_f_trendScore",
+      "src_modules_03scoring_trendScore"
+    ],
+    "19": [
+      "src_modules_03scoring_f_volatilityScore",
+      "src_modules_03scoring_volatilityScore"
+    ],
+    "20": [
+      "src_modules_03scoring_f_volumeScore",
+      "src_modules_03scoring_volumeScore"
+    ],
+    "21": [
+      "tests_scoring_test_momentum",
+      "tests_scoring_test_momentum_weightedavg"
+    ],
+    "22": [
+      "tests_scoring_test_overall",
+      "tests_scoring_test_overall_weightedavg"
+    ],
+    "23": [
+      "tests_scoring_test_trend",
+      "tests_scoring_test_trend_weightedavg"
+    ],
+    "24": [
+      "tests_scoring_test_volume",
+      "tests_scoring_test_volume_volratioscore"
+    ],
+    "25": [
+      "tests_transpile",
+      "tests_transpile_sh__entry"
+    ],
+    "26": [
+      "docs_ai_goldenrulespg"
+    ],
+    "27": [
+      "docs_architecture_backtest20signals"
+    ],
+    "28": [
+      "docs_architecture_overallscore"
+    ],
+    "29": [
+      "docs_development_changelogpg"
+    ],
+    "30": [
+      "docs_development_modulebudget"
+    ],
+    "31": [
+      "docs_development_pinepg"
+    ],
+    "32": [
+      "docs_tvpublishdesc"
+    ],
+    "33": [
+      "src_modules_01base_f_colorScore"
+    ],
+    "34": [
+      "src_modules_01base_f_scoreHigher"
+    ],
+    "35": [
+      "src_modules_01base_f_scoreLower"
+    ],
+    "36": [
+      "src_modules_01base_f_scoreRange"
+    ],
+    "37": [
+      "src_modules_01base_f_secure"
+    ],
+    "38": [
+      "src_modules_01base_f_signalText"
+    ],
+    "39": [
+      "src_modules_02data_f_choppiness"
+    ],
+    "40": [
+      "src_modules_02data_f_isBodyVolume"
+    ],
+    "41": [
+      "src_modules_02data_f_netVolume"
+    ],
+    "42": [
+      "src_modules_02data_f_smartMoneyDetect"
+    ],
+    "43": [
+      "src_modules_03scoring_atrSl"
+    ],
+    "44": [
+      "src_modules_03scoring_breakoutTrigger"
+    ],
+    "45": [
+      "src_modules_03scoring_btDirs"
+    ],
+    "46": [
+      "src_modules_03scoring_btEntryBars"
+    ],
+    "47": [
+      "src_modules_03scoring_btEntryPrices"
+    ],
+    "48": [
+      "src_modules_03scoring_btHead"
+    ],
+    "49": [
+      "src_modules_03scoring_btTotalEval"
+    ],
+    "50": [
+      "src_modules_03scoring_btTotalReturn"
+    ],
+    "51": [
+      "src_modules_03scoring_btWinRate"
+    ],
+    "52": [
+      "src_modules_03scoring_btWins"
+    ],
+    "53": [
+      "src_modules_03scoring_chopFilterOk"
+    ],
+    "54": [
+      "src_modules_03scoring_currentZone"
+    ],
+    "55": [
+      "src_modules_03scoring_entryTriggered"
+    ],
+    "56": [
+      "src_modules_03scoring_f_narrative"
+    ],
+    "57": [
+      "src_modules_03scoring_fwdBars"
+    ],
+    "58": [
+      "src_modules_03scoring_fwdReturn"
+    ],
+    "59": [
+      "src_modules_03scoring_minBarsOk"
+    ],
+    "60": [
+      "src_modules_03scoring_momBull"
+    ],
+    "61": [
+      "src_modules_03scoring_momTotal"
+    ],
+    "62": [
+      "src_modules_03scoring_normMomentum"
+    ],
+    "63": [
+      "src_modules_03scoring_normTrend"
+    ],
+    "64": [
+      "src_modules_03scoring_normVolatility"
+    ],
+    "65": [
+      "src_modules_03scoring_normVolume"
+    ],
+    "66": [
+      "src_modules_03scoring_overallScore"
+    ],
+    "67": [
+      "src_modules_03scoring_prevZone"
+    ],
+    "68": [
+      "src_modules_03scoring_pullbackTrigger"
+    ],
+    "69": [
+      "src_modules_03scoring_riskAmount"
+    ],
+    "70": [
+      "src_modules_03scoring_riskAtrCapture"
+    ],
+    "71": [
+      "src_modules_03scoring_riskEntryPrice"
+    ],
+    "72": [
+      "src_modules_03scoring_riskLevelLabel"
+    ],
+    "73": [
+      "src_modules_03scoring_riskRp"
+    ],
+    "74": [
+      "src_modules_03scoring_riskSwingHigh"
+    ],
+    "75": [
+      "src_modules_03scoring_riskSwingLow"
+    ],
+    "76": [
+      "src_modules_03scoring_signalColor"
+    ],
+    "77": [
+      "src_modules_03scoring_signalDirection"
+    ],
+    "78": [
+      "src_modules_03scoring_signalEntryBar"
+    ],
+    "79": [
+      "src_modules_03scoring_signalEntryPrice"
+    ],
+    "80": [
+      "src_modules_03scoring_signalStatus"
+    ],
+    "81": [
+      "src_modules_03scoring_signalText"
+    ],
+    "82": [
+      "src_modules_03scoring_signalTriggered"
+    ],
+    "83": [
+      "src_modules_03scoring_slPct"
+    ],
+    "84": [
+      "src_modules_03scoring_slPrice"
+    ],
+    "85": [
+      "src_modules_03scoring_suggestedLots"
+    ],
+    "86": [
+      "src_modules_03scoring_swingSl"
+    ],
+    "87": [
+      "src_modules_03scoring_targetPct"
+    ],
+    "88": [
+      "src_modules_03scoring_targetPrice"
+    ],
+    "89": [
+      "src_modules_03scoring_totalWeight"
+    ],
+    "90": [
+      "src_modules_03scoring_trendBull"
+    ],
+    "91": [
+      "src_modules_03scoring_trendTotal"
+    ],
+    "92": [
+      "src_modules_03scoring_volBull"
+    ],
+    "93": [
+      "src_modules_03scoring_volTotal"
+    ],
+    "94": [
+      "src_modules_03scoring_volmBull"
+    ],
+    "95": [
+      "src_modules_03scoring_volmTotal"
+    ],
+    "96": [
+      "src_modules_03scoring_zoneChanged"
+    ],
+    "97": [
+      "src_modules_04ui_choppinessAlert"
+    ],
+    "98": [
+      "src_modules_04ui_entryAlert"
+    ],
+    "99": [
+      "src_modules_04ui_f_confStr"
+    ],
+    "100": [
+      "src_modules_04ui_f_getFontSize"
+    ],
+    "101": [
+      "src_modules_04ui_f_getPosition"
+    ],
+    "102": [
+      "src_modules_04ui_f_webhookMsg"
+    ],
+    "103": [
+      "src_modules_04ui_rsiOverboughtAlert"
+    ],
+    "104": [
+      "src_modules_04ui_rsiOversoldAlert"
+    ],
+    "105": [
+      "src_modules_04ui_smartMoneyAlert"
+    ],
+    "106": [
+      "src_modules_04ui_trendExtremeAlert"
+    ],
+    "107": [
+      "src_modules_04ui_volumeSpikeAlert"
+    ]
+  },
+  "cohesion": {
+    "0": 0.037037037037037035,
+    "1": 0.038461538461538464,
+    "2": 0.07692307692307693,
+    "3": 0.13333333333333333,
+    "4": 0.16666666666666666,
+    "5": 0.3333333333333333,
+    "6": 0.3333333333333333,
+    "7": 0.4,
+    "8": 0.6666666666666666,
+    "9": 0.6666666666666666,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 1.0,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 1.0,
+    "32": 1.0,
+    "33": 1.0,
+    "34": 1.0,
+    "35": 1.0,
+    "36": 1.0,
+    "37": 1.0,
+    "38": 1.0,
+    "39": 1.0,
+    "40": 1.0,
+    "41": 1.0,
+    "42": 1.0,
+    "43": 1.0,
+    "44": 1.0,
+    "45": 1.0,
+    "46": 1.0,
+    "47": 1.0,
+    "48": 1.0,
+    "49": 1.0,
+    "50": 1.0,
+    "51": 1.0,
+    "52": 1.0,
+    "53": 1.0,
+    "54": 1.0,
+    "55": 1.0,
+    "56": 1.0,
+    "57": 1.0,
+    "58": 1.0,
+    "59": 1.0,
+    "60": 1.0,
+    "61": 1.0,
+    "62": 1.0,
+    "63": 1.0,
+    "64": 1.0,
+    "65": 1.0,
+    "66": 1.0,
+    "67": 1.0,
+    "68": 1.0,
+    "69": 1.0,
+    "70": 1.0,
+    "71": 1.0,
+    "72": 1.0,
+    "73": 1.0,
+    "74": 1.0,
+    "75": 1.0,
+    "76": 1.0,
+    "77": 1.0,
+    "78": 1.0,
+    "79": 1.0,
+    "80": 1.0,
+    "81": 1.0,
+    "82": 1.0,
+    "83": 1.0,
+    "84": 1.0,
+    "85": 1.0,
+    "86": 1.0,
+    "87": 1.0,
+    "88": 1.0,
+    "89": 1.0,
+    "90": 1.0,
+    "91": 1.0,
+    "92": 1.0,
+    "93": 1.0,
+    "94": 1.0,
+    "95": 1.0,
+    "96": 1.0,
+    "97": 1.0,
+    "98": 1.0,
+    "99": 1.0,
+    "100": 1.0,
+    "101": 1.0,
+    "102": 1.0,
+    "103": 1.0,
+    "104": 1.0,
+    "105": 1.0,
+    "106": 1.0,
+    "107": 1.0
+  },
+  "gods": [
+    {
+      "id": "readme_papangerak",
+      "label": "Papan Gerak — Technical Analysis Dashboard",
+      "degree": 18
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 7
+    },
+    {
+      "id": "readme_4dimensiscoring",
+      "label": "4 Dimensi Scoring (Teknikal)",
+      "degree": 6
+    },
+    {
+      "id": "readme_webhooksupport",
+      "label": "Webhook Integration Support",
+      "degree": 3
+    },
+    {
+      "id": "readme_90tests",
+      "label": "90 Automated Tests",
+      "degree": 2
+    },
+    {
+      "id": "readme_papaninstrumencompanion",
+      "label": "Papan Instrumen Companion",
+      "degree": 2
+    },
+    {
+      "id": "docs_architecture_volumescore",
+      "label": "Volume Score (20%)",
+      "degree": 2
+    },
+    {
+      "id": "build_sh__entry",
+      "label": "build.sh script",
+      "degree": 1
+    },
+    {
+      "id": "package_private",
+      "label": "private",
+      "degree": 1
+    },
+    {
+      "id": "package_scripts_build",
+      "label": "build",
+      "degree": 1
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Full Build Changelog",
+      "target": "Papan Gerak — Technical Analysis Dashboard",
+      "source_files": [
+        "CHANGELOG.md",
+        "README.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "conceptually_related_to",
+      "why": "connects across different repos/directories; peripheral node `Full Build Changelog` unexpectedly reaches hub `Papan Gerak — Technical Analysis Dashboard`"
+    },
+    {
+      "source": "AI Roles (Papan Gerak)",
+      "target": "Papan Gerak — Technical Analysis Dashboard",
+      "source_files": [
+        "docs/AI.md",
+        "README.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "conceptually_related_to",
+      "why": "connects across different repos/directories; peripheral node `AI Roles (Papan Gerak)` unexpectedly reaches hub `Papan Gerak — Technical Analysis Dashboard`"
+    },
+    {
+      "source": "10-Langkah Trading Flow",
+      "target": "Papan Gerak — Technical Analysis Dashboard",
+      "source_files": [
+        "docs/PANDUAN-TRADING.md",
+        "README.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "conceptually_related_to",
+      "why": "connects across different repos/directories; peripheral node `10-Langkah Trading Flow` unexpectedly reaches hub `Papan Gerak — Technical Analysis Dashboard`"
+    },
+    {
+      "source": "Compact Mode — 1 Line",
+      "target": "Papan Gerak — Technical Analysis Dashboard",
+      "source_files": [
+        "docs/README.id.md",
+        "README.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "conceptually_related_to",
+      "why": "connects across different repos/directories; peripheral node `Compact Mode — 1 Line` unexpectedly reaches hub `Papan Gerak — Technical Analysis Dashboard`"
+    },
+    {
+      "source": "Detailed Mode — Sub-Indikator",
+      "target": "Papan Gerak — Technical Analysis Dashboard",
+      "source_files": [
+        "docs/README.id.md",
+        "README.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "conceptually_related_to",
+      "why": "connects across different repos/directories; peripheral node `Detailed Mode — Sub-Indikator` unexpectedly reaches hub `Papan Gerak — Technical Analysis Dashboard`"
+    }
+  ],
+  "questions": [
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `build.sh script`, `name`, `version` to the rest of the system?",
+      "why": "231 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `02-data.pine` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.037037037037037035 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `01-base.pine` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.038461538461538464 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Papan Gerak — Technical Analysis Dashboard` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.07692307692307693 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `package.json` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

@@ -31,12 +31,17 @@ Platform: TradingView Pine Script v6 | Market: IDX | Status: Alpha Development
 | **Product Owner** | Muhammad Akhmal | Visi, prioritas, approve perubahan besar |
 | **AI Developer** | Claude | Implementasi kode, refactoring, bug fixing |
 | **AI Reviewer** | ChatGPT | Code review, regression review |
+| **AI Documentation** | Claude | Update CHANGELOG, backlog, jaga sinkronisasi dokumen |
 
 ## Context Loading Order
 
-1. `docs/DEVELOPMENT.md` — cari `# Changelog` dan `# Backlog`
-2. File source target
-3. `docs/ARCHITECTURE.md` (jika metodologi terlibat)
+1. `graphify-out/GRAPH_REPORT.md` — baca state graph terkini
+2. `CATATAN.md` — baca lessons learned & anti-patterns
+3. `docs/DEVELOPMENT.md` — cari `# Changelog` dan `# Backlog`
+4. File source target
+5. `docs/ARCHITECTURE.md` (jika metodologi terlibat)
+
+> Lihat `AGENTS.md` bagian 9 untuk alur kerja sesi lengkap.
 
 ## Golden Rules
 

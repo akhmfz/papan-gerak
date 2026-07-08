@@ -52,7 +52,7 @@ Pasangan natural dari Papan Instrumen (fundamental) — fundamental + teknikal =
 - Tooltips pada setiap sel tabel
 - Oscillator plot dengan bgcolor zone coloring
 - 5 color themes (Gelap, Terang, Bursa Hijau, Biru Nusantara, Emas Premium)
-- 8 alert triggers otomatis
+- 7 alert triggers otomatis
 
 ### Cara Pakai
 1. Add to Chart
@@ -103,7 +103,7 @@ Natural companion to Papan Instrumen (fundamental analysis).
 - Tooltips on every table cell
 - Oscillator plot with zone background coloring
 - 5 color themes
-- 8 automated alert triggers
+- 7 automated alert triggers
 
 ### Author
 Muhammad Akhmal (AKHMFZ) — Indonesia

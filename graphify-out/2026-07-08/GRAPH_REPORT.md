@@ -4,152 +4,174 @@
 - cluster-only mode — file stats not available
 
 ## Summary
-- 331 nodes · 315 edges · 31 communities (24 shown, 7 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 3 edges (avg confidence: 0.5)
+- 297 nodes · 192 edges · 108 communities (19 shown, 89 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 1 edges (avg confidence: 0.65)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c3d4ef47`
+- Built from commit: `f7639a0c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- Saham: Papan Gerak By. Akhmfz
-- Arsitektur Papan Gerak — Scoring Methodology
-- Saham: Papan Gerak By. Akhmfz
-- CATATAN PENGEMBANGAN — Lessons Learned
-- v0.2.1-alpha (2026-07-06)
-- Deskripsi (Indonesia)
-- Saham: Papan Gerak By. Akhmfz
-- Panduan Kombinasi — Papan Instrumen + Papan Gerak
-- Webhook Integration — Papan Gerak
+- 02-data.pine
+- 01-base.pine
+- Papan Gerak — Technical Analysis Dashboard
 - package.json
-- Alur Baca Tabel (urut dari atas ke bawah)
-- Settings Reference
-- Development Guide — Papan Gerak
-- README.md
-- Panduan Pengguna — Papan Gerak
 - full-pinets.mjs
 - lint.sh
 - build.sh
+- Confluence Counter
+- Entry Trigger Engine
+- JSON Webhook Format
 - gh-sync.sh
+- f_momentumScore
+- f_smartMoneyScore
+- f_trendScore
+- f_volatilityScore
+- f_volumeScore
 - transpile.sh
-- Settings Lengkap
-- Color Legend & Themes
-- IDX Market Considerations
+- AI Golden Rules (Papan Gerak)
+- Built-in Backtest (20 signals)
+- Overall Score (0-100)
+- Changelog Papan Gerak
+- Module Line Budget
+- Pine Script v6 Strategy Patterns
+- TradingView Publication Description
+- f_colorScore(float score)
+- f_scoreHigher(float val, float min, float max)
+- f_scoreLower(float val, float min, float max)
+- f_scoreRange(val, min, max, idealLow, idealHigh)
+- f_secure(input, def)
+- f_signalText(float score, string lang)
+- f_choppiness(int length)
+- risk: atrSl
+- signal: breakoutTrigger
+- bt: btDirs
+- bt: btEntryBars
+- bt: btEntryPrices
+- bt: btHead
+- bt: btTotalEval
+- bt: btTotalReturn
+- bt: btWinRate
+- bt: btWins
+- signal: chopFilterOk
+- signal: currentZone
+- signal: entryTriggered
+- signal: fwdBars
+- signal: fwdReturn
+- signal: minBarsOk
+- confluence: momBull
+- confluence: momTotal
+- score: normMomentum
+- score: normTrend
+- score: normVolatility
+- score: normVolume
+- score: overallScore
+- signal: prevZone
+- signal: pullbackTrigger
+- risk: riskAmount
+- risk: riskAtrCapture
+- risk: riskEntryPrice
+- risk: riskLevelLabel
+- risk: riskRp
+- risk: riskSwingHigh
+- risk: riskSwingLow
+- signal: signalColor
+- signal: signalDirection
+- signal: signalEntryBar
+- signal: signalEntryPrice
+- signal: signalStatus
+- signal: signalText
+- signal: signalTriggered
+- risk: slPct
+- risk: slPrice
+- risk: suggestedLots
+- risk: swingSl
+- risk: targetPct
+- risk: targetPrice
+- score: totalWeight
+- confluence: trendBull
+- confluence: trendTotal
+- confluence: volBull
+- confluence: volTotal
+- confluence: volmBull
+- confluence: volmTotal
+- signal: zoneChanged
+- alert: choppinessAlert
+- alert: entryAlert
+- f_confStr(n, total)
+- f_webhookMsg(eventType, params)
+- alert: rsiOverboughtAlert
+- alert: rsiOversoldAlert
+- alert: smartMoneyAlert
+- alert: trendExtremeAlert
+- alert: volumeSpikeAlert
 
 ## God Nodes (most connected - your core abstractions)
-1. `Arsitektur Papan Gerak — Scoring Methodology` - 15 edges
-2. `Settings Lengkap` - 14 edges
-3. `Settings Reference` - 14 edges
-4. `Saham: Papan Gerak By. Akhmfz` - 12 edges
-5. `Saham: Papan Gerak By. Akhmfz` - 12 edges
-6. `Panduan Pengguna — Papan Gerak` - 12 edges
-7. `Alur Baca Tabel (urut dari atas ke bawah)` - 11 edges
-8. `AI.md — AI Collaboration Context` - 9 edges
-9. `Webhook Integration — Papan Gerak` - 9 edges
-10. `Saham: Papan Gerak By. Akhmfz` - 8 edges
+1. `Papan Gerak — Technical Analysis Dashboard` - 18 edges
+2. `scripts` - 7 edges
+3. `4 Dimensi Scoring (Teknikal)` - 6 edges
+4. `Webhook Integration Support` - 3 edges
+5. `90 Automated Tests` - 2 edges
+6. `Papan Instrumen Companion` - 2 edges
+7. `Volume Score (20%)` - 2 edges
+8. `build.sh script` - 1 edges
+9. `private` - 1 edges
+10. `build` - 1 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `AI Collaboration Context` --governs--> `Panduan Pengguna — Papan Gerak`  [EXTRACTED]
-  docs/AI.md → docs/README.id.md
-- `4 Dimensi Scoring` --includes--> `Momentum Dimensi`  [EXTRACTED]
-  docs/ARCHITECTURE.md → docs/README.id.md
-- `4 Dimensi Scoring` --includes--> `Smart Money`  [EXTRACTED]
-  docs/ARCHITECTURE.md → docs/README.id.md
-- `4 Dimensi Scoring` --includes--> `Trend Dimensi`  [EXTRACTED]
-  docs/ARCHITECTURE.md → docs/README.id.md
-- `4 Dimensi Scoring` --includes--> `Volatility Dimensi`  [EXTRACTED]
-  docs/ARCHITECTURE.md → docs/README.id.md
+- `Full Build Changelog` --conceptually_related_to--> `Papan Gerak — Technical Analysis Dashboard`  [EXTRACTED]
+  CHANGELOG.md → README.md
+- `AI Roles (Papan Gerak)` --conceptually_related_to--> `Papan Gerak — Technical Analysis Dashboard`  [EXTRACTED]
+  docs/AI.md → README.md
+- `10-Langkah Trading Flow` --conceptually_related_to--> `Papan Gerak — Technical Analysis Dashboard`  [EXTRACTED]
+  docs/PANDUAN-TRADING.md → README.md
+- `Compact Mode — 1 Line` --conceptually_related_to--> `Papan Gerak — Technical Analysis Dashboard`  [EXTRACTED]
+  docs/README.id.md → README.md
+- `Detailed Mode — Sub-Indikator` --conceptually_related_to--> `Papan Gerak — Technical Analysis Dashboard`  [EXTRACTED]
+  docs/README.id.md → README.md
 
 ## Import Cycles
 - None detected.
 
-## Communities (31 total, 7 thin omitted)
+## Hyperedges (group relationships)
+- **4 Dimensi Scoring Teknikal** — docs_architecture_trendscore, docs_architecture_momentumscore, docs_architecture_volatilityscore, docs_architecture_volumescore [EXTRACTED 1.00]
+- **3 Display Modes** — docs_readme_id_compactmode, docs_readme_id_standardmode, docs_readme_id_detailedmode [EXTRACTED 1.00]
 
-### Community 0 - "Saham: Papan Gerak By. Akhmfz"
-Cohesion: 0.07
-Nodes (27): 1. 📊 Baris Narasi (paling atas), 2. Header — `PAPAN GERAK (last bar) 82`, 3. Sinyal & BUY/SELL/HOLD, 4. 📊 Sinyal (Forward Return), 5. 📊 Backtest (Win Rate), 6. Detail Per Dimensi + Confluence, 7. Legend Warna, Alerts (+19 more)
+## Communities (108 total, 89 thin omitted)
 
-### Community 1 - "Arsitektur Papan Gerak — Scoring Methodology"
-Cohesion: 0.07
-Nodes (27): 10. Backtest, 11. Webhook / Alert Format, 12. Companion Strategy Script (Terpisah), 13. Oscillator (Signal Line), 14. Keterbatasan, 1. Filosofi, 2.1 Trend Score (30% default), 2.2 Momentum Score (30% default) (+19 more)
+### Community 0 - "02-data.pine"
+Cohesion: 0.04
+Nodes (53): ta: adxDn, ta: adxStrong, ta: adxTrend, ta: adxUp, ta: adxValue, ta: atrPercent, ta: atrValue, ta: bbLower (+45 more)
 
-### Community 2 - "Saham: Papan Gerak By. Akhmfz"
+### Community 1 - "01-base.pine"
+Cohesion: 0.04
+Nodes (51): input: accountBalanceInput, input: adxLength, input: adxThreshold, input: atrLength, input: bahasaInput, input: bbLength, input: bbMult, input: chopLength (+43 more)
+
+### Community 2 - "Papan Gerak — Technical Analysis Dashboard"
 Cohesion: 0.08
-Nodes (26): 1. 📊 Narrative Row (top), 2. Header — Score + Signal, 3. Signal Validation (Forward Return), 4. Backtest (Win Rate), 5. Dimension Score + Confluence Counter, 6. Color Legend, Alerts, Author (+18 more)
+Nodes (27): Full Build Changelog, AI Roles (Papan Gerak), Momentum Score (30%), Smart Money Flow (Optional), Trend Score (30%), Volatility Score (20%), Volume Score (20%), 10-Langkah Trading Flow (+19 more)
 
-### Community 3 - "CATATAN PENGEMBANGAN — Lessons Learned"
-Cohesion: 0.10
-Nodes (19): 1. Reserved Keywords, 2. NO Local Functions Inside `if` Blocks, 3. Type Annotations, 4. Error Cascade, 5. `alert()` v6 vs v5, 6. `input.*` → selalu tambah `display=`, ⏳ Backlog, ⏳ Backlog (+11 more)
-
-### Community 4 - "v0.2.1-alpha (2026-07-06)"
-Cohesion: 0.12
-Nodes (16): Changelog — Papan Gerak, Docs, Docs, Docs, Features, Features, Fixes, Fixes (Critical) (+8 more)
-
-### Community 5 - "Deskripsi (Indonesia)"
-Cohesion: 0.12
-Nodes (16): 3 Display Modes, 3 Mode Tampilan, 4 Dimensi Scoring (bobot bisa diatur), 4 Scoring Dimensions (adjustable weights), Author, Author, Cara Pakai, Catatan (+8 more)
-
-### Community 6 - "Saham: Papan Gerak By. Akhmfz"
-Cohesion: 0.25
-Nodes (8): Author, Development, Documentation, License, Project Structure, Quick Start, Saham: Papan Gerak By. Akhmfz, Stats
-
-### Community 7 - "Panduan Kombinasi — Papan Instrumen + Papan Gerak"
-Cohesion: 0.12
-Nodes (15): Alur 2 Fase, Catatan Penting, Contoh Skenario, Fase 1: Fundamental Screening (mingguan), Fase 2: Teknikal Timing (harian), Link Cepat, Matriks Keputusan Gabungan, Panduan Kombinasi — Papan Instrumen + Papan Gerak (+7 more)
-
-### Community 8 - "Webhook Integration — Papan Gerak"
-Cohesion: 0.12
-Nodes (16): 1.1 Simple (Default), 1.2 JSON (Webhook), 1.3 Event Types, 1. Alert Format, 2. TradingView Alert Setup, 3. TradersPost Integration, 4. Pine Connector (MT4/MT5), 5. Custom Webhook Server (+8 more)
-
-### Community 9 - "package.json"
+### Community 3 - "package.json"
 Cohesion: 0.13
 Nodes (14): description, devDependencies, pinets, license, name, private, scripts, build (+6 more)
 
-### Community 10 - "Alur Baca Tabel (urut dari atas ke bawah)"
-Cohesion: 0.13
-Nodes (15): 10. Position Sizing = Batas Atas, 1. Baca Narrative Dulu, Bukan Skor, 2. Cek Zona Sinyal sebagai Filter Arah, 3. Cek Volatilitas — Jangan Entry saat Ranging, 4. Konfirmasi dengan Confluence per Dimensi, 5. Volume Harus Konfirmasi Tren, 6. Hormati MTF Filter, 7. Smart Money sebagai Konfirmasi Tambahan (+7 more)
-
-### Community 11 - "Settings Reference"
-Cohesion: 0.14
-Nodes (14): Display Tab, Entry Trigger Tab, Momentum Tab, MTF Tab, Position Size Tab, Risk Mgmt Tab, Settings Reference, Signal Tab (+6 more)
-
-### Community 12 - "Development Guide — Papan Gerak"
-Cohesion: 0.17
-Nodes (11): Backlog, Changelog, Commit Convention, Development Flow, Development Guide — Papan Gerak, Module Budget, Structure, Tech Stack (+3 more)
-
-### Community 14 - "README.md"
-Cohesion: 0.12
-Nodes (11): Contributing to Papan Gerak, Guidelines, AI.md — AI Collaboration Context, AI Roles, Constraints, Context Loading Order, Golden Rules, Product Philosophy (+3 more)
-
-### Community 15 - "Panduan Pengguna — Papan Gerak"
-Cohesion: 0.12
-Nodes (17): 3 Display Modes, 4 Dimensi Scoring, AI Collaboration Context, Built-in Backtest (20 signals), Confluence Counter, Entry Trigger Engine, Momentum Dimensi, MTF Trend Filter (+9 more)
-
-### Community 28 - "Settings Lengkap"
-Cohesion: 0.14
-Nodes (14): Settings Lengkap, Tab Display, Tab Entry Trigger, Tab Momentum, Tab MTF, Tab Position Size, Tab Risk Mgmt, Tab Signal (+6 more)
-
 ## Knowledge Gaps
-- **227 isolated node(s):** `build.sh script`, `name`, `version`, `description`, `private` (+222 more)
+- **217 isolated node(s):** `build.sh script`, `name`, `version`, `description`, `private` (+212 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **89 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Saham: Papan Gerak By. Akhmfz` connect `Saham: Papan Gerak By. Akhmfz` to `Settings Lengkap`, `README.md`?**
-  _High betweenness centrality (0.165) - this node is a cross-community bridge._
-- **Why does `Saham: Papan Gerak By. Akhmfz` connect `Saham: Papan Gerak By. Akhmfz` to `Settings Reference`, `README.md`?**
-  _High betweenness centrality (0.161) - this node is a cross-community bridge._
 - **What connects `build.sh script`, `name`, `version` to the rest of the system?**
-  _227 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Saham: Papan Gerak By. Akhmfz` be split into smaller, more focused modules?**
-  _Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected._
-- **Should `Arsitektur Papan Gerak — Scoring Methodology` be split into smaller, more focused modules?**
-  _Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected._
-- **Should `Saham: Papan Gerak By. Akhmfz` be split into smaller, more focused modules?**
+  _231 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `02-data.pine` be split into smaller, more focused modules?**
+  _Cohesion score 0.037037037037037035 - nodes in this community are weakly interconnected._
+- **Should `01-base.pine` be split into smaller, more focused modules?**
+  _Cohesion score 0.038461538461538464 - nodes in this community are weakly interconnected._
+- **Should `Papan Gerak — Technical Analysis Dashboard` be split into smaller, more focused modules?**
   _Cohesion score 0.07692307692307693 - nodes in this community are weakly interconnected._
-- **Should `CATATAN PENGEMBANGAN — Lessons Learned` be split into smaller, more focused modules?**
-  _Cohesion score 0.1 - nodes in this community are weakly interconnected._
+- **Should `package.json` be split into smaller, more focused modules?**
+  _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._

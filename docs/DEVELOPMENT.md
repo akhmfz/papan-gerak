@@ -125,7 +125,7 @@ Scope: base, data, scoring, ui, test, docs
 - Narrative #8: MTF conflict warning
 
 **Testing:**
-- 90 tests total (+39 from v0.1.0)
+- 90 tests total (+43 from v0.1.0)
 - 88 unit tests: utility (16), trend (6), momentum (6), volatility (11), volume (6), overall (6), signal (10), risk (7), sizing (5), MTF (6), zones (9)
 - 2 PineTS full-script integration tests (compilation + mock-data execution)
 - Scores verified: [0,100] range, vary across bars, all plots present

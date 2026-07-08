@@ -1,34 +1,112 @@
-# Graph Report - /home/Akhmfz/papan-gerak  (2026-07-08)
+# Graph Report - .  (2026-07-08)
 
 ## Corpus Check
-- Corpus is ~16,414 words - fits in a single context window. You may not need a graph.
+- cluster-only mode — file stats not available
 
 ## Summary
-- 104 nodes · 80 edges · 28 communities (13 shown, 15 thin omitted)
+- 297 nodes · 192 edges · 108 communities (19 shown, 89 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 1 edges (avg confidence: 0.65)
 - Token cost: 0 input · 0 output
 
+## Graph Freshness
+- Built from commit: `f7639a0c`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
+
 ## Community Hubs (Navigation)
-- Community 0
-- Community 2
-- Community 3
-- Community 4
-- Community 7
-- Community 8
-- Community 9
-- Community 11
-- Community 12
-- Community 13
-- Community 14
-- Community 15
-- Community 20
-- Community 21
-- Community 22
-- Community 23
-- Community 24
-- Community 25
-- Community 26
-- Community 27
+- 02-data.pine
+- 01-base.pine
+- Papan Gerak — Technical Analysis Dashboard
+- package.json
+- full-pinets.mjs
+- lint.sh
+- build.sh
+- Confluence Counter
+- Entry Trigger Engine
+- JSON Webhook Format
+- gh-sync.sh
+- f_momentumScore
+- f_smartMoneyScore
+- f_trendScore
+- f_volatilityScore
+- f_volumeScore
+- transpile.sh
+- AI Golden Rules (Papan Gerak)
+- Built-in Backtest (20 signals)
+- Overall Score (0-100)
+- Changelog Papan Gerak
+- Module Line Budget
+- Pine Script v6 Strategy Patterns
+- TradingView Publication Description
+- f_colorScore(float score)
+- f_scoreHigher(float val, float min, float max)
+- f_scoreLower(float val, float min, float max)
+- f_scoreRange(val, min, max, idealLow, idealHigh)
+- f_secure(input, def)
+- f_signalText(float score, string lang)
+- f_choppiness(int length)
+- risk: atrSl
+- signal: breakoutTrigger
+- bt: btDirs
+- bt: btEntryBars
+- bt: btEntryPrices
+- bt: btHead
+- bt: btTotalEval
+- bt: btTotalReturn
+- bt: btWinRate
+- bt: btWins
+- signal: chopFilterOk
+- signal: currentZone
+- signal: entryTriggered
+- signal: fwdBars
+- signal: fwdReturn
+- signal: minBarsOk
+- confluence: momBull
+- confluence: momTotal
+- score: normMomentum
+- score: normTrend
+- score: normVolatility
+- score: normVolume
+- score: overallScore
+- signal: prevZone
+- signal: pullbackTrigger
+- risk: riskAmount
+- risk: riskAtrCapture
+- risk: riskEntryPrice
+- risk: riskLevelLabel
+- risk: riskRp
+- risk: riskSwingHigh
+- risk: riskSwingLow
+- signal: signalColor
+- signal: signalDirection
+- signal: signalEntryBar
+- signal: signalEntryPrice
+- signal: signalStatus
+- signal: signalText
+- signal: signalTriggered
+- risk: slPct
+- risk: slPrice
+- risk: suggestedLots
+- risk: swingSl
+- risk: targetPct
+- risk: targetPrice
+- score: totalWeight
+- confluence: trendBull
+- confluence: trendTotal
+- confluence: volBull
+- confluence: volTotal
+- confluence: volmBull
+- confluence: volmTotal
+- signal: zoneChanged
+- alert: choppinessAlert
+- alert: entryAlert
+- f_confStr(n, total)
+- f_webhookMsg(eventType, params)
+- alert: rsiOverboughtAlert
+- alert: rsiOversoldAlert
+- alert: smartMoneyAlert
+- alert: trendExtremeAlert
+- alert: volumeSpikeAlert
 
 ## God Nodes (most connected - your core abstractions)
 1. `Papan Gerak — Technical Analysis Dashboard` - 18 edges
@@ -61,43 +139,39 @@
 - **4 Dimensi Scoring Teknikal** — docs_architecture_trendscore, docs_architecture_momentumscore, docs_architecture_volatilityscore, docs_architecture_volumescore [EXTRACTED 1.00]
 - **3 Display Modes** — docs_readme_id_compactmode, docs_readme_id_standardmode, docs_readme_id_detailedmode [EXTRACTED 1.00]
 
-## Communities (28 total, 15 thin omitted)
+## Communities (108 total, 89 thin omitted)
 
-### Community 0 - "Community 0"
-Cohesion: 0.12
-Nodes (17): Full Build Changelog, AI Roles (Papan Gerak), 10-Langkah Trading Flow, Compact Mode — 1 Line, Detailed Mode — Sub-Indikator, Forward Return Tracker, Narrative Engine (Insight baris-1), Signal System (BUY/HOLD/SELL) (+9 more)
+### Community 0 - "02-data.pine"
+Cohesion: 0.04
+Nodes (53): ta: adxDn, ta: adxStrong, ta: adxTrend, ta: adxUp, ta: adxValue, ta: atrPercent, ta: atrValue, ta: bbLower (+45 more)
 
-### Community 2 - "Community 2"
-Cohesion: 0.25
-Nodes (7): description, devDependencies, pinets, license, name, private, version
+### Community 1 - "01-base.pine"
+Cohesion: 0.04
+Nodes (51): input: accountBalanceInput, input: adxLength, input: adxThreshold, input: atrLength, input: bahasaInput, input: bbLength, input: bbMult, input: chopLength (+43 more)
 
-### Community 3 - "Community 3"
-Cohesion: 0.29
-Nodes (7): Momentum Score (30%), Smart Money Flow (Optional), Trend Score (30%), Volatility Score (20%), Volume Score (20%), 4 Dimensi Scoring (Teknikal), Papan Instrumen Companion
+### Community 2 - "Papan Gerak — Technical Analysis Dashboard"
+Cohesion: 0.08
+Nodes (27): Full Build Changelog, AI Roles (Papan Gerak), Momentum Score (30%), Smart Money Flow (Optional), Trend Score (30%), Volatility Score (20%), Volume Score (20%), 10-Langkah Trading Flow (+19 more)
 
-### Community 4 - "Community 4"
-Cohesion: 0.29
-Nodes (7): scripts, build, ci, lint, test, test:all, transpile
-
-### Community 8 - "Community 8"
-Cohesion: 0.67
-Nodes (3): Pine Connector Integration, TradersPost Webhook Integration, Webhook Integration Support
+### Community 3 - "package.json"
+Cohesion: 0.13
+Nodes (14): description, devDependencies, pinets, license, name, private, scripts, build (+6 more)
 
 ## Knowledge Gaps
-- **39 isolated node(s):** `build.sh script`, `name`, `version`, `description`, `private` (+34 more)
+- **217 isolated node(s):** `build.sh script`, `name`, `version`, `description`, `private` (+212 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **89 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Papan Gerak — Technical Analysis Dashboard` connect `Community 0` to `Community 8`, `Community 3`?**
-  _High betweenness centrality (0.057) - this node is a cross-community bridge._
-- **Why does `4 Dimensi Scoring (Teknikal)` connect `Community 3` to `Community 0`?**
-  _High betweenness centrality (0.022) - this node is a cross-community bridge._
-- **Why does `scripts` connect `Community 4` to `Community 2`?**
-  _High betweenness centrality (0.012) - this node is a cross-community bridge._
 - **What connects `build.sh script`, `name`, `version` to the rest of the system?**
-  _53 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._
+  _231 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `02-data.pine` be split into smaller, more focused modules?**
+  _Cohesion score 0.037037037037037035 - nodes in this community are weakly interconnected._
+- **Should `01-base.pine` be split into smaller, more focused modules?**
+  _Cohesion score 0.038461538461538464 - nodes in this community are weakly interconnected._
+- **Should `Papan Gerak — Technical Analysis Dashboard` be split into smaller, more focused modules?**
+  _Cohesion score 0.07692307692307693 - nodes in this community are weakly interconnected._
+- **Should `package.json` be split into smaller, more focused modules?**
+  _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._

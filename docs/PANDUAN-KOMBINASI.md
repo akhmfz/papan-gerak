@@ -70,8 +70,8 @@ Hanya entry jika **semua** kondisi di atas terpenuhi.
 |---------|-------------|------|
 | **✅ Kiri Atas** (Fundamental BAIK + Teknikal Bullish) | Ideal — fundamental sehat + momentum harga positif | Entry dengan confidence tinggi, lot sesuai saran sizing |
 | **⏳ Kiri Tengah** (Fundamental CUKUP + Teknikal Bullish) | Fundamental sedang tapi teknikal bagus — bisa dimanfaatkan untuk swing pendek | Entry dengan lot lebih kecil (50% dari saran sizing) |
-| **🔴 Kiri Bawah** (Fundamental LEMAH + Teknikal Bullish) | Teknikal naik tanpa fundamental — rawan reversal | Jangan entry. Kalau sudah持有, jual saat teknikal memburuk |
-| **⏳ Kanan Atas** (Fundamental BAIK + Teknikal Netral) | Saham bagus tapi belum waktunya — sabar | Pantau terus, entry tunggu teknikal Bullish |
+| **🔴 Kiri Bawah** (Fundamental LEMAH + Teknikal Bullish) | Teknikal naik tanpa fundamental — rawan reversal | Jangan entry. Kalau sudah terlanjur beli, jual saat teknikal memburuk |
+| **⏳ Tengah Atas** (Fundamental BAIK + Teknikal Netral) | Saham bagus tapi belum waktunya — sabar | Pantau terus, entry tunggu teknikal Bullish |
 | **❌ Tengah** | Tidak ada edge jelas di kedua sisi | No trade |
 | **🔴 Kanan Atas** (Fundamental BAIK + Teknikal Bearish) | Fundamental sehat tapi harga turun — bisa jadi koreksi sehat atau sinyal awal masalah | Tutup posisi long. Bisa short jika Teknikal Bearish terkonfirmasi |
 | **❌ Kanan Bawah** (Fundamental LEMAH + Teknikal Bearish) | Sampah ganda — fundamental jelek + harga turun | Jangan disentuh |
@@ -152,7 +152,7 @@ Signal                     BULLISH
 
 ### Skenario D: Exit Signal
 
-**Papan Instrumen (sudah持有 dari skenario A):**
+**Papan Instrumen (sudah terlanjur beli dari skenario A):**
 ```
 Skor Fundamental: 82 (BAIK) — masih sama
 ```

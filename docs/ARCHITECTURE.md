@@ -1,6 +1,6 @@
 # Arsitektur Papan Gerak — Scoring Methodology
 
-> v0.2.0-alpha | Teknikal Dashboard untuk IDX
+> v0.2.1-alpha | Teknikal Dashboard untuk IDX
 
 ---
 
