@@ -1,0 +1,158 @@
+[
+  {
+    "name": "all-bullish",
+    "description": "All 3 timeframes bullish — expected minimal penalty, strong alignment",
+    "inputs": {
+      "mtfTf1Trend": 80,
+      "mtfTf1Mom": 75,
+      "mtfTf1Vol": 60,
+      "mtfTf1Volm": 55,
+      "mtfTf2Trend": 75,
+      "mtfTf2Mom": 70,
+      "mtfTf2Vol": 55,
+      "mtfTf2Volm": 50,
+      "mtfTf3Trend": 70,
+      "mtfTf3Mom": 65,
+      "mtfTf3Vol": 50,
+      "mtfTf3Volm": 45
+    },
+    "expected": {
+      "mtfScore": 67.2,
+      "mtfDirection": 1,
+      "mtfTf1Dir": 77.8,
+      "mtfTf2Dir": 72.8,
+      "mtfTf3Dir": 67.8,
+      "mtfPenaltyPct": 2.5
+    }
+  },
+  {
+    "name": "daily-bullish-weekly-monthly-bearish",
+    "description": "Daily bullish bertentangan dengan Weekly & Monthly bearish — penalty tinggi",
+    "inputs": {
+      "mtfTf1Trend": 75,
+      "mtfTf1Mom": 70,
+      "mtfTf1Vol": 60,
+      "mtfTf1Volm": 55,
+      "mtfTf2Trend": 25,
+      "mtfTf2Mom": 30,
+      "mtfTf2Vol": 55,
+      "mtfTf2Volm": 50,
+      "mtfTf3Trend": 20,
+      "mtfTf3Mom": 25,
+      "mtfTf3Vol": 50,
+      "mtfTf3Volm": 45
+    },
+    "expected": {
+      "mtfScore": 46.5,
+      "mtfDirection": 0,
+      "mtfTf1Dir": 72.8,
+      "mtfTf2Dir": 27.3,
+      "mtfTf3Dir": 22.3,
+      "mtfPenaltyPct": 12.6
+    }
+  },
+  {
+    "name": "all-neutral",
+    "description": "Semua timeframe netral — mixed direction, no penalty",
+    "inputs": {
+      "mtfTf1Trend": 55,
+      "mtfTf1Mom": 55,
+      "mtfTf1Vol": 50,
+      "mtfTf1Volm": 50,
+      "mtfTf2Trend": 50,
+      "mtfTf2Mom": 45,
+      "mtfTf2Vol": 50,
+      "mtfTf2Volm": 50,
+      "mtfTf3Trend": 45,
+      "mtfTf3Mom": 45,
+      "mtfTf3Vol": 50,
+      "mtfTf3Volm": 50
+    },
+    "expected": {
+      "mtfScore": 49.8,
+      "mtfDirection": 0,
+      "mtfTf1Dir": 55,
+      "mtfTf2Dir": 47.8,
+      "mtfTf3Dir": 45,
+      "mtfPenaltyPct": 2.5
+    }
+  },
+  {
+    "name": "daily-bullish-weekly-bullish-monthly-bearish",
+    "description": "Two TF bullish, one bearish — moderate penalty, direction bullish",
+    "inputs": {
+      "mtfTf1Trend": 75,
+      "mtfTf1Mom": 70,
+      "mtfTf1Vol": 55,
+      "mtfTf1Volm": 50,
+      "mtfTf2Trend": 65,
+      "mtfTf2Mom": 60,
+      "mtfTf2Vol": 55,
+      "mtfTf2Volm": 50,
+      "mtfTf3Trend": 25,
+      "mtfTf3Mom": 25,
+      "mtfTf3Vol": 45,
+      "mtfTf3Volm": 40
+    },
+    "expected": {
+      "mtfScore": 53.6,
+      "mtfDirection": 1,
+      "mtfTf1Dir": 72.8,
+      "mtfTf2Dir": 62.8,
+      "mtfTf3Dir": 25,
+      "mtfPenaltyPct": 11.9
+    }
+  },
+  {
+    "name": "all-bearish",
+    "description": "All 3 timeframes bearish — strong bearish alignment",
+    "inputs": {
+      "mtfTf1Trend": 20,
+      "mtfTf1Mom": 25,
+      "mtfTf1Vol": 40,
+      "mtfTf1Volm": 45,
+      "mtfTf2Trend": 25,
+      "mtfTf2Mom": 30,
+      "mtfTf2Vol": 45,
+      "mtfTf2Volm": 50,
+      "mtfTf3Trend": 30,
+      "mtfTf3Mom": 35,
+      "mtfTf3Vol": 50,
+      "mtfTf3Volm": 55
+    },
+    "expected": {
+      "mtfScore": 31.1,
+      "mtfDirection": -1,
+      "mtfTf1Dir": 22.3,
+      "mtfTf2Dir": 27.3,
+      "mtfTf3Dir": 32.3,
+      "mtfPenaltyPct": 2.5
+    }
+  },
+  {
+    "name": "daily-bearish-weekly-monthly-bullish",
+    "description": "Daily bearish tapi HTF bullish — potential reversal, penalty tinggi",
+    "inputs": {
+      "mtfTf1Trend": 25,
+      "mtfTf1Mom": 30,
+      "mtfTf1Vol": 60,
+      "mtfTf1Volm": 55,
+      "mtfTf2Trend": 75,
+      "mtfTf2Mom": 70,
+      "mtfTf2Vol": 55,
+      "mtfTf2Volm": 50,
+      "mtfTf3Trend": 70,
+      "mtfTf3Mom": 65,
+      "mtfTf3Vol": 50,
+      "mtfTf3Volm": 45
+    },
+    "expected": {
+      "mtfScore": 46.9,
+      "mtfDirection": 0,
+      "mtfTf1Dir": 27.3,
+      "mtfTf2Dir": 72.8,
+      "mtfTf3Dir": 67.8,
+      "mtfPenaltyPct": 11.4
+    }
+  }
+]

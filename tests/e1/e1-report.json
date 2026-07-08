@@ -1,0 +1,81 @@
+{
+  "dataset": {
+    "stocks": 183,
+    "days": 252,
+    "sectors": [
+      "Banks",
+      "Coal",
+      "CPO",
+      "Consumer",
+      "Industrial",
+      "Healthcare",
+      "Property",
+      "Infra",
+      "Technology",
+      "Transport"
+    ]
+  },
+  "params": {
+    "frozen": true,
+    "note": "No tuning during E1. 50/35/15, α=0.70, penalty=0.25, hysteresis=10.0"
+  },
+  "kpis": {
+    "stability": {
+      "baseMean": 0,
+      "mtfMean": 0,
+      "baseLarge": 0,
+      "mtfLarge": 0
+    },
+    "persistence": {
+      "baseMean": 2.4788936261831274,
+      "mtfMean": 12.406519387972162
+    },
+    "whipsaw": {
+      "baseTotal": 0,
+      "mtfTotal": 0,
+      "reductionPct": 0
+    },
+    "forwardReturn": {
+      "n3": {
+        "base": -0.007170942987525008,
+        "mtf": -0.0012123526465238146
+      },
+      "n5": {
+        "base": -0.006493639728531974,
+        "mtf": -0.0012638779574140656
+      },
+      "n10": {
+        "base": -0.008093191233447669,
+        "mtf": -0.0015218097251426014
+      }
+    },
+    "rankCorrelation": {
+      "mean": 0.9226830441956193,
+      "min": 0.8559601481910819,
+      "max": 0.9882022823933017,
+      "p5": 0.8723555489414363,
+      "p95": 0.983641803670314
+    },
+    "coverage": {
+      "affected": 183,
+      "total": 183,
+      "pct": 100
+    },
+    "driftDistribution": {
+      "buckets": {
+        "0-2": 25046,
+        "2-5": 13969,
+        "5-10": 5373,
+        "10-15": 1383,
+        "15+": 345
+      },
+      "p5": -8.9,
+      "p25": -3.4,
+      "p50": -1.2,
+      "p75": 0.3,
+      "p95": 2.4,
+      "mean": -1.9
+    }
+  },
+  "recommendation": "E1 measurement complete. Awaiting review to decide: proceed E2 (optimization), freeze parameters, or cancel MTF integration."
+}

@@ -738,14 +738,20 @@ f_mtfAlignmentScore() =>
     mtfDirRaw = tf1Dir * normW1 + tf2Dir * normW2 + tf3Dir * normW3
     mtfCtxRaw = tf1Ctx * normW1 + tf2Ctx * normW2 + tf3Ctx * normW3
 
-    // --- Fuzzy threshold untuk direction detection ---
-    tf1Bull = math.max(math.min((tf1Dir - 50) / 20, 1), 0)
-    tf2Bull = math.max(math.min((tf2Dir - 50) / 20, 1), 0)
-    tf3Bull = math.max(math.min((tf3Dir - 50) / 20, 1), 0)
+    // --- Fuzzy threshold untuk direction detection (symmetric bull/bear) ---
+    f_bullConf(float score) => math.max(math.min((score - 50) / 20, 1), 0)
+    f_bearConf(float score) => math.max(math.min((50 - score) / 20, 1), 0)
+
+    tf1Bull = f_bullConf(tf1Dir)
+    tf2Bull = f_bullConf(tf2Dir)
+    tf3Bull = f_bullConf(tf3Dir)
+    tf1Bear = f_bearConf(tf1Dir)
+    tf2Bear = f_bearConf(tf2Dir)
+    tf3Bear = f_bearConf(tf3Dir)
 
     // Weighted majority vote
     weightedBull = tf1Bull * normW1 + tf2Bull * normW2 + tf3Bull * normW3
-    weightedBear = (1 - tf1Bull) * normW1 + (1 - tf2Bull) * normW2 + (1 - tf3Bull) * normW3
+    weightedBear = tf1Bear * normW1 + tf2Bear * normW2 + tf3Bear * normW3
 
     hysteresis = mtfDirectionHysteresis / 100
     direction = if weightedBull > weightedBear + hysteresis
