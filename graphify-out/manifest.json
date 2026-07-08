@@ -1,0 +1,142 @@
+{
+  "build.sh": {
+    "mtime": 1783310128.6677606,
+    "ast_hash": "15a356d7d0db404ed86e416818cfe7a4",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1783325995.0776036,
+    "ast_hash": "6e0ca7bd35a21003be5d08972ed477fd",
+    "semantic_hash": ""
+  },
+  "scripts/gh-sync.sh": {
+    "mtime": 1783310092.947771,
+    "ast_hash": "0b244cd658df7a27ac10262a83f57dab",
+    "semantic_hash": ""
+  },
+  "scripts/lint.sh": {
+    "mtime": 1783334825.8992615,
+    "ast_hash": "e941b14e7613975bcca4511e52c1fae2",
+    "semantic_hash": ""
+  },
+  "tests/full-pinets.mjs": {
+    "mtime": 1783326710.0774107,
+    "ast_hash": "7d326c0c4d93172a15330203ad29fe6a",
+    "semantic_hash": ""
+  },
+  "tests/pinets-verify.mjs": {
+    "mtime": 1783312724.6851342,
+    "ast_hash": "c0572f0fa5d98af6a7188864fbf8e690",
+    "semantic_hash": ""
+  },
+  "tests/scoring/runner.mjs": {
+    "mtime": 1783310209.4517374,
+    "ast_hash": "ab958f69bfc4a08c280c3eaa65f872d8",
+    "semantic_hash": ""
+  },
+  "tests/scoring/test-momentum.mjs": {
+    "mtime": 1783312617.8931644,
+    "ast_hash": "f91434e817a3ad6dbd045baf0adf86ab",
+    "semantic_hash": ""
+  },
+  "tests/scoring/test-overall.mjs": {
+    "mtime": 1783312794.4731178,
+    "ast_hash": "418a14bbe35bf56c795a2b821955ba82",
+    "semantic_hash": ""
+  },
+  "tests/scoring/test-signal.mjs": {
+    "mtime": 1783324754.1779366,
+    "ast_hash": "d787aea213fa8dc93969362ab09451ae",
+    "semantic_hash": ""
+  },
+  "tests/scoring/test-trend.mjs": {
+    "mtime": 1783312598.3891695,
+    "ast_hash": "8dfa80b20d3520beaa41d6d4d9acd186",
+    "semantic_hash": ""
+  },
+  "tests/scoring/test-volatility.mjs": {
+    "mtime": 1783314994.2045276,
+    "ast_hash": "2657de3e25a089f10c1263c43d1412e9",
+    "semantic_hash": ""
+  },
+  "tests/scoring/test-volume.mjs": {
+    "mtime": 1783312764.0651248,
+    "ast_hash": "2ef74c726cdb09d7f2986ec6c6f65646",
+    "semantic_hash": ""
+  },
+  "tests/transpile.sh": {
+    "mtime": 1783324635.721968,
+    "ast_hash": "ea15826a2cb6ba7ec6444c97edc6e416",
+    "semantic_hash": ""
+  },
+  ".github/workflows/build.yml": {
+    "mtime": 1783314714.1325958,
+    "ast_hash": "2e063f743e28b0416291f98cc3e18a19",
+    "semantic_hash": ""
+  },
+  "CATATAN.md": {
+    "mtime": 1783335093.2311811,
+    "ast_hash": "d78b8e5cb1411817136cdd882ef05f43",
+    "semantic_hash": ""
+  },
+  "CHANGELOG.md": {
+    "mtime": 1783335101.1831841,
+    "ast_hash": "f5f382da3d83f0434f15caf66b125677",
+    "semantic_hash": ""
+  },
+  "CONTRIBUTING.md": {
+    "mtime": 1783310219.6637342,
+    "ast_hash": "5b698f573c7fdafd7d4d4439d644865a",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1783335121.463181,
+    "ast_hash": "8677fda5b76873e9211b56c924c1506b",
+    "semantic_hash": ""
+  },
+  "docs/AI.md": {
+    "mtime": 1783335134.6431794,
+    "ast_hash": "c50fe4e20efce2df037e48d5e48fbdf7",
+    "semantic_hash": ""
+  },
+  "docs/ARCHITECTURE.md": {
+    "mtime": 1783326237.4615457,
+    "ast_hash": "0605f2052993177f478cb95f202cc1b5",
+    "semantic_hash": ""
+  },
+  "docs/DEVELOPMENT.md": {
+    "mtime": 1783335111.3631833,
+    "ast_hash": "6a562ff1466ed95bd7a0294d007b0f45",
+    "semantic_hash": ""
+  },
+  "docs/PANDUAN-KOMBINASI.md": {
+    "mtime": 1783335422.5110993,
+    "ast_hash": "f635cc0e171e580e5761bbda33544c71",
+    "semantic_hash": ""
+  },
+  "docs/PANDUAN-TRADING.md": {
+    "mtime": 1783339273.4811294,
+    "ast_hash": "02b3a9c55328910bbd47c923298f2125",
+    "semantic_hash": ""
+  },
+  "docs/README.id.md": {
+    "mtime": 1783334227.09141,
+    "ast_hash": "5cc05280650ee14e0b4bfd88b9c8400f",
+    "semantic_hash": ""
+  },
+  "docs/README.md": {
+    "mtime": 1783335129.5151808,
+    "ast_hash": "c020ee64ed680f74de5e712c8b8bf05d",
+    "semantic_hash": ""
+  },
+  "docs/TV_PUBLISH_DESC.md": {
+    "mtime": 1783335186.2871673,
+    "ast_hash": "6624ae18a63bd7ecaabe68af4ee730f9",
+    "semantic_hash": ""
+  },
+  "docs/webhook-integration.md": {
+    "mtime": 1783325156.1778321,
+    "ast_hash": "860215035b5d8e3716486268966b881b",
+    "semantic_hash": ""
+  }
+}

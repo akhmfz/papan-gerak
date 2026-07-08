@@ -1,0 +1,6450 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "node_count": 331,
+    "edge_count": 315
+  },
+  "nodes": [
+    {
+      "label": "build.sh",
+      "file_type": "code",
+      "source_file": "build.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "build",
+      "community": 21,
+      "norm_label": "build.sh"
+    },
+    {
+      "label": "build.sh script",
+      "file_type": "code",
+      "source_file": "build.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "build_sh__entry",
+      "community": 21,
+      "norm_label": "build.sh script"
+    },
+    {
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "package",
+      "community": 9,
+      "norm_label": "package.json"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "package_name",
+      "community": 9,
+      "norm_label": "name"
+    },
+    {
+      "label": "version",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "package_version",
+      "community": 9,
+      "norm_label": "version"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "package_description",
+      "community": 9,
+      "norm_label": "description"
+    },
+    {
+      "label": "private",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "package_private",
+      "community": 9,
+      "norm_label": "private"
+    },
+    {
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "package_scripts",
+      "community": 9,
+      "norm_label": "scripts"
+    },
+    {
+      "label": "build",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "package_scripts_build",
+      "community": 9,
+      "norm_label": "build"
+    },
+    {
+      "label": "lint",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "package_scripts_lint",
+      "community": 9,
+      "norm_label": "lint"
+    },
+    {
+      "label": "test",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "package_scripts_test",
+      "community": 9,
+      "norm_label": "test"
+    },
+    {
+      "label": "test:all",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "package_scripts_test_all",
+      "community": 9,
+      "norm_label": "test:all"
+    },
+    {
+      "label": "transpile",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "package_scripts_transpile",
+      "community": 9,
+      "norm_label": "transpile"
+    },
+    {
+      "label": "ci",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "package_scripts_ci",
+      "community": 9,
+      "norm_label": "ci"
+    },
+    {
+      "label": "devDependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "package_devdependencies",
+      "community": 9,
+      "norm_label": "devdependencies"
+    },
+    {
+      "label": "pinets",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "package_devdependencies_pinets",
+      "community": 9,
+      "norm_label": "pinets"
+    },
+    {
+      "label": "license",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "package_license",
+      "community": 9,
+      "norm_label": "license"
+    },
+    {
+      "label": "gh-sync.sh",
+      "file_type": "code",
+      "source_file": "scripts/gh-sync.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "scripts_gh_sync",
+      "community": 22,
+      "norm_label": "gh-sync.sh"
+    },
+    {
+      "label": "gh-sync.sh script",
+      "file_type": "code",
+      "source_file": "scripts/gh-sync.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "scripts_gh_sync_sh__entry",
+      "community": 22,
+      "norm_label": "gh-sync.sh script"
+    },
+    {
+      "label": "lint.sh",
+      "file_type": "code",
+      "source_file": "scripts/lint.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "scripts_lint",
+      "community": 19,
+      "norm_label": "lint.sh"
+    },
+    {
+      "label": "lint.sh script",
+      "file_type": "code",
+      "source_file": "scripts/lint.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "scripts_lint_sh__entry",
+      "community": 19,
+      "norm_label": "lint.sh script"
+    },
+    {
+      "label": "BUDGET",
+      "file_type": "code",
+      "source_file": "scripts/lint.sh",
+      "source_location": "L22",
+      "metadata": {
+        "language": "bash",
+        "kind": "code"
+      },
+      "_origin": "ast",
+      "id": "scripts_lint_budget",
+      "community": 19,
+      "norm_label": "budget"
+    },
+    {
+      "label": "full-pinets.mjs",
+      "file_type": "code",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_full_pinets",
+      "community": 18,
+      "norm_label": "full-pinets.mjs"
+    },
+    {
+      "label": "__dirname",
+      "file_type": "code",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "tests_full_pinets_dirname",
+      "community": 18,
+      "norm_label": "__dirname"
+    },
+    {
+      "label": "root",
+      "file_type": "code",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "tests_full_pinets_root",
+      "community": 18,
+      "norm_label": "root"
+    },
+    {
+      "label": "setup()",
+      "file_type": "code",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "tests_full_pinets_setup",
+      "community": 18,
+      "norm_label": "setup()"
+    },
+    {
+      "label": "generateCandles()",
+      "file_type": "code",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "tests_full_pinets_generatecandles",
+      "community": 18,
+      "norm_label": "generatecandles()"
+    },
+    {
+      "label": "pinets-verify.mjs",
+      "file_type": "code",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_pinets_verify",
+      "community": 16,
+      "norm_label": "pinets-verify.mjs"
+    },
+    {
+      "label": "f_scoreHigher()",
+      "file_type": "code",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "tests_pinets_verify_f_scorehigher",
+      "community": 16,
+      "norm_label": "f_scorehigher()"
+    },
+    {
+      "label": "f_scoreLower()",
+      "file_type": "code",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "tests_pinets_verify_f_scorelower",
+      "community": 16,
+      "norm_label": "f_scorelower()"
+    },
+    {
+      "label": "f_scoreRange()",
+      "file_type": "code",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "tests_pinets_verify_f_scorerange",
+      "community": 16,
+      "norm_label": "f_scorerange()"
+    },
+    {
+      "label": "f_colorScore()",
+      "file_type": "code",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "tests_pinets_verify_f_colorscore",
+      "community": 16,
+      "norm_label": "f_colorscore()"
+    },
+    {
+      "label": "f_signalText()",
+      "file_type": "code",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "tests_pinets_verify_f_signaltext",
+      "community": 16,
+      "norm_label": "f_signaltext()"
+    },
+    {
+      "label": "runner.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/runner.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_scoring_runner",
+      "community": 20,
+      "norm_label": "runner.mjs"
+    },
+    {
+      "label": "setupTest()",
+      "file_type": "code",
+      "source_file": "tests/scoring/runner.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "tests_scoring_runner_setuptest",
+      "community": 20,
+      "norm_label": "setuptest()"
+    },
+    {
+      "label": "report()",
+      "file_type": "code",
+      "source_file": "tests/scoring/runner.mjs",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "tests_scoring_runner_report",
+      "community": 20,
+      "norm_label": "report()"
+    },
+    {
+      "label": "test-momentum.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-momentum.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_scoring_test_momentum",
+      "community": 23,
+      "norm_label": "test-momentum.mjs"
+    },
+    {
+      "label": "weightedAvg()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-momentum.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "tests_scoring_test_momentum_weightedavg",
+      "community": 23,
+      "norm_label": "weightedavg()"
+    },
+    {
+      "label": "test-overall.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-overall.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_scoring_test_overall",
+      "community": 24,
+      "norm_label": "test-overall.mjs"
+    },
+    {
+      "label": "weightedAvg()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-overall.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "tests_scoring_test_overall_weightedavg",
+      "community": 24,
+      "norm_label": "weightedavg()"
+    },
+    {
+      "label": "test-signal.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal",
+      "community": 13,
+      "norm_label": "test-signal.mjs"
+    },
+    {
+      "label": "pullbackTrigger()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_pullbacktrigger",
+      "community": 13,
+      "norm_label": "pullbacktrigger()"
+    },
+    {
+      "label": "breakoutTrigger()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_breakouttrigger",
+      "community": 13,
+      "norm_label": "breakouttrigger()"
+    },
+    {
+      "label": "calcAtraposalSl()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_calcatraposalsl",
+      "community": 13,
+      "norm_label": "calcatraposalsl()"
+    },
+    {
+      "label": "calcTargetPrice()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_calctargetprice",
+      "community": 13,
+      "norm_label": "calctargetprice()"
+    },
+    {
+      "label": "calcRiskPct()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_calcriskpct",
+      "community": 13,
+      "norm_label": "calcriskpct()"
+    },
+    {
+      "label": "calcSuggestedLots()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_calcsuggestedlots",
+      "community": 13,
+      "norm_label": "calcsuggestedlots()"
+    },
+    {
+      "label": "calcRiskRpDisplay()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_calcriskrpdisplay",
+      "community": 13,
+      "norm_label": "calcriskrpdisplay()"
+    },
+    {
+      "label": "mtfConflict()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_mtfconflict",
+      "community": 13,
+      "norm_label": "mtfconflict()"
+    },
+    {
+      "label": "signalDirection()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L56",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_signaldirection",
+      "community": 13,
+      "norm_label": "signaldirection()"
+    },
+    {
+      "label": "zoneFromScore()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L68",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_zonefromscore",
+      "community": 13,
+      "norm_label": "zonefromscore()"
+    },
+    {
+      "label": "currentZoneLabel()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L75",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_currentzonelabel",
+      "community": 13,
+      "norm_label": "currentzonelabel()"
+    },
+    {
+      "label": "test-trend.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-trend.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_scoring_test_trend",
+      "community": 25,
+      "norm_label": "test-trend.mjs"
+    },
+    {
+      "label": "weightedAvg()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-trend.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "tests_scoring_test_trend_weightedavg",
+      "community": 25,
+      "norm_label": "weightedavg()"
+    },
+    {
+      "label": "test-volatility.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_scoring_test_volatility",
+      "community": 17,
+      "norm_label": "test-volatility.mjs"
+    },
+    {
+      "label": "bbWidthScore()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "tests_scoring_test_volatility_bbwidthscore",
+      "community": 17,
+      "norm_label": "bbwidthscore()"
+    },
+    {
+      "label": "chopScore()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "tests_scoring_test_volatility_chopscore",
+      "community": 17,
+      "norm_label": "chopscore()"
+    },
+    {
+      "label": "f_choppiness()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "tests_scoring_test_volatility_f_choppiness",
+      "community": 17,
+      "norm_label": "f_choppiness()"
+    },
+    {
+      "label": "atrScore()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "tests_scoring_test_volatility_atrscore",
+      "community": 17,
+      "norm_label": "atrscore()"
+    },
+    {
+      "label": "bbPosScore()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "tests_scoring_test_volatility_bbposscore",
+      "community": 17,
+      "norm_label": "bbposscore()"
+    },
+    {
+      "label": "test-volume.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volume.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_scoring_test_volume",
+      "community": 26,
+      "norm_label": "test-volume.mjs"
+    },
+    {
+      "label": "volRatioScore()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volume.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "tests_scoring_test_volume_volratioscore",
+      "community": 26,
+      "norm_label": "volratioscore()"
+    },
+    {
+      "label": "transpile.sh",
+      "file_type": "code",
+      "source_file": "tests/transpile.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "tests_transpile",
+      "community": 27,
+      "norm_label": "transpile.sh"
+    },
+    {
+      "label": "transpile.sh script",
+      "file_type": "code",
+      "source_file": "tests/transpile.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "tests_transpile_sh__entry",
+      "community": 27,
+      "norm_label": "transpile.sh script"
+    },
+    {
+      "label": "CATATAN.md",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "catatan",
+      "community": 3,
+      "norm_label": "catatan.md"
+    },
+    {
+      "label": "CATATAN PENGEMBANGAN \u2014 Lessons Learned",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "catatan_catatan_pengembangan_lessons_learned",
+      "community": 3,
+      "norm_label": "catatan pengembangan \u2014 lessons learned"
+    },
+    {
+      "label": "\u26d4 Pine Script v6 \u2014 Jebakan & Anti-Pattern",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "catatan_pine_script_v6_jebakan_anti_pattern",
+      "community": 3,
+      "norm_label": "\u26d4 pine script v6 \u2014 jebakan & anti-pattern"
+    },
+    {
+      "label": "1. Reserved Keywords",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "catatan_1_reserved_keywords",
+      "community": 3,
+      "norm_label": "1. reserved keywords"
+    },
+    {
+      "label": "2. NO Local Functions Inside `if` Blocks",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "catatan_2_no_local_functions_inside_if_blocks",
+      "community": 3,
+      "norm_label": "2. no local functions inside `if` blocks"
+    },
+    {
+      "label": "3. Type Annotations",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "catatan_3_type_annotations",
+      "community": 3,
+      "norm_label": "3. type annotations"
+    },
+    {
+      "label": "4. Error Cascade",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "catatan_4_error_cascade",
+      "community": 3,
+      "norm_label": "4. error cascade"
+    },
+    {
+      "label": "5. `alert()` v6 vs v5",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "catatan_5_alert_v6_vs_v5",
+      "community": 3,
+      "norm_label": "5. `alert()` v6 vs v5"
+    },
+    {
+      "label": "6. `input.*` \u2192 selalu tambah `display=`",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "catatan_6_input_selalu_tambah_display",
+      "community": 3,
+      "norm_label": "6. `input.*` \u2192 selalu tambah `display=`"
+    },
+    {
+      "label": "\ud83d\udc1b Bug Tracker",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "catatan_bug_tracker",
+      "community": 3,
+      "norm_label": "\ud83d\udc1b bug tracker"
+    },
+    {
+      "label": "\ud83e\uddea Testing Catatan",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L72",
+      "_origin": "ast",
+      "id": "catatan_testing_catatan",
+      "community": 3,
+      "norm_label": "\ud83e\uddea testing catatan"
+    },
+    {
+      "label": "PineTS Limitations",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L74",
+      "_origin": "ast",
+      "id": "catatan_pinets_limitations",
+      "community": 3,
+      "norm_label": "pinets limitations"
+    },
+    {
+      "label": "Test Coverage",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L78",
+      "_origin": "ast",
+      "id": "catatan_test_coverage",
+      "community": 3,
+      "norm_label": "test coverage"
+    },
+    {
+      "label": "F6 \u2014 Webhook (2026-07-06)",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L93",
+      "_origin": "ast",
+      "id": "catatan_f6_webhook_2026_07_06",
+      "community": 3,
+      "norm_label": "f6 \u2014 webhook (2026-07-06)"
+    },
+    {
+      "label": "\u23f3 Backlog",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L101",
+      "_origin": "ast",
+      "id": "catatan_backlog",
+      "community": 3,
+      "norm_label": "\u23f3 backlog"
+    },
+    {
+      "label": "\ud83e\uddea Testing Catatan",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L116",
+      "_origin": "ast",
+      "id": "catatan_testing_catatan_116",
+      "community": 3,
+      "norm_label": "\ud83e\uddea testing catatan"
+    },
+    {
+      "label": "PineTS Limitations",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L118",
+      "_origin": "ast",
+      "id": "catatan_pinets_limitations_118",
+      "community": 3,
+      "norm_label": "pinets limitations"
+    },
+    {
+      "label": "Test Coverage",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L122",
+      "_origin": "ast",
+      "id": "catatan_test_coverage_122",
+      "community": 3,
+      "norm_label": "test coverage"
+    },
+    {
+      "label": "F6 \u2014 Webhook (2026-07-06)",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L139",
+      "_origin": "ast",
+      "id": "catatan_f6_webhook_2026_07_06_139",
+      "community": 3,
+      "norm_label": "f6 \u2014 webhook (2026-07-06)"
+    },
+    {
+      "label": "\u23f3 Backlog",
+      "file_type": "document",
+      "source_file": "CATATAN.md",
+      "source_location": "L147",
+      "_origin": "ast",
+      "id": "catatan_backlog_147",
+      "community": 3,
+      "norm_label": "\u23f3 backlog"
+    },
+    {
+      "label": "CHANGELOG.md",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "changelog",
+      "community": 4,
+      "norm_label": "changelog.md"
+    },
+    {
+      "label": "Changelog \u2014 Papan Gerak",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "changelog_changelog_papan_gerak",
+      "community": 4,
+      "norm_label": "changelog \u2014 papan gerak"
+    },
+    {
+      "label": "v0.2.1-alpha (2026-07-06)",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "changelog_v0_2_1_alpha_2026_07_06",
+      "community": 4,
+      "norm_label": "v0.2.1-alpha (2026-07-06)"
+    },
+    {
+      "label": "Fixes (Critical)",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "changelog_fixes_critical",
+      "community": 4,
+      "norm_label": "fixes (critical)"
+    },
+    {
+      "label": "Fixes (Minor)",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "changelog_fixes_minor",
+      "community": 4,
+      "norm_label": "fixes (minor)"
+    },
+    {
+      "label": "Docs",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "changelog_docs",
+      "community": 4,
+      "norm_label": "docs"
+    },
+    {
+      "label": "Testing",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "changelog_testing",
+      "community": 4,
+      "norm_label": "testing"
+    },
+    {
+      "label": "Maintenance",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "changelog_maintenance",
+      "community": 4,
+      "norm_label": "maintenance"
+    },
+    {
+      "label": "v0.2.0-alpha (2026-07-06)",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "changelog_v0_2_0_alpha_2026_07_06",
+      "community": 4,
+      "norm_label": "v0.2.0-alpha (2026-07-06)"
+    },
+    {
+      "label": "Features",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "changelog_features",
+      "community": 4,
+      "norm_label": "features"
+    },
+    {
+      "label": "Fixes",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "changelog_fixes",
+      "community": 4,
+      "norm_label": "fixes"
+    },
+    {
+      "label": "Testing",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L64",
+      "_origin": "ast",
+      "id": "changelog_testing_64",
+      "community": 4,
+      "norm_label": "testing"
+    },
+    {
+      "label": "Docs",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L70",
+      "_origin": "ast",
+      "id": "changelog_docs_70",
+      "community": 4,
+      "norm_label": "docs"
+    },
+    {
+      "label": "v0.1.0-alpha",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L80",
+      "_origin": "ast",
+      "id": "changelog_v0_1_0_alpha",
+      "community": 4,
+      "norm_label": "v0.1.0-alpha"
+    },
+    {
+      "label": "Features",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L82",
+      "_origin": "ast",
+      "id": "changelog_features_82",
+      "community": 4,
+      "norm_label": "features"
+    },
+    {
+      "label": "Testing",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L93",
+      "_origin": "ast",
+      "id": "changelog_testing_93",
+      "community": 4,
+      "norm_label": "testing"
+    },
+    {
+      "label": "Docs",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L97",
+      "_origin": "ast",
+      "id": "changelog_docs_97",
+      "community": 4,
+      "norm_label": "docs"
+    },
+    {
+      "label": "CONTRIBUTING.md",
+      "file_type": "document",
+      "source_file": "CONTRIBUTING.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "contributing",
+      "community": 6,
+      "norm_label": "contributing.md"
+    },
+    {
+      "label": "Contributing to Papan Gerak",
+      "file_type": "document",
+      "source_file": "CONTRIBUTING.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "contributing_contributing_to_papan_gerak",
+      "community": 6,
+      "norm_label": "contributing to papan gerak"
+    },
+    {
+      "label": "Guidelines",
+      "file_type": "document",
+      "source_file": "CONTRIBUTING.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "contributing_guidelines",
+      "community": 6,
+      "norm_label": "guidelines"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "readme",
+      "community": 6,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Saham: Papan Gerak By. Akhmfz",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "readme_saham_papan_gerak_by_akhmfz",
+      "community": 6,
+      "norm_label": "saham: papan gerak by. akhmfz"
+    },
+    {
+      "label": "Quick Start",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "readme_quick_start",
+      "community": 6,
+      "norm_label": "quick start"
+    },
+    {
+      "label": "Stats",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "readme_stats",
+      "community": 6,
+      "norm_label": "stats"
+    },
+    {
+      "label": "Project Structure",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "readme_project_structure",
+      "community": 6,
+      "norm_label": "project structure"
+    },
+    {
+      "label": "Development",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "readme_development",
+      "community": 6,
+      "norm_label": "development"
+    },
+    {
+      "label": "Documentation",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L55",
+      "_origin": "ast",
+      "id": "readme_documentation",
+      "community": 6,
+      "norm_label": "documentation"
+    },
+    {
+      "label": "Author",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L71",
+      "_origin": "ast",
+      "id": "readme_author",
+      "community": 6,
+      "norm_label": "author"
+    },
+    {
+      "label": "License",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L76",
+      "_origin": "ast",
+      "id": "readme_license",
+      "community": 6,
+      "norm_label": "license"
+    },
+    {
+      "label": "AI.md",
+      "file_type": "document",
+      "source_file": "docs/AI.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_ai",
+      "community": 14,
+      "norm_label": "ai.md"
+    },
+    {
+      "label": "AI.md \u2014 AI Collaboration Context",
+      "file_type": "document",
+      "source_file": "docs/AI.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_ai_ai_md_ai_collaboration_context",
+      "community": 14,
+      "norm_label": "ai.md \u2014 ai collaboration context"
+    },
+    {
+      "label": "Project Identity",
+      "file_type": "document",
+      "source_file": "docs/AI.md",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "docs_ai_project_identity",
+      "community": 14,
+      "norm_label": "project identity"
+    },
+    {
+      "label": "Product Philosophy",
+      "file_type": "document",
+      "source_file": "docs/AI.md",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "docs_ai_product_philosophy",
+      "community": 14,
+      "norm_label": "product philosophy"
+    },
+    {
+      "label": "AI Roles",
+      "file_type": "document",
+      "source_file": "docs/AI.md",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "docs_ai_ai_roles",
+      "community": 14,
+      "norm_label": "ai roles"
+    },
+    {
+      "label": "Context Loading Order",
+      "file_type": "document",
+      "source_file": "docs/AI.md",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "docs_ai_context_loading_order",
+      "community": 14,
+      "norm_label": "context loading order"
+    },
+    {
+      "label": "Golden Rules",
+      "file_type": "document",
+      "source_file": "docs/AI.md",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "docs_ai_golden_rules",
+      "community": 14,
+      "norm_label": "golden rules"
+    },
+    {
+      "label": "Standard Development Flow",
+      "file_type": "document",
+      "source_file": "docs/AI.md",
+      "source_location": "L48",
+      "_origin": "ast",
+      "id": "docs_ai_standard_development_flow",
+      "community": 14,
+      "norm_label": "standard development flow"
+    },
+    {
+      "label": "Constraints",
+      "file_type": "document",
+      "source_file": "docs/AI.md",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "docs_ai_constraints",
+      "community": 14,
+      "norm_label": "constraints"
+    },
+    {
+      "label": "Related Projects",
+      "file_type": "document",
+      "source_file": "docs/AI.md",
+      "source_location": "L62",
+      "_origin": "ast",
+      "id": "docs_ai_related_projects",
+      "community": 14,
+      "norm_label": "related projects"
+    },
+    {
+      "label": "ARCHITECTURE.md",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_architecture",
+      "community": 6,
+      "norm_label": "architecture.md"
+    },
+    {
+      "label": "Arsitektur Papan Gerak \u2014 Scoring Methodology",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_architecture_arsitektur_papan_gerak_scoring_methodology",
+      "community": 1,
+      "norm_label": "arsitektur papan gerak \u2014 scoring methodology"
+    },
+    {
+      "label": "1. Filosofi",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "docs_architecture_1_filosofi",
+      "community": 1,
+      "norm_label": "1. filosofi"
+    },
+    {
+      "label": "2. Dimensi Scoring",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "docs_architecture_2_dimensi_scoring",
+      "community": 1,
+      "norm_label": "2. dimensi scoring"
+    },
+    {
+      "label": "2.1 Trend Score (30% default)",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "docs_architecture_2_1_trend_score_30_default",
+      "community": 1,
+      "norm_label": "2.1 trend score (30% default)"
+    },
+    {
+      "label": "2.2 Momentum Score (30% default)",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "docs_architecture_2_2_momentum_score_30_default",
+      "community": 1,
+      "norm_label": "2.2 momentum score (30% default)"
+    },
+    {
+      "label": "2.3 Volatility Score (20% default)",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "docs_architecture_2_3_volatility_score_20_default",
+      "community": 1,
+      "norm_label": "2.3 volatility score (20% default)"
+    },
+    {
+      "label": "2.4 Volume Score (20% default)",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "docs_architecture_2_4_volume_score_20_default",
+      "community": 1,
+      "norm_label": "2.4 volume score (20% default)"
+    },
+    {
+      "label": "2.5 Smart Money Flow (Optional)",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L69",
+      "_origin": "ast",
+      "id": "docs_architecture_2_5_smart_money_flow_optional",
+      "community": 1,
+      "norm_label": "2.5 smart money flow (optional)"
+    },
+    {
+      "label": "3. Overall Score",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L80",
+      "_origin": "ast",
+      "id": "docs_architecture_3_overall_score",
+      "community": 1,
+      "norm_label": "3. overall score"
+    },
+    {
+      "label": "4. Confluence Counts",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L90",
+      "_origin": "ast",
+      "id": "docs_architecture_4_confluence_counts",
+      "community": 1,
+      "norm_label": "4. confluence counts"
+    },
+    {
+      "label": "5. Narrative Engine",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L103",
+      "_origin": "ast",
+      "id": "docs_architecture_5_narrative_engine",
+      "community": 1,
+      "norm_label": "5. narrative engine"
+    },
+    {
+      "label": "6. Entry Trigger Engine (3 Modes)",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L120",
+      "_origin": "ast",
+      "id": "docs_architecture_6_entry_trigger_engine_3_modes",
+      "community": 1,
+      "norm_label": "6. entry trigger engine (3 modes)"
+    },
+    {
+      "label": "6.1 Composite Score (Default)",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L122",
+      "_origin": "ast",
+      "id": "docs_architecture_6_1_composite_score_default",
+      "community": 1,
+      "norm_label": "6.1 composite score (default)"
+    },
+    {
+      "label": "6.2 Pullback",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L128",
+      "_origin": "ast",
+      "id": "docs_architecture_6_2_pullback",
+      "community": 1,
+      "norm_label": "6.2 pullback"
+    },
+    {
+      "label": "6.3 Breakout",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L135",
+      "_origin": "ast",
+      "id": "docs_architecture_6_3_breakout",
+      "community": 1,
+      "norm_label": "6.3 breakout"
+    },
+    {
+      "label": "6.4 Unified Signal",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L141",
+      "_origin": "ast",
+      "id": "docs_architecture_6_4_unified_signal",
+      "community": 1,
+      "norm_label": "6.4 unified signal"
+    },
+    {
+      "label": "7. Risk Management",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L149",
+      "_origin": "ast",
+      "id": "docs_architecture_7_risk_management",
+      "community": 1,
+      "norm_label": "7. risk management"
+    },
+    {
+      "label": "7.1 Stop Loss Levels",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L151",
+      "_origin": "ast",
+      "id": "docs_architecture_7_1_stop_loss_levels",
+      "community": 1,
+      "norm_label": "7.1 stop loss levels"
+    },
+    {
+      "label": "7.2 Target",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L158",
+      "_origin": "ast",
+      "id": "docs_architecture_7_2_target",
+      "community": 1,
+      "norm_label": "7.2 target"
+    },
+    {
+      "label": "7.3 Position Sizing",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L161",
+      "_origin": "ast",
+      "id": "docs_architecture_7_3_position_sizing",
+      "community": 1,
+      "norm_label": "7.3 position sizing"
+    },
+    {
+      "label": "8. Multi-Timeframe Filter (Optional)",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L168",
+      "_origin": "ast",
+      "id": "docs_architecture_8_multi_timeframe_filter_optional",
+      "community": 1,
+      "norm_label": "8. multi-timeframe filter (optional)"
+    },
+    {
+      "label": "9. Signal & Thresholds",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L176",
+      "_origin": "ast",
+      "id": "docs_architecture_9_signal_thresholds",
+      "community": 1,
+      "norm_label": "9. signal & thresholds"
+    },
+    {
+      "label": "10. Backtest",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L186",
+      "_origin": "ast",
+      "id": "docs_architecture_10_backtest",
+      "community": 1,
+      "norm_label": "10. backtest"
+    },
+    {
+      "label": "11. Webhook / Alert Format",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L200",
+      "_origin": "ast",
+      "id": "docs_architecture_11_webhook_alert_format",
+      "community": 1,
+      "norm_label": "11. webhook / alert format"
+    },
+    {
+      "label": "12. Companion Strategy Script (Terpisah)",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L211",
+      "_origin": "ast",
+      "id": "docs_architecture_12_companion_strategy_script_terpisah",
+      "community": 1,
+      "norm_label": "12. companion strategy script (terpisah)"
+    },
+    {
+      "label": "13. Oscillator (Signal Line)",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L220",
+      "_origin": "ast",
+      "id": "docs_architecture_13_oscillator_signal_line",
+      "community": 1,
+      "norm_label": "13. oscillator (signal line)"
+    },
+    {
+      "label": "14. Keterbatasan",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L229",
+      "_origin": "ast",
+      "id": "docs_architecture_14_keterbatasan",
+      "community": 1,
+      "norm_label": "14. keterbatasan"
+    },
+    {
+      "label": "DEVELOPMENT.md",
+      "file_type": "document",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_development",
+      "community": 12,
+      "norm_label": "development.md"
+    },
+    {
+      "label": "Development Guide \u2014 Papan Gerak",
+      "file_type": "document",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_development_development_guide_papan_gerak",
+      "community": 12,
+      "norm_label": "development guide \u2014 papan gerak"
+    },
+    {
+      "label": "Tech Stack",
+      "file_type": "document",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "docs_development_tech_stack",
+      "community": 12,
+      "norm_label": "tech stack"
+    },
+    {
+      "label": "Structure",
+      "file_type": "document",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "docs_development_structure",
+      "community": 12,
+      "norm_label": "structure"
+    },
+    {
+      "label": "Development Flow",
+      "file_type": "document",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "docs_development_development_flow",
+      "community": 12,
+      "norm_label": "development flow"
+    },
+    {
+      "label": "Module Budget",
+      "file_type": "document",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "docs_development_module_budget",
+      "community": 12,
+      "norm_label": "module budget"
+    },
+    {
+      "label": "Commit Convention",
+      "file_type": "document",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "docs_development_commit_convention",
+      "community": 12,
+      "norm_label": "commit convention"
+    },
+    {
+      "label": "Changelog",
+      "file_type": "document",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "docs_development_changelog",
+      "community": 12,
+      "norm_label": "changelog"
+    },
+    {
+      "label": "v0.2.1-alpha (2026-07-06)",
+      "file_type": "document",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L62",
+      "_origin": "ast",
+      "id": "docs_development_v0_2_1_alpha_2026_07_06",
+      "community": 12,
+      "norm_label": "v0.2.1-alpha (2026-07-06)"
+    },
+    {
+      "label": "v0.2.0-alpha (2026-07-06)",
+      "file_type": "document",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L86",
+      "_origin": "ast",
+      "id": "docs_development_v0_2_0_alpha_2026_07_06",
+      "community": 12,
+      "norm_label": "v0.2.0-alpha (2026-07-06)"
+    },
+    {
+      "label": "v0.1.0-alpha",
+      "file_type": "document",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L133",
+      "_origin": "ast",
+      "id": "docs_development_v0_1_0_alpha",
+      "community": 12,
+      "norm_label": "v0.1.0-alpha"
+    },
+    {
+      "label": "Backlog",
+      "file_type": "document",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L145",
+      "_origin": "ast",
+      "id": "docs_development_backlog",
+      "community": 12,
+      "norm_label": "backlog"
+    },
+    {
+      "label": "PANDUAN-KOMBINASI.md",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_panduan_kombinasi",
+      "community": 7,
+      "norm_label": "panduan-kombinasi.md"
+    },
+    {
+      "label": "Panduan Kombinasi \u2014 Papan Instrumen + Papan Gerak",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_panduan_kombinasi_panduan_kombinasi_papan_instrumen_papan_gerak",
+      "community": 7,
+      "norm_label": "panduan kombinasi \u2014 papan instrumen + papan gerak"
+    },
+    {
+      "label": "Alur 2 Fase",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "docs_panduan_kombinasi_alur_2_fase",
+      "community": 7,
+      "norm_label": "alur 2 fase"
+    },
+    {
+      "label": "Fase 1: Fundamental Screening (mingguan)",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "docs_panduan_kombinasi_fase_1_fundamental_screening_mingguan",
+      "community": 7,
+      "norm_label": "fase 1: fundamental screening (mingguan)"
+    },
+    {
+      "label": "Fase 2: Teknikal Timing (harian)",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L44",
+      "_origin": "ast",
+      "id": "docs_panduan_kombinasi_fase_2_teknikal_timing_harian",
+      "community": 7,
+      "norm_label": "fase 2: teknikal timing (harian)"
+    },
+    {
+      "label": "Matriks Keputusan Gabungan",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L59",
+      "_origin": "ast",
+      "id": "docs_panduan_kombinasi_matriks_keputusan_gabungan",
+      "community": 7,
+      "norm_label": "matriks keputusan gabungan"
+    },
+    {
+      "label": "Penjelasan per Kuadran",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L67",
+      "_origin": "ast",
+      "id": "docs_panduan_kombinasi_penjelasan_per_kuadran",
+      "community": 7,
+      "norm_label": "penjelasan per kuadran"
+    },
+    {
+      "label": "Contoh Skenario",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L81",
+      "_origin": "ast",
+      "id": "docs_panduan_kombinasi_contoh_skenario",
+      "community": 7,
+      "norm_label": "contoh skenario"
+    },
+    {
+      "label": "Skenario A: Entry Long Ideal",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L83",
+      "_origin": "ast",
+      "id": "docs_panduan_kombinasi_skenario_a_entry_long_ideal",
+      "community": 7,
+      "norm_label": "skenario a: entry long ideal"
+    },
+    {
+      "label": "Skenario B: Fundamental Bagus, Teknikal Belum",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L109",
+      "_origin": "ast",
+      "id": "docs_panduan_kombinasi_skenario_b_fundamental_bagus_teknikal_belum",
+      "community": 7,
+      "norm_label": "skenario b: fundamental bagus, teknikal belum"
+    },
+    {
+      "label": "Skenario C: Teknikal Naik, Fundamental Jeblok",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L132",
+      "_origin": "ast",
+      "id": "docs_panduan_kombinasi_skenario_c_teknikal_naik_fundamental_jeblok",
+      "community": 7,
+      "norm_label": "skenario c: teknikal naik, fundamental jeblok"
+    },
+    {
+      "label": "Skenario D: Exit Signal",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L153",
+      "_origin": "ast",
+      "id": "docs_panduan_kombinasi_skenario_d_exit_signal",
+      "community": 7,
+      "norm_label": "skenario d: exit signal"
+    },
+    {
+      "label": "Ringkasan 1 Menit",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L177",
+      "_origin": "ast",
+      "id": "docs_panduan_kombinasi_ringkasan_1_menit",
+      "community": 7,
+      "norm_label": "ringkasan 1 menit"
+    },
+    {
+      "label": "Catatan Penting",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L188",
+      "_origin": "ast",
+      "id": "docs_panduan_kombinasi_catatan_penting",
+      "community": 7,
+      "norm_label": "catatan penting"
+    },
+    {
+      "label": "Link Cepat",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L197",
+      "_origin": "ast",
+      "id": "docs_panduan_kombinasi_link_cepat",
+      "community": 7,
+      "norm_label": "link cepat"
+    },
+    {
+      "label": "PANDUAN-TRADING.md",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_panduan_trading",
+      "community": 6,
+      "norm_label": "panduan-trading.md"
+    },
+    {
+      "label": "Panduan Trading \u2014 Papan Gerak",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_panduan_trading_panduan_trading_papan_gerak",
+      "community": 10,
+      "norm_label": "panduan trading \u2014 papan gerak"
+    },
+    {
+      "label": "Alur Baca Tabel (urut dari atas ke bawah)",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "docs_panduan_trading_alur_baca_tabel_urut_dari_atas_ke_bawah",
+      "community": 10,
+      "norm_label": "alur baca tabel (urut dari atas ke bawah)"
+    },
+    {
+      "label": "1. Baca Narrative Dulu, Bukan Skor",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "docs_panduan_trading_1_baca_narrative_dulu_bukan_skor",
+      "community": 10,
+      "norm_label": "1. baca narrative dulu, bukan skor"
+    },
+    {
+      "label": "2. Cek Zona Sinyal sebagai Filter Arah",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "docs_panduan_trading_2_cek_zona_sinyal_sebagai_filter_arah",
+      "community": 10,
+      "norm_label": "2. cek zona sinyal sebagai filter arah"
+    },
+    {
+      "label": "3. Cek Volatilitas \u2014 Jangan Entry saat Ranging",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "docs_panduan_trading_3_cek_volatilitas_jangan_entry_saat_ranging",
+      "community": 10,
+      "norm_label": "3. cek volatilitas \u2014 jangan entry saat ranging"
+    },
+    {
+      "label": "4. Konfirmasi dengan Confluence per Dimensi",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "docs_panduan_trading_4_konfirmasi_dengan_confluence_per_dimensi",
+      "community": 10,
+      "norm_label": "4. konfirmasi dengan confluence per dimensi"
+    },
+    {
+      "label": "5. Volume Harus Konfirmasi Tren",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "docs_panduan_trading_5_volume_harus_konfirmasi_tren",
+      "community": 10,
+      "norm_label": "5. volume harus konfirmasi tren"
+    },
+    {
+      "label": "6. Hormati MTF Filter",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L62",
+      "_origin": "ast",
+      "id": "docs_panduan_trading_6_hormati_mtf_filter",
+      "community": 10,
+      "norm_label": "6. hormati mtf filter"
+    },
+    {
+      "label": "7. Smart Money sebagai Konfirmasi Tambahan",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L66",
+      "_origin": "ast",
+      "id": "docs_panduan_trading_7_smart_money_sebagai_konfirmasi_tambahan",
+      "community": 10,
+      "norm_label": "7. smart money sebagai konfirmasi tambahan"
+    },
+    {
+      "label": "8. Tunggu Entry Trigger Sungguhan",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L70",
+      "_origin": "ast",
+      "id": "docs_panduan_trading_8_tunggu_entry_trigger_sungguhan",
+      "community": 10,
+      "norm_label": "8. tunggu entry trigger sungguhan"
+    },
+    {
+      "label": "9. Cek Histori Sinyal",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L82",
+      "_origin": "ast",
+      "id": "docs_panduan_trading_9_cek_histori_sinyal",
+      "community": 10,
+      "norm_label": "9. cek histori sinyal"
+    },
+    {
+      "label": "10. Position Sizing = Batas Atas",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L86",
+      "_origin": "ast",
+      "id": "docs_panduan_trading_10_position_sizing_batas_atas",
+      "community": 10,
+      "norm_label": "10. position sizing = batas atas"
+    },
+    {
+      "label": "Ringkasan Alur Cepat",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L92",
+      "_origin": "ast",
+      "id": "docs_panduan_trading_ringkasan_alur_cepat",
+      "community": 10,
+      "norm_label": "ringkasan alur cepat"
+    },
+    {
+      "label": "Catatan Penting",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L98",
+      "_origin": "ast",
+      "id": "docs_panduan_trading_catatan_penting",
+      "community": 10,
+      "norm_label": "catatan penting"
+    },
+    {
+      "label": "README.id.md",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_readme_id",
+      "community": 6,
+      "norm_label": "readme.id.md"
+    },
+    {
+      "label": "Saham: Papan Gerak By. Akhmfz",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_readme_id_saham_papan_gerak_by_akhmfz",
+      "community": 0,
+      "norm_label": "saham: papan gerak by. akhmfz"
+    },
+    {
+      "label": "Cara Instalasi",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "docs_readme_id_cara_instalasi",
+      "community": 0,
+      "norm_label": "cara instalasi"
+    },
+    {
+      "label": "Mode Tampilan",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "docs_readme_id_mode_tampilan",
+      "community": 0,
+      "norm_label": "mode tampilan"
+    },
+    {
+      "label": "Compact \u2014 1 Baris",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "docs_readme_id_compact_1_baris",
+      "community": 0,
+      "norm_label": "compact \u2014 1 baris"
+    },
+    {
+      "label": "Standard \u2014 Tabel Lengkap (Default)",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "docs_readme_id_standard_tabel_lengkap_default",
+      "community": 0,
+      "norm_label": "standard \u2014 tabel lengkap (default)"
+    },
+    {
+      "label": "Detailed \u2014 Tabel + Sub-Indikator",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "docs_readme_id_detailed_tabel_sub_indikator",
+      "community": 0,
+      "norm_label": "detailed \u2014 tabel + sub-indikator"
+    },
+    {
+      "label": "Cara Membaca Tabel (Standard Mode)",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "docs_readme_id_cara_membaca_tabel_standard_mode",
+      "community": 15,
+      "norm_label": "cara membaca tabel (standard mode)"
+    },
+    {
+      "label": "1. \ud83d\udcca Baris Narasi (paling atas)",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "docs_readme_id_1_baris_narasi_paling_atas",
+      "community": 15,
+      "norm_label": "1. \ud83d\udcca baris narasi (paling atas)"
+    },
+    {
+      "label": "2. Header \u2014 `PAPAN GERAK (last bar) 82`",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L68",
+      "_origin": "ast",
+      "id": "docs_readme_id_2_header_papan_gerak_last_bar_82",
+      "community": 15,
+      "norm_label": "2. header \u2014 `papan gerak (last bar) 82`"
+    },
+    {
+      "label": "3. Sinyal & BUY/SELL/HOLD",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L73",
+      "_origin": "ast",
+      "id": "docs_readme_id_3_sinyal_buy_sell_hold",
+      "community": 15,
+      "norm_label": "3. sinyal & buy/sell/hold"
+    },
+    {
+      "label": "4. \ud83d\udcca Sinyal (Forward Return)",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L82",
+      "_origin": "ast",
+      "id": "docs_readme_id_4_sinyal_forward_return",
+      "community": 15,
+      "norm_label": "4. \ud83d\udcca sinyal (forward return)"
+    },
+    {
+      "label": "5. \ud83d\udcca Backtest (Win Rate)",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L92",
+      "_origin": "ast",
+      "id": "docs_readme_id_5_backtest_win_rate",
+      "community": 15,
+      "norm_label": "5. \ud83d\udcca backtest (win rate)"
+    },
+    {
+      "label": "6. Detail Per Dimensi + Confluence",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L103",
+      "_origin": "ast",
+      "id": "docs_readme_id_6_detail_per_dimensi_confluence",
+      "community": 15,
+      "norm_label": "6. detail per dimensi + confluence"
+    },
+    {
+      "label": "7. Legend Warna",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L119",
+      "_origin": "ast",
+      "id": "docs_readme_id_7_legend_warna",
+      "community": 15,
+      "norm_label": "7. legend warna"
+    },
+    {
+      "label": "Alerts",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L126",
+      "_origin": "ast",
+      "id": "docs_readme_id_alerts",
+      "community": 0,
+      "norm_label": "alerts"
+    },
+    {
+      "label": "Settings Lengkap",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L146",
+      "_origin": "ast",
+      "id": "docs_readme_id_settings_lengkap",
+      "community": 0,
+      "norm_label": "settings lengkap"
+    },
+    {
+      "label": "Tab Display",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L148",
+      "_origin": "ast",
+      "id": "docs_readme_id_tab_display",
+      "community": 0,
+      "norm_label": "tab display"
+    },
+    {
+      "label": "Tab Trend",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L156",
+      "_origin": "ast",
+      "id": "docs_readme_id_tab_trend",
+      "community": 0,
+      "norm_label": "tab trend"
+    },
+    {
+      "label": "Tab Momentum",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L167",
+      "_origin": "ast",
+      "id": "docs_readme_id_tab_momentum",
+      "community": 0,
+      "norm_label": "tab momentum"
+    },
+    {
+      "label": "Tab Volatility",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L181",
+      "_origin": "ast",
+      "id": "docs_readme_id_tab_volatility",
+      "community": 0,
+      "norm_label": "tab volatility"
+    },
+    {
+      "label": "Tab Volume",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L189",
+      "_origin": "ast",
+      "id": "docs_readme_id_tab_volume",
+      "community": 0,
+      "norm_label": "tab volume"
+    },
+    {
+      "label": "Tab Weights",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L195",
+      "_origin": "ast",
+      "id": "docs_readme_id_tab_weights",
+      "community": 0,
+      "norm_label": "tab weights"
+    },
+    {
+      "label": "Tab Smart Money",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L203",
+      "_origin": "ast",
+      "id": "docs_readme_id_tab_smart_money",
+      "community": 0,
+      "norm_label": "tab smart money"
+    },
+    {
+      "label": "Tab Signal",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L211",
+      "_origin": "ast",
+      "id": "docs_readme_id_tab_signal",
+      "community": 0,
+      "norm_label": "tab signal"
+    },
+    {
+      "label": "Tab Risk Mgmt",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L217",
+      "_origin": "ast",
+      "id": "docs_readme_id_tab_risk_mgmt",
+      "community": 0,
+      "norm_label": "tab risk mgmt"
+    },
+    {
+      "label": "Tab Position Size",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L226",
+      "_origin": "ast",
+      "id": "docs_readme_id_tab_position_size",
+      "community": 0,
+      "norm_label": "tab position size"
+    },
+    {
+      "label": "Tab MTF",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L233",
+      "_origin": "ast",
+      "id": "docs_readme_id_tab_mtf",
+      "community": 0,
+      "norm_label": "tab mtf"
+    },
+    {
+      "label": "Tab Entry Trigger",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L239",
+      "_origin": "ast",
+      "id": "docs_readme_id_tab_entry_trigger",
+      "community": 0,
+      "norm_label": "tab entry trigger"
+    },
+    {
+      "label": "Tab Webhook",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L244",
+      "_origin": "ast",
+      "id": "docs_readme_id_tab_webhook",
+      "community": 0,
+      "norm_label": "tab webhook"
+    },
+    {
+      "label": "Contoh Skenario Trading",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L251",
+      "_origin": "ast",
+      "id": "docs_readme_id_contoh_skenario_trading",
+      "community": 0,
+      "norm_label": "contoh skenario trading"
+    },
+    {
+      "label": "Entry Long (confidence tinggi)",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L253",
+      "_origin": "ast",
+      "id": "docs_readme_id_entry_long_confidence_tinggi",
+      "community": 0,
+      "norm_label": "entry long (confidence tinggi)"
+    },
+    {
+      "label": "Tidak Entry (walaupun skor bagus)",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L267",
+      "_origin": "ast",
+      "id": "docs_readme_id_tidak_entry_walaupun_skor_bagus",
+      "community": 0,
+      "norm_label": "tidak entry (walaupun skor bagus)"
+    },
+    {
+      "label": "Exit / Hedging",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L281",
+      "_origin": "ast",
+      "id": "docs_readme_id_exit_hedging",
+      "community": 0,
+      "norm_label": "exit / hedging"
+    },
+    {
+      "label": "Metodologi Scoring",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L297",
+      "_origin": "ast",
+      "id": "docs_readme_id_metodologi_scoring",
+      "community": 0,
+      "norm_label": "metodologi scoring"
+    },
+    {
+      "label": "Skala 0-100",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L301",
+      "_origin": "ast",
+      "id": "docs_readme_id_skala_0_100",
+      "community": 0,
+      "norm_label": "skala 0-100"
+    },
+    {
+      "label": "Confluence Count",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L304",
+      "_origin": "ast",
+      "id": "docs_readme_id_confluence_count",
+      "community": 0,
+      "norm_label": "confluence count"
+    },
+    {
+      "label": "Backtest",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L307",
+      "_origin": "ast",
+      "id": "docs_readme_id_backtest",
+      "community": 0,
+      "norm_label": "backtest"
+    },
+    {
+      "label": "Pengembangan",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L312",
+      "_origin": "ast",
+      "id": "docs_readme_id_pengembangan",
+      "community": 0,
+      "norm_label": "pengembangan"
+    },
+    {
+      "label": "Keterbatasan",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L330",
+      "_origin": "ast",
+      "id": "docs_readme_id_keterbatasan",
+      "community": 0,
+      "norm_label": "keterbatasan"
+    },
+    {
+      "label": "Author",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L341",
+      "_origin": "ast",
+      "id": "docs_readme_id_author",
+      "community": 0,
+      "norm_label": "author"
+    },
+    {
+      "label": "License",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "source_location": "L346",
+      "_origin": "ast",
+      "id": "docs_readme_id_license",
+      "community": 0,
+      "norm_label": "license"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_readme",
+      "community": 6,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Saham: Papan Gerak By. Akhmfz",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_readme_saham_papan_gerak_by_akhmfz",
+      "community": 2,
+      "norm_label": "saham: papan gerak by. akhmfz"
+    },
+    {
+      "label": "Quick Start",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "docs_readme_quick_start",
+      "community": 2,
+      "norm_label": "quick start"
+    },
+    {
+      "label": "Display Modes",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "docs_readme_display_modes",
+      "community": 2,
+      "norm_label": "display modes"
+    },
+    {
+      "label": "Compact \u2014 1 Row",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "docs_readme_compact_1_row",
+      "community": 2,
+      "norm_label": "compact \u2014 1 row"
+    },
+    {
+      "label": "Standard \u2014 Full Table (Default)",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "docs_readme_standard_full_table_default",
+      "community": 2,
+      "norm_label": "standard \u2014 full table (default)"
+    },
+    {
+      "label": "Detailed \u2014 Full Table + Sub-Indicator Rows",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "docs_readme_detailed_full_table_sub_indicator_rows",
+      "community": 2,
+      "norm_label": "detailed \u2014 full table + sub-indicator rows"
+    },
+    {
+      "label": "Reading the Table",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L53",
+      "_origin": "ast",
+      "id": "docs_readme_reading_the_table",
+      "community": 2,
+      "norm_label": "reading the table"
+    },
+    {
+      "label": "1. \ud83d\udcca Narrative Row (top)",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L57",
+      "_origin": "ast",
+      "id": "docs_readme_1_narrative_row_top",
+      "community": 2,
+      "norm_label": "1. \ud83d\udcca narrative row (top)"
+    },
+    {
+      "label": "2. Header \u2014 Score + Signal",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L71",
+      "_origin": "ast",
+      "id": "docs_readme_2_header_score_signal",
+      "community": 2,
+      "norm_label": "2. header \u2014 score + signal"
+    },
+    {
+      "label": "3. Signal Validation (Forward Return)",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L76",
+      "_origin": "ast",
+      "id": "docs_readme_3_signal_validation_forward_return",
+      "community": 2,
+      "norm_label": "3. signal validation (forward return)"
+    },
+    {
+      "label": "4. Backtest (Win Rate)",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L86",
+      "_origin": "ast",
+      "id": "docs_readme_4_backtest_win_rate",
+      "community": 2,
+      "norm_label": "4. backtest (win rate)"
+    },
+    {
+      "label": "5. Dimension Score + Confluence Counter",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L97",
+      "_origin": "ast",
+      "id": "docs_readme_5_dimension_score_confluence_counter",
+      "community": 2,
+      "norm_label": "5. dimension score + confluence counter"
+    },
+    {
+      "label": "6. Color Legend",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L108",
+      "_origin": "ast",
+      "id": "docs_readme_6_color_legend",
+      "community": 2,
+      "norm_label": "6. color legend"
+    },
+    {
+      "label": "Alerts",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L115",
+      "_origin": "ast",
+      "id": "docs_readme_alerts",
+      "community": 2,
+      "norm_label": "alerts"
+    },
+    {
+      "label": "Settings Reference",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L135",
+      "_origin": "ast",
+      "id": "docs_readme_settings_reference",
+      "community": 11,
+      "norm_label": "settings reference"
+    },
+    {
+      "label": "Display Tab",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L137",
+      "_origin": "ast",
+      "id": "docs_readme_display_tab",
+      "community": 11,
+      "norm_label": "display tab"
+    },
+    {
+      "label": "Trend Tab",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L145",
+      "_origin": "ast",
+      "id": "docs_readme_trend_tab",
+      "community": 11,
+      "norm_label": "trend tab"
+    },
+    {
+      "label": "Momentum Tab",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L156",
+      "_origin": "ast",
+      "id": "docs_readme_momentum_tab",
+      "community": 11,
+      "norm_label": "momentum tab"
+    },
+    {
+      "label": "Volatility Tab",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L167",
+      "_origin": "ast",
+      "id": "docs_readme_volatility_tab",
+      "community": 11,
+      "norm_label": "volatility tab"
+    },
+    {
+      "label": "Volume Tab",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L175",
+      "_origin": "ast",
+      "id": "docs_readme_volume_tab",
+      "community": 11,
+      "norm_label": "volume tab"
+    },
+    {
+      "label": "Weights Tab",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L181",
+      "_origin": "ast",
+      "id": "docs_readme_weights_tab",
+      "community": 11,
+      "norm_label": "weights tab"
+    },
+    {
+      "label": "Smart Money Tab",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L189",
+      "_origin": "ast",
+      "id": "docs_readme_smart_money_tab",
+      "community": 11,
+      "norm_label": "smart money tab"
+    },
+    {
+      "label": "Signal Tab",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L197",
+      "_origin": "ast",
+      "id": "docs_readme_signal_tab",
+      "community": 11,
+      "norm_label": "signal tab"
+    },
+    {
+      "label": "Risk Mgmt Tab",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L203",
+      "_origin": "ast",
+      "id": "docs_readme_risk_mgmt_tab",
+      "community": 11,
+      "norm_label": "risk mgmt tab"
+    },
+    {
+      "label": "Position Size Tab",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L212",
+      "_origin": "ast",
+      "id": "docs_readme_position_size_tab",
+      "community": 11,
+      "norm_label": "position size tab"
+    },
+    {
+      "label": "MTF Tab",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L219",
+      "_origin": "ast",
+      "id": "docs_readme_mtf_tab",
+      "community": 11,
+      "norm_label": "mtf tab"
+    },
+    {
+      "label": "Entry Trigger Tab",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L225",
+      "_origin": "ast",
+      "id": "docs_readme_entry_trigger_tab",
+      "community": 11,
+      "norm_label": "entry trigger tab"
+    },
+    {
+      "label": "Webhook Tab",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L230",
+      "_origin": "ast",
+      "id": "docs_readme_webhook_tab",
+      "community": 11,
+      "norm_label": "webhook tab"
+    },
+    {
+      "label": "Trading Decision Guide",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L237",
+      "_origin": "ast",
+      "id": "docs_readme_trading_decision_guide",
+      "community": 2,
+      "norm_label": "trading decision guide"
+    },
+    {
+      "label": "High Confidence Entry",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L239",
+      "_origin": "ast",
+      "id": "docs_readme_high_confidence_entry",
+      "community": 2,
+      "norm_label": "high confidence entry"
+    },
+    {
+      "label": "Do Not Enter (despite good score)",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L253",
+      "_origin": "ast",
+      "id": "docs_readme_do_not_enter_despite_good_score",
+      "community": 2,
+      "norm_label": "do not enter (despite good score)"
+    },
+    {
+      "label": "Consider Exit",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L267",
+      "_origin": "ast",
+      "id": "docs_readme_consider_exit",
+      "community": 2,
+      "norm_label": "consider exit"
+    },
+    {
+      "label": "Methodology",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L283",
+      "_origin": "ast",
+      "id": "docs_readme_methodology",
+      "community": 2,
+      "norm_label": "methodology"
+    },
+    {
+      "label": "Score Scale (0-100)",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L287",
+      "_origin": "ast",
+      "id": "docs_readme_score_scale_0_100",
+      "community": 2,
+      "norm_label": "score scale (0-100)"
+    },
+    {
+      "label": "Confluence Count",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L290",
+      "_origin": "ast",
+      "id": "docs_readme_confluence_count",
+      "community": 2,
+      "norm_label": "confluence count"
+    },
+    {
+      "label": "Backtest",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L293",
+      "_origin": "ast",
+      "id": "docs_readme_backtest",
+      "community": 2,
+      "norm_label": "backtest"
+    },
+    {
+      "label": "Development",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L298",
+      "_origin": "ast",
+      "id": "docs_readme_development",
+      "community": 2,
+      "norm_label": "development"
+    },
+    {
+      "label": "Limitations",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L316",
+      "_origin": "ast",
+      "id": "docs_readme_limitations",
+      "community": 2,
+      "norm_label": "limitations"
+    },
+    {
+      "label": "Author",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L327",
+      "_origin": "ast",
+      "id": "docs_readme_author",
+      "community": 2,
+      "norm_label": "author"
+    },
+    {
+      "label": "License",
+      "file_type": "document",
+      "source_file": "docs/README.md",
+      "source_location": "L332",
+      "_origin": "ast",
+      "id": "docs_readme_license",
+      "community": 2,
+      "norm_label": "license"
+    },
+    {
+      "label": "TV_PUBLISH_DESC.md",
+      "file_type": "document",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_tv_publish_desc",
+      "community": 5,
+      "norm_label": "tv_publish_desc.md"
+    },
+    {
+      "label": "TradingView \u2014 Deskripsi Publikasi",
+      "file_type": "document",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_tv_publish_desc_tradingview_deskripsi_publikasi",
+      "community": 5,
+      "norm_label": "tradingview \u2014 deskripsi publikasi"
+    },
+    {
+      "label": "v0.2.1-alpha Update (2026-07-06)",
+      "file_type": "document",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "docs_tv_publish_desc_v0_2_1_alpha_update_2026_07_06",
+      "community": 5,
+      "norm_label": "v0.2.1-alpha update (2026-07-06)"
+    },
+    {
+      "label": "Judul",
+      "file_type": "document",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "docs_tv_publish_desc_judul",
+      "community": 5,
+      "norm_label": "judul"
+    },
+    {
+      "label": "Judul",
+      "file_type": "document",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "docs_tv_publish_desc_judul_24",
+      "community": 5,
+      "norm_label": "judul"
+    },
+    {
+      "label": "Deskripsi (Indonesia)",
+      "file_type": "document",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "docs_tv_publish_desc_deskripsi_indonesia",
+      "community": 5,
+      "norm_label": "deskripsi (indonesia)"
+    },
+    {
+      "label": "4 Dimensi Scoring (bobot bisa diatur)",
+      "file_type": "document",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "docs_tv_publish_desc_4_dimensi_scoring_bobot_bisa_diatur",
+      "community": 5,
+      "norm_label": "4 dimensi scoring (bobot bisa diatur)"
+    },
+    {
+      "label": "3 Mode Tampilan",
+      "file_type": "document",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "docs_tv_publish_desc_3_mode_tampilan",
+      "community": 5,
+      "norm_label": "3 mode tampilan"
+    },
+    {
+      "label": "Fitur Unggulan",
+      "file_type": "document",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "docs_tv_publish_desc_fitur_unggulan",
+      "community": 5,
+      "norm_label": "fitur unggulan"
+    },
+    {
+      "label": "Cara Pakai",
+      "file_type": "document",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L57",
+      "_origin": "ast",
+      "id": "docs_tv_publish_desc_cara_pakai",
+      "community": 5,
+      "norm_label": "cara pakai"
+    },
+    {
+      "label": "Catatan",
+      "file_type": "document",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L64",
+      "_origin": "ast",
+      "id": "docs_tv_publish_desc_catatan",
+      "community": 5,
+      "norm_label": "catatan"
+    },
+    {
+      "label": "Author",
+      "file_type": "document",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L70",
+      "_origin": "ast",
+      "id": "docs_tv_publish_desc_author",
+      "community": 5,
+      "norm_label": "author"
+    },
+    {
+      "label": "English Version (for international users)",
+      "file_type": "document",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L79",
+      "_origin": "ast",
+      "id": "docs_tv_publish_desc_english_version_for_international_users",
+      "community": 5,
+      "norm_label": "english version (for international users)"
+    },
+    {
+      "label": "4 Scoring Dimensions (adjustable weights)",
+      "file_type": "document",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L85",
+      "_origin": "ast",
+      "id": "docs_tv_publish_desc_4_scoring_dimensions_adjustable_weights",
+      "community": 5,
+      "norm_label": "4 scoring dimensions (adjustable weights)"
+    },
+    {
+      "label": "3 Display Modes",
+      "file_type": "document",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L92",
+      "_origin": "ast",
+      "id": "docs_tv_publish_desc_3_display_modes",
+      "community": 5,
+      "norm_label": "3 display modes"
+    },
+    {
+      "label": "Key Features",
+      "file_type": "document",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L97",
+      "_origin": "ast",
+      "id": "docs_tv_publish_desc_key_features",
+      "community": 5,
+      "norm_label": "key features"
+    },
+    {
+      "label": "Author",
+      "file_type": "document",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L108",
+      "_origin": "ast",
+      "id": "docs_tv_publish_desc_author_108",
+      "community": 5,
+      "norm_label": "author"
+    },
+    {
+      "label": "webhook-integration.md",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_webhook_integration",
+      "community": 8,
+      "norm_label": "webhook-integration.md"
+    },
+    {
+      "label": "Webhook Integration \u2014 Papan Gerak",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_webhook_integration_webhook_integration_papan_gerak",
+      "community": 8,
+      "norm_label": "webhook integration \u2014 papan gerak"
+    },
+    {
+      "label": "1. Alert Format",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "docs_webhook_integration_1_alert_format",
+      "community": 8,
+      "norm_label": "1. alert format"
+    },
+    {
+      "label": "1.1 Simple (Default)",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "docs_webhook_integration_1_1_simple_default",
+      "community": 8,
+      "norm_label": "1.1 simple (default)"
+    },
+    {
+      "label": "1.2 JSON (Webhook)",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "docs_webhook_integration_1_2_json_webhook",
+      "community": 8,
+      "norm_label": "1.2 json (webhook)"
+    },
+    {
+      "label": "1.3 Event Types",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "docs_webhook_integration_1_3_event_types",
+      "community": 8,
+      "norm_label": "1.3 event types"
+    },
+    {
+      "label": "2. TradingView Alert Setup",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "docs_webhook_integration_2_tradingview_alert_setup",
+      "community": 8,
+      "norm_label": "2. tradingview alert setup"
+    },
+    {
+      "label": "3. TradersPost Integration",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L76",
+      "_origin": "ast",
+      "id": "docs_webhook_integration_3_traderspost_integration",
+      "community": 8,
+      "norm_label": "3. traderspost integration"
+    },
+    {
+      "label": "Setup Webhook Strategy",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L80",
+      "_origin": "ast",
+      "id": "docs_webhook_integration_setup_webhook_strategy",
+      "community": 8,
+      "norm_label": "setup webhook strategy"
+    },
+    {
+      "label": "Custom Parser",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L92",
+      "_origin": "ast",
+      "id": "docs_webhook_integration_custom_parser",
+      "community": 8,
+      "norm_label": "custom parser"
+    },
+    {
+      "label": "4. Pine Connector (MT4/MT5)",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L112",
+      "_origin": "ast",
+      "id": "docs_webhook_integration_4_pine_connector_mt4_mt5",
+      "community": 8,
+      "norm_label": "4. pine connector (mt4/mt5)"
+    },
+    {
+      "label": "Format Mapping",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L117",
+      "_origin": "ast",
+      "id": "docs_webhook_integration_format_mapping",
+      "community": 8,
+      "norm_label": "format mapping"
+    },
+    {
+      "label": "5. Custom Webhook Server",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L133",
+      "_origin": "ast",
+      "id": "docs_webhook_integration_5_custom_webhook_server",
+      "community": 8,
+      "norm_label": "5. custom webhook server"
+    },
+    {
+      "label": "6. Pertimbangan IDX",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L167",
+      "_origin": "ast",
+      "id": "docs_webhook_integration_6_pertimbangan_idx",
+      "community": 8,
+      "norm_label": "6. pertimbangan idx"
+    },
+    {
+      "label": "7. Disclaimer Lengkap",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L180",
+      "_origin": "ast",
+      "id": "docs_webhook_integration_7_disclaimer_lengkap",
+      "community": 8,
+      "norm_label": "7. disclaimer lengkap"
+    },
+    {
+      "id": "pgdoc:readme",
+      "label": "Panduan Pengguna \u2014 Papan Gerak",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "metadata": {
+        "kind": "doc"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:4-dimensi",
+      "label": "4 Dimensi Scoring",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:trend",
+      "label": "Trend Dimensi",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:momentum",
+      "label": "Momentum Dimensi",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:volatility",
+      "label": "Volatility Dimensi",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:volume",
+      "label": "Volume Dimensi",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:smart-money",
+      "label": "Smart Money",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:3-mode",
+      "label": "3 Display Modes",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:entry-trigger",
+      "label": "Entry Trigger Engine",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:signal-system",
+      "label": "Signal System (BUY/HOLD/SELL)",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:confluence",
+      "label": "Confluence Counter",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:backtest",
+      "label": "Built-in Backtest (20 signals)",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:webhook",
+      "label": "Webhook Integration",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:alert-system",
+      "label": "8 Alert Triggers",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:trading-guide",
+      "label": "Panduan Trading 10 Langkah",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "metadata": {
+        "kind": "doc"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:combination-guide",
+      "label": "Panduan Kombinasi Pi+PG",
+      "file_type": "document",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "metadata": {
+        "kind": "doc"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:ai-collab",
+      "label": "AI Collaboration Context",
+      "file_type": "document",
+      "source_file": "docs/AI.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:risk-mgmt",
+      "label": "Risk Management Levels",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:position-sizing",
+      "label": "Position Sizing Calculator",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:mtf-filter",
+      "label": "MTF Trend Filter",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:narrative-engine",
+      "label": "Narrative Engine",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:color-legend",
+      "label": "Color Legend & Themes",
+      "file_type": "document",
+      "source_file": "docs/README.id.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    },
+    {
+      "id": "pgdoc:idx-considerations",
+      "label": "IDX Market Considerations",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "metadata": {
+        "kind": "concept"
+      },
+      "_origin": "ai",
+      "community": null
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "build.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "build",
+      "target": "build_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_devdependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_license",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_private",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_scripts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_version",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_build",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_ci",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_lint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_test",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_test_all",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_transpile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_pinets",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gh-sync.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "scripts_gh_sync",
+      "target": "scripts_gh_sync_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/lint.sh",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "scripts_lint",
+      "target": "scripts_lint_budget",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/lint.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "scripts_lint",
+      "target": "scripts_lint_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "tests_full_pinets",
+      "target": "tests_full_pinets_dirname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "tests_full_pinets",
+      "target": "tests_full_pinets_generatecandles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "tests_full_pinets",
+      "target": "tests_full_pinets_root",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "tests_full_pinets",
+      "target": "tests_full_pinets_setup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "tests_pinets_verify",
+      "target": "tests_pinets_verify_f_colorscore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "tests_pinets_verify",
+      "target": "tests_pinets_verify_f_scorehigher",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "tests_pinets_verify",
+      "target": "tests_pinets_verify_f_scorelower",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "tests_pinets_verify",
+      "target": "tests_pinets_verify_f_scorerange",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "tests_pinets_verify",
+      "target": "tests_pinets_verify_f_signaltext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/runner.mjs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "tests_scoring_runner",
+      "target": "tests_scoring_runner_report",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/runner.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "tests_scoring_runner",
+      "target": "tests_scoring_runner_setuptest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-momentum.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "tests_scoring_test_momentum",
+      "target": "tests_scoring_test_momentum_weightedavg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-overall.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "tests_scoring_test_overall",
+      "target": "tests_scoring_test_overall_weightedavg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_breakouttrigger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_calcatraposalsl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_calcriskpct",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_calcriskrpdisplay",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_calcsuggestedlots",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_calctargetprice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_currentzonelabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_mtfconflict",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_pullbacktrigger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_signaldirection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_zonefromscore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-trend.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "tests_scoring_test_trend",
+      "target": "tests_scoring_test_trend_weightedavg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "tests_scoring_test_volatility",
+      "target": "tests_scoring_test_volatility_atrscore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "tests_scoring_test_volatility",
+      "target": "tests_scoring_test_volatility_bbposscore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "tests_scoring_test_volatility",
+      "target": "tests_scoring_test_volatility_bbwidthscore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "tests_scoring_test_volatility",
+      "target": "tests_scoring_test_volatility_chopscore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "tests_scoring_test_volatility",
+      "target": "tests_scoring_test_volatility_f_choppiness",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-volume.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "tests_scoring_test_volume",
+      "target": "tests_scoring_test_volume_volratioscore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/transpile.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "tests_transpile",
+      "target": "tests_transpile_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CATATAN.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "catatan",
+      "target": "catatan_catatan_pengembangan_lessons_learned",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "readme",
+      "target": "catatan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CATATAN.md",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "catatan_catatan_pengembangan_lessons_learned",
+      "target": "catatan_backlog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CATATAN.md",
+      "source_location": "L147",
+      "weight": 1.0,
+      "source": "catatan_catatan_pengembangan_lessons_learned",
+      "target": "catatan_backlog_147",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CATATAN.md",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "catatan_catatan_pengembangan_lessons_learned",
+      "target": "catatan_bug_tracker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CATATAN.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "catatan_catatan_pengembangan_lessons_learned",
+      "target": "catatan_pine_script_v6_jebakan_anti_pattern",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CATATAN.md",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "catatan_catatan_pengembangan_lessons_learned",
+      "target": "catatan_testing_catatan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CATATAN.md",
+      "source_location": "L116",
+      "weight": 1.0,
+      "source": "catatan_catatan_pengembangan_lessons_learned",
+      "target": "catatan_testing_catatan_116",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CATATAN.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "catatan_pine_script_v6_jebakan_anti_pattern",
+      "target": "catatan_1_reserved_keywords",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CATATAN.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "catatan_pine_script_v6_jebakan_anti_pattern",
+      "target": "catatan_2_no_local_functions_inside_if_blocks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CATATAN.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "catatan_pine_script_v6_jebakan_anti_pattern",
+      "target": "catatan_3_type_annotations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CATATAN.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "catatan_pine_script_v6_jebakan_anti_pattern",
+      "target": "catatan_4_error_cascade",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CATATAN.md",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "catatan_pine_script_v6_jebakan_anti_pattern",
+      "target": "catatan_5_alert_v6_vs_v5",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CATATAN.md",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "catatan_pine_script_v6_jebakan_anti_pattern",
+      "target": "catatan_6_input_selalu_tambah_display",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CATATAN.md",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "catatan_testing_catatan",
+      "target": "catatan_f6_webhook_2026_07_06",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CATATAN.md",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "catatan_testing_catatan",
+      "target": "catatan_pinets_limitations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CATATAN.md",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "catatan_testing_catatan",
+      "target": "catatan_test_coverage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CATATAN.md",
+      "source_location": "L139",
+      "weight": 1.0,
+      "source": "catatan_testing_catatan_116",
+      "target": "catatan_f6_webhook_2026_07_06_139",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CATATAN.md",
+      "source_location": "L118",
+      "weight": 1.0,
+      "source": "catatan_testing_catatan_116",
+      "target": "catatan_pinets_limitations_118",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CATATAN.md",
+      "source_location": "L122",
+      "weight": 1.0,
+      "source": "catatan_testing_catatan_116",
+      "target": "catatan_test_coverage_122",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "changelog",
+      "target": "changelog_changelog_papan_gerak",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "readme",
+      "target": "changelog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "changelog_changelog_papan_gerak",
+      "target": "changelog_v0_1_0_alpha",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "changelog_changelog_papan_gerak",
+      "target": "changelog_v0_2_0_alpha_2026_07_06",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "changelog_changelog_papan_gerak",
+      "target": "changelog_v0_2_1_alpha_2026_07_06",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "changelog_v0_2_1_alpha_2026_07_06",
+      "target": "changelog_docs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "changelog_v0_2_1_alpha_2026_07_06",
+      "target": "changelog_fixes_critical",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "changelog_v0_2_1_alpha_2026_07_06",
+      "target": "changelog_fixes_minor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "changelog_v0_2_1_alpha_2026_07_06",
+      "target": "changelog_maintenance",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "changelog_v0_2_1_alpha_2026_07_06",
+      "target": "changelog_testing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "changelog_v0_2_0_alpha_2026_07_06",
+      "target": "changelog_docs_70",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "changelog_v0_2_0_alpha_2026_07_06",
+      "target": "changelog_features",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "changelog_v0_2_0_alpha_2026_07_06",
+      "target": "changelog_fixes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "changelog_v0_2_0_alpha_2026_07_06",
+      "target": "changelog_testing_64",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L97",
+      "weight": 1.0,
+      "source": "changelog_v0_1_0_alpha",
+      "target": "changelog_docs_97",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "changelog_v0_1_0_alpha",
+      "target": "changelog_features_82",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "changelog_v0_1_0_alpha",
+      "target": "changelog_testing_93",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CONTRIBUTING.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "contributing",
+      "target": "contributing_contributing_to_papan_gerak",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "readme",
+      "target": "contributing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CONTRIBUTING.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "contributing_contributing_to_papan_gerak",
+      "target": "contributing_guidelines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "readme",
+      "target": "docs_ai",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "readme",
+      "target": "docs_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "readme",
+      "target": "docs_development",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "readme",
+      "target": "docs_panduan_trading",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "readme",
+      "target": "docs_readme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "readme",
+      "target": "docs_readme_id",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "readme",
+      "target": "docs_tv_publish_desc",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L65",
+      "weight": 1.0,
+      "source": "readme",
+      "target": "docs_webhook_integration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "readme",
+      "target": "readme_saham_papan_gerak_by_akhmfz",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "readme_saham_papan_gerak_by_akhmfz",
+      "target": "readme_author",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "readme_saham_papan_gerak_by_akhmfz",
+      "target": "readme_development",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "readme_saham_papan_gerak_by_akhmfz",
+      "target": "readme_documentation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "readme_saham_papan_gerak_by_akhmfz",
+      "target": "readme_license",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "readme_saham_papan_gerak_by_akhmfz",
+      "target": "readme_project_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "readme_saham_papan_gerak_by_akhmfz",
+      "target": "readme_quick_start",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "readme_saham_papan_gerak_by_akhmfz",
+      "target": "readme_stats",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/AI.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_ai",
+      "target": "docs_ai_ai_md_ai_collaboration_context",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/AI.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "docs_ai_ai_md_ai_collaboration_context",
+      "target": "docs_ai_ai_roles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/AI.md",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "docs_ai_ai_md_ai_collaboration_context",
+      "target": "docs_ai_constraints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/AI.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "docs_ai_ai_md_ai_collaboration_context",
+      "target": "docs_ai_context_loading_order",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/AI.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "docs_ai_ai_md_ai_collaboration_context",
+      "target": "docs_ai_golden_rules",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/AI.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "docs_ai_ai_md_ai_collaboration_context",
+      "target": "docs_ai_product_philosophy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/AI.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "docs_ai_ai_md_ai_collaboration_context",
+      "target": "docs_ai_project_identity",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/AI.md",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "docs_ai_ai_md_ai_collaboration_context",
+      "target": "docs_ai_related_projects",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/AI.md",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "docs_ai_ai_md_ai_collaboration_context",
+      "target": "docs_ai_standard_development_flow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_architecture",
+      "target": "docs_architecture_arsitektur_papan_gerak_scoring_methodology",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L186",
+      "weight": 1.0,
+      "source": "docs_architecture_arsitektur_papan_gerak_scoring_methodology",
+      "target": "docs_architecture_10_backtest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L200",
+      "weight": 1.0,
+      "source": "docs_architecture_arsitektur_papan_gerak_scoring_methodology",
+      "target": "docs_architecture_11_webhook_alert_format",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L211",
+      "weight": 1.0,
+      "source": "docs_architecture_arsitektur_papan_gerak_scoring_methodology",
+      "target": "docs_architecture_12_companion_strategy_script_terpisah",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L220",
+      "weight": 1.0,
+      "source": "docs_architecture_arsitektur_papan_gerak_scoring_methodology",
+      "target": "docs_architecture_13_oscillator_signal_line",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L229",
+      "weight": 1.0,
+      "source": "docs_architecture_arsitektur_papan_gerak_scoring_methodology",
+      "target": "docs_architecture_14_keterbatasan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "docs_architecture_arsitektur_papan_gerak_scoring_methodology",
+      "target": "docs_architecture_1_filosofi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "docs_architecture_arsitektur_papan_gerak_scoring_methodology",
+      "target": "docs_architecture_2_dimensi_scoring",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "docs_architecture_arsitektur_papan_gerak_scoring_methodology",
+      "target": "docs_architecture_3_overall_score",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "docs_architecture_arsitektur_papan_gerak_scoring_methodology",
+      "target": "docs_architecture_4_confluence_counts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L103",
+      "weight": 1.0,
+      "source": "docs_architecture_arsitektur_papan_gerak_scoring_methodology",
+      "target": "docs_architecture_5_narrative_engine",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L120",
+      "weight": 1.0,
+      "source": "docs_architecture_arsitektur_papan_gerak_scoring_methodology",
+      "target": "docs_architecture_6_entry_trigger_engine_3_modes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L149",
+      "weight": 1.0,
+      "source": "docs_architecture_arsitektur_papan_gerak_scoring_methodology",
+      "target": "docs_architecture_7_risk_management",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L168",
+      "weight": 1.0,
+      "source": "docs_architecture_arsitektur_papan_gerak_scoring_methodology",
+      "target": "docs_architecture_8_multi_timeframe_filter_optional",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L176",
+      "weight": 1.0,
+      "source": "docs_architecture_arsitektur_papan_gerak_scoring_methodology",
+      "target": "docs_architecture_9_signal_thresholds",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "docs_architecture_2_dimensi_scoring",
+      "target": "docs_architecture_2_1_trend_score_30_default",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "docs_architecture_2_dimensi_scoring",
+      "target": "docs_architecture_2_2_momentum_score_30_default",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "docs_architecture_2_dimensi_scoring",
+      "target": "docs_architecture_2_3_volatility_score_20_default",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "docs_architecture_2_dimensi_scoring",
+      "target": "docs_architecture_2_4_volume_score_20_default",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "docs_architecture_2_dimensi_scoring",
+      "target": "docs_architecture_2_5_smart_money_flow_optional",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L122",
+      "weight": 1.0,
+      "source": "docs_architecture_6_entry_trigger_engine_3_modes",
+      "target": "docs_architecture_6_1_composite_score_default",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L128",
+      "weight": 1.0,
+      "source": "docs_architecture_6_entry_trigger_engine_3_modes",
+      "target": "docs_architecture_6_2_pullback",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L135",
+      "weight": 1.0,
+      "source": "docs_architecture_6_entry_trigger_engine_3_modes",
+      "target": "docs_architecture_6_3_breakout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L141",
+      "weight": 1.0,
+      "source": "docs_architecture_6_entry_trigger_engine_3_modes",
+      "target": "docs_architecture_6_4_unified_signal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L151",
+      "weight": 1.0,
+      "source": "docs_architecture_7_risk_management",
+      "target": "docs_architecture_7_1_stop_loss_levels",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L158",
+      "weight": 1.0,
+      "source": "docs_architecture_7_risk_management",
+      "target": "docs_architecture_7_2_target",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L161",
+      "weight": 1.0,
+      "source": "docs_architecture_7_risk_management",
+      "target": "docs_architecture_7_3_position_sizing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_development",
+      "target": "docs_development_development_guide_papan_gerak",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L145",
+      "weight": 1.0,
+      "source": "docs_development_development_guide_papan_gerak",
+      "target": "docs_development_backlog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "docs_development_development_guide_papan_gerak",
+      "target": "docs_development_changelog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "docs_development_development_guide_papan_gerak",
+      "target": "docs_development_commit_convention",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "docs_development_development_guide_papan_gerak",
+      "target": "docs_development_development_flow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "docs_development_development_guide_papan_gerak",
+      "target": "docs_development_module_budget",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "docs_development_development_guide_papan_gerak",
+      "target": "docs_development_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "docs_development_development_guide_papan_gerak",
+      "target": "docs_development_tech_stack",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L133",
+      "weight": 1.0,
+      "source": "docs_development_changelog",
+      "target": "docs_development_v0_1_0_alpha",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "docs_development_changelog",
+      "target": "docs_development_v0_2_0_alpha_2026_07_06",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/DEVELOPMENT.md",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "docs_development_changelog",
+      "target": "docs_development_v0_2_1_alpha_2026_07_06",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_panduan_kombinasi",
+      "target": "docs_panduan_kombinasi_panduan_kombinasi_papan_instrumen_papan_gerak",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "docs_panduan_kombinasi_panduan_kombinasi_papan_instrumen_papan_gerak",
+      "target": "docs_panduan_kombinasi_alur_2_fase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L188",
+      "weight": 1.0,
+      "source": "docs_panduan_kombinasi_panduan_kombinasi_papan_instrumen_papan_gerak",
+      "target": "docs_panduan_kombinasi_catatan_penting",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "docs_panduan_kombinasi_panduan_kombinasi_papan_instrumen_papan_gerak",
+      "target": "docs_panduan_kombinasi_contoh_skenario",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L197",
+      "weight": 1.0,
+      "source": "docs_panduan_kombinasi_panduan_kombinasi_papan_instrumen_papan_gerak",
+      "target": "docs_panduan_kombinasi_link_cepat",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "docs_panduan_kombinasi_panduan_kombinasi_papan_instrumen_papan_gerak",
+      "target": "docs_panduan_kombinasi_matriks_keputusan_gabungan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L177",
+      "weight": 1.0,
+      "source": "docs_panduan_kombinasi_panduan_kombinasi_papan_instrumen_papan_gerak",
+      "target": "docs_panduan_kombinasi_ringkasan_1_menit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "docs_panduan_kombinasi_alur_2_fase",
+      "target": "docs_panduan_kombinasi_fase_1_fundamental_screening_mingguan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "docs_panduan_kombinasi_alur_2_fase",
+      "target": "docs_panduan_kombinasi_fase_2_teknikal_timing_harian",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "docs_panduan_kombinasi_matriks_keputusan_gabungan",
+      "target": "docs_panduan_kombinasi_penjelasan_per_kuadran",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "docs_panduan_kombinasi_contoh_skenario",
+      "target": "docs_panduan_kombinasi_skenario_a_entry_long_ideal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L109",
+      "weight": 1.0,
+      "source": "docs_panduan_kombinasi_contoh_skenario",
+      "target": "docs_panduan_kombinasi_skenario_b_fundamental_bagus_teknikal_belum",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L132",
+      "weight": 1.0,
+      "source": "docs_panduan_kombinasi_contoh_skenario",
+      "target": "docs_panduan_kombinasi_skenario_c_teknikal_naik_fundamental_jeblok",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-KOMBINASI.md",
+      "source_location": "L153",
+      "weight": 1.0,
+      "source": "docs_panduan_kombinasi_contoh_skenario",
+      "target": "docs_panduan_kombinasi_skenario_d_exit_signal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_panduan_trading",
+      "target": "docs_panduan_trading_panduan_trading_papan_gerak",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "docs_readme",
+      "target": "docs_panduan_trading",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "docs_readme_id",
+      "target": "docs_panduan_trading",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "docs_panduan_trading_panduan_trading_papan_gerak",
+      "target": "docs_panduan_trading_alur_baca_tabel_urut_dari_atas_ke_bawah",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L98",
+      "weight": 1.0,
+      "source": "docs_panduan_trading_panduan_trading_papan_gerak",
+      "target": "docs_panduan_trading_catatan_penting",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "docs_panduan_trading_panduan_trading_papan_gerak",
+      "target": "docs_panduan_trading_ringkasan_alur_cepat",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "docs_panduan_trading_alur_baca_tabel_urut_dari_atas_ke_bawah",
+      "target": "docs_panduan_trading_10_position_sizing_batas_atas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "docs_panduan_trading_alur_baca_tabel_urut_dari_atas_ke_bawah",
+      "target": "docs_panduan_trading_1_baca_narrative_dulu_bukan_skor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "docs_panduan_trading_alur_baca_tabel_urut_dari_atas_ke_bawah",
+      "target": "docs_panduan_trading_2_cek_zona_sinyal_sebagai_filter_arah",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "docs_panduan_trading_alur_baca_tabel_urut_dari_atas_ke_bawah",
+      "target": "docs_panduan_trading_3_cek_volatilitas_jangan_entry_saat_ranging",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "docs_panduan_trading_alur_baca_tabel_urut_dari_atas_ke_bawah",
+      "target": "docs_panduan_trading_4_konfirmasi_dengan_confluence_per_dimensi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "docs_panduan_trading_alur_baca_tabel_urut_dari_atas_ke_bawah",
+      "target": "docs_panduan_trading_5_volume_harus_konfirmasi_tren",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "docs_panduan_trading_alur_baca_tabel_urut_dari_atas_ke_bawah",
+      "target": "docs_panduan_trading_6_hormati_mtf_filter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "docs_panduan_trading_alur_baca_tabel_urut_dari_atas_ke_bawah",
+      "target": "docs_panduan_trading_7_smart_money_sebagai_konfirmasi_tambahan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "docs_panduan_trading_alur_baca_tabel_urut_dari_atas_ke_bawah",
+      "target": "docs_panduan_trading_8_tunggu_entry_trigger_sungguhan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "docs_panduan_trading_alur_baca_tabel_urut_dari_atas_ke_bawah",
+      "target": "docs_panduan_trading_9_cek_histori_sinyal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_readme_id",
+      "target": "docs_readme_id_saham_papan_gerak_by_akhmfz",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L126",
+      "weight": 1.0,
+      "source": "docs_readme_id_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_id_alerts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L341",
+      "weight": 1.0,
+      "source": "docs_readme_id_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_id_author",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "docs_readme_id_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_id_cara_instalasi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "docs_readme_id_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_id_cara_membaca_tabel_standard_mode",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L251",
+      "weight": 1.0,
+      "source": "docs_readme_id_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_id_contoh_skenario_trading",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L330",
+      "weight": 1.0,
+      "source": "docs_readme_id_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_id_keterbatasan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L346",
+      "weight": 1.0,
+      "source": "docs_readme_id_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_id_license",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L297",
+      "weight": 1.0,
+      "source": "docs_readme_id_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_id_metodologi_scoring",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "docs_readme_id_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_id_mode_tampilan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L312",
+      "weight": 1.0,
+      "source": "docs_readme_id_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_id_pengembangan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L146",
+      "weight": 1.0,
+      "source": "docs_readme_id_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_id_settings_lengkap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "docs_readme_id_mode_tampilan",
+      "target": "docs_readme_id_compact_1_baris",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "docs_readme_id_mode_tampilan",
+      "target": "docs_readme_id_detailed_tabel_sub_indikator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "docs_readme_id_mode_tampilan",
+      "target": "docs_readme_id_standard_tabel_lengkap_default",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "docs_readme_id_cara_membaca_tabel_standard_mode",
+      "target": "docs_readme_id_1_baris_narasi_paling_atas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "docs_readme_id_cara_membaca_tabel_standard_mode",
+      "target": "docs_readme_id_2_header_papan_gerak_last_bar_82",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "docs_readme_id_cara_membaca_tabel_standard_mode",
+      "target": "docs_readme_id_3_sinyal_buy_sell_hold",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "docs_readme_id_cara_membaca_tabel_standard_mode",
+      "target": "docs_readme_id_4_sinyal_forward_return",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "docs_readme_id_cara_membaca_tabel_standard_mode",
+      "target": "docs_readme_id_5_backtest_win_rate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L103",
+      "weight": 1.0,
+      "source": "docs_readme_id_cara_membaca_tabel_standard_mode",
+      "target": "docs_readme_id_6_detail_per_dimensi_confluence",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L119",
+      "weight": 1.0,
+      "source": "docs_readme_id_cara_membaca_tabel_standard_mode",
+      "target": "docs_readme_id_7_legend_warna",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L148",
+      "weight": 1.0,
+      "source": "docs_readme_id_settings_lengkap",
+      "target": "docs_readme_id_tab_display",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L239",
+      "weight": 1.0,
+      "source": "docs_readme_id_settings_lengkap",
+      "target": "docs_readme_id_tab_entry_trigger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L167",
+      "weight": 1.0,
+      "source": "docs_readme_id_settings_lengkap",
+      "target": "docs_readme_id_tab_momentum",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L233",
+      "weight": 1.0,
+      "source": "docs_readme_id_settings_lengkap",
+      "target": "docs_readme_id_tab_mtf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L226",
+      "weight": 1.0,
+      "source": "docs_readme_id_settings_lengkap",
+      "target": "docs_readme_id_tab_position_size",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L217",
+      "weight": 1.0,
+      "source": "docs_readme_id_settings_lengkap",
+      "target": "docs_readme_id_tab_risk_mgmt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L211",
+      "weight": 1.0,
+      "source": "docs_readme_id_settings_lengkap",
+      "target": "docs_readme_id_tab_signal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L203",
+      "weight": 1.0,
+      "source": "docs_readme_id_settings_lengkap",
+      "target": "docs_readme_id_tab_smart_money",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L156",
+      "weight": 1.0,
+      "source": "docs_readme_id_settings_lengkap",
+      "target": "docs_readme_id_tab_trend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L181",
+      "weight": 1.0,
+      "source": "docs_readme_id_settings_lengkap",
+      "target": "docs_readme_id_tab_volatility",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L189",
+      "weight": 1.0,
+      "source": "docs_readme_id_settings_lengkap",
+      "target": "docs_readme_id_tab_volume",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L244",
+      "weight": 1.0,
+      "source": "docs_readme_id_settings_lengkap",
+      "target": "docs_readme_id_tab_webhook",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L195",
+      "weight": 1.0,
+      "source": "docs_readme_id_settings_lengkap",
+      "target": "docs_readme_id_tab_weights",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L253",
+      "weight": 1.0,
+      "source": "docs_readme_id_contoh_skenario_trading",
+      "target": "docs_readme_id_entry_long_confidence_tinggi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L281",
+      "weight": 1.0,
+      "source": "docs_readme_id_contoh_skenario_trading",
+      "target": "docs_readme_id_exit_hedging",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L267",
+      "weight": 1.0,
+      "source": "docs_readme_id_contoh_skenario_trading",
+      "target": "docs_readme_id_tidak_entry_walaupun_skor_bagus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L307",
+      "weight": 1.0,
+      "source": "docs_readme_id_metodologi_scoring",
+      "target": "docs_readme_id_backtest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L304",
+      "weight": 1.0,
+      "source": "docs_readme_id_metodologi_scoring",
+      "target": "docs_readme_id_confluence_count",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.id.md",
+      "source_location": "L301",
+      "weight": 1.0,
+      "source": "docs_readme_id_metodologi_scoring",
+      "target": "docs_readme_id_skala_0_100",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_readme",
+      "target": "docs_readme_saham_papan_gerak_by_akhmfz",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L115",
+      "weight": 1.0,
+      "source": "docs_readme_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_alerts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L327",
+      "weight": 1.0,
+      "source": "docs_readme_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_author",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L298",
+      "weight": 1.0,
+      "source": "docs_readme_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_development",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "docs_readme_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_display_modes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L332",
+      "weight": 1.0,
+      "source": "docs_readme_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_license",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L316",
+      "weight": 1.0,
+      "source": "docs_readme_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_limitations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L283",
+      "weight": 1.0,
+      "source": "docs_readme_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_methodology",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "docs_readme_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_quick_start",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "docs_readme_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_reading_the_table",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L135",
+      "weight": 1.0,
+      "source": "docs_readme_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_settings_reference",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L237",
+      "weight": 1.0,
+      "source": "docs_readme_saham_papan_gerak_by_akhmfz",
+      "target": "docs_readme_trading_decision_guide",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "docs_readme_display_modes",
+      "target": "docs_readme_compact_1_row",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "docs_readme_display_modes",
+      "target": "docs_readme_detailed_full_table_sub_indicator_rows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "docs_readme_display_modes",
+      "target": "docs_readme_standard_full_table_default",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "docs_readme_reading_the_table",
+      "target": "docs_readme_1_narrative_row_top",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "docs_readme_reading_the_table",
+      "target": "docs_readme_2_header_score_signal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "docs_readme_reading_the_table",
+      "target": "docs_readme_3_signal_validation_forward_return",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "docs_readme_reading_the_table",
+      "target": "docs_readme_4_backtest_win_rate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L97",
+      "weight": 1.0,
+      "source": "docs_readme_reading_the_table",
+      "target": "docs_readme_5_dimension_score_confluence_counter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "docs_readme_reading_the_table",
+      "target": "docs_readme_6_color_legend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L137",
+      "weight": 1.0,
+      "source": "docs_readme_settings_reference",
+      "target": "docs_readme_display_tab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L225",
+      "weight": 1.0,
+      "source": "docs_readme_settings_reference",
+      "target": "docs_readme_entry_trigger_tab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L156",
+      "weight": 1.0,
+      "source": "docs_readme_settings_reference",
+      "target": "docs_readme_momentum_tab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L219",
+      "weight": 1.0,
+      "source": "docs_readme_settings_reference",
+      "target": "docs_readme_mtf_tab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L212",
+      "weight": 1.0,
+      "source": "docs_readme_settings_reference",
+      "target": "docs_readme_position_size_tab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L203",
+      "weight": 1.0,
+      "source": "docs_readme_settings_reference",
+      "target": "docs_readme_risk_mgmt_tab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L197",
+      "weight": 1.0,
+      "source": "docs_readme_settings_reference",
+      "target": "docs_readme_signal_tab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L189",
+      "weight": 1.0,
+      "source": "docs_readme_settings_reference",
+      "target": "docs_readme_smart_money_tab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L145",
+      "weight": 1.0,
+      "source": "docs_readme_settings_reference",
+      "target": "docs_readme_trend_tab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L167",
+      "weight": 1.0,
+      "source": "docs_readme_settings_reference",
+      "target": "docs_readme_volatility_tab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L175",
+      "weight": 1.0,
+      "source": "docs_readme_settings_reference",
+      "target": "docs_readme_volume_tab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L230",
+      "weight": 1.0,
+      "source": "docs_readme_settings_reference",
+      "target": "docs_readme_webhook_tab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L181",
+      "weight": 1.0,
+      "source": "docs_readme_settings_reference",
+      "target": "docs_readme_weights_tab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L267",
+      "weight": 1.0,
+      "source": "docs_readme_trading_decision_guide",
+      "target": "docs_readme_consider_exit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L253",
+      "weight": 1.0,
+      "source": "docs_readme_trading_decision_guide",
+      "target": "docs_readme_do_not_enter_despite_good_score",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L239",
+      "weight": 1.0,
+      "source": "docs_readme_trading_decision_guide",
+      "target": "docs_readme_high_confidence_entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L293",
+      "weight": 1.0,
+      "source": "docs_readme_methodology",
+      "target": "docs_readme_backtest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L290",
+      "weight": 1.0,
+      "source": "docs_readme_methodology",
+      "target": "docs_readme_confluence_count",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/README.md",
+      "source_location": "L287",
+      "weight": 1.0,
+      "source": "docs_readme_methodology",
+      "target": "docs_readme_score_scale_0_100",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_tv_publish_desc",
+      "target": "docs_tv_publish_desc_tradingview_deskripsi_publikasi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "docs_tv_publish_desc_tradingview_deskripsi_publikasi",
+      "target": "docs_tv_publish_desc_deskripsi_indonesia",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "docs_tv_publish_desc_tradingview_deskripsi_publikasi",
+      "target": "docs_tv_publish_desc_english_version_for_international_users",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "docs_tv_publish_desc_tradingview_deskripsi_publikasi",
+      "target": "docs_tv_publish_desc_judul",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "docs_tv_publish_desc_tradingview_deskripsi_publikasi",
+      "target": "docs_tv_publish_desc_judul_24",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "docs_tv_publish_desc_tradingview_deskripsi_publikasi",
+      "target": "docs_tv_publish_desc_v0_2_1_alpha_update_2026_07_06",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "docs_tv_publish_desc_deskripsi_indonesia",
+      "target": "docs_tv_publish_desc_3_mode_tampilan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "docs_tv_publish_desc_deskripsi_indonesia",
+      "target": "docs_tv_publish_desc_4_dimensi_scoring_bobot_bisa_diatur",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "docs_tv_publish_desc_deskripsi_indonesia",
+      "target": "docs_tv_publish_desc_author",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "docs_tv_publish_desc_deskripsi_indonesia",
+      "target": "docs_tv_publish_desc_cara_pakai",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "docs_tv_publish_desc_deskripsi_indonesia",
+      "target": "docs_tv_publish_desc_catatan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "docs_tv_publish_desc_deskripsi_indonesia",
+      "target": "docs_tv_publish_desc_fitur_unggulan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "docs_tv_publish_desc_english_version_for_international_users",
+      "target": "docs_tv_publish_desc_3_display_modes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L85",
+      "weight": 1.0,
+      "source": "docs_tv_publish_desc_english_version_for_international_users",
+      "target": "docs_tv_publish_desc_4_scoring_dimensions_adjustable_weights",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "docs_tv_publish_desc_english_version_for_international_users",
+      "target": "docs_tv_publish_desc_author_108",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "source_location": "L97",
+      "weight": 1.0,
+      "source": "docs_tv_publish_desc_english_version_for_international_users",
+      "target": "docs_tv_publish_desc_key_features",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_webhook_integration",
+      "target": "docs_webhook_integration_webhook_integration_papan_gerak",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "docs_webhook_integration_webhook_integration_papan_gerak",
+      "target": "docs_webhook_integration_1_alert_format",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "docs_webhook_integration_webhook_integration_papan_gerak",
+      "target": "docs_webhook_integration_2_tradingview_alert_setup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "docs_webhook_integration_webhook_integration_papan_gerak",
+      "target": "docs_webhook_integration_3_traderspost_integration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "docs_webhook_integration_webhook_integration_papan_gerak",
+      "target": "docs_webhook_integration_4_pine_connector_mt4_mt5",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L133",
+      "weight": 1.0,
+      "source": "docs_webhook_integration_webhook_integration_papan_gerak",
+      "target": "docs_webhook_integration_5_custom_webhook_server",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L167",
+      "weight": 1.0,
+      "source": "docs_webhook_integration_webhook_integration_papan_gerak",
+      "target": "docs_webhook_integration_6_pertimbangan_idx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L180",
+      "weight": 1.0,
+      "source": "docs_webhook_integration_webhook_integration_papan_gerak",
+      "target": "docs_webhook_integration_7_disclaimer_lengkap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "docs_webhook_integration_1_alert_format",
+      "target": "docs_webhook_integration_1_1_simple_default",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "docs_webhook_integration_1_alert_format",
+      "target": "docs_webhook_integration_1_2_json_webhook",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "docs_webhook_integration_1_alert_format",
+      "target": "docs_webhook_integration_1_3_event_types",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "docs_webhook_integration_3_traderspost_integration",
+      "target": "docs_webhook_integration_custom_parser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "docs_webhook_integration_3_traderspost_integration",
+      "target": "docs_webhook_integration_setup_webhook_strategy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/webhook-integration.md",
+      "source_location": "L117",
+      "weight": 1.0,
+      "source": "docs_webhook_integration_4_pine_connector_mt4_mt5",
+      "target": "docs_webhook_integration_format_mapping",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "pgdoc:readme",
+      "target": "pgdoc:4-dimensi",
+      "relation": "describes",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "pgdoc:4-dimensi",
+      "target": "pgdoc:trend",
+      "relation": "includes",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "pgdoc:4-dimensi",
+      "target": "pgdoc:momentum",
+      "relation": "includes",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "pgdoc:4-dimensi",
+      "target": "pgdoc:volatility",
+      "relation": "includes",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "pgdoc:4-dimensi",
+      "target": "pgdoc:volume",
+      "relation": "includes",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "pgdoc:4-dimensi",
+      "target": "pgdoc:smart-money",
+      "relation": "includes",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "pgdoc:readme",
+      "target": "pgdoc:3-mode",
+      "relation": "references",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "pgdoc:readme",
+      "target": "pgdoc:signal-system",
+      "relation": "references",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "pgdoc:readme",
+      "target": "pgdoc:confluence",
+      "relation": "references",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "pgdoc:readme",
+      "target": "pgdoc:backtest",
+      "relation": "references",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "pgdoc:readme",
+      "target": "pgdoc:alert-system",
+      "relation": "references",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "pgdoc:readme",
+      "target": "pgdoc:narrative-engine",
+      "relation": "references",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "pgdoc:readme",
+      "target": "pgdoc:entry-trigger",
+      "relation": "references",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "pgdoc:webhook",
+      "target": "pgdoc:alert-system",
+      "relation": "depends_on",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "pgdoc:risk-mgmt",
+      "target": "pgdoc:readme",
+      "relation": "part_of",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "pgdoc:position-sizing",
+      "target": "pgdoc:readme",
+      "relation": "part_of",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "pgdoc:mtf-filter",
+      "target": "pgdoc:readme",
+      "relation": "part_of",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "pgdoc:ai-collab",
+      "target": "pgdoc:readme",
+      "relation": "governs",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "docs_panduan_kombinasi_panduan_kombinasi_papan_instrumen_papan_gerak",
+      "target": "pgdoc:combination-guide",
+      "relation": "documented_in",
+      "confidence": "INFERRED"
+    },
+    {
+      "source": "docs_webhook_integration_webhook_integration_papan_gerak",
+      "target": "pgdoc:webhook",
+      "relation": "documented_in",
+      "confidence": "INFERRED"
+    },
+    {
+      "source": "docs_panduan_trading_panduan_trading_papan_gerak",
+      "target": "pgdoc:trading-guide",
+      "relation": "documented_in",
+      "confidence": "INFERRED"
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "c3d4ef475c111aa527d7e32b6644a3643ee30b8e",
+  "_augmented_by": "ai-semantic"
+}

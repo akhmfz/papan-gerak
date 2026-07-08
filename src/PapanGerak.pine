@@ -406,20 +406,6 @@ f_isBodyVolume() =>
 smDetected = f_smartMoneyDetect()
 smBodyVol = f_isBodyVolume()
 
-// DEPRECATED — unused. Real logic ada di f_smartMoneyScore() di 03-scoring.pine
-// Dihitung tiap bar tanpa efek — dipertahankan untuk referensi, akan dihapus di rilis berikutnya.
-smScore = if enableSmartMoney
-    score = 50.0
-    if smDetected
-        score += 25
-    if smBodyVol
-        score += 15
-    if obvAgree
-        score += 10
-    score
-else
-    na
-
 // ==========================================================
 // 6. MULTI-TIMEFRAME TREND
 // ==========================================================

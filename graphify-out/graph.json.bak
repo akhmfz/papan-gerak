@@ -1,0 +1,1804 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "hy_4dimensiscoring_set",
+        "label": "4 Dimensi Scoring Teknikal",
+        "nodes": [
+          "docs_architecture_trendscore",
+          "docs_architecture_momentumscore",
+          "docs_architecture_volatilityscore",
+          "docs_architecture_volumescore"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "docs/ARCHITECTURE.md"
+      },
+      {
+        "id": "hy_3displaymodes",
+        "label": "3 Display Modes",
+        "nodes": [
+          "docs_readme_id_compactmode",
+          "docs_readme_id_standardmode",
+          "docs_readme_id_detailedmode"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "docs/README.id.md"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "build.sh",
+      "file_type": "code",
+      "source_file": "build.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "build",
+      "community": 11,
+      "norm_label": "build.sh"
+    },
+    {
+      "label": "build.sh script",
+      "file_type": "code",
+      "source_file": "build.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "build_sh__entry",
+      "community": 11,
+      "norm_label": "build.sh script"
+    },
+    {
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "package",
+      "community": 2,
+      "norm_label": "package.json"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "package_name",
+      "community": 2,
+      "norm_label": "name"
+    },
+    {
+      "label": "version",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "package_version",
+      "community": 2,
+      "norm_label": "version"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "package_description",
+      "community": 2,
+      "norm_label": "description"
+    },
+    {
+      "label": "private",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "package_private",
+      "community": 2,
+      "norm_label": "private"
+    },
+    {
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "package_scripts",
+      "community": 4,
+      "norm_label": "scripts"
+    },
+    {
+      "label": "build",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "package_scripts_build",
+      "community": 4,
+      "norm_label": "build"
+    },
+    {
+      "label": "lint",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "package_scripts_lint",
+      "community": 4,
+      "norm_label": "lint"
+    },
+    {
+      "label": "test",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "package_scripts_test",
+      "community": 4,
+      "norm_label": "test"
+    },
+    {
+      "label": "test:all",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "package_scripts_test_all",
+      "community": 4,
+      "norm_label": "test:all"
+    },
+    {
+      "label": "transpile",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "package_scripts_transpile",
+      "community": 4,
+      "norm_label": "transpile"
+    },
+    {
+      "label": "ci",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "package_scripts_ci",
+      "community": 4,
+      "norm_label": "ci"
+    },
+    {
+      "label": "devDependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "package_devdependencies",
+      "community": 2,
+      "norm_label": "devdependencies"
+    },
+    {
+      "label": "pinets",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "package_devdependencies_pinets",
+      "community": 2,
+      "norm_label": "pinets"
+    },
+    {
+      "label": "license",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "package_license",
+      "community": 2,
+      "norm_label": "license"
+    },
+    {
+      "label": "gh-sync.sh",
+      "file_type": "code",
+      "source_file": "scripts/gh-sync.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "scripts_gh_sync",
+      "community": 15,
+      "norm_label": "gh-sync.sh"
+    },
+    {
+      "label": "gh-sync.sh script",
+      "file_type": "code",
+      "source_file": "scripts/gh-sync.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "scripts_gh_sync_sh__entry",
+      "community": 15,
+      "norm_label": "gh-sync.sh script"
+    },
+    {
+      "label": "lint.sh",
+      "file_type": "code",
+      "source_file": "scripts/lint.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "scripts_lint",
+      "community": 9,
+      "norm_label": "lint.sh"
+    },
+    {
+      "label": "lint.sh script",
+      "file_type": "code",
+      "source_file": "scripts/lint.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "scripts_lint_sh__entry",
+      "community": 9,
+      "norm_label": "lint.sh script"
+    },
+    {
+      "label": "BUDGET",
+      "file_type": "code",
+      "source_file": "scripts/lint.sh",
+      "source_location": "L22",
+      "metadata": {
+        "language": "bash",
+        "kind": "code"
+      },
+      "_origin": "ast",
+      "id": "scripts_lint_budget",
+      "community": 9,
+      "norm_label": "budget"
+    },
+    {
+      "label": "full-pinets.mjs",
+      "file_type": "code",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_full_pinets",
+      "community": 7,
+      "norm_label": "full-pinets.mjs"
+    },
+    {
+      "label": "__dirname",
+      "file_type": "code",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "tests_full_pinets_dirname",
+      "community": 7,
+      "norm_label": "__dirname"
+    },
+    {
+      "label": "root",
+      "file_type": "code",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "tests_full_pinets_root",
+      "community": 7,
+      "norm_label": "root"
+    },
+    {
+      "label": "setup()",
+      "file_type": "code",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "tests_full_pinets_setup",
+      "community": 7,
+      "norm_label": "setup()"
+    },
+    {
+      "label": "generateCandles()",
+      "file_type": "code",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "tests_full_pinets_generatecandles",
+      "community": 7,
+      "norm_label": "generatecandles()"
+    },
+    {
+      "label": "pinets-verify.mjs",
+      "file_type": "code",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_pinets_verify",
+      "community": 5,
+      "norm_label": "pinets-verify.mjs"
+    },
+    {
+      "label": "f_scoreHigher()",
+      "file_type": "code",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "tests_pinets_verify_f_scorehigher",
+      "community": 5,
+      "norm_label": "f_scorehigher()"
+    },
+    {
+      "label": "f_scoreLower()",
+      "file_type": "code",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "tests_pinets_verify_f_scorelower",
+      "community": 5,
+      "norm_label": "f_scorelower()"
+    },
+    {
+      "label": "f_scoreRange()",
+      "file_type": "code",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "tests_pinets_verify_f_scorerange",
+      "community": 5,
+      "norm_label": "f_scorerange()"
+    },
+    {
+      "label": "f_colorScore()",
+      "file_type": "code",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "tests_pinets_verify_f_colorscore",
+      "community": 5,
+      "norm_label": "f_colorscore()"
+    },
+    {
+      "label": "f_signalText()",
+      "file_type": "code",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "tests_pinets_verify_f_signaltext",
+      "community": 5,
+      "norm_label": "f_signaltext()"
+    },
+    {
+      "label": "runner.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/runner.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_scoring_runner",
+      "community": 10,
+      "norm_label": "runner.mjs"
+    },
+    {
+      "label": "setupTest()",
+      "file_type": "code",
+      "source_file": "tests/scoring/runner.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "tests_scoring_runner_setuptest",
+      "community": 10,
+      "norm_label": "setuptest()"
+    },
+    {
+      "label": "report()",
+      "file_type": "code",
+      "source_file": "tests/scoring/runner.mjs",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "tests_scoring_runner_report",
+      "community": 10,
+      "norm_label": "report()"
+    },
+    {
+      "label": "test-momentum.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-momentum.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_scoring_test_momentum",
+      "community": 16,
+      "norm_label": "test-momentum.mjs"
+    },
+    {
+      "label": "weightedAvg()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-momentum.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "tests_scoring_test_momentum_weightedavg",
+      "community": 16,
+      "norm_label": "weightedavg()"
+    },
+    {
+      "label": "test-overall.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-overall.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_scoring_test_overall",
+      "community": 17,
+      "norm_label": "test-overall.mjs"
+    },
+    {
+      "label": "weightedAvg()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-overall.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "tests_scoring_test_overall_weightedavg",
+      "community": 17,
+      "norm_label": "weightedavg()"
+    },
+    {
+      "label": "test-signal.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal",
+      "community": 1,
+      "norm_label": "test-signal.mjs"
+    },
+    {
+      "label": "pullbackTrigger()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_pullbacktrigger",
+      "community": 1,
+      "norm_label": "pullbacktrigger()"
+    },
+    {
+      "label": "breakoutTrigger()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_breakouttrigger",
+      "community": 1,
+      "norm_label": "breakouttrigger()"
+    },
+    {
+      "label": "calcAtraposalSl()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_calcatraposalsl",
+      "community": 1,
+      "norm_label": "calcatraposalsl()"
+    },
+    {
+      "label": "calcTargetPrice()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_calctargetprice",
+      "community": 1,
+      "norm_label": "calctargetprice()"
+    },
+    {
+      "label": "calcRiskPct()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_calcriskpct",
+      "community": 1,
+      "norm_label": "calcriskpct()"
+    },
+    {
+      "label": "calcSuggestedLots()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_calcsuggestedlots",
+      "community": 1,
+      "norm_label": "calcsuggestedlots()"
+    },
+    {
+      "label": "calcRiskRpDisplay()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_calcriskrpdisplay",
+      "community": 1,
+      "norm_label": "calcriskrpdisplay()"
+    },
+    {
+      "label": "mtfConflict()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_mtfconflict",
+      "community": 1,
+      "norm_label": "mtfconflict()"
+    },
+    {
+      "label": "signalDirection()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L56",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_signaldirection",
+      "community": 1,
+      "norm_label": "signaldirection()"
+    },
+    {
+      "label": "zoneFromScore()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L68",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_zonefromscore",
+      "community": 1,
+      "norm_label": "zonefromscore()"
+    },
+    {
+      "label": "currentZoneLabel()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L75",
+      "_origin": "ast",
+      "id": "tests_scoring_test_signal_currentzonelabel",
+      "community": 1,
+      "norm_label": "currentzonelabel()"
+    },
+    {
+      "label": "test-trend.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-trend.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_scoring_test_trend",
+      "community": 18,
+      "norm_label": "test-trend.mjs"
+    },
+    {
+      "label": "weightedAvg()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-trend.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "tests_scoring_test_trend_weightedavg",
+      "community": 18,
+      "norm_label": "weightedavg()"
+    },
+    {
+      "label": "test-volatility.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_scoring_test_volatility",
+      "community": 6,
+      "norm_label": "test-volatility.mjs"
+    },
+    {
+      "label": "bbWidthScore()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "tests_scoring_test_volatility_bbwidthscore",
+      "community": 6,
+      "norm_label": "bbwidthscore()"
+    },
+    {
+      "label": "chopScore()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "tests_scoring_test_volatility_chopscore",
+      "community": 6,
+      "norm_label": "chopscore()"
+    },
+    {
+      "label": "f_choppiness()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "tests_scoring_test_volatility_f_choppiness",
+      "community": 6,
+      "norm_label": "f_choppiness()"
+    },
+    {
+      "label": "atrScore()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "tests_scoring_test_volatility_atrscore",
+      "community": 6,
+      "norm_label": "atrscore()"
+    },
+    {
+      "label": "bbPosScore()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "tests_scoring_test_volatility_bbposscore",
+      "community": 6,
+      "norm_label": "bbposscore()"
+    },
+    {
+      "label": "test-volume.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volume.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_scoring_test_volume",
+      "community": 19,
+      "norm_label": "test-volume.mjs"
+    },
+    {
+      "label": "volRatioScore()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volume.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "tests_scoring_test_volume_volratioscore",
+      "community": 19,
+      "norm_label": "volratioscore()"
+    },
+    {
+      "label": "transpile.sh",
+      "file_type": "code",
+      "source_file": "tests/transpile.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "tests_transpile",
+      "community": 20,
+      "norm_label": "transpile.sh"
+    },
+    {
+      "label": "transpile.sh script",
+      "file_type": "code",
+      "source_file": "tests/transpile.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "tests_transpile_sh__entry",
+      "community": 20,
+      "norm_label": "transpile.sh script"
+    },
+    {
+      "label": "Papan Gerak \u2014 Technical Analysis Dashboard",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "id": "readme_papangerak",
+      "community": 0,
+      "norm_label": "papan gerak \u2014 technical analysis dashboard"
+    },
+    {
+      "label": "4 Dimensi Scoring (Teknikal)",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "id": "readme_4dimensiscoring",
+      "community": 3,
+      "norm_label": "4 dimensi scoring (teknikal)"
+    },
+    {
+      "label": "3 Entry Trigger Modes",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "id": "readme_3entrytriggermodes",
+      "community": 0,
+      "norm_label": "3 entry trigger modes"
+    },
+    {
+      "label": "Risk Management Levels",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "id": "readme_riskmanagement",
+      "community": 0,
+      "norm_label": "risk management levels"
+    },
+    {
+      "label": "Position Sizing Calculator",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "id": "readme_positionsizing",
+      "community": 0,
+      "norm_label": "position sizing calculator"
+    },
+    {
+      "label": "MTF Trend Filter",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "id": "readme_mtffilter",
+      "community": 0,
+      "norm_label": "mtf trend filter"
+    },
+    {
+      "label": "Webhook Integration Support",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "id": "readme_webhooksupport",
+      "community": 8,
+      "norm_label": "webhook integration support"
+    },
+    {
+      "label": "90 Automated Tests",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "id": "readme_90tests",
+      "community": 0,
+      "norm_label": "90 automated tests"
+    },
+    {
+      "label": "7 Alert Conditions (Simple + JSON)",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "id": "readme_7alertconditions",
+      "community": 14,
+      "norm_label": "7 alert conditions (simple + json)"
+    },
+    {
+      "label": "Papan Instrumen Companion",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "id": "readme_papaninstrumencompanion",
+      "community": 3,
+      "norm_label": "papan instrumen companion"
+    },
+    {
+      "label": "IDX \u2014 Indonesia Stock Exchange",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "id": "readme_idxsaham",
+      "community": 0,
+      "norm_label": "idx \u2014 indonesia stock exchange"
+    },
+    {
+      "label": "Trend Score (30%)",
+      "file_type": "rationale",
+      "source_file": "docs/ARCHITECTURE.md",
+      "id": "docs_architecture_trendscore",
+      "community": 3,
+      "norm_label": "trend score (30%)"
+    },
+    {
+      "label": "Momentum Score (30%)",
+      "file_type": "rationale",
+      "source_file": "docs/ARCHITECTURE.md",
+      "id": "docs_architecture_momentumscore",
+      "community": 3,
+      "norm_label": "momentum score (30%)"
+    },
+    {
+      "label": "Volatility Score (20%)",
+      "file_type": "rationale",
+      "source_file": "docs/ARCHITECTURE.md",
+      "id": "docs_architecture_volatilityscore",
+      "community": 3,
+      "norm_label": "volatility score (20%)"
+    },
+    {
+      "label": "Volume Score (20%)",
+      "file_type": "rationale",
+      "source_file": "docs/ARCHITECTURE.md",
+      "id": "docs_architecture_volumescore",
+      "community": 3,
+      "norm_label": "volume score (20%)"
+    },
+    {
+      "label": "Smart Money Flow (Optional)",
+      "file_type": "rationale",
+      "source_file": "docs/ARCHITECTURE.md",
+      "id": "docs_architecture_smartmoneyflow",
+      "community": 3,
+      "norm_label": "smart money flow (optional)"
+    },
+    {
+      "label": "Overall Score (0-100)",
+      "file_type": "rationale",
+      "source_file": "docs/ARCHITECTURE.md",
+      "id": "docs_architecture_overallscore",
+      "community": 23,
+      "norm_label": "overall score (0-100)"
+    },
+    {
+      "label": "Entry Trigger Engine",
+      "file_type": "rationale",
+      "source_file": "docs/ARCHITECTURE.md",
+      "id": "docs_architecture_entrytrigger",
+      "community": 13,
+      "norm_label": "entry trigger engine"
+    },
+    {
+      "label": "Confluence Counter",
+      "file_type": "rationale",
+      "source_file": "docs/ARCHITECTURE.md",
+      "id": "docs_architecture_confluencecounter",
+      "community": 12,
+      "norm_label": "confluence counter"
+    },
+    {
+      "label": "Built-in Backtest (20 signals)",
+      "file_type": "rationale",
+      "source_file": "docs/ARCHITECTURE.md",
+      "id": "docs_architecture_backtest20signals",
+      "community": 22,
+      "norm_label": "built-in backtest (20 signals)"
+    },
+    {
+      "label": "Compact Mode \u2014 1 Line",
+      "file_type": "concept",
+      "source_file": "docs/README.id.md",
+      "id": "docs_readme_id_compactmode",
+      "community": 0,
+      "norm_label": "compact mode \u2014 1 line"
+    },
+    {
+      "label": "Standard Mode \u2014 Tabel Lengkap",
+      "file_type": "concept",
+      "source_file": "docs/README.id.md",
+      "id": "docs_readme_id_standardmode",
+      "community": 0,
+      "norm_label": "standard mode \u2014 tabel lengkap"
+    },
+    {
+      "label": "Detailed Mode \u2014 Sub-Indikator",
+      "file_type": "concept",
+      "source_file": "docs/README.id.md",
+      "id": "docs_readme_id_detailedmode",
+      "community": 0,
+      "norm_label": "detailed mode \u2014 sub-indikator"
+    },
+    {
+      "label": "Signal System (BUY/HOLD/SELL)",
+      "file_type": "concept",
+      "source_file": "docs/README.id.md",
+      "id": "docs_readme_id_signalsystem",
+      "community": 0,
+      "norm_label": "signal system (buy/hold/sell)"
+    },
+    {
+      "label": "Narrative Engine (Insight baris-1)",
+      "file_type": "concept",
+      "source_file": "docs/README.id.md",
+      "id": "docs_readme_id_narrativeengine",
+      "community": 0,
+      "norm_label": "narrative engine (insight baris-1)"
+    },
+    {
+      "label": "Forward Return Tracker",
+      "file_type": "concept",
+      "source_file": "docs/README.id.md",
+      "id": "docs_readme_id_forwardreturn",
+      "community": 0,
+      "norm_label": "forward return tracker"
+    },
+    {
+      "label": "10-Langkah Trading Flow",
+      "file_type": "rationale",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "id": "docs_panduantrading_10langkah",
+      "community": 0,
+      "norm_label": "10-langkah trading flow"
+    },
+    {
+      "label": "Confluence Interpretation Guide",
+      "file_type": "rationale",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "id": "docs_panduantrading_confluence",
+      "community": 12,
+      "norm_label": "confluence interpretation guide"
+    },
+    {
+      "label": "Table \u2192 Entry Decision Workflow",
+      "file_type": "rationale",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "id": "docs_panduantrading_entrydecision",
+      "community": 13,
+      "norm_label": "table \u2192 entry decision workflow"
+    },
+    {
+      "label": "Module Line Budget",
+      "file_type": "rationale",
+      "source_file": "docs/DEVELOPMENT.md",
+      "id": "docs_development_modulebudget",
+      "community": 25,
+      "norm_label": "module line budget"
+    },
+    {
+      "label": "Changelog Papan Gerak",
+      "file_type": "document",
+      "source_file": "docs/DEVELOPMENT.md",
+      "id": "docs_development_changelogpg",
+      "community": 24,
+      "norm_label": "changelog papan gerak"
+    },
+    {
+      "label": "Pine Script v6 Strategy Patterns",
+      "file_type": "rationale",
+      "source_file": "docs/DEVELOPMENT.md",
+      "id": "docs_development_pinepg",
+      "community": 26,
+      "norm_label": "pine script v6 strategy patterns"
+    },
+    {
+      "label": "TradersPost Webhook Integration",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "id": "docs_webhook_traderspost",
+      "community": 8,
+      "norm_label": "traderspost webhook integration"
+    },
+    {
+      "label": "Pine Connector Integration",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "id": "docs_webhook_pineconnector",
+      "community": 8,
+      "norm_label": "pine connector integration"
+    },
+    {
+      "label": "JSON Webhook Format",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "id": "docs_webhook_jsonformat",
+      "community": 14,
+      "norm_label": "json webhook format"
+    },
+    {
+      "label": "AI Roles (Papan Gerak)",
+      "file_type": "document",
+      "source_file": "docs/AI.md",
+      "id": "docs_ai_rolespg",
+      "community": 0,
+      "norm_label": "ai roles (papan gerak)"
+    },
+    {
+      "label": "AI Golden Rules (Papan Gerak)",
+      "file_type": "rationale",
+      "source_file": "docs/AI.md",
+      "id": "docs_ai_goldenrulespg",
+      "community": 21,
+      "norm_label": "ai golden rules (papan gerak)"
+    },
+    {
+      "label": "Full Build Changelog",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "id": "changelog_buildhistory",
+      "community": 0,
+      "norm_label": "full build changelog"
+    },
+    {
+      "label": "GitHub Actions CI Pipeline PG",
+      "file_type": "document",
+      "source_file": ".github/workflows/build.yml",
+      "id": "github_workflows_buildpg",
+      "community": 0,
+      "norm_label": "github actions ci pipeline pg"
+    },
+    {
+      "label": "TradingView Publication Description",
+      "file_type": "document",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "id": "docs_tvpublishdesc",
+      "community": 27,
+      "norm_label": "tradingview publication description"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "build.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "build",
+      "target": "build_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_devdependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_license",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_private",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_scripts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_version",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_build",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_ci",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_lint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_test",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_test_all",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_transpile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_pinets",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gh-sync.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "scripts_gh_sync",
+      "target": "scripts_gh_sync_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/lint.sh",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "scripts_lint",
+      "target": "scripts_lint_budget",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/lint.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "scripts_lint",
+      "target": "scripts_lint_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "tests_full_pinets",
+      "target": "tests_full_pinets_dirname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "tests_full_pinets",
+      "target": "tests_full_pinets_generatecandles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "tests_full_pinets",
+      "target": "tests_full_pinets_root",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "tests_full_pinets",
+      "target": "tests_full_pinets_setup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "tests_pinets_verify",
+      "target": "tests_pinets_verify_f_colorscore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "tests_pinets_verify",
+      "target": "tests_pinets_verify_f_scorehigher",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "tests_pinets_verify",
+      "target": "tests_pinets_verify_f_scorelower",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "tests_pinets_verify",
+      "target": "tests_pinets_verify_f_scorerange",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "tests_pinets_verify",
+      "target": "tests_pinets_verify_f_signaltext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/runner.mjs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "tests_scoring_runner",
+      "target": "tests_scoring_runner_report",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/runner.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "tests_scoring_runner",
+      "target": "tests_scoring_runner_setuptest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-momentum.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "tests_scoring_test_momentum",
+      "target": "tests_scoring_test_momentum_weightedavg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-overall.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "tests_scoring_test_overall",
+      "target": "tests_scoring_test_overall_weightedavg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_breakouttrigger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_calcatraposalsl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_calcriskpct",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_calcriskrpdisplay",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_calcsuggestedlots",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_calctargetprice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_currentzonelabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_mtfconflict",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_pullbacktrigger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_signaldirection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_zonefromscore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-trend.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "tests_scoring_test_trend",
+      "target": "tests_scoring_test_trend_weightedavg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "tests_scoring_test_volatility",
+      "target": "tests_scoring_test_volatility_atrscore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "tests_scoring_test_volatility",
+      "target": "tests_scoring_test_volatility_bbposscore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "tests_scoring_test_volatility",
+      "target": "tests_scoring_test_volatility_bbwidthscore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "tests_scoring_test_volatility",
+      "target": "tests_scoring_test_volatility_chopscore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "tests_scoring_test_volatility",
+      "target": "tests_scoring_test_volatility_f_choppiness",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-volume.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "tests_scoring_test_volume",
+      "target": "tests_scoring_test_volume_volratioscore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/transpile.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "tests_transpile",
+      "target": "tests_transpile_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CHANGELOG.md",
+      "source": "changelog_buildhistory",
+      "target": "readme_papangerak"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/AI.md",
+      "source": "docs_ai_rolespg",
+      "target": "readme_papangerak"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source": "docs_panduantrading_10langkah",
+      "target": "readme_papangerak"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/README.id.md",
+      "source": "docs_readme_id_compactmode",
+      "target": "readme_papangerak"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/README.id.md",
+      "source": "docs_readme_id_detailedmode",
+      "target": "readme_papangerak"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/README.id.md",
+      "source": "docs_readme_id_forwardreturn",
+      "target": "readme_papangerak"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/README.id.md",
+      "source": "docs_readme_id_narrativeengine",
+      "target": "readme_papangerak"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/README.id.md",
+      "source": "docs_readme_id_signalsystem",
+      "target": "readme_papangerak"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/README.id.md",
+      "source": "docs_readme_id_standardmode",
+      "target": "readme_papangerak"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source": "readme_papangerak",
+      "target": "readme_3entrytriggermodes"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source": "readme_papangerak",
+      "target": "readme_4dimensiscoring"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source": "readme_papangerak",
+      "target": "readme_90tests"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source": "readme_papangerak",
+      "target": "readme_idxsaham"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source": "readme_papangerak",
+      "target": "readme_mtffilter"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source": "readme_papangerak",
+      "target": "readme_papaninstrumencompanion"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source": "readme_papangerak",
+      "target": "readme_positionsizing"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source": "readme_papangerak",
+      "target": "readme_riskmanagement"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source": "readme_papangerak",
+      "target": "readme_webhooksupport"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source": "readme_4dimensiscoring",
+      "target": "docs_architecture_momentumscore"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source": "readme_4dimensiscoring",
+      "target": "docs_architecture_trendscore"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source": "readme_4dimensiscoring",
+      "target": "docs_architecture_volatilityscore"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source": "readme_4dimensiscoring",
+      "target": "docs_architecture_volumescore"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "README.md",
+      "source": "readme_papaninstrumencompanion",
+      "target": "readme_4dimensiscoring"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/webhook-integration.md",
+      "source": "docs_webhook_pineconnector",
+      "target": "readme_webhooksupport"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/webhook-integration.md",
+      "source": "docs_webhook_traderspost",
+      "target": "readme_webhooksupport"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/build.yml",
+      "source": "github_workflows_buildpg",
+      "target": "readme_90tests"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/webhook-integration.md",
+      "source": "docs_webhook_jsonformat",
+      "target": "readme_7alertconditions"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source": "docs_architecture_smartmoneyflow",
+      "target": "docs_architecture_volumescore"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source": "docs_panduantrading_entrydecision",
+      "target": "docs_architecture_entrytrigger"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source": "docs_panduantrading_confluence",
+      "target": "docs_architecture_confluencecounter"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "hy_4dimensiscoring_set",
+      "label": "4 Dimensi Scoring Teknikal",
+      "nodes": [
+        "docs_architecture_trendscore",
+        "docs_architecture_momentumscore",
+        "docs_architecture_volatilityscore",
+        "docs_architecture_volumescore"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/ARCHITECTURE.md"
+    },
+    {
+      "id": "hy_3displaymodes",
+      "label": "3 Display Modes",
+      "nodes": [
+        "docs_readme_id_compactmode",
+        "docs_readme_id_standardmode",
+        "docs_readme_id_detailedmode"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/README.id.md"
+    }
+  ]
+}

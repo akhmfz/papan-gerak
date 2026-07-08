@@ -1,0 +1,4245 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "hy_4dimensiscoring_set",
+        "label": "4 Dimensi Scoring Teknikal",
+        "nodes": [
+          "docs_architecture_trendscore",
+          "docs_architecture_momentumscore",
+          "docs_architecture_volatilityscore",
+          "docs_architecture_volumescore"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "docs/ARCHITECTURE.md"
+      },
+      {
+        "id": "hy_3displaymodes",
+        "label": "3 Display Modes",
+        "nodes": [
+          "docs_readme_id_compactmode",
+          "docs_readme_id_standardmode",
+          "docs_readme_id_detailedmode"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "docs/README.id.md"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "build.sh",
+      "file_type": "code",
+      "source_file": "build.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "community": 10,
+      "norm_label": "build.sh",
+      "id": "build"
+    },
+    {
+      "label": "build.sh script",
+      "file_type": "code",
+      "source_file": "build.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "community": 10,
+      "norm_label": "build.sh script",
+      "id": "build_sh__entry"
+    },
+    {
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "package.json",
+      "id": "package"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "name",
+      "id": "package_name"
+    },
+    {
+      "label": "version",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "version",
+      "id": "package_version"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "description",
+      "id": "package_description"
+    },
+    {
+      "label": "private",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "private",
+      "id": "package_private"
+    },
+    {
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "scripts",
+      "id": "package_scripts"
+    },
+    {
+      "label": "build",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "build",
+      "id": "package_scripts_build"
+    },
+    {
+      "label": "lint",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "lint",
+      "id": "package_scripts_lint"
+    },
+    {
+      "label": "test",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "test",
+      "id": "package_scripts_test"
+    },
+    {
+      "label": "test:all",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "test:all",
+      "id": "package_scripts_test_all"
+    },
+    {
+      "label": "transpile",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "transpile",
+      "id": "package_scripts_transpile"
+    },
+    {
+      "label": "ci",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "ci",
+      "id": "package_scripts_ci"
+    },
+    {
+      "label": "devDependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "devdependencies",
+      "id": "package_devdependencies"
+    },
+    {
+      "label": "pinets",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "pinets",
+      "id": "package_devdependencies_pinets"
+    },
+    {
+      "label": "license",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "license",
+      "id": "package_license"
+    },
+    {
+      "label": "gh-sync.sh",
+      "file_type": "code",
+      "source_file": "scripts/gh-sync.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "community": 14,
+      "norm_label": "gh-sync.sh",
+      "id": "scripts_gh_sync"
+    },
+    {
+      "label": "gh-sync.sh script",
+      "file_type": "code",
+      "source_file": "scripts/gh-sync.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "community": 14,
+      "norm_label": "gh-sync.sh script",
+      "id": "scripts_gh_sync_sh__entry"
+    },
+    {
+      "label": "lint.sh",
+      "file_type": "code",
+      "source_file": "scripts/lint.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "lint.sh",
+      "id": "scripts_lint"
+    },
+    {
+      "label": "lint.sh script",
+      "file_type": "code",
+      "source_file": "scripts/lint.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "lint.sh script",
+      "id": "scripts_lint_sh__entry"
+    },
+    {
+      "label": "BUDGET",
+      "file_type": "code",
+      "source_file": "scripts/lint.sh",
+      "source_location": "L22",
+      "metadata": {
+        "language": "bash",
+        "kind": "code"
+      },
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "budget",
+      "id": "scripts_lint_budget"
+    },
+    {
+      "label": "full-pinets.mjs",
+      "file_type": "code",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 7,
+      "norm_label": "full-pinets.mjs",
+      "id": "tests_full_pinets"
+    },
+    {
+      "label": "__dirname",
+      "file_type": "code",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L7",
+      "_origin": "ast",
+      "community": 7,
+      "norm_label": "__dirname",
+      "id": "tests_full_pinets_dirname"
+    },
+    {
+      "label": "root",
+      "file_type": "code",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L8",
+      "_origin": "ast",
+      "community": 7,
+      "norm_label": "root",
+      "id": "tests_full_pinets_root"
+    },
+    {
+      "label": "setup()",
+      "file_type": "code",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L10",
+      "_origin": "ast",
+      "community": 7,
+      "norm_label": "setup()",
+      "id": "tests_full_pinets_setup"
+    },
+    {
+      "label": "generateCandles()",
+      "file_type": "code",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L32",
+      "_origin": "ast",
+      "community": 7,
+      "norm_label": "generatecandles()",
+      "id": "tests_full_pinets_generatecandles"
+    },
+    {
+      "label": "pinets-verify.mjs",
+      "file_type": "code",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "pinets-verify.mjs",
+      "id": "tests_pinets_verify"
+    },
+    {
+      "label": "f_scoreHigher()",
+      "file_type": "code",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "f_scorehigher()",
+      "id": "tests_pinets_verify_f_scorehigher"
+    },
+    {
+      "label": "f_scoreLower()",
+      "file_type": "code",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L9",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "f_scorelower()",
+      "id": "tests_pinets_verify_f_scorelower"
+    },
+    {
+      "label": "f_scoreRange()",
+      "file_type": "code",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L14",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "f_scorerange()",
+      "id": "tests_pinets_verify_f_scorerange"
+    },
+    {
+      "label": "f_colorScore()",
+      "file_type": "code",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L25",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "f_colorscore()",
+      "id": "tests_pinets_verify_f_colorscore"
+    },
+    {
+      "label": "f_signalText()",
+      "file_type": "code",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L32",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "f_signaltext()",
+      "id": "tests_pinets_verify_f_signaltext"
+    },
+    {
+      "label": "runner.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/runner.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "runner.mjs",
+      "id": "tests_scoring_runner"
+    },
+    {
+      "label": "setupTest()",
+      "file_type": "code",
+      "source_file": "tests/scoring/runner.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "setuptest()",
+      "id": "tests_scoring_runner_setuptest"
+    },
+    {
+      "label": "report()",
+      "file_type": "code",
+      "source_file": "tests/scoring/runner.mjs",
+      "source_location": "L9",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "report()",
+      "id": "tests_scoring_runner_report"
+    },
+    {
+      "label": "test-momentum.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-momentum.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 21,
+      "norm_label": "test-momentum.mjs",
+      "id": "tests_scoring_test_momentum"
+    },
+    {
+      "label": "weightedAvg()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-momentum.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "community": 21,
+      "norm_label": "weightedavg()",
+      "id": "tests_scoring_test_momentum_weightedavg"
+    },
+    {
+      "label": "test-overall.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-overall.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 22,
+      "norm_label": "test-overall.mjs",
+      "id": "tests_scoring_test_overall"
+    },
+    {
+      "label": "weightedAvg()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-overall.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "community": 22,
+      "norm_label": "weightedavg()",
+      "id": "tests_scoring_test_overall_weightedavg"
+    },
+    {
+      "label": "test-signal.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "test-signal.mjs",
+      "id": "tests_scoring_test_signal"
+    },
+    {
+      "label": "pullbackTrigger()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "pullbacktrigger()",
+      "id": "tests_scoring_test_signal_pullbacktrigger"
+    },
+    {
+      "label": "breakoutTrigger()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L13",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "breakouttrigger()",
+      "id": "tests_scoring_test_signal_breakouttrigger"
+    },
+    {
+      "label": "calcAtraposalSl()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L20",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "calcatraposalsl()",
+      "id": "tests_scoring_test_signal_calcatraposalsl"
+    },
+    {
+      "label": "calcTargetPrice()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L25",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "calctargetprice()",
+      "id": "tests_scoring_test_signal_calctargetprice"
+    },
+    {
+      "label": "calcRiskPct()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L30",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "calcriskpct()",
+      "id": "tests_scoring_test_signal_calcriskpct"
+    },
+    {
+      "label": "calcSuggestedLots()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L35",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "calcsuggestedlots()",
+      "id": "tests_scoring_test_signal_calcsuggestedlots"
+    },
+    {
+      "label": "calcRiskRpDisplay()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L42",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "calcriskrpdisplay()",
+      "id": "tests_scoring_test_signal_calcriskrpdisplay"
+    },
+    {
+      "label": "mtfConflict()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L50",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "mtfconflict()",
+      "id": "tests_scoring_test_signal_mtfconflict"
+    },
+    {
+      "label": "signalDirection()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L56",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "signaldirection()",
+      "id": "tests_scoring_test_signal_signaldirection"
+    },
+    {
+      "label": "zoneFromScore()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L68",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "zonefromscore()",
+      "id": "tests_scoring_test_signal_zonefromscore"
+    },
+    {
+      "label": "currentZoneLabel()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L75",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "currentzonelabel()",
+      "id": "tests_scoring_test_signal_currentzonelabel"
+    },
+    {
+      "label": "test-trend.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-trend.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 23,
+      "norm_label": "test-trend.mjs",
+      "id": "tests_scoring_test_trend"
+    },
+    {
+      "label": "weightedAvg()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-trend.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "community": 23,
+      "norm_label": "weightedavg()",
+      "id": "tests_scoring_test_trend_weightedavg"
+    },
+    {
+      "label": "test-volatility.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "test-volatility.mjs",
+      "id": "tests_scoring_test_volatility"
+    },
+    {
+      "label": "bbWidthScore()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "bbwidthscore()",
+      "id": "tests_scoring_test_volatility_bbwidthscore"
+    },
+    {
+      "label": "chopScore()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L10",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "chopscore()",
+      "id": "tests_scoring_test_volatility_chopscore"
+    },
+    {
+      "label": "f_choppiness()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L14",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "f_choppiness()",
+      "id": "tests_scoring_test_volatility_f_choppiness"
+    },
+    {
+      "label": "atrScore()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L19",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "atrscore()",
+      "id": "tests_scoring_test_volatility_atrscore"
+    },
+    {
+      "label": "bbPosScore()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L25",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "bbposscore()",
+      "id": "tests_scoring_test_volatility_bbposscore"
+    },
+    {
+      "label": "test-volume.mjs",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volume.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 24,
+      "norm_label": "test-volume.mjs",
+      "id": "tests_scoring_test_volume"
+    },
+    {
+      "label": "volRatioScore()",
+      "file_type": "code",
+      "source_file": "tests/scoring/test-volume.mjs",
+      "source_location": "L4",
+      "_origin": "ast",
+      "community": 24,
+      "norm_label": "volratioscore()",
+      "id": "tests_scoring_test_volume_volratioscore"
+    },
+    {
+      "label": "transpile.sh",
+      "file_type": "code",
+      "source_file": "tests/transpile.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "community": 25,
+      "norm_label": "transpile.sh",
+      "id": "tests_transpile"
+    },
+    {
+      "label": "transpile.sh script",
+      "file_type": "code",
+      "source_file": "tests/transpile.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "community": 25,
+      "norm_label": "transpile.sh script",
+      "id": "tests_transpile_sh__entry"
+    },
+    {
+      "label": "Papan Gerak \u2014 Technical Analysis Dashboard",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "community": 2,
+      "norm_label": "papan gerak \u2014 technical analysis dashboard",
+      "id": "readme_papangerak"
+    },
+    {
+      "label": "4 Dimensi Scoring (Teknikal)",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "community": 2,
+      "norm_label": "4 dimensi scoring (teknikal)",
+      "id": "readme_4dimensiscoring"
+    },
+    {
+      "label": "3 Entry Trigger Modes",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "community": 2,
+      "norm_label": "3 entry trigger modes",
+      "id": "readme_3entrytriggermodes"
+    },
+    {
+      "label": "Risk Management Levels",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "community": 2,
+      "norm_label": "risk management levels",
+      "id": "readme_riskmanagement"
+    },
+    {
+      "label": "Position Sizing Calculator",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "community": 2,
+      "norm_label": "position sizing calculator",
+      "id": "readme_positionsizing"
+    },
+    {
+      "label": "MTF Trend Filter",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "community": 2,
+      "norm_label": "mtf trend filter",
+      "id": "readme_mtffilter"
+    },
+    {
+      "label": "Webhook Integration Support",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "community": 2,
+      "norm_label": "webhook integration support",
+      "id": "readme_webhooksupport"
+    },
+    {
+      "label": "90 Automated Tests",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "community": 2,
+      "norm_label": "90 automated tests",
+      "id": "readme_90tests"
+    },
+    {
+      "label": "7 Alert Conditions (Simple + JSON)",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "community": 13,
+      "norm_label": "7 alert conditions (simple + json)",
+      "id": "readme_7alertconditions"
+    },
+    {
+      "label": "Papan Instrumen Companion",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "community": 2,
+      "norm_label": "papan instrumen companion",
+      "id": "readme_papaninstrumencompanion"
+    },
+    {
+      "label": "IDX \u2014 Indonesia Stock Exchange",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "community": 2,
+      "norm_label": "idx \u2014 indonesia stock exchange",
+      "id": "readme_idxsaham"
+    },
+    {
+      "label": "Trend Score (30%)",
+      "file_type": "rationale",
+      "source_file": "docs/ARCHITECTURE.md",
+      "community": 2,
+      "norm_label": "trend score (30%)",
+      "id": "docs_architecture_trendscore"
+    },
+    {
+      "label": "Momentum Score (30%)",
+      "file_type": "rationale",
+      "source_file": "docs/ARCHITECTURE.md",
+      "community": 2,
+      "norm_label": "momentum score (30%)",
+      "id": "docs_architecture_momentumscore"
+    },
+    {
+      "label": "Volatility Score (20%)",
+      "file_type": "rationale",
+      "source_file": "docs/ARCHITECTURE.md",
+      "community": 2,
+      "norm_label": "volatility score (20%)",
+      "id": "docs_architecture_volatilityscore"
+    },
+    {
+      "label": "Volume Score (20%)",
+      "file_type": "rationale",
+      "source_file": "docs/ARCHITECTURE.md",
+      "community": 2,
+      "norm_label": "volume score (20%)",
+      "id": "docs_architecture_volumescore"
+    },
+    {
+      "label": "Smart Money Flow (Optional)",
+      "file_type": "rationale",
+      "source_file": "docs/ARCHITECTURE.md",
+      "community": 2,
+      "norm_label": "smart money flow (optional)",
+      "id": "docs_architecture_smartmoneyflow"
+    },
+    {
+      "label": "Overall Score (0-100)",
+      "file_type": "rationale",
+      "source_file": "docs/ARCHITECTURE.md",
+      "community": 28,
+      "norm_label": "overall score (0-100)",
+      "id": "docs_architecture_overallscore"
+    },
+    {
+      "label": "Entry Trigger Engine",
+      "file_type": "rationale",
+      "source_file": "docs/ARCHITECTURE.md",
+      "community": 12,
+      "norm_label": "entry trigger engine",
+      "id": "docs_architecture_entrytrigger"
+    },
+    {
+      "label": "Confluence Counter",
+      "file_type": "rationale",
+      "source_file": "docs/ARCHITECTURE.md",
+      "community": 11,
+      "norm_label": "confluence counter",
+      "id": "docs_architecture_confluencecounter"
+    },
+    {
+      "label": "Built-in Backtest (20 signals)",
+      "file_type": "rationale",
+      "source_file": "docs/ARCHITECTURE.md",
+      "community": 27,
+      "norm_label": "built-in backtest (20 signals)",
+      "id": "docs_architecture_backtest20signals"
+    },
+    {
+      "label": "Compact Mode \u2014 1 Line",
+      "file_type": "concept",
+      "source_file": "docs/README.id.md",
+      "community": 2,
+      "norm_label": "compact mode \u2014 1 line",
+      "id": "docs_readme_id_compactmode"
+    },
+    {
+      "label": "Standard Mode \u2014 Tabel Lengkap",
+      "file_type": "concept",
+      "source_file": "docs/README.id.md",
+      "community": 2,
+      "norm_label": "standard mode \u2014 tabel lengkap",
+      "id": "docs_readme_id_standardmode"
+    },
+    {
+      "label": "Detailed Mode \u2014 Sub-Indikator",
+      "file_type": "concept",
+      "source_file": "docs/README.id.md",
+      "community": 2,
+      "norm_label": "detailed mode \u2014 sub-indikator",
+      "id": "docs_readme_id_detailedmode"
+    },
+    {
+      "label": "Signal System (BUY/HOLD/SELL)",
+      "file_type": "concept",
+      "source_file": "docs/README.id.md",
+      "community": 2,
+      "norm_label": "signal system (buy/hold/sell)",
+      "id": "docs_readme_id_signalsystem"
+    },
+    {
+      "label": "Narrative Engine (Insight baris-1)",
+      "file_type": "concept",
+      "source_file": "docs/README.id.md",
+      "community": 2,
+      "norm_label": "narrative engine (insight baris-1)",
+      "id": "docs_readme_id_narrativeengine"
+    },
+    {
+      "label": "Forward Return Tracker",
+      "file_type": "concept",
+      "source_file": "docs/README.id.md",
+      "community": 2,
+      "norm_label": "forward return tracker",
+      "id": "docs_readme_id_forwardreturn"
+    },
+    {
+      "label": "10-Langkah Trading Flow",
+      "file_type": "rationale",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "community": 2,
+      "norm_label": "10-langkah trading flow",
+      "id": "docs_panduantrading_10langkah"
+    },
+    {
+      "label": "Confluence Interpretation Guide",
+      "file_type": "rationale",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "community": 11,
+      "norm_label": "confluence interpretation guide",
+      "id": "docs_panduantrading_confluence"
+    },
+    {
+      "label": "Table \u2192 Entry Decision Workflow",
+      "file_type": "rationale",
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "community": 12,
+      "norm_label": "table \u2192 entry decision workflow",
+      "id": "docs_panduantrading_entrydecision"
+    },
+    {
+      "label": "Module Line Budget",
+      "file_type": "rationale",
+      "source_file": "docs/DEVELOPMENT.md",
+      "community": 30,
+      "norm_label": "module line budget",
+      "id": "docs_development_modulebudget"
+    },
+    {
+      "label": "Changelog Papan Gerak",
+      "file_type": "document",
+      "source_file": "docs/DEVELOPMENT.md",
+      "community": 29,
+      "norm_label": "changelog papan gerak",
+      "id": "docs_development_changelogpg"
+    },
+    {
+      "label": "Pine Script v6 Strategy Patterns",
+      "file_type": "rationale",
+      "source_file": "docs/DEVELOPMENT.md",
+      "community": 31,
+      "norm_label": "pine script v6 strategy patterns",
+      "id": "docs_development_pinepg"
+    },
+    {
+      "label": "TradersPost Webhook Integration",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "community": 2,
+      "norm_label": "traderspost webhook integration",
+      "id": "docs_webhook_traderspost"
+    },
+    {
+      "label": "Pine Connector Integration",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "community": 2,
+      "norm_label": "pine connector integration",
+      "id": "docs_webhook_pineconnector"
+    },
+    {
+      "label": "JSON Webhook Format",
+      "file_type": "document",
+      "source_file": "docs/webhook-integration.md",
+      "community": 13,
+      "norm_label": "json webhook format",
+      "id": "docs_webhook_jsonformat"
+    },
+    {
+      "label": "AI Roles (Papan Gerak)",
+      "file_type": "document",
+      "source_file": "docs/AI.md",
+      "community": 2,
+      "norm_label": "ai roles (papan gerak)",
+      "id": "docs_ai_rolespg"
+    },
+    {
+      "label": "AI Golden Rules (Papan Gerak)",
+      "file_type": "rationale",
+      "source_file": "docs/AI.md",
+      "community": 26,
+      "norm_label": "ai golden rules (papan gerak)",
+      "id": "docs_ai_goldenrulespg"
+    },
+    {
+      "label": "Full Build Changelog",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "community": 2,
+      "norm_label": "full build changelog",
+      "id": "changelog_buildhistory"
+    },
+    {
+      "label": "GitHub Actions CI Pipeline PG",
+      "file_type": "document",
+      "source_file": ".github/workflows/build.yml",
+      "community": 2,
+      "norm_label": "github actions ci pipeline pg",
+      "id": "github_workflows_buildpg"
+    },
+    {
+      "label": "TradingView Publication Description",
+      "file_type": "document",
+      "source_file": "docs/TV_PUBLISH_DESC.md",
+      "community": 32,
+      "norm_label": "tradingview publication description",
+      "id": "docs_tvpublishdesc"
+    },
+    {
+      "label": "01-base.pine",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base",
+      "community": 1,
+      "norm_label": "01-base.pine"
+    },
+    {
+      "label": "02-data.pine",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data",
+      "community": 0,
+      "norm_label": "02-data.pine"
+    },
+    {
+      "label": "03-scoring.pine",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring",
+      "community": 15,
+      "norm_label": "03-scoring.pine"
+    },
+    {
+      "label": "04-ui.pine",
+      "file_type": "code",
+      "source_file": "src/modules/04-ui.pine",
+      "id": "src_modules_04ui",
+      "community": 15,
+      "norm_label": "04-ui.pine"
+    },
+    {
+      "label": "f_secure(input, def)",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_f_secure",
+      "community": 37,
+      "norm_label": "f_secure(input, def)"
+    },
+    {
+      "label": "f_scoreHigher(float val, float min, float max)",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_f_scoreHigher",
+      "community": 34,
+      "norm_label": "f_scorehigher(float val, float min, float max)"
+    },
+    {
+      "label": "f_scoreLower(float val, float min, float max)",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_f_scoreLower",
+      "community": 35,
+      "norm_label": "f_scorelower(float val, float min, float max)"
+    },
+    {
+      "label": "f_scoreRange(val, min, max, idealLow, idealHigh)",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_f_scoreRange",
+      "community": 36,
+      "norm_label": "f_scorerange(val, min, max, ideallow, idealhigh)"
+    },
+    {
+      "label": "f_colorScore(float score)",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_f_colorScore",
+      "community": 33,
+      "norm_label": "f_colorscore(float score)"
+    },
+    {
+      "label": "f_signalText(float score, string lang)",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_f_signalText",
+      "community": 38,
+      "norm_label": "f_signaltext(float score, string lang)"
+    },
+    {
+      "label": "f_choppiness(int length)",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_f_choppiness",
+      "community": 39,
+      "norm_label": "f_choppiness(int length)"
+    },
+    {
+      "label": "f_netVolume()",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_f_netVolume",
+      "community": 41,
+      "norm_label": "f_netvolume()"
+    },
+    {
+      "label": "f_smartMoneyDetect()",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_f_smartMoneyDetect",
+      "community": 42,
+      "norm_label": "f_smartmoneydetect()"
+    },
+    {
+      "label": "f_isBodyVolume()",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_f_isBodyVolume",
+      "community": 40,
+      "norm_label": "f_isbodyvolume()"
+    },
+    {
+      "label": "f_trendScore()",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_f_trendScore",
+      "community": 18,
+      "norm_label": "f_trendscore()"
+    },
+    {
+      "label": "f_momentumScore()",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_f_momentumScore",
+      "community": 16,
+      "norm_label": "f_momentumscore()"
+    },
+    {
+      "label": "f_volatilityScore()",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_f_volatilityScore",
+      "community": 19,
+      "norm_label": "f_volatilityscore()"
+    },
+    {
+      "label": "f_volumeScore()",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_f_volumeScore",
+      "community": 20,
+      "norm_label": "f_volumescore()"
+    },
+    {
+      "label": "f_smartMoneyScore()",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_f_smartMoneyScore",
+      "community": 17,
+      "norm_label": "f_smartmoneyscore()"
+    },
+    {
+      "label": "f_narrative()",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_f_narrative",
+      "community": 56,
+      "norm_label": "f_narrative()"
+    },
+    {
+      "label": "f_getPosition()",
+      "file_type": "code",
+      "source_file": "src/modules/04-ui.pine",
+      "id": "src_modules_04ui_f_getPosition",
+      "community": 101,
+      "norm_label": "f_getposition()"
+    },
+    {
+      "label": "f_getFontSize()",
+      "file_type": "code",
+      "source_file": "src/modules/04-ui.pine",
+      "id": "src_modules_04ui_f_getFontSize",
+      "community": 100,
+      "norm_label": "f_getfontsize()"
+    },
+    {
+      "label": "f_confStr(n, total)",
+      "file_type": "code",
+      "source_file": "src/modules/04-ui.pine",
+      "id": "src_modules_04ui_f_confStr",
+      "community": 99,
+      "norm_label": "f_confstr(n, total)"
+    },
+    {
+      "label": "f_webhookMsg(eventType, params)",
+      "file_type": "code",
+      "source_file": "src/modules/04-ui.pine",
+      "id": "src_modules_04ui_f_webhookMsg",
+      "community": 102,
+      "norm_label": "f_webhookmsg(eventtype, params)"
+    },
+    {
+      "label": "input: tablePositionInput",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_tablePositionInput",
+      "community": 1,
+      "norm_label": "input: tablepositioninput"
+    },
+    {
+      "label": "input: fontSizeInput",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_fontSizeInput",
+      "community": 1,
+      "norm_label": "input: fontsizeinput"
+    },
+    {
+      "label": "input: modeInput",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_modeInput",
+      "community": 1,
+      "norm_label": "input: modeinput"
+    },
+    {
+      "label": "input: bahasaInput",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_bahasaInput",
+      "community": 1,
+      "norm_label": "input: bahasainput"
+    },
+    {
+      "label": "input: colorThemeInput",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_colorThemeInput",
+      "community": 1,
+      "norm_label": "input: colorthemeinput"
+    },
+    {
+      "label": "input: emaFastPeriod",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_emaFastPeriod",
+      "community": 1,
+      "norm_label": "input: emafastperiod"
+    },
+    {
+      "label": "input: emaMidPeriod",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_emaMidPeriod",
+      "community": 1,
+      "norm_label": "input: emamidperiod"
+    },
+    {
+      "label": "input: emaSlowPeriod",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_emaSlowPeriod",
+      "community": 1,
+      "norm_label": "input: emaslowperiod"
+    },
+    {
+      "label": "input: superTrendFactor",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_superTrendFactor",
+      "community": 1,
+      "norm_label": "input: supertrendfactor"
+    },
+    {
+      "label": "input: superTrendPeriod",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_superTrendPeriod",
+      "community": 1,
+      "norm_label": "input: supertrendperiod"
+    },
+    {
+      "label": "input: adxLength",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_adxLength",
+      "community": 1,
+      "norm_label": "input: adxlength"
+    },
+    {
+      "label": "input: adxThreshold",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_adxThreshold",
+      "community": 1,
+      "norm_label": "input: adxthreshold"
+    },
+    {
+      "label": "input: rsiLength",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_rsiLength",
+      "community": 1,
+      "norm_label": "input: rsilength"
+    },
+    {
+      "label": "input: rsiOb",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_rsiOb",
+      "community": 1,
+      "norm_label": "input: rsiob"
+    },
+    {
+      "label": "input: rsiOs",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_rsiOs",
+      "community": 1,
+      "norm_label": "input: rsios"
+    },
+    {
+      "label": "input: macdFast",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_macdFast",
+      "community": 1,
+      "norm_label": "input: macdfast"
+    },
+    {
+      "label": "input: macdSlow",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_macdSlow",
+      "community": 1,
+      "norm_label": "input: macdslow"
+    },
+    {
+      "label": "input: macdSignal",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_macdSignal",
+      "community": 1,
+      "norm_label": "input: macdsignal"
+    },
+    {
+      "label": "input: stochK",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_stochK",
+      "community": 1,
+      "norm_label": "input: stochk"
+    },
+    {
+      "label": "input: stochD",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_stochD",
+      "community": 1,
+      "norm_label": "input: stochd"
+    },
+    {
+      "label": "input: stochOb",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_stochOb",
+      "community": 1,
+      "norm_label": "input: stochob"
+    },
+    {
+      "label": "input: stochOs",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_stochOs",
+      "community": 1,
+      "norm_label": "input: stochos"
+    },
+    {
+      "label": "input: atrLength",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_atrLength",
+      "community": 1,
+      "norm_label": "input: atrlength"
+    },
+    {
+      "label": "input: bbLength",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_bbLength",
+      "community": 1,
+      "norm_label": "input: bblength"
+    },
+    {
+      "label": "input: bbMult",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_bbMult",
+      "community": 1,
+      "norm_label": "input: bbmult"
+    },
+    {
+      "label": "input: chopLength",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_chopLength",
+      "community": 1,
+      "norm_label": "input: choplength"
+    },
+    {
+      "label": "input: volMaLength",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_volMaLength",
+      "community": 1,
+      "norm_label": "input: volmalength"
+    },
+    {
+      "label": "input: volSpikeMult",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_volSpikeMult",
+      "community": 1,
+      "norm_label": "input: volspikemult"
+    },
+    {
+      "label": "input: weightTrend",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_weightTrend",
+      "community": 1,
+      "norm_label": "input: weighttrend"
+    },
+    {
+      "label": "input: weightMomentum",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_weightMomentum",
+      "community": 1,
+      "norm_label": "input: weightmomentum"
+    },
+    {
+      "label": "input: weightVolatility",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_weightVolatility",
+      "community": 1,
+      "norm_label": "input: weightvolatility"
+    },
+    {
+      "label": "input: weightVolume",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_weightVolume",
+      "community": 1,
+      "norm_label": "input: weightvolume"
+    },
+    {
+      "label": "input: enableSmartMoney",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_enableSmartMoney",
+      "community": 1,
+      "norm_label": "input: enablesmartmoney"
+    },
+    {
+      "label": "input: weightSmartMoney",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_weightSmartMoney",
+      "community": 1,
+      "norm_label": "input: weightsmartmoney"
+    },
+    {
+      "label": "input: smVolumeThreshold",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_smVolumeThreshold",
+      "community": 1,
+      "norm_label": "input: smvolumethreshold"
+    },
+    {
+      "label": "input: smPeriod",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_smPeriod",
+      "community": 1,
+      "norm_label": "input: smperiod"
+    },
+    {
+      "label": "input: minSignalBars",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_minSignalBars",
+      "community": 1,
+      "norm_label": "input: minsignalbars"
+    },
+    {
+      "label": "input: signalFilterMode",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_signalFilterMode",
+      "community": 1,
+      "norm_label": "input: signalfiltermode"
+    },
+    {
+      "label": "input: confirmOnBarClose",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_confirmOnBarClose",
+      "community": 1,
+      "norm_label": "input: confirmonbarclose"
+    },
+    {
+      "label": "input: showRiskLevels",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_showRiskLevels",
+      "community": 1,
+      "norm_label": "input: showrisklevels"
+    },
+    {
+      "label": "input: slTypeInput",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_slTypeInput",
+      "community": 1,
+      "norm_label": "input: sltypeinput"
+    },
+    {
+      "label": "input: slAtrMult",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_slAtrMult",
+      "community": 1,
+      "norm_label": "input: slatrmult"
+    },
+    {
+      "label": "input: slSwingPeriod",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_slSwingPeriod",
+      "community": 1,
+      "norm_label": "input: slswingperiod"
+    },
+    {
+      "label": "input: targetR",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_targetR",
+      "community": 1,
+      "norm_label": "input: targetr"
+    },
+    {
+      "label": "input: showPositionSizing",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_showPositionSizing",
+      "community": 1,
+      "norm_label": "input: showpositionsizing"
+    },
+    {
+      "label": "input: accountBalanceInput",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_accountBalanceInput",
+      "community": 1,
+      "norm_label": "input: accountbalanceinput"
+    },
+    {
+      "label": "input: riskPctInput",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_riskPctInput",
+      "community": 1,
+      "norm_label": "input: riskpctinput"
+    },
+    {
+      "label": "input: enableMtfFilter",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_enableMtfFilter",
+      "community": 1,
+      "norm_label": "input: enablemtffilter"
+    },
+    {
+      "label": "input: mtfTimeframe",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_mtfTimeframe",
+      "community": 1,
+      "norm_label": "input: mtftimeframe"
+    },
+    {
+      "label": "input: entryTriggerMode",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_entryTriggerMode",
+      "community": 1,
+      "norm_label": "input: entrytriggermode"
+    },
+    {
+      "label": "input: webhookFormat",
+      "file_type": "code",
+      "source_file": "src/modules/01-base.pine",
+      "id": "src_modules_01base_webhookFormat",
+      "community": 1,
+      "norm_label": "input: webhookformat"
+    },
+    {
+      "label": "ta: emaFast",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_emaFast",
+      "community": 0,
+      "norm_label": "ta: emafast"
+    },
+    {
+      "label": "ta: emaMid",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_emaMid",
+      "community": 0,
+      "norm_label": "ta: emamid"
+    },
+    {
+      "label": "ta: emaSlow",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_emaSlow",
+      "community": 0,
+      "norm_label": "ta: emaslow"
+    },
+    {
+      "label": "ta: emaPosition",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_emaPosition",
+      "community": 0,
+      "norm_label": "ta: emaposition"
+    },
+    {
+      "label": "ta: emaTrend",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_emaTrend",
+      "community": 0,
+      "norm_label": "ta: ematrend"
+    },
+    {
+      "label": "ta: superTrend",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_superTrend",
+      "community": 0,
+      "norm_label": "ta: supertrend"
+    },
+    {
+      "label": "ta: superTrendDir",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_superTrendDir",
+      "community": 0,
+      "norm_label": "ta: supertrenddir"
+    },
+    {
+      "label": "ta: stBullish",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_stBullish",
+      "community": 0,
+      "norm_label": "ta: stbullish"
+    },
+    {
+      "label": "ta: adxUp",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_adxUp",
+      "community": 0,
+      "norm_label": "ta: adxup"
+    },
+    {
+      "label": "ta: adxDn",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_adxDn",
+      "community": 0,
+      "norm_label": "ta: adxdn"
+    },
+    {
+      "label": "ta: adxValue",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_adxValue",
+      "community": 0,
+      "norm_label": "ta: adxvalue"
+    },
+    {
+      "label": "ta: adxStrong",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_adxStrong",
+      "community": 0,
+      "norm_label": "ta: adxstrong"
+    },
+    {
+      "label": "ta: adxTrend",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_adxTrend",
+      "community": 0,
+      "norm_label": "ta: adxtrend"
+    },
+    {
+      "label": "ta: trendAligned",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_trendAligned",
+      "community": 0,
+      "norm_label": "ta: trendaligned"
+    },
+    {
+      "label": "ta: rsiValue",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_rsiValue",
+      "community": 0,
+      "norm_label": "ta: rsivalue"
+    },
+    {
+      "label": "ta: rsiObHit",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_rsiObHit",
+      "community": 0,
+      "norm_label": "ta: rsiobhit"
+    },
+    {
+      "label": "ta: rsiOsHit",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_rsiOsHit",
+      "community": 0,
+      "norm_label": "ta: rsioshit"
+    },
+    {
+      "label": "ta: rsiDirection",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_rsiDirection",
+      "community": 0,
+      "norm_label": "ta: rsidirection"
+    },
+    {
+      "label": "ta: macdLine",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_macdLine",
+      "community": 0,
+      "norm_label": "ta: macdline"
+    },
+    {
+      "label": "ta: macdSignalLine",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_macdSignalLine",
+      "community": 0,
+      "norm_label": "ta: macdsignalline"
+    },
+    {
+      "label": "ta: macdHist",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_macdHist",
+      "community": 0,
+      "norm_label": "ta: macdhist"
+    },
+    {
+      "label": "ta: macdBullish",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_macdBullish",
+      "community": 0,
+      "norm_label": "ta: macdbullish"
+    },
+    {
+      "label": "ta: macdHistRising",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_macdHistRising",
+      "community": 0,
+      "norm_label": "ta: macdhistrising"
+    },
+    {
+      "label": "ta: macdZero",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_macdZero",
+      "community": 0,
+      "norm_label": "ta: macdzero"
+    },
+    {
+      "label": "ta: stochKVal",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_stochKVal",
+      "community": 0,
+      "norm_label": "ta: stochkval"
+    },
+    {
+      "label": "ta: stochDVal",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_stochDVal",
+      "community": 0,
+      "norm_label": "ta: stochdval"
+    },
+    {
+      "label": "ta: stochBullish",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_stochBullish",
+      "community": 0,
+      "norm_label": "ta: stochbullish"
+    },
+    {
+      "label": "ta: stochObHit",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_stochObHit",
+      "community": 0,
+      "norm_label": "ta: stochobhit"
+    },
+    {
+      "label": "ta: stochOsHit",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_stochOsHit",
+      "community": 0,
+      "norm_label": "ta: stochoshit"
+    },
+    {
+      "label": "ta: atrValue",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_atrValue",
+      "community": 0,
+      "norm_label": "ta: atrvalue"
+    },
+    {
+      "label": "ta: atrPercent",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_atrPercent",
+      "community": 0,
+      "norm_label": "ta: atrpercent"
+    },
+    {
+      "label": "ta: bbMiddle",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_bbMiddle",
+      "community": 0,
+      "norm_label": "ta: bbmiddle"
+    },
+    {
+      "label": "ta: bbStdDev",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_bbStdDev",
+      "community": 0,
+      "norm_label": "ta: bbstddev"
+    },
+    {
+      "label": "ta: bbUpper",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_bbUpper",
+      "community": 0,
+      "norm_label": "ta: bbupper"
+    },
+    {
+      "label": "ta: bbLower",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_bbLower",
+      "community": 0,
+      "norm_label": "ta: bblower"
+    },
+    {
+      "label": "ta: bbWidth",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_bbWidth",
+      "community": 0,
+      "norm_label": "ta: bbwidth"
+    },
+    {
+      "label": "ta: bbWidthAvg",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_bbWidthAvg",
+      "community": 0,
+      "norm_label": "ta: bbwidthavg"
+    },
+    {
+      "label": "ta: bbPosition",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_bbPosition",
+      "community": 0,
+      "norm_label": "ta: bbposition"
+    },
+    {
+      "label": "ta: chopValue",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_chopValue",
+      "community": 0,
+      "norm_label": "ta: chopvalue"
+    },
+    {
+      "label": "ta: chopTrending",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_chopTrending",
+      "community": 0,
+      "norm_label": "ta: choptrending"
+    },
+    {
+      "label": "ta: chopRanging",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_chopRanging",
+      "community": 0,
+      "norm_label": "ta: chopranging"
+    },
+    {
+      "label": "ta: volMA",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_volMA",
+      "community": 0,
+      "norm_label": "ta: volma"
+    },
+    {
+      "label": "ta: volRatio",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_volRatio",
+      "community": 0,
+      "norm_label": "ta: volratio"
+    },
+    {
+      "label": "ta: volSpike",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_volSpike",
+      "community": 0,
+      "norm_label": "ta: volspike"
+    },
+    {
+      "label": "ta: obvValue",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_obvValue",
+      "community": 0,
+      "norm_label": "ta: obvvalue"
+    },
+    {
+      "label": "ta: obvMA",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_obvMA",
+      "community": 0,
+      "norm_label": "ta: obvma"
+    },
+    {
+      "label": "ta: obvTrend",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_obvTrend",
+      "community": 0,
+      "norm_label": "ta: obvtrend"
+    },
+    {
+      "label": "ta: obvAgree",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_obvAgree",
+      "community": 0,
+      "norm_label": "ta: obvagree"
+    },
+    {
+      "label": "ta: netVol",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_netVol",
+      "community": 0,
+      "norm_label": "ta: netvol"
+    },
+    {
+      "label": "ta: netVolSmooth",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_netVolSmooth",
+      "community": 0,
+      "norm_label": "ta: netvolsmooth"
+    },
+    {
+      "label": "ta: smDetected",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_smDetected",
+      "community": 0,
+      "norm_label": "ta: smdetected"
+    },
+    {
+      "label": "ta: smBodyVol",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_smBodyVol",
+      "community": 0,
+      "norm_label": "ta: smbodyvol"
+    },
+    {
+      "label": "ta: mtfTrendScore",
+      "file_type": "code",
+      "source_file": "src/modules/02-data.pine",
+      "id": "src_modules_02data_mtfTrendScore",
+      "community": 0,
+      "norm_label": "ta: mtftrendscore"
+    },
+    {
+      "label": "score: trendScore",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_trendScore",
+      "community": 18,
+      "norm_label": "score: trendscore"
+    },
+    {
+      "label": "score: momentumScore",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_momentumScore",
+      "community": 16,
+      "norm_label": "score: momentumscore"
+    },
+    {
+      "label": "score: volatilityScore",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_volatilityScore",
+      "community": 19,
+      "norm_label": "score: volatilityscore"
+    },
+    {
+      "label": "score: volumeScore",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_volumeScore",
+      "community": 20,
+      "norm_label": "score: volumescore"
+    },
+    {
+      "label": "score: smartMoneyScore",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_smartMoneyScore",
+      "community": 17,
+      "norm_label": "score: smartmoneyscore"
+    },
+    {
+      "label": "score: totalWeight",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_totalWeight",
+      "community": 89,
+      "norm_label": "score: totalweight"
+    },
+    {
+      "label": "score: normTrend",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_normTrend",
+      "community": 63,
+      "norm_label": "score: normtrend"
+    },
+    {
+      "label": "score: normMomentum",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_normMomentum",
+      "community": 62,
+      "norm_label": "score: normmomentum"
+    },
+    {
+      "label": "score: normVolatility",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_normVolatility",
+      "community": 64,
+      "norm_label": "score: normvolatility"
+    },
+    {
+      "label": "score: normVolume",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_normVolume",
+      "community": 65,
+      "norm_label": "score: normvolume"
+    },
+    {
+      "label": "score: overallScore",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_overallScore",
+      "community": 66,
+      "norm_label": "score: overallscore"
+    },
+    {
+      "label": "confluence: trendBull",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_trendBull",
+      "community": 90,
+      "norm_label": "confluence: trendbull"
+    },
+    {
+      "label": "confluence: trendTotal",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_trendTotal",
+      "community": 91,
+      "norm_label": "confluence: trendtotal"
+    },
+    {
+      "label": "confluence: momBull",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_momBull",
+      "community": 60,
+      "norm_label": "confluence: mombull"
+    },
+    {
+      "label": "confluence: momTotal",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_momTotal",
+      "community": 61,
+      "norm_label": "confluence: momtotal"
+    },
+    {
+      "label": "confluence: volBull",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_volBull",
+      "community": 92,
+      "norm_label": "confluence: volbull"
+    },
+    {
+      "label": "confluence: volTotal",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_volTotal",
+      "community": 93,
+      "norm_label": "confluence: voltotal"
+    },
+    {
+      "label": "confluence: volmBull",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_volmBull",
+      "community": 94,
+      "norm_label": "confluence: volmbull"
+    },
+    {
+      "label": "confluence: volmTotal",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_volmTotal",
+      "community": 95,
+      "norm_label": "confluence: volmtotal"
+    },
+    {
+      "label": "signal: signalText",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_signalText",
+      "community": 81,
+      "norm_label": "signal: signaltext"
+    },
+    {
+      "label": "signal: signalColor",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_signalColor",
+      "community": 76,
+      "norm_label": "signal: signalcolor"
+    },
+    {
+      "label": "signal: currentZone",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_currentZone",
+      "community": 54,
+      "norm_label": "signal: currentzone"
+    },
+    {
+      "label": "signal: prevZone",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_prevZone",
+      "community": 67,
+      "norm_label": "signal: prevzone"
+    },
+    {
+      "label": "signal: zoneChanged",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_zoneChanged",
+      "community": 96,
+      "norm_label": "signal: zonechanged"
+    },
+    {
+      "label": "signal: minBarsOk",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_minBarsOk",
+      "community": 59,
+      "norm_label": "signal: minbarsok"
+    },
+    {
+      "label": "signal: chopFilterOk",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_chopFilterOk",
+      "community": 53,
+      "norm_label": "signal: chopfilterok"
+    },
+    {
+      "label": "signal: signalTriggered",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_signalTriggered",
+      "community": 82,
+      "norm_label": "signal: signaltriggered"
+    },
+    {
+      "label": "signal: pullbackTrigger",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_pullbackTrigger",
+      "community": 68,
+      "norm_label": "signal: pullbacktrigger"
+    },
+    {
+      "label": "signal: breakoutTrigger",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_breakoutTrigger",
+      "community": 44,
+      "norm_label": "signal: breakouttrigger"
+    },
+    {
+      "label": "signal: entryTriggered",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_entryTriggered",
+      "community": 55,
+      "norm_label": "signal: entrytriggered"
+    },
+    {
+      "label": "signal: signalDirection",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_signalDirection",
+      "community": 77,
+      "norm_label": "signal: signaldirection"
+    },
+    {
+      "label": "signal: signalEntryPrice",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_signalEntryPrice",
+      "community": 79,
+      "norm_label": "signal: signalentryprice"
+    },
+    {
+      "label": "signal: signalEntryBar",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_signalEntryBar",
+      "community": 78,
+      "norm_label": "signal: signalentrybar"
+    },
+    {
+      "label": "signal: fwdReturn",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_fwdReturn",
+      "community": 58,
+      "norm_label": "signal: fwdreturn"
+    },
+    {
+      "label": "signal: signalStatus",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_signalStatus",
+      "community": 80,
+      "norm_label": "signal: signalstatus"
+    },
+    {
+      "label": "signal: fwdBars",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_fwdBars",
+      "community": 57,
+      "norm_label": "signal: fwdbars"
+    },
+    {
+      "label": "risk: riskEntryPrice",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_riskEntryPrice",
+      "community": 71,
+      "norm_label": "risk: riskentryprice"
+    },
+    {
+      "label": "risk: riskAtrCapture",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_riskAtrCapture",
+      "community": 70,
+      "norm_label": "risk: riskatrcapture"
+    },
+    {
+      "label": "risk: riskSwingLow",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_riskSwingLow",
+      "community": 75,
+      "norm_label": "risk: riskswinglow"
+    },
+    {
+      "label": "risk: riskSwingHigh",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_riskSwingHigh",
+      "community": 74,
+      "norm_label": "risk: riskswinghigh"
+    },
+    {
+      "label": "risk: atrSl",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_atrSl",
+      "community": 43,
+      "norm_label": "risk: atrsl"
+    },
+    {
+      "label": "risk: swingSl",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_swingSl",
+      "community": 86,
+      "norm_label": "risk: swingsl"
+    },
+    {
+      "label": "risk: slPrice",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_slPrice",
+      "community": 84,
+      "norm_label": "risk: slprice"
+    },
+    {
+      "label": "risk: riskAmount",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_riskAmount",
+      "community": 69,
+      "norm_label": "risk: riskamount"
+    },
+    {
+      "label": "risk: targetPrice",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_targetPrice",
+      "community": 88,
+      "norm_label": "risk: targetprice"
+    },
+    {
+      "label": "risk: slPct",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_slPct",
+      "community": 83,
+      "norm_label": "risk: slpct"
+    },
+    {
+      "label": "risk: targetPct",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_targetPct",
+      "community": 87,
+      "norm_label": "risk: targetpct"
+    },
+    {
+      "label": "risk: riskLevelLabel",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_riskLevelLabel",
+      "community": 72,
+      "norm_label": "risk: risklevellabel"
+    },
+    {
+      "label": "risk: riskRp",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_riskRp",
+      "community": 73,
+      "norm_label": "risk: riskrp"
+    },
+    {
+      "label": "risk: suggestedLots",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_suggestedLots",
+      "community": 85,
+      "norm_label": "risk: suggestedlots"
+    },
+    {
+      "label": "bt: btEntryBars",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_btEntryBars",
+      "community": 46,
+      "norm_label": "bt: btentrybars"
+    },
+    {
+      "label": "bt: btEntryPrices",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_btEntryPrices",
+      "community": 47,
+      "norm_label": "bt: btentryprices"
+    },
+    {
+      "label": "bt: btDirs",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_btDirs",
+      "community": 45,
+      "norm_label": "bt: btdirs"
+    },
+    {
+      "label": "bt: btHead",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_btHead",
+      "community": 48,
+      "norm_label": "bt: bthead"
+    },
+    {
+      "label": "bt: btTotalEval",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_btTotalEval",
+      "community": 49,
+      "norm_label": "bt: bttotaleval"
+    },
+    {
+      "label": "bt: btWins",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_btWins",
+      "community": 52,
+      "norm_label": "bt: btwins"
+    },
+    {
+      "label": "bt: btWinRate",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_btWinRate",
+      "community": 51,
+      "norm_label": "bt: btwinrate"
+    },
+    {
+      "label": "bt: btTotalReturn",
+      "file_type": "code",
+      "source_file": "src/modules/03-scoring.pine",
+      "id": "src_modules_03scoring_btTotalReturn",
+      "community": 50,
+      "norm_label": "bt: bttotalreturn"
+    },
+    {
+      "label": "alert: entryAlert",
+      "file_type": "code",
+      "source_file": "src/modules/04-ui.pine",
+      "id": "src_modules_04ui_entryAlert",
+      "community": 98,
+      "norm_label": "alert: entryalert"
+    },
+    {
+      "label": "alert: trendExtremeAlert",
+      "file_type": "code",
+      "source_file": "src/modules/04-ui.pine",
+      "id": "src_modules_04ui_trendExtremeAlert",
+      "community": 106,
+      "norm_label": "alert: trendextremealert"
+    },
+    {
+      "label": "alert: rsiOversoldAlert",
+      "file_type": "code",
+      "source_file": "src/modules/04-ui.pine",
+      "id": "src_modules_04ui_rsiOversoldAlert",
+      "community": 104,
+      "norm_label": "alert: rsioversoldalert"
+    },
+    {
+      "label": "alert: rsiOverboughtAlert",
+      "file_type": "code",
+      "source_file": "src/modules/04-ui.pine",
+      "id": "src_modules_04ui_rsiOverboughtAlert",
+      "community": 103,
+      "norm_label": "alert: rsioverboughtalert"
+    },
+    {
+      "label": "alert: volumeSpikeAlert",
+      "file_type": "code",
+      "source_file": "src/modules/04-ui.pine",
+      "id": "src_modules_04ui_volumeSpikeAlert",
+      "community": 107,
+      "norm_label": "alert: volumespikealert"
+    },
+    {
+      "label": "alert: smartMoneyAlert",
+      "file_type": "code",
+      "source_file": "src/modules/04-ui.pine",
+      "id": "src_modules_04ui_smartMoneyAlert",
+      "community": 105,
+      "norm_label": "alert: smartmoneyalert"
+    },
+    {
+      "label": "alert: choppinessAlert",
+      "file_type": "code",
+      "source_file": "src/modules/04-ui.pine",
+      "id": "src_modules_04ui_choppinessAlert",
+      "community": 97,
+      "norm_label": "alert: choppinessalert"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "build.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "build",
+      "target": "build_sh__entry"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_description"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_devdependencies"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_license"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_name"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_private"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_scripts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_version"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_build"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_ci"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_lint"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_test"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_test_all"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_transpile"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_pinets"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gh-sync.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gh_sync",
+      "target": "scripts_gh_sync_sh__entry"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/lint.sh",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_lint",
+      "target": "scripts_lint_budget"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/lint.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_lint",
+      "target": "scripts_lint_sh__entry"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_full_pinets",
+      "target": "tests_full_pinets_dirname"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_full_pinets",
+      "target": "tests_full_pinets_generatecandles"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_full_pinets",
+      "target": "tests_full_pinets_root"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/full-pinets.mjs",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_full_pinets",
+      "target": "tests_full_pinets_setup"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_pinets_verify",
+      "target": "tests_pinets_verify_f_colorscore"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_pinets_verify",
+      "target": "tests_pinets_verify_f_scorehigher"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_pinets_verify",
+      "target": "tests_pinets_verify_f_scorelower"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_pinets_verify",
+      "target": "tests_pinets_verify_f_scorerange"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/pinets-verify.mjs",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_pinets_verify",
+      "target": "tests_pinets_verify_f_signaltext"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/runner.mjs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_runner",
+      "target": "tests_scoring_runner_report"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/runner.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_runner",
+      "target": "tests_scoring_runner_setuptest"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-momentum.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_momentum",
+      "target": "tests_scoring_test_momentum_weightedavg"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-overall.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_overall",
+      "target": "tests_scoring_test_overall_weightedavg"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_breakouttrigger"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_calcatraposalsl"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L30",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_calcriskpct"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L42",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_calcriskrpdisplay"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_calcsuggestedlots"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_calctargetprice"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L75",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_currentzonelabel"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L50",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_mtfconflict"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_pullbacktrigger"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_signaldirection"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-signal.mjs",
+      "source_location": "L68",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_signal",
+      "target": "tests_scoring_test_signal_zonefromscore"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-trend.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_trend",
+      "target": "tests_scoring_test_trend_weightedavg"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_volatility",
+      "target": "tests_scoring_test_volatility_atrscore"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_volatility",
+      "target": "tests_scoring_test_volatility_bbposscore"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_volatility",
+      "target": "tests_scoring_test_volatility_bbwidthscore"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_volatility",
+      "target": "tests_scoring_test_volatility_chopscore"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-volatility.mjs",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_volatility",
+      "target": "tests_scoring_test_volatility_f_choppiness"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/scoring/test-volume.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_scoring_test_volume",
+      "target": "tests_scoring_test_volume_volratioscore"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/transpile.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_transpile",
+      "target": "tests_transpile_sh__entry"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CHANGELOG.md",
+      "source": "changelog_buildhistory",
+      "target": "readme_papangerak"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/AI.md",
+      "source": "docs_ai_rolespg",
+      "target": "readme_papangerak"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source": "docs_panduantrading_10langkah",
+      "target": "readme_papangerak"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/README.id.md",
+      "source": "docs_readme_id_compactmode",
+      "target": "readme_papangerak"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/README.id.md",
+      "source": "docs_readme_id_detailedmode",
+      "target": "readme_papangerak"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/README.id.md",
+      "source": "docs_readme_id_forwardreturn",
+      "target": "readme_papangerak"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/README.id.md",
+      "source": "docs_readme_id_narrativeengine",
+      "target": "readme_papangerak"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/README.id.md",
+      "source": "docs_readme_id_signalsystem",
+      "target": "readme_papangerak"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/README.id.md",
+      "source": "docs_readme_id_standardmode",
+      "target": "readme_papangerak"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source": "readme_papangerak",
+      "target": "readme_3entrytriggermodes"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source": "readme_papangerak",
+      "target": "readme_4dimensiscoring"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source": "readme_papangerak",
+      "target": "readme_90tests"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source": "readme_papangerak",
+      "target": "readme_idxsaham"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source": "readme_papangerak",
+      "target": "readme_mtffilter"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source": "readme_papangerak",
+      "target": "readme_papaninstrumencompanion"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source": "readme_papangerak",
+      "target": "readme_positionsizing"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source": "readme_papangerak",
+      "target": "readme_riskmanagement"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source": "readme_papangerak",
+      "target": "readme_webhooksupport"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source": "readme_4dimensiscoring",
+      "target": "docs_architecture_momentumscore"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source": "readme_4dimensiscoring",
+      "target": "docs_architecture_trendscore"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source": "readme_4dimensiscoring",
+      "target": "docs_architecture_volatilityscore"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source": "readme_4dimensiscoring",
+      "target": "docs_architecture_volumescore"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "README.md",
+      "source": "readme_papaninstrumencompanion",
+      "target": "readme_4dimensiscoring"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/webhook-integration.md",
+      "source": "docs_webhook_pineconnector",
+      "target": "readme_webhooksupport"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/webhook-integration.md",
+      "source": "docs_webhook_traderspost",
+      "target": "readme_webhooksupport"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/build.yml",
+      "source": "github_workflows_buildpg",
+      "target": "readme_90tests"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/webhook-integration.md",
+      "source": "docs_webhook_jsonformat",
+      "target": "readme_7alertconditions"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source": "docs_architecture_smartmoneyflow",
+      "target": "docs_architecture_volumescore"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source": "docs_panduantrading_entrydecision",
+      "target": "docs_architecture_entrytrigger"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/PANDUAN-TRADING.md",
+      "source": "docs_panduantrading_confluence",
+      "target": "docs_architecture_confluencecounter"
+    },
+    {
+      "relation": "depends_on",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_01base",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_accountBalanceInput",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_adxLength",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_adxThreshold",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_atrLength",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_bahasaInput",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_bbLength",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_bbMult",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_chopLength",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_colorThemeInput",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_confirmOnBarClose",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_emaFastPeriod",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_emaMidPeriod",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_emaSlowPeriod",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_enableMtfFilter",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_enableSmartMoney",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_entryTriggerMode",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_fontSizeInput",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_macdFast",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_macdSignal",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_macdSlow",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_minSignalBars",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_modeInput",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_mtfTimeframe",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_riskPctInput",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_rsiLength",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_rsiOb",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_rsiOs",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_showPositionSizing",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_showRiskLevels",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_signalFilterMode",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_slAtrMult",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_slSwingPeriod",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_slTypeInput",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_smPeriod",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_smVolumeThreshold",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_stochD",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_stochK",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_stochOb",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_stochOs",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_superTrendFactor",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_superTrendPeriod",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_tablePositionInput",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_targetR",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_volMaLength",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_volSpikeMult",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_webhookFormat",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_weightMomentum",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_weightSmartMoney",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_weightTrend",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_weightVolatility",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/01-base.pine",
+      "source": "src_modules_01base_weightVolume",
+      "target": "src_modules_01base"
+    },
+    {
+      "relation": "depends_on",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/03-scoring.pine",
+      "source": "src_modules_02data",
+      "target": "src_modules_03scoring"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_adxDn",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_adxStrong",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_adxTrend",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_adxUp",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_adxValue",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_atrPercent",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_atrValue",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_bbLower",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_bbMiddle",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_bbPosition",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_bbStdDev",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_bbUpper",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_bbWidth",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_bbWidthAvg",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_chopRanging",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_chopTrending",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_chopValue",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_emaFast",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_emaMid",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_emaPosition",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_emaSlow",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_emaTrend",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_macdBullish",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_macdHist",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_macdHistRising",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_macdLine",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_macdSignalLine",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_macdZero",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_mtfTrendScore",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_netVol",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_netVolSmooth",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_obvAgree",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_obvMA",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_obvTrend",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_obvValue",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_rsiDirection",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_rsiObHit",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_rsiOsHit",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_rsiValue",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_smBodyVol",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_smDetected",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_stBullish",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_stochBullish",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_stochDVal",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_stochKVal",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_stochObHit",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_stochOsHit",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_superTrend",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_superTrendDir",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_trendAligned",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_volMA",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_volRatio",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "belongs_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/02-data.pine",
+      "source": "src_modules_02data_volSpike",
+      "target": "src_modules_02data"
+    },
+    {
+      "relation": "depends_on",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/04-ui.pine",
+      "source": "src_modules_03scoring",
+      "target": "src_modules_04ui"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/03-scoring.pine",
+      "source": "src_modules_03scoring_trendScore",
+      "target": "src_modules_03scoring_f_trendScore"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/03-scoring.pine",
+      "source": "src_modules_03scoring_momentumScore",
+      "target": "src_modules_03scoring_f_momentumScore"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/03-scoring.pine",
+      "source": "src_modules_03scoring_volatilityScore",
+      "target": "src_modules_03scoring_f_volatilityScore"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/03-scoring.pine",
+      "source": "src_modules_03scoring_volumeScore",
+      "target": "src_modules_03scoring_f_volumeScore"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/03-scoring.pine",
+      "source": "src_modules_03scoring_smartMoneyScore",
+      "target": "src_modules_03scoring_f_smartMoneyScore"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "hy_4dimensiscoring_set",
+      "label": "4 Dimensi Scoring Teknikal",
+      "nodes": [
+        "docs_architecture_trendscore",
+        "docs_architecture_momentumscore",
+        "docs_architecture_volatilityscore",
+        "docs_architecture_volumescore"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/ARCHITECTURE.md"
+    },
+    {
+      "id": "hy_3displaymodes",
+      "label": "3 Display Modes",
+      "nodes": [
+        "docs_readme_id_compactmode",
+        "docs_readme_id_standardmode",
+        "docs_readme_id_detailedmode"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/README.id.md"
+    }
+  ],
+  "built_at_commit": "c3d4ef475c111aa527d7e32b6644a3643ee30b8e"
+}
