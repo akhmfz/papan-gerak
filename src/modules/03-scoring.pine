@@ -32,10 +32,12 @@ f_trendScore() =>
         scoreSum += alignScore * 1
         count += 1
 
-    // EMA Slope (weight: 1)
-    slopeFast = emaFast - emaFast[5]
+    // EMA Slope — rate of change (weight: 1)
+    // [1] ratio dipilih alih-alih [5] offset agar konsisten di semua timeframe.
+    // Pada monthly chart, [5] = 5 bulan (~150 hari) tidak relevan untuk slope jangka pendek.
+    slopeFast = emaFast / emaFast[1] - 1
     if not na(slopeFast)
-        slopeScore = f_scoreHigher(slopeFast, -close * 0.02, close * 0.02)
+        slopeScore = f_scoreHigher(slopeFast, -0.02, 0.02)
         scoreSum += slopeScore * 1
         count += 1
 
@@ -199,7 +201,71 @@ f_smartMoneyScore() =>
         count > 0 ? scoreSum / count : na
 
 // ==========================================================
-// 6. CALCULATE ALL SCORES
+// 6. MULTI-TIMEFRAME ALIGNMENT SCORE
+// ==========================================================
+f_mtfAlignmentScore() =>
+    if not enableMTF
+        [na, 0, ""]
+
+    tf1Dir = mtfTf1Trend * 0.55 + mtfTf1Mom * 0.45
+    tf2Dir = mtfTf2Trend * 0.55 + mtfTf2Mom * 0.45
+    tf3Dir = mtfTf3Trend * 0.55 + mtfTf3Mom * 0.45
+
+    tf1Ctx = mtfTf1Vol * 0.55 + mtfTf1Volm * 0.45
+    tf2Ctx = mtfTf2Vol * 0.55 + mtfTf2Volm * 0.45
+    tf3Ctx = mtfTf3Vol * 0.55 + mtfTf3Volm * 0.45
+
+    if na(tf1Dir) or na(tf2Dir)
+        [na, 0, ""]
+
+    totalW = mtfPrimaryWeight + mtfSecondaryWeight + mtfTertiaryWeight
+    normW1 = totalW > 0 ? mtfPrimaryWeight / totalW : 0.50
+    normW2 = totalW > 0 ? mtfSecondaryWeight / totalW : 0.35
+    normW3 = totalW > 0 ? mtfTertiaryWeight / totalW : 0.15
+
+    mtfDirRaw = tf1Dir * normW1 + tf2Dir * normW2 + tf3Dir * normW3
+    mtfCtxRaw = tf1Ctx * normW1 + tf2Ctx * normW2 + tf3Ctx * normW3
+
+    tf1Bull = math.max(math.min((tf1Dir - 50) / 20, 1), 0)
+    tf2Bull = math.max(math.min((tf2Dir - 50) / 20, 1), 0)
+    tf3Bull = math.max(math.min((tf3Dir - 50) / 20, 1), 0)
+
+    weightedBull = tf1Bull * normW1 + tf2Bull * normW2 + tf3Bull * normW3
+    weightedBear = (1 - tf1Bull) * normW1 + (1 - tf2Bull) * normW2 + (1 - tf3Bull) * normW3
+
+    hysteresis = mtfDirectionHysteresis / 100
+    direction = if weightedBull > weightedBear + hysteresis
+        1
+    else if weightedBear > weightedBull + hysteresis
+        -1
+    else
+        0
+
+    maxDiv = math.max(math.abs(tf1Dir - tf2Dir), math.abs(tf1Dir - tf3Dir), math.abs(tf2Dir - tf3Dir))
+    penalty = (maxDiv / 100) * mtfMaxPenalty
+
+    conflictScore = mtfDirRaw * (1 - penalty)
+    finalScore = conflictScore * mtfAlpha + mtfCtxRaw * (1 - mtfAlpha)
+
+    debugStr = if mtfDebug
+        str.format("D:({0}/{1}/{2}/{3}) W:({4}/{5}/{6}/{7}) M:({8}/{9}/{10}/{11}) dirRaw={12} ctxRaw={13} pen={14}% final={15}",
+         str.tostring(math.round(mtfTf1Trend)), str.tostring(math.round(mtfTf1Mom)),
+         str.tostring(math.round(mtfTf1Vol)), str.tostring(math.round(mtfTf1Volm)),
+         str.tostring(math.round(mtfTf2Trend)), str.tostring(math.round(mtfTf2Mom)),
+         str.tostring(math.round(mtfTf2Vol)), str.tostring(math.round(mtfTf2Volm)),
+         str.tostring(math.round(mtfTf3Trend)), str.tostring(math.round(mtfTf3Mom)),
+         str.tostring(math.round(mtfTf3Vol)), str.tostring(math.round(mtfTf3Volm)),
+         str.tostring(math.round(mtfDirRaw)), str.tostring(math.round(mtfCtxRaw)),
+         str.tostring(math.round(penalty * 100)), str.tostring(math.round(finalScore)))
+    else
+        ""
+
+    [finalScore, direction, debugStr]
+
+[mtfScore, mtfDirection, mtfDebugStr] = f_mtfAlignmentScore()
+
+// ==========================================================
+// 7. CALCULATE ALL SCORES
 // ==========================================================
 trendScore = f_trendScore()
 momentumScore = f_momentumScore()
@@ -353,6 +419,7 @@ if not na(volRatio) and not na(volumeScore)
 // ==========================================================
 // 10. MULTI-TIMEFRAME CONFLICT DETECTION
 // ==========================================================
+// Legacy conflict (simple binary, for backward compat)
 mtfConflict = enableMtfFilter and not na(mtfTrendScore) and not na(overallScore) and (
     (mtfTrendScore >= 50 and overallScore < 40) or
     (mtfTrendScore < 50 and overallScore >= 70)
@@ -363,6 +430,17 @@ mtfWarning = if enableMtfFilter and not na(mtfTrendScore)
         (bahasaInput == "Indonesia" ? "MTF ▲ " + str.tostring(math.round(mtfTrendScore)) : "MTF ▲ " + str.tostring(math.round(mtfTrendScore)))
     else
         (bahasaInput == "Indonesia" ? "MTF ▼ " + str.tostring(math.round(mtfTrendScore)) : "MTF ▼ " + str.tostring(math.round(mtfTrendScore)))
+else
+    ""
+
+// New MTF alignment summary (for UI — Sprint C)
+mtfAlignmentDirection = if not na(mtfScore)
+    if mtfDirection == 1
+        "Bullish"
+    else if mtfDirection == -1
+        "Bearish"
+    else
+        "Mixed"
 else
     ""
 

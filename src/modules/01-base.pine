@@ -111,10 +111,23 @@ accountBalanceInput = input.int(50000000, "Account Balance (Rp)", minval = 10000
 riskPctInput = input.float(1.0, "Risk Per Trade (%)", minval = 0.1, maxval = 5.0, step = 0.1, group = "Position Size", display = display.data_window, tooltip = "Persentase modal yang siap dirisikokan per trade. Contoh: 1% dari Rp50jt = Rp500rb.")
 
 // ==========================================================
-// 11. SETTINGS — Multi-Timeframe Filter
+// 11. SETTINGS — Multi-Timeframe Alignment
 // ==========================================================
-enableMtfFilter = input.bool(false, "Enable MTF Trend Filter", group = "MTF", display = display.data_window, tooltip = "Aktifkan filter tren Multi-Timeframe. Sinyal harian akan dibandingkan dengan tren weekly/monthly.")
-mtfTimeframe = input.string("W", "MTF Timeframe", options = ["W", "M"], group = "MTF", display = display.data_window, tooltip = "Timeframe yang digunakan untuk MTF filter. W = Weekly, M = Monthly.")
+enableMTF = input.bool(true, "Enable MTF Alignment", group = "MTF", display = display.data_window, tooltip = "Aktifkan Multi-Timeframe Alignment Score. Menghitung alignment 3 timeframe untuk konfirmasi sinyal.")
+mtfPrimaryTF = input.string("D", "Primary TF", options = ["D", "W", "M"], group = "MTF", display = display.data_window, tooltip = "Primary timeframe — entry timing. Default: Daily.")
+mtfSecondaryTF = input.string("W", "Secondary TF", options = ["D", "W", "M"], group = "MTF", display = display.data_window, tooltip = "Secondary timeframe — trend konfirmasi. Default: Weekly.")
+mtfTertiaryTF = input.string("M", "Tertiary TF", options = ["D", "W", "M"], group = "MTF", display = display.data_window, tooltip = "Tertiary timeframe — konteks makro. Default: Monthly.")
+mtfPrimaryWeight = input.float(0.50, "Primary Weight", minval = 0.0, maxval = 1.0, step = 0.05, group = "MTF", display = display.data_window, tooltip = "Bobot primary timeframe dalam skor akhir. Default: 0.50 (50%).")
+mtfSecondaryWeight = input.float(0.35, "Secondary Weight", minval = 0.0, maxval = 1.0, step = 0.05, group = "MTF", display = display.data_window, tooltip = "Bobot secondary timeframe. Default: 0.35 (35%).")
+mtfTertiaryWeight = input.float(0.15, "Tertiary Weight", minval = 0.0, maxval = 1.0, step = 0.05, group = "MTF", display = display.data_window, tooltip = "Bobot tertiary timeframe. Default: 0.15 (15%).")
+mtfAlpha = input.float(0.70, "Directional Alpha", minval = 0.0, maxval = 1.0, step = 0.05, group = "MTF", display = display.data_window, tooltip = "Bobot directional components (Trend+Momentum) vs context (Volatility+Volume). Default: 0.70.")
+mtfMaxPenalty = input.float(0.25, "Max Conflict Penalty", minval = 0.0, maxval = 0.50, step = 0.05, group = "MTF", display = display.data_window, tooltip = "Penalti maksimum saat timeframe saling bertentangan. 0 = tanpa penalti, 0.25 = 25% maks.")
+mtfDirectionHysteresis = input.float(10.0, "Direction Hysteresis", minval = 0.0, maxval = 30.0, step = 1.0, group = "MTF", display = display.data_window, tooltip = "Ambang hysteresis untuk direction flag. Lebih tinggi = lebih jarang flip direction. Default: 10.")
+mtfDebug = input.bool(false, "Debug Mode (detail semua komponen)", group = "MTF", display = display.data_window, tooltip = "Jika aktif, tampilkan semua komponen MTF di Data Window untuk debugging.")
+
+// Legacy MTF filter (retained for backward compat — trend row & narrative)
+enableMtfFilter = input.bool(false, "Enable MTF Trend Filter (legacy)", group = "MTF", display = display.data_window, tooltip = "Legacy: filter tren Multi-Timeframe sederhana.")
+mtfTimeframe = input.string("W", "MTF Timeframe (legacy)", options = ["W", "M"], group = "MTF", display = display.data_window, tooltip = "Timeframe legacy MTF. W = Weekly, M = Monthly.")
 
 // ==========================================================
 // 12. SETTINGS — Entry Trigger

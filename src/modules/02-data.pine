@@ -134,8 +134,76 @@ smDetected = f_smartMoneyDetect()
 smBodyVol = f_isBodyVolume()
 
 // ==========================================================
-// 6. MULTI-TIMEFRAME TREND
+// 6. MULTI-TIMEFRAME DATA FETCHERS
 // ==========================================================
+// Self-contained HTF scoring — aman dipanggil dari request.security()
+// karena tidak mereferensi global vars yang terikat ke primary timeframe.
+f_mtfTfScores() =>
+    emaF = ta.ema(close, emaFastPeriod)
+    emaM = ta.ema(close, emaMidPeriod)
+    emaS = ta.ema(close, emaSlowPeriod)
+    [st, stD] = ta.supertrend(superTrendFactor, superTrendPeriod)
+    trendScore = 50.0
+    if close > emaF and close > emaM and close > emaS
+        trendScore := 80.0
+    else if close < emaF and close < emaM and close < emaS
+        trendScore := 20.0
+    else if close > emaF
+        trendScore := 60.0
+    else
+        trendScore := 40.0
+    if not na(stD)
+        trendScore := stD == 1 ? math.min(100, trendScore + 10) : math.max(0, trendScore - 10)
+
+    rsi = ta.rsi(close, rsiLength)
+    [mL, mS, mH] = ta.macd(close, macdFast, macdSlow, macdSignal)
+    momScore = f_scoreHigher(rsi, 30, 70)
+    if not na(mL) and not na(mS)
+        momScore := mL > mS ? math.min(100, momScore + 10) : math.max(0, momScore - 10)
+
+    atr = ta.atr(atrLength)
+    atrPct = atr / close * 100
+    volScore = f_scoreRange(atrPct, 0.5, 10.0, 1.0, 3.0)
+
+    vMA = ta.sma(volume, volMaLength)
+    vR = vMA > 0 ? volume / vMA : na
+    volmScore = f_scoreRange(vR, 0.2, 5.0, 0.8, 2.0)
+
+    [trendScore, momScore, volScore, volmScore]
+
+mtfTf1Trend = na
+mtfTf1Mom = na
+mtfTf1Vol = na
+mtfTf1Volm = na
+mtfTf2Trend = na
+mtfTf2Mom = na
+mtfTf2Vol = na
+mtfTf2Volm = na
+mtfTf3Trend = na
+mtfTf3Mom = na
+mtfTf3Vol = na
+mtfTf3Volm = na
+
+if enableMTF
+    [t1tr, t1mo, t1vo, t1vl] = request.security(syminfo.tickerid, mtfPrimaryTF, f_mtfTfScores(), barmerge.gaps_off, barmerge.lookahead_off)
+    mtfTf1Trend := t1tr
+    mtfTf1Mom := t1mo
+    mtfTf1Vol := t1vo
+    mtfTf1Volm := t1vl
+
+    [t2tr, t2mo, t2vo, t2vl] = request.security(syminfo.tickerid, mtfSecondaryTF, f_mtfTfScores(), barmerge.gaps_off, barmerge.lookahead_off)
+    mtfTf2Trend := t2tr
+    mtfTf2Mom := t2mo
+    mtfTf2Vol := t2vo
+    mtfTf2Volm := t2vl
+
+    [t3tr, t3mo, t3vo, t3vl] = request.security(syminfo.tickerid, mtfTertiaryTF, f_mtfTfScores(), barmerge.gaps_off, barmerge.lookahead_off)
+    mtfTf3Trend := t3tr
+    mtfTf3Mom := t3mo
+    mtfTf3Vol := t3vo
+    mtfTf3Volm := t3vl
+
+// Legacy MTF trend filter (retained for backward compat)
 mtfTrendScore = if enableMtfFilter
     request.security(syminfo.tickerid, mtfTimeframe,
         (close > ta.ema(close, emaSlowPeriod) ? 50 : 0) +

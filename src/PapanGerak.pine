@@ -111,10 +111,23 @@ accountBalanceInput = input.int(50000000, "Account Balance (Rp)", minval = 10000
 riskPctInput = input.float(1.0, "Risk Per Trade (%)", minval = 0.1, maxval = 5.0, step = 0.1, group = "Position Size", display = display.data_window, tooltip = "Persentase modal yang siap dirisikokan per trade. Contoh: 1% dari Rp50jt = Rp500rb.")
 
 // ==========================================================
-// 11. SETTINGS — Multi-Timeframe Filter
+// 11. SETTINGS — Multi-Timeframe Alignment
 // ==========================================================
-enableMtfFilter = input.bool(false, "Enable MTF Trend Filter", group = "MTF", display = display.data_window, tooltip = "Aktifkan filter tren Multi-Timeframe. Sinyal harian akan dibandingkan dengan tren weekly/monthly.")
-mtfTimeframe = input.string("W", "MTF Timeframe", options = ["W", "M"], group = "MTF", display = display.data_window, tooltip = "Timeframe yang digunakan untuk MTF filter. W = Weekly, M = Monthly.")
+enableMTF = input.bool(true, "Enable MTF Alignment", group = "MTF", display = display.data_window, tooltip = "Aktifkan Multi-Timeframe Alignment Score. Menghitung alignment 3 timeframe untuk konfirmasi sinyal.")
+mtfPrimaryTF = input.string("D", "Primary TF", options = ["D", "W", "M"], group = "MTF", display = display.data_window, tooltip = "Primary timeframe — entry timing. Default: Daily.")
+mtfSecondaryTF = input.string("W", "Secondary TF", options = ["D", "W", "M"], group = "MTF", display = display.data_window, tooltip = "Secondary timeframe — trend konfirmasi. Default: Weekly.")
+mtfTertiaryTF = input.string("M", "Tertiary TF", options = ["D", "W", "M"], group = "MTF", display = display.data_window, tooltip = "Tertiary timeframe — konteks makro. Default: Monthly.")
+mtfPrimaryWeight = input.float(0.50, "Primary Weight", minval = 0.0, maxval = 1.0, step = 0.05, group = "MTF", display = display.data_window, tooltip = "Bobot primary timeframe dalam skor akhir. Default: 0.50 (50%).")
+mtfSecondaryWeight = input.float(0.35, "Secondary Weight", minval = 0.0, maxval = 1.0, step = 0.05, group = "MTF", display = display.data_window, tooltip = "Bobot secondary timeframe. Default: 0.35 (35%).")
+mtfTertiaryWeight = input.float(0.15, "Tertiary Weight", minval = 0.0, maxval = 1.0, step = 0.05, group = "MTF", display = display.data_window, tooltip = "Bobot tertiary timeframe. Default: 0.15 (15%).")
+mtfAlpha = input.float(0.70, "Directional Alpha", minval = 0.0, maxval = 1.0, step = 0.05, group = "MTF", display = display.data_window, tooltip = "Bobot directional components (Trend+Momentum) vs context (Volatility+Volume). Default: 0.70.")
+mtfMaxPenalty = input.float(0.25, "Max Conflict Penalty", minval = 0.0, maxval = 0.50, step = 0.05, group = "MTF", display = display.data_window, tooltip = "Penalti maksimum saat timeframe saling bertentangan. 0 = tanpa penalti, 0.25 = 25% maks.")
+mtfDirectionHysteresis = input.float(10.0, "Direction Hysteresis", minval = 0.0, maxval = 30.0, step = 1.0, group = "MTF", display = display.data_window, tooltip = "Ambang hysteresis untuk direction flag. Lebih tinggi = lebih jarang flip direction. Default: 10.")
+mtfDebug = input.bool(false, "Debug Mode (detail semua komponen)", group = "MTF", display = display.data_window, tooltip = "Jika aktif, tampilkan semua komponen MTF di Data Window untuk debugging.")
+
+// Legacy MTF filter (retained for backward compat — trend row & narrative)
+enableMtfFilter = input.bool(false, "Enable MTF Trend Filter (legacy)", group = "MTF", display = display.data_window, tooltip = "Legacy: filter tren Multi-Timeframe sederhana. Sinyal harian dibandingkan dengan tren higher TF.")
+mtfTimeframe = input.string("W", "MTF Timeframe (legacy)", options = ["W", "M"], group = "MTF", display = display.data_window, tooltip = "Timeframe legacy MTF. W = Weekly, M = Monthly.")
 
 // ==========================================================
 // 12. SETTINGS — Entry Trigger
@@ -407,8 +420,77 @@ smDetected = f_smartMoneyDetect()
 smBodyVol = f_isBodyVolume()
 
 // ==========================================================
-// 6. MULTI-TIMEFRAME TREND
+// 6. MULTI-TIMEFRAME DATA FETCHERS
 // ==========================================================
+// Self-contained HTF scoring — semua computed dari built-in vars (close/high/low/volume)
+// sehingga aman dipanggil dari dalam request.security(). Tidak mereferensi global vars
+// yang sudah di-binding ke primary timeframe.
+f_mtfTfScores() =>
+    emaF = ta.ema(close, emaFastPeriod)
+    emaM = ta.ema(close, emaMidPeriod)
+    emaS = ta.ema(close, emaSlowPeriod)
+    [st, stD] = ta.supertrend(superTrendFactor, superTrendPeriod)
+    trendScore = 50.0
+    if close > emaF and close > emaM and close > emaS
+        trendScore := 80.0
+    else if close < emaF and close < emaM and close < emaS
+        trendScore := 20.0
+    else if close > emaF
+        trendScore := 60.0
+    else
+        trendScore := 40.0
+    if not na(stD)
+        trendScore := stD == 1 ? math.min(100, trendScore + 10) : math.max(0, trendScore - 10)
+
+    rsi = ta.rsi(close, rsiLength)
+    [mL, mS, mH] = ta.macd(close, macdFast, macdSlow, macdSignal)
+    momScore = f_scoreHigher(rsi, 30, 70)
+    if not na(mL) and not na(mS)
+        momScore := mL > mS ? math.min(100, momScore + 10) : math.max(0, momScore - 10)
+
+    atr = ta.atr(atrLength)
+    atrPct = atr / close * 100
+    volScore = f_scoreRange(atrPct, 0.5, 10.0, 1.0, 3.0)
+
+    vMA = ta.sma(volume, volMaLength)
+    vR = vMA > 0 ? volume / vMA : na
+    volmScore = f_scoreRange(vR, 0.2, 5.0, 0.8, 2.0)
+
+    [trendScore, momScore, volScore, volmScore]
+
+mtfTf1Trend = na
+mtfTf1Mom = na
+mtfTf1Vol = na
+mtfTf1Volm = na
+mtfTf2Trend = na
+mtfTf2Mom = na
+mtfTf2Vol = na
+mtfTf2Volm = na
+mtfTf3Trend = na
+mtfTf3Mom = na
+mtfTf3Vol = na
+mtfTf3Volm = na
+
+if enableMTF
+    [t1tr, t1mo, t1vo, t1vl] = request.security(syminfo.tickerid, mtfPrimaryTF, f_mtfTfScores(), barmerge.gaps_off, barmerge.lookahead_off)
+    mtfTf1Trend := t1tr
+    mtfTf1Mom := t1mo
+    mtfTf1Vol := t1vo
+    mtfTf1Volm := t1vl
+
+    [t2tr, t2mo, t2vo, t2vl] = request.security(syminfo.tickerid, mtfSecondaryTF, f_mtfTfScores(), barmerge.gaps_off, barmerge.lookahead_off)
+    mtfTf2Trend := t2tr
+    mtfTf2Mom := t2mo
+    mtfTf2Vol := t2vo
+    mtfTf2Volm := t2vl
+
+    [t3tr, t3mo, t3vo, t3vl] = request.security(syminfo.tickerid, mtfTertiaryTF, f_mtfTfScores(), barmerge.gaps_off, barmerge.lookahead_off)
+    mtfTf3Trend := t3tr
+    mtfTf3Mom := t3mo
+    mtfTf3Vol := t3vo
+    mtfTf3Volm := t3vl
+
+// Legacy MTF trend filter (retained for backward compat)
 mtfTrendScore = if enableMtfFilter
     request.security(syminfo.tickerid, mtfTimeframe,
         (close > ta.ema(close, emaSlowPeriod) ? 50 : 0) +
@@ -452,10 +534,12 @@ f_trendScore() =>
         scoreSum += alignScore * 1
         count += 1
 
-    // EMA Slope (weight: 1)
-    slopeFast = emaFast - emaFast[5]
+    // EMA Slope — rate of change (weight: 1)
+    // [1] ratio dipilih alih-alih [5] offset agar konsisten di semua timeframe.
+    // Pada monthly chart, [5] = 5 bulan (~150 hari) tidak relevan untuk slope jangka pendek.
+    slopeFast = emaFast / emaFast[1] - 1
     if not na(slopeFast)
-        slopeScore = f_scoreHigher(slopeFast, -close * 0.02, close * 0.02)
+        slopeScore = f_scoreHigher(slopeFast, -0.02, 0.02)
         scoreSum += slopeScore * 1
         count += 1
 
@@ -619,7 +703,85 @@ f_smartMoneyScore() =>
         count > 0 ? scoreSum / count : na
 
 // ==========================================================
-// 6. CALCULATE ALL SCORES
+// 6. MULTI-TIMEFRAME ALIGNMENT SCORE
+// ==========================================================
+// Menghitung alignment 3 timeframe:
+//   - Directional (Trend+Momentum) untuk conflict detection
+//   - Context (Volatility+Volume) sebagai modifier non-directional
+//   - Continuous penalty berdasarkan divergence directional antar TF
+//
+// Output: [finalScore (0-100), direction (1/-1/0), debugString]
+f_mtfAlignmentScore() =>
+    if not enableMTF
+        [na, 0, ""]
+
+    // --- Directional components (Trend + Momentum) ---
+    tf1Dir = mtfTf1Trend * 0.55 + mtfTf1Mom * 0.45
+    tf2Dir = mtfTf2Trend * 0.55 + mtfTf2Mom * 0.45
+    tf3Dir = mtfTf3Trend * 0.55 + mtfTf3Mom * 0.45
+
+    // --- Context components (Volatility + Volume) ---
+    tf1Ctx = mtfTf1Vol * 0.55 + mtfTf1Volm * 0.45
+    tf2Ctx = mtfTf2Vol * 0.55 + mtfTf2Volm * 0.45
+    tf3Ctx = mtfTf3Vol * 0.55 + mtfTf3Volm * 0.45
+
+    // Guard: jika data tidak tersedia, skip
+    if na(tf1Dir) or na(tf2Dir)
+        [na, 0, ""]
+
+    // --- Weighted combination ---
+    totalW = mtfPrimaryWeight + mtfSecondaryWeight + mtfTertiaryWeight
+    normW1 = totalW > 0 ? mtfPrimaryWeight / totalW : 0.50
+    normW2 = totalW > 0 ? mtfSecondaryWeight / totalW : 0.35
+    normW3 = totalW > 0 ? mtfTertiaryWeight / totalW : 0.15
+
+    mtfDirRaw = tf1Dir * normW1 + tf2Dir * normW2 + tf3Dir * normW3
+    mtfCtxRaw = tf1Ctx * normW1 + tf2Ctx * normW2 + tf3Ctx * normW3
+
+    // --- Fuzzy threshold untuk direction detection ---
+    tf1Bull = math.max(math.min((tf1Dir - 50) / 20, 1), 0)
+    tf2Bull = math.max(math.min((tf2Dir - 50) / 20, 1), 0)
+    tf3Bull = math.max(math.min((tf3Dir - 50) / 20, 1), 0)
+
+    // Weighted majority vote
+    weightedBull = tf1Bull * normW1 + tf2Bull * normW2 + tf3Bull * normW3
+    weightedBear = (1 - tf1Bull) * normW1 + (1 - tf2Bull) * normW2 + (1 - tf3Bull) * normW3
+
+    hysteresis = mtfDirectionHysteresis / 100
+    direction = if weightedBull > weightedBear + hysteresis
+        1
+    else if weightedBear > weightedBull + hysteresis
+        -1
+    else
+        0
+
+    // --- Continuous penalty (directional divergence only) ---
+    maxDiv = math.max(math.abs(tf1Dir - tf2Dir), math.abs(tf1Dir - tf3Dir), math.abs(tf2Dir - tf3Dir))
+    penalty = (maxDiv / 100) * mtfMaxPenalty
+
+    conflictScore = mtfDirRaw * (1 - penalty)
+    finalScore = conflictScore * mtfAlpha + mtfCtxRaw * (1 - mtfAlpha)
+
+    // --- Debug string (untuk mtfDebug mode) ---
+    debugStr = if mtfDebug
+        str.format("D:({0}/{1}/{2}/{3}) W:({4}/{5}/{6}/{7}) M:({8}/{9}/{10}/{11}) dirRaw={12} ctxRaw={13} pen={14}% final={15}",
+         str.tostring(math.round(mtfTf1Trend)), str.tostring(math.round(mtfTf1Mom)),
+         str.tostring(math.round(mtfTf1Vol)), str.tostring(math.round(mtfTf1Volm)),
+         str.tostring(math.round(mtfTf2Trend)), str.tostring(math.round(mtfTf2Mom)),
+         str.tostring(math.round(mtfTf2Vol)), str.tostring(math.round(mtfTf2Volm)),
+         str.tostring(math.round(mtfTf3Trend)), str.tostring(math.round(mtfTf3Mom)),
+         str.tostring(math.round(mtfTf3Vol)), str.tostring(math.round(mtfTf3Volm)),
+         str.tostring(math.round(mtfDirRaw)), str.tostring(math.round(mtfCtxRaw)),
+         str.tostring(math.round(penalty * 100)), str.tostring(math.round(finalScore)))
+    else
+        ""
+
+    [finalScore, direction, debugStr]
+
+[mtfScore, mtfDirection, mtfDebugStr] = f_mtfAlignmentScore()
+
+// ==========================================================
+// 7. CALCULATE ALL SCORES
 // ==========================================================
 trendScore = f_trendScore()
 momentumScore = f_momentumScore()
@@ -773,6 +935,7 @@ if not na(volRatio) and not na(volumeScore)
 // ==========================================================
 // 10. MULTI-TIMEFRAME CONFLICT DETECTION
 // ==========================================================
+// Legacy conflict (simple binary, for backward compat)
 mtfConflict = enableMtfFilter and not na(mtfTrendScore) and not na(overallScore) and (
     (mtfTrendScore >= 50 and overallScore < 40) or
     (mtfTrendScore < 50 and overallScore >= 70)
@@ -783,6 +946,17 @@ mtfWarning = if enableMtfFilter and not na(mtfTrendScore)
         (bahasaInput == "Indonesia" ? "MTF ▲ " + str.tostring(math.round(mtfTrendScore)) : "MTF ▲ " + str.tostring(math.round(mtfTrendScore)))
     else
         (bahasaInput == "Indonesia" ? "MTF ▼ " + str.tostring(math.round(mtfTrendScore)) : "MTF ▼ " + str.tostring(math.round(mtfTrendScore)))
+else
+    ""
+
+// New MTF alignment summary (for UI — Sprint C) — disiapkan sekarang
+mtfAlignmentDirection = if not na(mtfScore)
+    if mtfDirection == 1
+        "Bullish"
+    else if mtfDirection == -1
+        "Bearish"
+    else
+        "Mixed"
 else
     ""
 
